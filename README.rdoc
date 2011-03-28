@@ -1,0 +1,3 @@
+= SunRise CMS
+
+  gem 'sunrise'
