@@ -1,3 +1,7 @@
 = SunRise CMS
 
+== Install
+
   gem 'sunrise'
+
+  rails generate sunrise:install
