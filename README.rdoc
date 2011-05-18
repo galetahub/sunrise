@@ -1,7 +1,14 @@
-= SunRise CMS
+= Sunrise CMS
+
+Aimbulance mini content management system.
 
 == Install
 
-  gem 'sunrise'
+  gem 'sunrise-cms'
 
   rails generate sunrise:install
+
+== Dependency
+
+  gem 'sunrise-core'
+  gem 'sunrise-scaffold'
