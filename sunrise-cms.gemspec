@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/sunrise.rb"
+    "lib/sunrise-cms.rb"
   ]
   s.homepage = %q{https://github.com/galetahub/sunrise}
   s.require_paths = ["lib"]
