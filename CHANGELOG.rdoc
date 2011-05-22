@@ -1,0 +1,7 @@
+== 0.1.2
+
+* enhancements
+  * HTML 5 file uploads (fileuploader)
+  * Remove swfuploader
+  * CSS3 buttons
+  * JqueryUI 1.8.13
