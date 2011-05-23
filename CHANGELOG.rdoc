@@ -6,3 +6,6 @@
   * Remove swfuploader
   * CSS3 buttons
   * JqueryUI 1.8.13
+
+* Bugs
+  * Multiply assets uploads
