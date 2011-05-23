@@ -1,6 +1,7 @@
 == 0.1.2
 
 * enhancements
+  * Now generator 'rails generate sunrise:install' runs all dependents generators
   * HTML 5 file uploads (fileuploader)
   * Remove swfuploader
   * CSS3 buttons
