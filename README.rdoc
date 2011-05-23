@@ -30,6 +30,16 @@ Generate:
 
   rails generate sunrise:install
 
+Copy:
+
+  cp config/database.yml.sample config/database.yml
+  cp config/application.yml.sample config/application.yml
+
+DB:
+
+  rake db:create
+  rake db:migrate
+
 == Dependency
 
   gem 'sunrise-core'
