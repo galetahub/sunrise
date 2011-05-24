@@ -38,8 +38,8 @@ begin
     s.authors = ["Igor Galeta", "Pavlo Galeta"]
     s.files =  FileList["[A-Z]*", "{lib}/**/*"]
     
-    s.add_dependency 'sunrise-core', '~> ' + version
-    s.add_dependency 'sunrise-scaffold', '~> ' + version
+    s.add_dependency 'sunrise-core', version
+    s.add_dependency 'sunrise-scaffold', version
   end
   
   Jeweler::GemcutterTasks.new
