@@ -1,3 +1,19 @@
+== 0.1.4
+
+* Core
+  * Upgrade dependents gems versions
+  * Spec tests for controllers and models
+  * Support for autoload multiply models in one plugin
+
+* Scaffold
+  * Reorganize gem structure
+  * Control buttons in show template
+  * Unit tests
+
+* Bugs
+  * User role_type create/update
+  * Destroy structure
+
 == 0.1.2
 
 * enhancements

@@ -1,46 +1,10 @@
 = Sunrise CMS
 
-Aimbulance mini content management system.
+Aimbulance mini content management system for programmers.
 
-== Install
+== Instructions
 
-Gemfile:
+https://github.com/galetahub/sunrise-core
 
-  gem 'inherited_resources'
-  gem 'paperclip'
-  gem 'mime-types'
-  gem 'kaminari'
-  gem 'cancan'
-  gem 'cancan_namespace'
-  gem 'devise'
-  gem 'simple_form'
-  gem 'ckeditor'
   
-  gem 'enum_field', :git => 'git://github.com/galetahub/enum_field.git'
-  gem 'awesome_nested_set', :git => 'git://github.com/galetahub/awesome_nested_set.git'
-  gem 'salty_slugs', :git => 'git://github.com/galetahub/salty_slugs.git'
-  
-  gem 'sunrise-cms'
-
-Bundle:
-
-  bundle install --path vendor/bundle --without development test
-
-Generate:
-
-  rails generate sunrise:install
-
-Copy:
-
-  cp config/database.yml.sample config/database.yml
-  cp config/application.yml.sample config/application.yml
-
-DB:
-
-  rake db:create
-  rake db:migrate
-
-== Dependency
-
-  gem 'sunrise-core'
-  gem 'sunrise-scaffold'
+Copyright (c) 2011 Aimbulance, released under the MIT license
