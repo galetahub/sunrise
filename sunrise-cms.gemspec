@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.rdoc"]
   s.require_paths = ["lib"]
   
-  s.add_runtime_dependency(%q<sunrise-core>, ["= 0.2.0"])
-  s.add_runtime_dependency(%q<sunrise-scaffold>, ["= 0.1.4"])
+  s.add_runtime_dependency(%q<sunrise-core>, ["= #{version}"])
+  s.add_runtime_dependency(%q<sunrise-scaffold>, ["= #{version}"])
 end

@@ -1,3 +1,20 @@
+== 0.2.0
+* Core
+  * Replace paperclip with carrierwave
+  * New model filter logic
+
+* Scaffold  
+  * Generate spec tests for controllers
+  * Apply new model filter logic
+  
+== 0.1.5
+* Core
+  * Export users to csv
+  * Search users by email for autocomplete list
+  * Autocoplete css for manage
+  * New unlock user event after access_locked
+  * Test user events actions
+
 == 0.1.4
 
 * Core
