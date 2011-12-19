@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="NONE,NOARCHIVE" />
+	<%= csrf_meta_tag %>
+	<title><%= t('manage.page_title') %></title>
+	<%= stylesheet_link_tag "sunrise/application" %>
+ 	<!--[if lt IE 7]><%= stylesheet_link_tag "sunrise/ie.css" %><![endif]-->
+ 	
+ 	<%= javascript_include_tag "sunrise/application" %>
+	<%= yield(:head)%>
+</head>
+<body>
+  <div class="main">
+    <%#= render :partial => "sunrise/shared/head" %>
+    <div class="main-frame">
+      <div class="struct-bl">
+        <div id="manage_container" class="bot-bg">
+          <%= render :partial => 'sunrise/shared/notice' if flash %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= yield(:footer) %>
+  <%#= render :partial => 'sunrise/fileupload/tmpl' %>
+</body>
+</html>

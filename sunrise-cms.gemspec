@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-version = File.open(File.dirname(__FILE__) + '/VERSION', 'r').read.strip
+require "sunrise/version"
 
 Gem::Specification.new do |s|
   s.name = "sunrise-cms"
-  s.version = version
+  s.version = Sunrise::VERSION.dup
   s.platform = Gem::Platform::RUBY 
   s.summary = "Rails CMS"
   s.description = "Sunrise is a Aimbulance CMS"
@@ -18,6 +18,24 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.rdoc"]
   s.require_paths = ["lib"]
   
-  s.add_runtime_dependency(%q<sunrise-core>, ["= #{version}"])
-  s.add_runtime_dependency(%q<sunrise-scaffold>, ["= #{version}"])
+  #s.add_runtime_dependency("sunrise-core", "= #{version}")
+  #s.add_runtime_dependency(%q<sunrise-scaffold>, ["= #{version}"])
+  s.add_runtime_dependency("sunrise-file-upload", "~> 0.1.3")
+  s.add_runtime_dependency("jquery-rails", "~> 1.0.19")
+  s.add_runtime_dependency("kaminari", "~> 0.12.4")
+  s.add_runtime_dependency("activesupport", "~> 3.1.0")
+  s.add_runtime_dependency("simple_form", "~> 1.5.2")
+  
+  s.add_runtime_dependency("awesome_nested_set", "~> 2.0.2")
+  s.add_runtime_dependency("carrierwave", "~> 0.5.8")
+  s.add_runtime_dependency("cancan", "~> 1.6.7")
+  s.add_runtime_dependency("cancan_namespace", "~> 0.1.3")
+  s.add_runtime_dependency("friendly_id", "~> 4.0.0.beta14")
+  s.add_runtime_dependency("galetahub-enum_field", "~> 0.1.4")
+  
+  s.add_development_dependency("rspec-rails", "~> 2.7.0")
+  s.add_development_dependency("generator_spec", "~> 0.8.4")
+  s.add_development_dependency("mysql2", "~> 0.3.11")
+  s.add_development_dependency("database_cleaner", ">= 0")
+  s.add_development_dependency("factory_girl", "~> 2.3.2")
 end
