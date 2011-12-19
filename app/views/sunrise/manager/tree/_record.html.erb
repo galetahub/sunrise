@@ -1,0 +1,24 @@
+<%= content_tag(:div, :id=>dom_id(record), :class=>"row-container") do %>
+  <div class="gray-row">
+    <div class="r-corn">
+      <%= link_to record.title, show_path(:id=>record), :class=>(record.descendants_count.zero? ? "dark-text" : "dark-arr"), :id=>"a#{record.id}" %>
+      <div class="act-bl" style="display:none;">
+        <% if can? :update, record, :context => :manage %>
+          <%= link_to manage_icon("edit"), edit_path(:id => record), :class=>"icons" %>
+          <%= link_to manage_icon("settings"), edit_path(:id=>record.id), :class=>"icons" %>
+        <% end %>
+        
+        <% if can? :delete, record, :context => :manage %>
+          <%= link_to manage_icon("delete"), delete_path(:id=>record.id), 
+              :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% unless record.descendants_count.zero? %>
+    <%= content_tag(:div, :class=>"stage", :id=> dom_id(record, :children)) do %>
+      <%= render :partial=>"sunrise/manager/tree/record", :collection => record.children %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,30 @@
+<div id="tree">
+  <%= render :partial => 'sunrise/manager/tree/root', :collection => @records %>
+</div>
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+    Manage.init_collection('tree', 'gray-row');
+    
+    Tree.init('#tree');
+    
+    $('a.move_up').bind("ajax:complete", function(){
+      var sid = $(this).attr('href').replace('/manage/structures/', '');
+      
+      Manage.move_node('structure_' + parseInt(sid), 'up'); 
+    });
+    
+    $('a.move_down').bind("ajax:complete", function(){
+      var sid = $(this).attr('href').replace('/manage/structures/', '');
+      
+      Manage.move_node('structure_' + parseInt(sid), 'down');
+    });
+  });
+</script>
+
+<style type="text/css">
+  .struct-bl .bot-bg {
+    position: relative;
+    width: 920px;
+  }  
+</style>

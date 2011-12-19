@@ -1,0 +1,24 @@
+<div class='root'>
+  <div class="row-container">
+    <div class="white-row">
+      <div class="r-corn">
+        <%= link_to root.title, main_app.root_path, :class=>"dark-arr", :id=>"a#{root.id}" %>
+        
+        <div class="act-bl">
+          <% if can? :create, root.class, :context => :manage %>
+            <%= link_to t('manage.buttons.create_structure'), new_path, :class=>"create" %>
+          <% end %>
+          
+          <% if can? :update, root, :context => :manage %>
+            <%= link_to image_tag("sunrise/ico_edit.gif", :title=>t('manage.edit')), "#", :class=>"icons" %>
+            <%= link_to image_tag("sunrise/ico_settings.gif", :title=>t('manage.label_settings')), edit_path(:id=> root.id), :class=>"icons" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="stage">
+    <%= render :partial => "sunrise/manager/tree/record", :collection => root.children %>
+  </div>
+</div>

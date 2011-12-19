@@ -1,0 +1,31 @@
+<div class="duo-bl">
+  <div class="left-part">
+    <div class="content">
+    	<div class="row-container">
+        <div class="white-row">
+          <div class="r-corn">
+            <%= link_to abstract_model.label, index_path, :class=>"dark-text" %>
+            <div class="act-bl">
+              <%= link_to t('manage.add'), new_path, :class=>"create" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="records" class="stage">
+        Table
+        <%= render :partial => "sunrise/manager/table/record", :collection => @records %>
+        <%= paginate @records, :theme => 'manage' %>
+      </div>
+      <script type='text/javascript'>
+        $(document).ready(function(){
+          Manage.init_collection('records', 'dinamic-bl');
+        });
+      </script>
+    </div>
+  </div>
+  <div class="right-part">
+    <div class="filter-right">
+      <%= render :partial => "sunrise/manager/table/model_filter" %>
+    </div>
+  </div>
+</div>

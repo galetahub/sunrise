@@ -1,0 +1,60 @@
+# <%= app_name %>
+server {
+    listen   80;
+    server_name .<%= app_name %>.aimbulance.com;
+
+    server_tokens off;
+
+    gzip             on;
+    gzip_proxied     any;
+    gzip_min_length  1100;
+    gzip_buffers     12 4k;
+    gzip_types text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+    client_max_body_size	200M;
+    client_body_buffer_size	128k;
+    client_header_timeout	60;
+    client_body_timeout		260;
+    send_timeout		260;
+    keepalive_timeout		60;
+
+    large_client_header_buffers  4 4k;
+    client_header_buffer_size 1k;
+
+    connection_pool_size 256;
+    ignore_invalid_headers on;
+    postpone_output 1460;
+    output_buffers 4 32k;
+    request_pool_size 4k;
+
+    passenger_enabled on;
+    rails_env production;
+
+    root    <%= app_path %>/public;
+
+    location ~ /\.[^\/]+ {
+        return 404;
+    }
+
+    location ~* ^.+\.(jpg|jpeg|gif|png|css|js|swf|ico|mov|flv|fla|pdf|zip|rar|doc|xls)$
+    {
+        expires 12h;
+        add_header  Cache-Control  private;
+        access_log off;
+    }
+    
+    # This rewrites all the requests to the maintenance.html page if it exists in the doc root.
+    if (-f $document_root/system/maintenance.html) {
+      return 503;
+    }
+     
+    error_page 503 @503;
+    location @503 {
+      # Serve static assets if found.
+      if (-f $request_filename) {
+        break;
+      }
+     
+      rewrite ^(.*)$ /system/maintenance.html break;
+    }
+}
