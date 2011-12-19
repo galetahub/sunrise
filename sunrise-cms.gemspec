@@ -38,4 +38,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("mysql2", "~> 0.3.11")
   s.add_development_dependency("database_cleaner", ">= 0")
   s.add_development_dependency("factory_girl", "~> 2.3.2")
+  s.add_development_dependency("capybara", "~> 1.1.2")
 end

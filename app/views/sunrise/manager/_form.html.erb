@@ -1,9 +1,9 @@
 <%= manage_form_for @record do |f| %> 
   <div class="edit-cont">
     <div class="inputs-bl">
-      <%= debug abstract_model.config.edit.fields %>
-      
-      <%= f.input :title, :input_html => { :class => "text name" } %>
+      <% abstract_model.config.edit.fields.each do |field| %>
+        <%= f.input field.name, field.options if field.visible?(f.object) %>
+      <% end %>
     </div>
   </div>
   

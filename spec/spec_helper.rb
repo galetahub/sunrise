@@ -4,7 +4,9 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
 require "rspec/rails"
-require 'database_cleaner'
+require "database_cleaner"
+require "generator_spec/test_case"
+require "capybara/rspec"
 
 # Fixtures replacement with a straightforward definition syntax
 require 'factory_girl'
@@ -29,6 +31,8 @@ RSpec.configure do |config|
   # methods or matchers
   require 'rspec/expectations'
   config.include RSpec::Matchers
+  config.include Sunrise::Engine.routes.url_helpers
+  config.include Warden::Test::Helpers
 
   # == Mock Framework
   config.mock_with :rspec
@@ -48,9 +52,6 @@ RSpec.configure do |config|
 
   config.after(:all) do
     DatabaseCleaner.clean
+    Warden.test_reset!
   end
 end
-
-# For generators
-require "generator_spec/test_case"
-require "generators/sunrise/install_generator"

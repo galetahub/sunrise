@@ -1,4 +1,5 @@
 require 'spec_helper'
+require "generators/sunrise/install_generator"
 require 'fileutils'
 
 describe Sunrise::Generators::InstallGenerator do

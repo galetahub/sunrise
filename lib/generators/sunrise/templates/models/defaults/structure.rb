@@ -1,6 +1,6 @@
 class Structure < ActiveRecord::Base
-  extend FriendlyId
   include Sunrise::Models::Structure
+  extend FriendlyId
   
   friendly_id :title, :use => :slugged
   

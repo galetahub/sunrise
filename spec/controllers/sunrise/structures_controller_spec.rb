@@ -12,7 +12,7 @@ describe Sunrise::ManagerController do
     login_admin
     
     it "should render index action" do
-      get :index
+      get :index, :model_name => 'structures'
       assigns(:structure).should == @root
       assigns(:structures).should include(@page)
       response.should render_template('index')
