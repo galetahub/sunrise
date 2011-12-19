@@ -4,6 +4,7 @@ module Sunrise
     autoload :Transliteration, 'sunrise/utils/transliteration'
     autoload :I18nBackend, 'sunrise/utils/i18n_backend'
     autoload :Mysql, 'sunrise/utils/mysql'
+    autoload :EvalHelpers, 'sunrise/utils/eval_helpers'
     
     IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/pjpeg', 'image/tiff', 'image/x-png']
     

@@ -11,7 +11,8 @@ describe Sunrise::ManagerController do
     end
     
     it "should render new action" do
-      get :new
+      get :new, :model_name => 'users'
+      
       response.should be_success
       response.should render_template("new")
     end
