@@ -1,27 +1,32 @@
 require 'spec_helper'
 
-describe "Sunrise Manager New" do
+describe "Sunrise Manager Edit" do
   subject { page }
-  before(:all) { @admin = FactoryGirl.create(:admin_user) }
-
+  before(:all) do 
+    @admin = FactoryGirl.create(:admin_user)
+    
+    @root = FactoryGirl.create(:structure_main)
+    @page = FactoryGirl.create(:structure_page, :parent => @root)
+  end
+  
   context "admin" do
     before(:each) { login_as @admin }
     
-    describe "GET /manage/typo/new" do
+    describe "GET /manage/typo/edit" do
       it "should raise NotFound" do
         lambda {
-          visit new_path(:model_name => "whatever")
+          visit edit_path(:model_name => "whatever", :id => @page.id)
         }.should raise_error ActiveRecord::RecordNotFound
       end
     end
 
-    describe "GET /manage/structures/new" do
+    describe "GET /manage/structures/edit" do
       before(:each) do
-        visit new_path(:model_name => "structures")
+        visit edit_path(:model_name => "structures", :id => @page.id)
       end
       
       it "should show page title" do
-        should have_content( I18n.t('manage.add') )
+        should have_content( I18n.t('manage.edit') )
       end
       
       it "should generate field to edit" do
@@ -34,7 +39,7 @@ describe "Sunrise Manager New" do
   
   describe "anonymous user" do
     before(:each) do
-      visit new_path(:model_name => "structures")
+      visit edit_path(:model_name => "structures", :id => @page.id)
     end
     
     it "should redirect to login page" do
