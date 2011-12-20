@@ -9,14 +9,14 @@ module Sunrise
     IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/pjpeg', 'image/tiff', 'image/x-png']
     
     def self.get_model(model_name)
-      klass = ["Sunrise", model_name.to_s.classify].join.constantize
-      klass.new
+      klass = lookup(["Sunrise", model_name.to_s.classify].join, Sunrise::AbstractModel)
+      klass ? klass.new : nil
     end
   
     # Given a string +model_name+, finds the corresponding model class
-    def self.lookup(model_name)
+    def self.lookup(model_name, klass = ActiveRecord::Base)
       model = model_name.constantize rescue nil
-      if model && model.is_a?(Class) && superclasses(model).include?(ActiveRecord::Base) && !model.abstract_class?
+      if model && model.is_a?(Class) && superclasses(model).include?(klass) && !model.abstract_class?
         model
       else
         nil

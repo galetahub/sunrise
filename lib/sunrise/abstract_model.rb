@@ -27,6 +27,10 @@ module Sunrise
         @model ||= Utils.lookup(resource_name.to_s.camelize)
       end
       
+      def abstract_class?
+        defined?(@abstract_class) && @abstract_class == true
+      end
+      
       # Act as a proxy for the section configurations that actually
       # store the configurations.
       def method_missing(m, *args, &block)

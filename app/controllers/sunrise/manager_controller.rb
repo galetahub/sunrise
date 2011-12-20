@@ -48,6 +48,8 @@ module Sunrise
     
       def find_model
         @abstract_model = Utils.get_model(params[:model_name])
+        raise ActiveRecord::RecordNotFound, "Sunrise model #{params[:model_name]} not found" if @abstract_model.nil?
+        @abstract_model
       end
       
       def abstract_model
