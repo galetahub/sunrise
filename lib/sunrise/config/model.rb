@@ -2,11 +2,17 @@ require 'active_support/core_ext/string/inflections'
 require 'sunrise/config/base'
 require 'sunrise/config/list'
 require 'sunrise/config/edit'
+require 'sunrise/config/association'
 
 module Sunrise
   module Config
     class Model < Base
       attr_reader :sections
+      
+      def initialize(abstract_model, parent = nil, options = nil)
+        super
+        @sections ||= {}
+      end
       
       register_instance_option(:label) do
         (@label ||= {})[::I18n.locale] ||= abstract_model.model.model_name.human(:default => abstract_model.model.model_name.demodulize.underscore.humanize)
@@ -25,13 +31,14 @@ module Sunrise
       end
       
       # Register accessors for all the sections in this namespace
-      [:list, :edit].each do |name|
+      [:list, :edit, :association].each do |name|
         section = "Sunrise::Config::#{name.to_s.classify}".constantize
         name = name.to_s.downcase.to_sym
-        send(:define_method, name) do |suffix=nil, &block|
-          key = [name, suffix].compact.join('_').to_sym
-          @sections ||= {}
-          @sections[key] ||= section.new(abstract_model)
+        send(:define_method, name) do |*args, &block|
+          options = args.extract_options!
+          key = [name, args.first].compact.join('_').to_sym
+          
+          @sections[key] ||= section.new(abstract_model, self, options)
           @sections[key].instance_eval &block if block
           @sections[key]
         end
