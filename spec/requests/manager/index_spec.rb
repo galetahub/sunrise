@@ -35,6 +35,17 @@ describe "Sunrise Manager Index" do
         should have_content( @page.title )
       end
     end
+    
+    describe "GET /manage/users" do
+      before(:each) do
+        Sunrise::Config.scoped_views = true 
+        visit index_path(:model_name => "users")
+      end
+      
+      it "should render inherit user templace" do
+        should have_content( "UserTestSection" )
+      end
+    end
   end
   
   describe "anonymous user" do

@@ -3,9 +3,10 @@ module Sunrise
     class Base      
       attr_reader :abstract_model, :parent
 
-      def initialize(abstract_model, parent = nil)
+      def initialize(abstract_model, parent = nil, options = nil)
         @abstract_model = abstract_model
         @parent = parent
+        @config_options = (options || {}).symbolize_keys
       end
       
       # Register an instance option for this object only

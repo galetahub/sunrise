@@ -4,7 +4,7 @@ module Sunrise
     before_filter :find_record, :only => [:show, :edit, :update, :destroy]
     before_filter :authorize_resource
     
-    helper_method :abstract_model
+    helper_method :abstract_model, :apply_scope
     
     respond_to :html, :xml, :json
     
@@ -72,16 +72,34 @@ module Sunrise
       # Accepts just :controller as option.
       def render_with_scope(scope = nil, action = self.action_name, path = self.controller_path)
         templates = [ [path, action] ]
-        templates << [path, scope, action]
+        templates << [path, scope, action] if scope
         
         if Sunrise::Config.scoped_views?
-          templates << [abstract_model.scoped_path, path.split("/").last, scope, action]
+          templates << [path, abstract_model.scoped_path, scope, action]
         end
         
         templates.reverse.each do |keys|
-          name = keys.compact.join('/')
+          name = File.join(*keys.compact)
           return render(:template => name) if template_exists?(name)
         end
+      end
+      
+      def apply_scope(scope, path = self.controller_path)
+        templates = [ [path, scope] ]
+        templates << [ path, abstract_model.current_list, scope ]
+        
+        if Sunrise::Config.scoped_views?
+          templates << [ path, abstract_model.scoped_path, scope ]
+          templates << [ path, abstract_model.scoped_path, abstract_model.current_list, scope ]
+        end
+        
+        templates.reverse.each do |keys|
+          name = File.join(*keys.compact)
+          return name if template_exists?(name, nil, true)
+        end
+        
+        # not found ... try render first
+        templates.first.join('/')
       end
       
       def authorize_resource

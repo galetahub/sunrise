@@ -12,7 +12,7 @@
         </div>
       </div>
       <div id="records" class="stage">
-        <%= render :partial => "sunrise/manager/thumbs/record", :collection => @records %>
+        <%= render :partial => apply_scope("record"), :collection => @records %>
         <%= paginate @records, :theme => 'manage' %>
       </div>
       <script type='text/javascript'>
@@ -24,7 +24,7 @@
   </div>
   <div class="right-part">
     <div class="filter-right">
-      <%= render :partial => "sunrise/manager/thumbs/model_filter" %>
+      <%= render :partial => apply_scope("model_filter") %>
     </div>
   </div>
 </div>

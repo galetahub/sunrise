@@ -8,15 +8,14 @@ module Sunrise
       # If group with given name does not yet exist it will be created. If a
       # block is passed it will be evaluated in the context of the group
       def group(name, &block)
-        group = groups.find {|g| name == g.name }
-        group ||= (groups << Sunrise::Config::Group.new(abstract_model, self, name)).last
-        group.instance_eval &block if block
-        group
+        groups[name] ||= Sunrise::Config::Group.new(abstract_model, self, name)
+        groups[name].instance_eval &block if block
+        groups[name]
       end
 
       # Reader for groups
       def groups
-        @groups ||= []
+        @groups ||= {}
       end
 
       # Reader for groups that are marked as visible
