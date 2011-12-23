@@ -1,7 +1,8 @@
 class Structure < ActiveRecord::Base
   include Sunrise::Models::Structure
+  extend FriendlyId
   
-  has_slug :prepend_id => false
+  friendly_id :title, :use => :slugged
   
   attr_accessible :title, :kind, :position, :parent_id, :redirect_url,
                   :position_type, :slug, :parent, :structure_type, 

@@ -79,7 +79,7 @@ module Sunrise
         end
         
         templates.reverse.each do |keys|
-          name = File.join(*keys.compact)
+          name = File.join(*keys.compact.map(&:to_s))
           return render(:template => name) if template_exists?(name)
         end
       end
@@ -94,7 +94,7 @@ module Sunrise
         end
         
         templates.reverse.each do |keys|
-          name = File.join(*keys.compact)
+          name = File.join(*keys.compact.map(&:to_s))
           return name if template_exists?(name, nil, true)
         end
         
@@ -103,7 +103,7 @@ module Sunrise
       end
       
       def authorize_resource
-        authorize!(action_name, @record || abstract_model.model)
+        authorize!(action_name, @record || abstract_model.model, :context => :sunrise)
       end
   end
 end

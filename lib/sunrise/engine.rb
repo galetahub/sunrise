@@ -7,6 +7,7 @@ require 'enum_field'
 require 'friendly_id'
 require 'cancan'
 require 'cancan_namespace'
+require 'acts_as_audited'
 require 'sunrise-cms'
 require 'sunrise-file-upload'
 
@@ -29,6 +30,10 @@ module Sunrise
     initializer "sunrise.awesome_nested_set" do
       CollectiveIdea::Acts::NestedSet::Model.send :include, Sunrise::NestedSet::Depth
       CollectiveIdea::Acts::NestedSet::Model::InstanceMethods.send :include, Sunrise::NestedSet::Descendants
+    end
+    
+    initializer "sunrise.acts_as_audited" do
+      Audit.send :include, Sunrise::Hooks::Kaminari
     end
   end
 end
