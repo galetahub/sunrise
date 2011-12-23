@@ -1,0 +1,23 @@
+<div class="duo-bl">
+  <div class="left-part">
+    <div class="content">
+    	<div class="row-container">
+        <div class="white-row">
+          <div class="r-corn">
+            Events
+          </div>
+        </div>
+      </div>
+      <div id="records" class="stage">
+        <%= render :partial => "event", :collection => @events %>
+        <%= paginate @events, :theme => 'manage' %>
+      </div>
+    </div>
+  </div>
+  <div class="right-part">
+    <div class="filter-right">
+      
+    </div>
+  </div>
+</div>
+

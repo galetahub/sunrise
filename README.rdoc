@@ -6,5 +6,10 @@ Aimbulance mini content management system for programmers.
 
 https://github.com/galetahub/sunrise-core
 
+Generators
+
+- rails g devise:install
+- rails g acts_as_audited:install
+
   
 Copyright (c) 2011 Aimbulance, released under the MIT license

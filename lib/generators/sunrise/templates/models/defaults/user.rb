@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
   fileuploads :avatar
+  
+#  acts_as_audited :protect => false, :only => [:name, :email, :password]
 end

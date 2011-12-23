@@ -32,6 +32,7 @@ class Ability
   def admin
     can :manage, :all
     can :manage, :all, :context => :manage
+    can :index, :dashboard, :context => :manage
     
     # User cannot destroy self account
     cannot :destroy, User, :id => @user.id, :context => :manage

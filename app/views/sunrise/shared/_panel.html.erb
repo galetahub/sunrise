@@ -5,15 +5,15 @@
     	<div class="p-logo"><%=raw t('manage.title') %></div>
       <div class="panel-main-menu">
       	<ul>
-      	  <% if can? :read, Structure, :context => :manage %>
+      	  <% if can? :read, Structure, :context => :sunrise %>
            	<li><%= link_to_unless_current_span2 t('manage.plugins.structures'), manage_structures_path %></li>
          	<% end %>
          	
-         	<% if can? :read, User, :context => :manage %>
+         	<% if can? :read, User, :context => :sunrise %>
             <li><%= link_to_unless_current_span2 t('manage.plugins.users'), manage_users_path %></li>
           <% end %>
           
-          <% if can? :read, :settings, :context => :manage %>
+          <% if can? :read, :settings, :context => :sunrise %>
             <li><%= link_to_unless_current_span2 t('manage.plugins.settings'), manage_settings_path %></li>
           <% end %>
         </ul>

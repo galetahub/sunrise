@@ -3,13 +3,15 @@ module Sunrise
     prepend_before_filter :authenticate_user!
     check_authorization
     
+    respond_to :html
+    
     protected
           
       def current_ability
-        @current_ability ||= ::Ability.new(current_user, :manage)
+        @current_ability ||= ::Ability.new(current_user, :sunrise)
       end
       
-      rescue_from CanCan::AccessDenied do |exception|
+      rescue_from ::CanCan::AccessDenied do |exception|
         Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}, context: #{current_ability.context}, user: #{current_user.try(:id)}"
         
         flash[:failure] = I18n.t(:access_denied, :scope => [:flash, :users])

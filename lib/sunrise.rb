@@ -18,6 +18,7 @@ module Sunrise
     autoload :RoleType, 'sunrise/models/role_type'
     autoload :Header, 'sunrise/models/header'
     autoload :User, 'sunrise/models/user'
+    autoload :Ability, 'sunrise/models/ability'
   end
   
   module CarrierWave
@@ -33,6 +34,10 @@ module Sunrise
   
   module Views
     autoload :FormBuilder, 'sunrise/views/form_builder'
+  end
+  
+  module Hooks
+    autoload :Kaminari, 'sunrise/hooks/kaminari'
   end
   
   def self.root_path
