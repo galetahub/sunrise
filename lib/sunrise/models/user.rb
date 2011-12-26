@@ -81,6 +81,10 @@ module Sunrise
           (roles || []).map {|r| r.to_sym}
         end
         
+        def role_symbol
+          role_symbols.first
+        end
+        
         def current_role
           self.roles.first
         end

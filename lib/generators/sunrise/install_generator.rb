@@ -55,17 +55,6 @@ module Sunrise
         end
       end
       
-      def test_framework
-        log :test_framework, "rspec"
-        sentinel = /\.filter_parameters\s+\+\=\s+\[(.+)\]\s*$/
-        
-        code = "config.generators do |g|\n      g.test_framework :rspec\n    end"
-          
-        in_root do
-          inject_into_file 'config/application.rb', "\n\n    #{code}", { :after => sentinel, :verbose => false }
-        end
-      end
-      
       def copy_specs
         directory "spec", "spec"
         copy_file('rspec', '.rspec')

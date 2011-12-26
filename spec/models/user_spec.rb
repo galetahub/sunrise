@@ -55,6 +55,7 @@ describe User do
     
     it "should set default role" do
       @user.role_type_id.should == RoleType.default.id
+      @user.role_symbol.should == RoleType.default.code
     end
     
     it 'should return default avatar image' do

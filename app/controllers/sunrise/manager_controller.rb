@@ -24,7 +24,8 @@ module Sunrise
     end
     
     def create
-      @record.update_attributes(record_params, :as => :admin)
+      @record.assign_attributes(record_params, :as => current_user.role_symbol)
+      @record.update_attributes(record_params)
       respond_with(@record, :location => index_path)
     end
     
@@ -35,7 +36,8 @@ module Sunrise
     end
     
     def update
-      @record.update_attributes(record_params, :as => :admin)
+      @record.assign_attributes(record_params, :as => current_user.role_symbol)
+      @record.update_attributes(record_params)      
       respond_with(@record, :location => index_path)
     end
     
@@ -65,7 +67,7 @@ module Sunrise
       end
       
       def record_params
-        params[abstract_model.model_name]
+        params[abstract_model.params_key]
       end
       
       # Render a view for the specified scope. Turned off by default.

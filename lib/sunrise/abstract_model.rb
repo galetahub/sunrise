@@ -63,6 +63,10 @@ module Sunrise
       ["list", current_list].compact.join('_').to_sym
     end
     
+    def params_key
+      @params_key ||= @model_name.singular.to_sym
+    end
+    
     def list
       config.sections[list_key] ||= Config::List.new(self.class)
     end
