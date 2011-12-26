@@ -80,22 +80,26 @@ describe Structure do
     end
     
     it "should find structure by permalink" do
-      Structure.find_by_permalink(@structure.id).should == @structure
-      Structure.find_by_permalink(@structure.slug).should == @structure
+      Structure.find(@structure.id).should == @structure
+      Structure.find(@structure.slug).should == @structure
     end
     
     it "should not find structure with wrong permalink" do
-      Structure.find_by_permalink(nil).should be_nil
-      Structure.find_by_permalink('wrong').should be_nil
-      Structure.find_by_permalink(Time.now.to_i).should be_nil
+      lambda {
+        Structure.find(nil).should be_nil
+      }.should raise_exception ActiveRecord::RecordNotFound
+      
+      lambda {
+        Structure.find(Time.now.to_i).should be_nil
+      }.should raise_exception ActiveRecord::RecordNotFound
     end
     
     it "should raise exception if structure not found" do
       lambda {
-        Structure.find_by_permalink!('wrong')
+        Structure.find('wrong')
       }.should raise_exception ActiveRecord::RecordNotFound
       
-      Structure.find_by_permalink!(@structure.slug).should == @structure
+      Structure.find(@structure.slug).should == @structure
     end
   end
 end
