@@ -35,23 +35,6 @@ describe "Sunrise Manager Edit" do
         end
       end
     end
-    
-    describe "GET /manage/pages/:id/edit" do
-      before(:each) do
-        @root = FactoryGirl.create(:structure_main)
-        visit new_path(:model_name => "pages", :id => @root.id)
-      end
-      
-      it "should show page title" do
-        should have_content( I18n.t('manage.edit') )
-      end
-      
-      it "should generate field to edit" do
-        SunrisePage.config.edit.fields.each do |f|
-          should have_selector "input[@name='page[#{f.name}]']"
-        end
-      end
-    end
   end
   
   describe "anonymous user" do

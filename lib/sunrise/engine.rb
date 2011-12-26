@@ -8,6 +8,7 @@ require 'friendly_id'
 require 'cancan'
 require 'cancan_namespace'
 require 'acts_as_audited'
+require 'page_parts'
 require 'sunrise-cms'
 require 'sunrise-file-upload'
 

@@ -10,7 +10,6 @@ module Sunrise
   
   module Models
     autoload :Asset, 'sunrise/models/asset'
-    autoload :Page, 'sunrise/models/page'
     autoload :Structure, 'sunrise/models/structure'
     autoload :StructureType, 'sunrise/models/structure_type'
     autoload :PositionType, 'sunrise/models/position_type'

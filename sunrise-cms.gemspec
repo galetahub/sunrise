@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "sunrise-cms"
   s.homepage = "https://github.com/galetahub/sunrise"
   
-  s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "VERSION", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "VERSION", "README.rdoc"]
   s.test_files = Dir["{spec}/**/*"]
   s.extra_rdoc_files = ["README.rdoc"]
   s.require_paths = ["lib"]
@@ -30,9 +30,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("carrierwave", "~> 0.5.8")
   s.add_runtime_dependency("cancan", "~> 1.6.7")
   s.add_runtime_dependency("cancan_namespace", "~> 0.1.3")
-  s.add_runtime_dependency("friendly_id", "~> 4.0.0.beta14")
+  s.add_runtime_dependency("friendly_id", "~> 4.0.0.rc2")
   s.add_runtime_dependency("galetahub-enum_field", "~> 0.1.4")
   s.add_runtime_dependency("acts_as_audited", "~> 2.0.0")
+  s.add_runtime_dependency("page_parts", "~> 0.0.1")
   
   s.add_development_dependency("rspec-rails", "~> 2.7.0")
   s.add_development_dependency("generator_spec", "~> 0.8.4")

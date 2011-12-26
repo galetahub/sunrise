@@ -1,5 +1,5 @@
-Factory.define :page, :class => Page do |p|
-  p.title "Test title"
+Factory.define :page, :class => PagePart do |p|
+  p.key "main"
   p.content "Test content"
-  p.association :structure, :factory => :structure_page
+  p.association :partable, :factory => :structure_page
 end
