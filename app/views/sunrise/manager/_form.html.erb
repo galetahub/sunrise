@@ -2,7 +2,7 @@
   <div class="edit-cont">
     <div class="inputs-bl">
       <% abstract_model.config.edit.fields.each do |field| %>
-        <%= f.input field.name, field.options if field.visible?(f.object) %>
+        <%= f.input field.name, field.input_options if field.visible?(f.object) %>
       <% end %>
     </div>
   </div>
