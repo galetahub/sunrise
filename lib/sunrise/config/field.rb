@@ -28,6 +28,10 @@ module Sunrise
         object.nil? || matches_conditions?(object)
       end
       
+      def input_options
+        @options.dup
+      end
+      
       protected
       
         # Verifies that the conditionals for this field evaluate to true for the

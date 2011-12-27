@@ -21,5 +21,6 @@ end
 group :development, :test do
   gem "fuubar"
   gem "therubyracer"
+  gem "launchy"
 end
 

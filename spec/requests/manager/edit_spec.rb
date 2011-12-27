@@ -9,6 +9,10 @@ describe "Sunrise Manager Edit" do
     @page = FactoryGirl.create(:structure_page, :parent => @root)
   end
   
+  it "should be moveable page" do
+    @page.should be_moveable
+  end
+  
   context "admin" do
     before(:each) { login_as @admin }
     
@@ -30,9 +34,13 @@ describe "Sunrise Manager Edit" do
       end
       
       it "should generate field to edit" do
-        SunriseStructure.config.edit.fields.each do |f|
-          should have_selector "input[@name='structure[#{f.name}]']"
-        end
+        should have_selector "input[@name='structure[title]']"
+        should have_selector "input[@name='structure[redirect_url]']"
+        should have_selector "input[@name='structure[slug]']"
+        should have_selector "#structure_parent_id"
+        should have_selector "#structure_kind"
+        should have_selector "#structure_position"
+        should have_selector "input[@name='structure[is_visible]']"
       end
     end
   end
