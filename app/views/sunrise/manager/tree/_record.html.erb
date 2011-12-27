@@ -4,13 +4,13 @@
       <%= link_to record.title, show_path(:id=>record), :class=>(record.descendants_count.zero? ? "dark-text" : "dark-arr"), :id=>"a#{record.id}" %>
       <div class="act-bl" style="display:none;">
         <% if can? :update, record, :context => :sunrise %>
-          <%= link_to manage_icon("edit"), edit_path(:id => record), :class=>"icons" %>
-          <%= link_to manage_icon("settings"), edit_path(:id=>record.id), :class=>"icons" %>
+          <%= link_to manage_icon("edit"), edit_path(:id => record), :class=>"icons", :id => dom_id(record, :edit)  %>
+          <%= link_to manage_icon("settings"), edit_path(:id=>record.id), :class=>"icons", :id => dom_id(record, :settings)  %>
         <% end %>
         
         <% if can? :delete, record, :context => :sunrise %>
           <%= link_to manage_icon("delete"), delete_path(:id=>record.id), 
-              :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons" %>
+              :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons", :id => dom_id(record, :delete) %>
         <% end %>
       </div>
     </div>

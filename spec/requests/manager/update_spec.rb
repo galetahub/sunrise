@@ -16,7 +16,7 @@ describe "Sunrise Manager Edit" do
       before(:each) do
         visit edit_path(:model_name => "structures", :id => @page.id)
         
-        save_and_open_page
+        #save_and_open_page
         
         fill_in "structure[title]", :with => "Aimbulance updated"
         select(StructureType.posts.title, :from => "structure_kind")
