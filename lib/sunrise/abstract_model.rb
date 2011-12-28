@@ -47,32 +47,62 @@ module Sunrise
     delegate :config, :model, :to => 'self.class'
     delegate :label, :to => 'self.class.config'
     
-    def initialize
+    def initialize(params = {})
       @model_name = model.model_name
       @current_list = config.default_list_view
       @scoped_path = @model_name.plural
+      @request_params = params
     end
     
+    # Save current list view
     def current_list=(value)
       unless value.blank?
         @current_list = value.to_s.downcase.to_sym
       end
     end
     
+    # Key which stored list settings
     def list_key
       ["list", current_list].compact.join('_').to_sym
     end
     
+    # Read record request params
+    def attrs
+      @request_params[params_key]
+    end
+    
+    # Key to read record request params
     def params_key
       @params_key ||= @model_name.singular.to_sym
     end
     
+    # Load association record
+    def parent_record
+      @parent_record ||= find_parent_record
+    end
+    
+    # Get current list settings
     def list
       config.sections[list_key] ||= Config::List.new(self.class)
     end
     
-    def apply_scopes(params)
+    # Initialize new model and set parent record
+    def build_record
+      record = model.new
+      
+      if parent_record
+        record.send("#{parent_association.name}=", parent_record)
+      end
+      
+      record
+    end
+    
+    # Convert request params to model scopes
+    def apply_scopes(params = nil)
+      params ||= @request_params
+      
       scope = model.respond_to?(:search) ? model.search(params) : model.scoped
+      scope = scope.merge(association_scope)
 
       if current_list == :tree
         scope = scope.roots
@@ -82,6 +112,12 @@ module Sunrise
       end
       
       scope
+    end
+    
+    def association_scope
+      if parent_record
+        parent_record.send(@scoped_path).scoped
+      end
     end
     
     def page_scope(page = 1, per_page = nil)
@@ -95,5 +131,29 @@ module Sunrise
       
       model.order([options[:column], mode].join(' '))
     end
+    
+    protected
+      
+      # Try to find parent object if any association present
+      def find_parent_record
+        if parent_present? && parent_valid?
+          parent_association.model.find(@request_params[:parent_id])
+        end
+      end
+      
+      # Find related association in model config
+      def parent_association
+        @parent_association ||= config.associations.detect { |relation| relation.is_this?(@request_params[:parent_type]) }
+      end
+      
+      # Parent association exists
+      def parent_valid?
+        !parent_association.nil?
+      end
+      
+      # Check parent record in request params
+      def parent_present?
+        !(@request_params[:parent_id].blank? || @request_params[:parent_type].blank?)
+      end
   end
 end

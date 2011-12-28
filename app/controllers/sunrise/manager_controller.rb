@@ -4,7 +4,7 @@ module Sunrise
     before_filter :find_record, :only => [:show, :edit, :update, :destroy]
     before_filter :authorize_resource
     
-    helper_method :abstract_model, :apply_scope
+    helper_method :abstract_model, :apply_scope, :scoped_index_path
     
     respond_to :html, :xml, :json
     
@@ -24,9 +24,9 @@ module Sunrise
     end
     
     def create
-      @record.assign_attributes(record_params, :as => current_user.role_symbol)
-      @record.update_attributes(record_params)
-      respond_with(@record, :location => index_path)
+      @record.assign_attributes(abstract_model.attrs, :as => current_user.role_symbol)
+      @record.update_attributes(abstract_model.attrs)
+      respond_with(@record, :location => scoped_index_path)
     end
     
     def edit
@@ -36,20 +36,20 @@ module Sunrise
     end
     
     def update
-      @record.assign_attributes(record_params, :as => current_user.role_symbol)
-      @record.update_attributes(record_params)      
-      respond_with(@record, :location => index_path)
+      @record.assign_attributes(abstract_model.attrs, :as => current_user.role_symbol)
+      @record.update_attributes(abstract_model.attrs)      
+      respond_with(@record, :location => scoped_index_path)
     end
     
     def destroy
       @record.destroy
-      respond_with(@record, :location => index_path)
+      respond_with(@record, :location => scoped_index_path)
     end
     
     protected
     
       def find_model
-        @abstract_model = Utils.get_model(params[:model_name])
+        @abstract_model = Utils.get_model(params[:model_name], params)
         raise ActiveRecord::RecordNotFound, "Sunrise model #{params[:model_name]} not found" if @abstract_model.nil?
         @abstract_model
       end
@@ -59,15 +59,11 @@ module Sunrise
       end
       
       def build_record
-        @record = abstract_model.model.new
+        @record = abstract_model.build_record
       end
       
       def find_record
         @record = abstract_model.model.find(params[:id])
-      end
-      
-      def record_params
-        params[abstract_model.params_key]
       end
       
       # Render a view for the specified scope. Turned off by default.
@@ -106,6 +102,14 @@ module Sunrise
       
       def authorize_resource
         authorize!(action_name, @record || abstract_model.model, :context => :sunrise)
+      end
+      
+      def scoped_index_path
+        unless abstract_model.parent_record.nil?
+          index_path(:parent_id => params[:parent_id], :parent_type => params[:parent_type])
+        else
+          index_path
+        end
       end
   end
 end

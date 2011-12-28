@@ -30,6 +30,10 @@ module Sunrise
         Config.default_list_view
       end
       
+      def associations
+        @associations ||= @sections.select { |key, valur| key.to_s.include?('association_') }.values
+      end
+      
       # Register accessors for all the sections in this namespace
       [:list, :edit, :association].each do |name|
         section = "Sunrise::Config::#{name.to_s.classify}".constantize
@@ -37,6 +41,7 @@ module Sunrise
         send(:define_method, name) do |*args, &block|
           options = args.extract_options!
           key = [name, args.first].compact.join('_').to_sym
+          options[:name] ||= args.first
           
           @sections[key] ||= section.new(abstract_model, self, options)
           @sections[key].instance_eval &block if block
