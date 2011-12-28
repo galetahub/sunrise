@@ -9,6 +9,10 @@ module Sunrise
         @config_options = (options || {}).symbolize_keys
       end
       
+      def name
+        @config_options[:name]
+      end
+      
       # Register an instance option for this object only
       def register_instance_option(option_name, &default)
         scope = class << self; self; end;

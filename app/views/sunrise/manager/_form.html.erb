@@ -1,4 +1,7 @@
 <%= manage_form_for @record do |f| %> 
+  <%= hidden_field_tag "parent_id", params[:parent_id] %>
+  <%= hidden_field_tag "parent_type", params[:parent_type] %>
+  
   <div class="edit-cont">
     <div class="inputs-bl">
       <% abstract_model.config.edit.fields.each do |field| %>
@@ -7,5 +10,5 @@
     </div>
   </div>
   
-  <%= f.button :submit, :url => index_path %>
+  <%= f.button :submit, :url => scoped_index_path %>
 <% end %>
