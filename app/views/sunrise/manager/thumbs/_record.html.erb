@@ -1,9 +1,9 @@
 <%= content_tag(:div, :id => dom_id(record), :class => "dinamic-bl") do %>
   <div class="act-bl" style="display:none;">
-    <%= link_to manage_icon("edit"), edit_path(:id => record.id), :class=>"icons" %>
+    <%= link_to manage_icon("edit"), edit_path(:id => record.id), :class=>"icons", :id => dom_id(record, :edit) %>
 
     <%= link_to manage_icon("delete"), delete_path(:id => record.id), 
-          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons" %>
+          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons", :id => dom_id(record, :delete) %>
   </div>
   
   <div class="bot-bg">

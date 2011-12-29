@@ -4,7 +4,7 @@ module Sunrise
       options = args.extract_options!
       
       options[:builder] ||= Sunrise::Views::FormBuilder
-      options[:url] ||= (object.new_record? ? new_path : edit_path(object))
+      options[:url] ||= (object.new_record? ? new_path : edit_path(:id => object.id))
       
       simple_form_for(object, *(args << options), &block)
     end
