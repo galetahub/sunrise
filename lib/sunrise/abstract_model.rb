@@ -52,6 +52,7 @@ module Sunrise
       @current_list = config.default_list_view
       @scoped_path = @model_name.plural
       @request_params = params
+      self.current_list = params[:view]
     end
     
     # Save current list view

@@ -1,3 +1,9 @@
+== 0.3.0
+  * New manager for models aka rails_admin
+  * New filter
+  * New sort
+  * New structure
+
 == 0.2.0
 * Core
   * Replace paperclip with carrierwave
