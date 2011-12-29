@@ -18,7 +18,7 @@ describe "Sunrise Manager Edit many" do
       before(:each) do
         visit edit_path(:model_name => "posts", :id => @post.id, :parent_id => @page.id, :parent_type => @page.class.name)
         
-        save_and_open_page
+        #save_and_open_page
         
         fill_in "post[title]", :with => "Aimbulance updated"
         fill_in "post[content]", :with => "Tra la la"

@@ -9,7 +9,6 @@ module Sunrise
     respond_to :html, :xml, :json
     
     def index
-      abstract_model.current_list = params[:view]
       @records = abstract_model.apply_scopes(params)
       
       respond_with(@records) do |format|

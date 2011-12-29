@@ -10,11 +10,13 @@ module Sunrise
       def initialize(user, context = nil)
         alias_action :delete, :to => :destroy
 
-        @user = (user || User.new) # guest user (not logged in)
+        @user = (user || ::User.new) # guest user (not logged in)
         @context = context
         
         if @user.current_role && @user.current_role.role_type
           send @user.current_role.role_type.code
+        else
+          guest
         end
       end
       
@@ -23,7 +25,7 @@ module Sunrise
         can :manage, :all, :context => :sunrise
         
         # User cannot destroy self account
-        cannot :destroy, User, :id => @user.id, :context => :sunrise
+        cannot :destroy, ::User, :id => @user.id, :context => :sunrise
       end
     end
   end

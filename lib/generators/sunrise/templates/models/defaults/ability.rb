@@ -1,5 +1,9 @@
 class Ability < Sunrise::Models::Ability
 
+  def guest
+    # TODO
+  end
+
   def default
     # TODO
   end
