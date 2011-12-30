@@ -35,6 +35,24 @@ describe "Sunrise Manager Edit" do
         @page.is_visible.should == false
       end
     end
+    
+    describe "Update /manage/pages/:id/edit" do
+      before(:each) do
+        visit edit_path(:model_name => "pages", :id => @page.id)
+        
+        fill_in "structure[main]", :with => "Main updated"
+        fill_in "structure[sidebar]", :with => "Sidebar updated"
+        
+        click_button "Refresh"
+      end
+      
+      it "should update an object with correct attributes" do
+        @page.reload
+        
+        @page.main.should == "Main updated"
+        @page.sidebar.should == "Sidebar updated"
+      end
+    end
   end
   
   describe "anonymous user" do

@@ -53,6 +53,26 @@ describe Sunrise::AbstractModel do
         model.current_list.should == :table
       end
     end
+  end
+  
+  describe "SunrisePage" do
+    it "should not have config for list" do
+      SunrisePage.config.list.should == false
+    end
     
+    it "should load structure model" do
+      SunriseStructure.model.should == Structure
+    end
+    
+    context "instance" do
+      before(:each) do
+        @params = { :structure => { :main => 'Some main content', :sidebar => 'Some sidebar content' } }
+        @abstract_model = Sunrise::Utils.get_model("pages", @params)
+      end
+      
+      it "should not render list config" do
+        @abstract_model.list.should == false
+      end
+    end
   end
 end

@@ -84,7 +84,13 @@ module Sunrise
     
     # Get current list settings
     def list
+      return false if without_list?
       config.sections[list_key] ||= Config::List.new(self.class)
+    end
+    
+    # Is list config disabled
+    def without_list?
+      config.sections[:list] === false
     end
     
     # Initialize new model and set parent record
@@ -100,6 +106,7 @@ module Sunrise
     
     # Convert request params to model scopes
     def apply_scopes(params = nil)
+      raise ::ActiveRecord::RecordNotFound, "List config is turn off" if without_list?
       params ||= @request_params
       
       scope = model.respond_to?(:search) ? model.search(params) : model.scoped

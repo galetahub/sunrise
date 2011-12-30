@@ -43,6 +43,21 @@ describe "Sunrise Manager Edit" do
         should have_selector "input[@name='structure[is_visible]']"
       end
     end
+    
+    describe "GET /manage/pages/:id/edit" do
+      before(:each) do
+        visit edit_path(:model_name => "pages", :id => @page.id)
+      end
+      
+      it "should show page title" do
+        should have_content( I18n.t('manage.edit') )
+      end
+      
+      it "should generate field to edit" do
+        should have_selector "textarea[@name='structure[main]']"
+        should have_selector "textarea[@name='structure[sidebar]']"
+      end
+    end
   end
   
   describe "anonymous user" do

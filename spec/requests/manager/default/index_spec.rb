@@ -46,6 +46,14 @@ describe "Sunrise Manager Index" do
         should have_content( "UserTestSection" )
       end
     end
+    
+    describe "GET /manage/pages" do      
+      it "should render 404 page" do
+        lambda {
+          visit index_path(:model_name => "pages")
+        }.should raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
   
   describe "anonymous user" do
