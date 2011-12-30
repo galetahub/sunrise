@@ -35,16 +35,21 @@ module Sunrise
       end
       
       # Register accessors for all the sections in this namespace
-      [:list, :edit, :association].each do |name|
-        section = "Sunrise::Config::#{name.to_s.classify}".constantize
-        name = name.to_s.downcase.to_sym
-        send(:define_method, name) do |*args, &block|
+      [:list, :edit, :association].each do |section|
+        klass = "Sunrise::Config::#{section.to_s.classify}".constantize
+        send(:define_method, section) do |*args, &block|
           options = args.extract_options!
-          key = [name, args.first].compact.join('_').to_sym
-          options[:name] ||= args.first
+          name = args.first
+          key = name ? [section, name].compact.join('_').to_sym : section
           
-          @sections[key] ||= section.new(abstract_model, self, options)
-          @sections[key].instance_eval &block if block
+          if name === false || @sections[key] === false
+            @sections[key] = false
+          else
+            options[:name] ||= name
+            @sections[key] ||= klass.new(abstract_model, self, options)
+            @sections[key].instance_eval &block if block
+          end
+          
           @sections[key]
         end
       end

@@ -25,7 +25,7 @@ module Sunrise
     def create
       @record.assign_attributes(abstract_model.attrs, :as => current_user.role_symbol)
       @record.update_attributes(abstract_model.attrs)
-      respond_with(@record, :location => scoped_index_path)
+      respond_with(@record, :location => redirect_after_update)
     end
     
     def edit
@@ -37,7 +37,7 @@ module Sunrise
     def update
       @record.assign_attributes(abstract_model.attrs, :as => current_user.role_symbol)
       @record.update_attributes(abstract_model.attrs)      
-      respond_with(@record, :location => scoped_index_path)
+      respond_with(@record, :location => redirect_after_update)
     end
     
     def destroy
@@ -108,6 +108,14 @@ module Sunrise
           index_path(:parent_id => params[:parent_id], :parent_type => params[:parent_type])
         else
           index_path
+        end
+      end
+      
+      def redirect_after_update
+        if abstract_model.without_list?
+          index_path(:model_name => abstract_model.scoped_path)
+        else
+          scoped_index_path
         end
       end
   end
