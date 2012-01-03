@@ -4,7 +4,7 @@ module Sunrise
     before_filter :find_record, :only => [:show, :edit, :update, :destroy]
     before_filter :authorize_resource
     
-    helper_method :abstract_model, :apply_scope, :scoped_index_path
+    helper_method :abstract_model, :apply_scope, :scoped_index_path, :search_wrapper
     
     respond_to :html, :xml, :json
     
@@ -117,6 +117,10 @@ module Sunrise
         else
           scoped_index_path
         end
+      end
+      
+      def search_wrapper
+        @search_wrapper ||= Sunrise::Views::SearchWrapper.new(params[:search])
       end
   end
 end
