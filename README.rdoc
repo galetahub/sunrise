@@ -6,6 +6,10 @@ Aimbulance mini content management system for programmers.
 
 https://github.com/galetahub/sunrise-core
 
+Create new project
+
+  rails new project_name -m https://gist.github.com/1523718.txt
+
 Generators
 
 - rails g devise:install
