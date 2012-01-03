@@ -1,6 +1,5 @@
 <%= manage_form_for @record do |f| %> 
-  <%= hidden_field_tag "parent_id", params[:parent_id] %>
-  <%= hidden_field_tag "parent_type", params[:parent_type] %>
+  <%= render :partial => 'sunrise/shared/parent' %>
   
   <div class="edit-cont">
     <div class="inputs-bl">

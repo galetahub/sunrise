@@ -24,6 +24,22 @@ describe "Sunrise Manager Index many" do
       end
     end
     
+    describe "search" do
+      before(:each) do
+        @post2 = FactoryGirl.create(:post, :title => "Aimbulance", :structure => @page)
+        
+        visit index_path(:model_name => "posts", :parent_id => @page.id, :parent_type => @page.class.name)
+        
+        fill_in "search[title]", :with => "Aimbulance"
+        click_button "search"
+      end
+      
+      it "should find post" do
+        should have_selector("#post_#{@post2.id}")
+        should_not have_selector("#post_#{@post.id}")
+      end
+    end
+    
     describe "GET /manage/posts" do
       before(:each) do 
         visit index_path(:model_name => "posts", :parent_id => @root.id, :parent_type => @root.class.name)

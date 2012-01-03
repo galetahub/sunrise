@@ -46,6 +46,7 @@ module Sunrise
         
     delegate :config, :model, :to => 'self.class'
     delegate :label, :to => 'self.class.config'
+    delegate :param_key, :singular, :plural, :route_key, :to => :model_name
     
     def initialize(params = {})
       @model_name = model.model_name
@@ -69,12 +70,7 @@ module Sunrise
     
     # Read record request params
     def attrs
-      @request_params[params_key]
-    end
-    
-    # Key to read record request params
-    def params_key
-      @params_key ||= @model_name.singular.to_sym
+      @request_params[param_key.to_sym]
     end
     
     # Load association record
@@ -109,7 +105,8 @@ module Sunrise
       raise ::ActiveRecord::RecordNotFound, "List config is turn off" if without_list?
       params ||= @request_params
       
-      scope = model.respond_to?(:search) ? model.search(params) : model.scoped
+      scope = model.sunrise_search(params[:search]) if model.respond_to?(:sunrise_search) && !params[:search].blank?
+      scope ||= model.scoped
       scope = scope.merge(association_scope)
 
       if current_list == :tree

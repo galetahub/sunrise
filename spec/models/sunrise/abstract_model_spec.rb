@@ -27,7 +27,7 @@ describe Sunrise::AbstractModel do
       end
       
       it "should return record attrs" do
-        @abstract_model.params_key.should == :structure
+        @abstract_model.param_key.should == 'structure'
         @abstract_model.attrs.should == @params[:structure]
       end
       
