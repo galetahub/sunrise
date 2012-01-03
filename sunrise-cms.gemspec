@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("simple_form", "~> 1.5.2")
   
   s.add_runtime_dependency("awesome_nested_set", "~> 2.0.2")
+  s.add_runtime_dependency("mime-types", "~> 1.17.2")
+  s.add_runtime_dependency("mini_magick", "~> 3.4")
   s.add_runtime_dependency("carrierwave", "~> 0.5.8")
   s.add_runtime_dependency("cancan", "~> 1.6.7")
   s.add_runtime_dependency("cancan_namespace", "~> 0.1.3")

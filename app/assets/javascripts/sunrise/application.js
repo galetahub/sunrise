@@ -8,4 +8,5 @@
 //= require jquery-ui-timepicker-addon
 //= require datepicker/jquery-ui-i18n
 
+//= require ckeditor/ckeditor
 //= require sunrise/manage
