@@ -18,4 +18,3 @@ spec/dummy/vendor/bundle/
 spec/dummy/app/helpers/manage
 spec/dummy/config/database.yml
 spec/dummy/log/development.log
-spec/dummy/db/
