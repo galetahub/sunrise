@@ -38,6 +38,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   
   config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerHelper, :type => :controller
   config.extend ControllerMacros, :type => :controller
   
   config.use_transactional_fixtures = false
