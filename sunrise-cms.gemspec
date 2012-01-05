@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("galetahub-enum_field", "~> 0.1.4")
   s.add_runtime_dependency("acts_as_audited", "~> 2.0.0")
   s.add_runtime_dependency("page_parts", "~> 0.0.1")
-  s.add_runtime_dependency("meta_manager", "~> 0.0.1")
+  s.add_runtime_dependency("meta_manager", "~> 0.0.2")
   
   s.add_development_dependency("rspec-rails", "~> 2.7.0")
   s.add_development_dependency("generator_spec", "~> 0.8.4")
