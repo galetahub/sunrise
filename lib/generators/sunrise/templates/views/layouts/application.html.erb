@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <%= tag(:meta, :content => render_keywords, :name=>"keywords") %>
-	<%= tag(:meta, :content => render_description, :name=>"description") %>
 	<%= csrf_meta_tag %>
-	<title><%= render_title %></title>
+	<%= raw(render_meta_tags(@structure)) %>
+	<title><%= render_page_title(@structure) %></title>
+	
 	<%= stylesheet_link_tag "application", "alert" %>
 	<%= stylesheet_link_tag 'manage/panel.css', :media=> 'screen' if content_manager? %>
   <!--[if lte IE 7]><link href="/stylesheets/ie7.css" rel="stylesheet" type="text/css" /><![endif]-->  
