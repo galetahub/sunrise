@@ -4,16 +4,9 @@ Aimbulance mini content management system for programmers.
 
 == Instructions
 
-https://github.com/galetahub/sunrise-core
-
 Create new project
 
-  rails new project_name -m https://gist.github.com/1523718.txt
+  rails new [PROJECT_NAME] -m https://gist.github.com/1523718.txt
 
-Generators
 
-- rails g devise:install
-- rails g acts_as_audited:install
-
-  
 Copyright (c) 2011 Aimbulance, released under the MIT license

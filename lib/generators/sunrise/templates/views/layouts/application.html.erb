@@ -5,23 +5,12 @@
 	<%= csrf_meta_tag %>
 	<%= raw(render_meta_tags(@structure)) %>
 	<title><%= render_page_title(@structure) %></title>
-	
-	<%= stylesheet_link_tag "application", "alert" %>
-	<%= stylesheet_link_tag 'manage/panel.css', :media=> 'screen' if content_manager? %>
-  <!--[if lte IE 7]><link href="/stylesheets/ie7.css" rel="stylesheet" type="text/css" /><![endif]-->  
-  
-  <script src="https://www.google.com/jsapi?key=" type="text/javascript"></script>
-  <script language="Javascript" type="text/javascript">
-  //<![CDATA[
-    google.load("jquery", "1.6.2");
-  //]]>
-  </script>
-  
-  <%= javascript_include_tag "preloader", "rails" %>
+	<%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= yield(:head) %>
 </head>
 <body>
-  <%= render :partial => "manage/shared/panel" if content_manager? %>
+  <%#= render :partial => "manage/shared/panel" if content_manager? %>
   <%= render :partial => 'shared/notice' if flash %>
   
   <div class='content'>
@@ -29,7 +18,5 @@
   </div>
   
   <%= yield(:footer) %>
-  
-	<div id="preloader" style="display:none;z-index:5000;" class="load-wait"><div><strong>Загрузка</strong></div></div>
 </body>
 </html>
