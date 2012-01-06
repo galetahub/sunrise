@@ -9,6 +9,7 @@ require 'cancan'
 require 'cancan_namespace'
 require 'acts_as_audited'
 require 'page_parts'
+require 'meta_manager'
 require 'sunrise-cms'
 require 'sunrise-file-upload'
 
