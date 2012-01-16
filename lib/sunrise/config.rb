@@ -20,6 +20,10 @@ module Sunrise
     mattr_accessor :scoped_views
     @@scoped_views = false
     
+    # Set available locales in app
+    mattr_accessor :available_locales
+    @@available_locales = []
+    
     def self.scoped_views?
       @@scoped_views === true
     end

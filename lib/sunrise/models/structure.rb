@@ -37,6 +37,11 @@ module Sunrise
           return true if new_record?
           !root?
         end
+        
+        # Don't change slug on update
+        def should_generate_new_friendly_id?
+          new_record?
+        end
       end
     end
   end
