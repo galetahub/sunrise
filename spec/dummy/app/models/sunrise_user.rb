@@ -11,4 +11,10 @@ class SunriseUser < Sunrise::AbstractModel
       field :name
     end
   end
+  
+  export do
+    field :id
+    field :name
+    field :email
+  end
 end
