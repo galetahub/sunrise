@@ -57,7 +57,10 @@ describe Structure do
   end
   
   context "friendly_id" do
-    before(:each) do
+    before(:all) do
+      @structure = Factory.build(:structure_page, :title => 'Bla bla bla', :parent => @root)
+      
+      @structure.should be_new_record
       @structure.title = 'Some super title'
       @structure.save
     end
@@ -67,10 +70,10 @@ describe Structure do
       @structure.slug.should == 'some-super-title'
     end
     
-    it "should regenerate slug if title changed" do
+    it "should not regenerate slug if title changed" do
       @structure.title = 'Other big title'
       @structure.save
-      @structure.slug.should == 'other-big-title'
+      @structure.slug.should == 'some-super-title'
     end
   end
   

@@ -24,8 +24,7 @@ module Sunrise
     end
     
     def create
-      @record.assign_attributes(abstract_model.attrs, :as => current_user.role_symbol)
-      @record.update_attributes(abstract_model.attrs)
+      @record.update_attributes(abstract_model.attrs, :as => current_user.role_symbol)
       respond_with(@record, :location => redirect_after_update)
     end
     
@@ -36,8 +35,7 @@ module Sunrise
     end
     
     def update
-      @record.assign_attributes(abstract_model.attrs, :as => current_user.role_symbol)
-      @record.update_attributes(abstract_model.attrs)      
+      @record.update_attributes(abstract_model.attrs, :as => current_user.role_symbol)      
       respond_with(@record, :location => redirect_after_update)
     end
     
