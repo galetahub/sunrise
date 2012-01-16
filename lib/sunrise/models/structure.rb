@@ -22,7 +22,7 @@ module Sunrise
             set_callback :move, :after, :update_depth
             
             extend ::FriendlyId
-            friendly_id :title, :use => :slugged
+            friendly_id :title, :use => [:slugged, :static]
             
             scope :visible, where(:is_visible => true)
             scope :with_kind, proc {|structure_type| where(:kind => structure_type.id) }
@@ -36,11 +36,6 @@ module Sunrise
         def moveable?
           return true if new_record?
           !root?
-        end
-        
-        # Don't change slug on update
-        def should_generate_new_friendly_id?
-          new_record?
         end
       end
     end
