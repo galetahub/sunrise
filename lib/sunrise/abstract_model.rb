@@ -105,16 +105,25 @@ module Sunrise
       raise ::ActiveRecord::RecordNotFound, "List config is turn off" if without_list?
       params ||= @request_params
       
-      scope = model.sunrise_search(params[:search]) if model.respond_to?(:sunrise_search) && !params[:search].blank?
-      scope ||= model.scoped
-      scope = scope.merge(association_scope)
+      scope = default_scope(params)
 
       if current_list == :tree
         scope = scope.roots
       else
         scope = scope.merge(page_scope(params[:page], params[:per]))
-        scope = scope.merge(sort_scope(params[:sort]))
       end
+      
+      scope
+    end
+    
+    def default_scope(params = nil)
+      params ||= @request_params
+      
+      scope = model.sunrise_search(params[:search]) if model.respond_to?(:sunrise_search) && !params[:search].blank?
+      scope ||= model.scoped
+      
+      scope = scope.merge(association_scope) unless parent_record.nil?
+      scope = scope.merge(sort_scope(params[:sort])) unless params[:sort].blank?
       
       scope
     end
@@ -135,6 +144,15 @@ module Sunrise
       mode = list.sort_reverse? ? :desc : :asc
       
       model.order([options[:column], mode].join(' '))
+    end
+    
+    # List of columns names to be exported
+    def export_columns
+      if config.export.fields
+        config.export.fields.map(&:name)
+      else
+        model.column_names
+      end
     end
     
     protected
