@@ -38,6 +38,7 @@ module Sunrise
   
   module Hooks
     autoload :Kaminari, 'sunrise/hooks/kaminari'
+    autoload :FriendlyId, 'sunrise/hooks/friendly_id'
   end
   
   def self.root_path

@@ -28,6 +28,8 @@ module Sunrise
         ActiveRecord::Base.send :include, Sunrise::CarrierWave::Glue
         ActiveRecord::Base.send :include, Sunrise::Utils::Mysql
       end
+      
+      FriendlyId.send :include, Sunrise::Hooks::FriendlyId
     end
     
     initializer "sunrise.awesome_nested_set" do

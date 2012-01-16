@@ -22,7 +22,7 @@ module Sunrise
             set_callback :move, :after, :update_depth
             
             extend ::FriendlyId
-            friendly_id :title, :use => :slugged
+            friendly_id :title, :use => [:slugged, :static]
             
             scope :visible, where(:is_visible => true)
             scope :with_kind, proc {|structure_type| where(:kind => structure_type.id) }
