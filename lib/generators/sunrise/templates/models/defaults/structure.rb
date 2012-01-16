@@ -6,5 +6,5 @@ class Structure < ActiveRecord::Base
   
   attr_accessible :title, :kind, :position, :parent_id, :redirect_url,
                   :position_type, :slug, :parent, :structure_type, 
-                  :header_attributes, :is_visible
+                  :header_attributes, :is_visible, :as => :admin
 end
