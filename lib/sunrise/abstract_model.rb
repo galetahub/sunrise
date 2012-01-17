@@ -116,6 +116,7 @@ module Sunrise
       scope
     end
     
+    # Apply default scopes: sort, search and association.
     def default_scope(params = nil)
       params ||= @request_params
       
@@ -146,6 +147,11 @@ module Sunrise
       model.order([options[:column], mode].join(' '))
     end
     
+    def export_scope(options = nil)
+      scope = default_scope(options)
+      scope
+    end
+    
     # List of columns names to be exported
     def export_columns
       if config.export.fields
@@ -153,6 +159,11 @@ module Sunrise
       else
         model.column_names
       end
+    end
+    
+    # Filename for export data
+    def export_filename
+      @export_filename ||= [plural, Time.now.strftime("%Y-%m-%d_%Hh%Mm%S")].join('_')
     end
     
     protected

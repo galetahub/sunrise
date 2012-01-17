@@ -1,16 +1,13 @@
 module Sunrise
   module Config
     class Base      
-      attr_reader :abstract_model, :parent
+      attr_reader :abstract_model, :parent, :name
 
       def initialize(abstract_model, parent = nil, options = nil)
         @abstract_model = abstract_model
         @parent = parent
         @config_options = (options || {}).symbolize_keys
-      end
-      
-      def name
-        @config_options[:name]
+        @name = (@config_options.delete(:name) || "noname").to_s
       end
       
       # Register an instance option for this object only

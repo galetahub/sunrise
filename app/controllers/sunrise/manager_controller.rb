@@ -7,7 +7,6 @@ module Sunrise
     helper_method :abstract_model, :apply_scope, :scoped_index_path, :search_wrapper
     
     respond_to :html, :xml, :json
-    respond_to :xlsx, :only => [:export]
     
     def index
       @records = abstract_model.apply_scopes(params)
@@ -45,12 +44,14 @@ module Sunrise
     end
     
     def export
-      @records = abstract_model.default_scope(params)
+      @records = abstract_model.export_scope(params)
 
       respond_to do |format|
+        format.xml { render :xml => @records }
+        format.json { render :json => @records }
         format.xlsx { 
           render :xlsx => @records, 
-            :filename => [abstract_model.plural, Time.now.to_s(:db)].join('_'),
+            :filename => abstract_model.export_filename,
             :columns => abstract_model.export_columns
         }
       end

@@ -34,8 +34,7 @@ module Sunrise
       
       module InstanceMethods
         def moveable?
-          return true if new_record?
-          !root?
+          new_record? || !root?
         end
       end
     end
