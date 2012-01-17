@@ -6,10 +6,8 @@ module Sunrise
     class Group < Base
       include Sunrise::Config::HasFields
       
-      attr_reader :name
-
       def initialize(abstract_model, parent, name = :default)
-        super(abstract_model, parent)
+        super(abstract_model, parent, :name => name)
         @name = name.to_s.tr(' ', '_').downcase.to_sym
       end
     end

@@ -5,8 +5,6 @@ module Sunrise
     class Field < Base
       include Sunrise::Utils::EvalHelpers
       
-      attr_reader :options, :name
-      
       # The condition that must be met on an object
       attr_reader :if_condition
       
@@ -14,14 +12,11 @@ module Sunrise
       attr_reader :unless_condition
       
       def initialize(abstract_model, parent, options = {})
-        super(abstract_model, parent)
-        @name = options.delete(:name)
+        super(abstract_model, parent, options)
         
         # Build conditionals
         @if_condition = options.delete(:if)
         @unless_condition = options.delete(:unless)
-        
-        @options = options.symbolize_keys
       end
       
       def visible?(object = nil)
@@ -29,7 +24,7 @@ module Sunrise
       end
       
       def input_options
-        @options.dup
+        @config_options.dup
       end
       
       protected

@@ -23,7 +23,7 @@ describe "Sunrise Manager New many" do
       
       it "should generate field to edit" do
         SunrisePost.config.edit.fields.each do |f|
-          if [:content].include?(f.name)
+          if ['content'].include?(f.name)
             should have_selector "textarea[@name='post[#{f.name}]']"
           else        
             should have_selector "input[@name='post[#{f.name}]']"

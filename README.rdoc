@@ -9,4 +9,15 @@ Create new project
   rails new [PROJECT_NAME] -m https://gist.github.com/1523718.txt
 
 
+== Export data
+
+  GET /manage/users/export.xml
+  GET /manage/users/export.json
+
+=== Excel
+
+  gem "ruby2xlsx", "~> 0.0.1"
+
+GET /manage/users/export.xlsx
+
 Copyright (c) 2011 Aimbulance, released under the MIT license
