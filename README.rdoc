@@ -13,11 +13,12 @@ Create new project
 
   GET /manage/users/export.xml
   GET /manage/users/export.json
+  GET /manage/users/export.csv
 
 === Excel
 
   gem "ruby2xlsx", "~> 0.0.1"
 
-GET /manage/users/export.xlsx
+  GET /manage/users/export.xlsx
 
 Copyright (c) 2011 Aimbulance, released under the MIT license

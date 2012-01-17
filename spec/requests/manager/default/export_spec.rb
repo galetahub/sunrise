@@ -31,6 +31,21 @@ describe "Sunrise Manager Export" do
       end
     end
     
+    describe "GET /manage/users/export.csv" do
+      before(:each) do
+        visit export_path(:model_name => "users", :format => :csv)
+      end
+      
+      it "should send csv file with users" do
+        headers = page.response_headers
+        
+        headers["Content-Transfer-Encoding"].should == "binary"
+        headers["Content-Type"].should == "text/csv"
+        headers["Content-Disposition"].should == "attachment; filename=\"users_2012-01-01_16h00m00.csv\""
+        page.body.should include(@admin.email)
+      end
+    end
+    
     describe "GET /manage/users/export.json" do
       before(:each) do
         visit export_path(:model_name => "users", :format => :json)
@@ -40,6 +55,25 @@ describe "Sunrise Manager Export" do
         page.body.should include(@admin.email)
         
         page.response_headers["Content-Type"].should == "application/json; charset=utf-8"
+      end
+    end
+    
+    describe "GET /manage/posts/export.csv" do
+      before(:each) do
+        @page.posts.create(:title => "Some title")
+        
+        visit export_path(:model_name => "posts", :format => :csv)
+      end
+      
+      it "should send csv file with posts" do
+        headers = page.response_headers
+        
+        headers["Content-Transfer-Encoding"].should == "binary"
+        headers["Content-Type"].should == "text/csv"
+        headers["Content-Disposition"].should == "attachment; filename=\"posts_2012-01-01_16h00m00.csv\""
+        
+        page.body.should include(@page.title)
+        page.body.should include(@page.slug)
       end
     end
     
