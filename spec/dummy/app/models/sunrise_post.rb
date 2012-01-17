@@ -19,4 +19,14 @@ class SunrisePost < Sunrise::AbstractModel
     field :content
     field :is_visible
   end
+  
+  export do
+    scope { Post.includes(:structure) }
+    
+    field :id
+    field :title
+    field :created_at
+    field :structure_title
+    field :structure_slug
+  end
 end

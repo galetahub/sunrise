@@ -45,15 +45,14 @@ module Sunrise
     
     def export
       @records = abstract_model.export_scope(params)
-
+      options = { :filename => abstract_model.export_filename,
+                  :columns => abstract_model.export_columns }
+      
       respond_to do |format|
-        format.xml { render :xml => @records }
+        format.xml  { render :xml => @records }
         format.json { render :json => @records }
-        format.xlsx { 
-          render :xlsx => @records, 
-            :filename => abstract_model.export_filename,
-            :columns => abstract_model.export_columns
-        }
+        format.csv  { render options.merge(:csv => @records) }
+        format.xlsx { render options.merge(:xlsx => @records) }
       end
     end
     

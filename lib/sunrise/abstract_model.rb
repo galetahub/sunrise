@@ -2,6 +2,7 @@ require 'sunrise/config/model'
 
 module Sunrise
   class AbstractModel
+    include Sunrise::Utils::EvalHelpers
     
     class << self
       # Gets the resource_name
@@ -149,6 +150,7 @@ module Sunrise
     
     def export_scope(options = nil)
       scope = default_scope(options)
+      scope = scope.merge(config.export.scope)
       scope
     end
     

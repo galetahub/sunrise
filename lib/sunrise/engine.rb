@@ -38,7 +38,14 @@ module Sunrise
     end
     
     initializer "sunrise.acts_as_audited" do
-      Audit.send :include, Sunrise::Hooks::Kaminari
+      ::Audit.send :include, Sunrise::Hooks::Kaminari
+    end
+    
+    initializer "sunrise.csv_renderer" do
+      ::ActionController::Renderers.add :csv do |collection, options|
+        doc = Sunrise::Utils::CsvDocument.new(collection, options)
+        send_data(doc.render, :filename => doc.filename, :type => Mime::CSV, :disposition => "attachment")
+      end
     end
   end
 end

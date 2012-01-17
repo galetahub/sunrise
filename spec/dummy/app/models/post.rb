@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   belongs_to :structure
   
+  delegate :title, :parent_id, :slug, :to => :structure, :prefix => true
+  
   def self.sunrise_search(params)
     query = scoped
     
