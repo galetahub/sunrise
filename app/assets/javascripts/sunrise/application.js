@@ -9,5 +9,6 @@
 //= require datepicker/jquery.ui.datepicker-uk
 //= require datepicker/jquery.ui.datepicker-ru
 
+//= require sunrise/jquery.tooltip
 //= require sunrise/manage
 //= require ckeditor/ckeditor
