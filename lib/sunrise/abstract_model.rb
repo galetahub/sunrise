@@ -78,6 +78,12 @@ module Sunrise
       @parent_record ||= find_parent_record
     end
     
+    # Convert parent id and class name into hash
+    def parent_hash
+      @parent_hash ||= { :parent_id => parent_record.id, :parent_type => parent_record.class.name } if parent_record
+      @parent_hash ||= {}
+    end
+    
     # Get current list settings
     def list
       return false if without_list?

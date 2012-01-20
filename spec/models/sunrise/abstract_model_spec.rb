@@ -75,4 +75,11 @@ describe Sunrise::AbstractModel do
       end
     end
   end
+  
+  describe "SunriseUser" do
+    it "should return empty list on not defined fields" do
+      SunriseUser.config.edit.should_not be_nil
+      SunriseUser.config.edit.fields.should == []
+    end
+  end
 end

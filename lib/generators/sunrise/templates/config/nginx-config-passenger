@@ -35,12 +35,18 @@ server {
     location ~ /\.[^\/]+ {
         return 404;
     }
-
-    location ~* ^.+\.(jpg|jpeg|gif|png|css|js|swf|ico|mov|flv|fla|pdf|zip|rar|doc|xls)$
-    {
-        expires 12h;
-        add_header  Cache-Control  private;
-        access_log off;
+    
+    location ~ ^/assets/ {
+      expires 1y;
+      add_header Cache-Control public;
+      access_log off;
+     
+      # Some browsers still send conditional-GET requests if there's a
+      # Last-Modified header or an ETag header even if they haven't
+      # reached the expiry date sent in the Expires header.
+      add_header Last-Modified "";
+      add_header ETag "";
+      break;
     }
     
     # This rewrites all the requests to the maintenance.html page if it exists in the doc root.
