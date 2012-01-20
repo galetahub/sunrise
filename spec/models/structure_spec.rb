@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Structure do
@@ -53,6 +54,10 @@ describe Structure do
       st.save
       
       st.depth.should == 2
+    end
+    
+    it "should generate nested_set_options" do
+      Structure.nested_set_options{|i| "#{'–' * i.depth} #{i.title}"}.size.should == 3
     end
   end
   

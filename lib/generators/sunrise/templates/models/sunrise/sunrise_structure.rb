@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SunriseStructure < Sunrise::AbstractModel
   self.resource_name = "Structure"
   
