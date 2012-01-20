@@ -6,7 +6,7 @@
           <div class="r-corn">
             <%= link_to abstract_model.label, index_path, :class=>"dark-text" %>
             <div class="act-bl">
-              <%= link_to t('manage.add'), new_path, :class=>"create" %>
+              <%= link_to t('manage.add'), new_path(abstract_model.parent_hash), :class=>"create" %>
             </div>
           </div>
         </div>
@@ -15,11 +15,6 @@
         <%= render :partial => apply_scope("record"), :collection => @records %>
         <%= paginate @records, :theme => 'sunrise' %>
       </div>
-      <script type='text/javascript'>
-        $(document).ready(function(){
-          Manage.init_collection('records', 'dinamic-bl');
-        });
-      </script>
     </div>
   </div>
   <div class="right-part">
@@ -28,3 +23,9 @@
     </div>
   </div>
 </div>
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+    window['sunrise'].storeQuery();
+  });
+</script>

@@ -34,6 +34,10 @@ describe "Sunrise Manager Edit" do
         @page.position_type.should == PositionType.default
         @page.is_visible.should == false
       end
+      
+      it "should redirect with model_name" do
+        page.current_path.should == "/manage/structures"
+      end
     end
     
     describe "Update /manage/pages/:id/edit" do

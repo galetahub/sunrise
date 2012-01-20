@@ -114,12 +114,11 @@ module Sunrise
         authorize!(action_name, @record || abstract_model.model, :context => :sunrise)
       end
       
-      def scoped_index_path
-        unless abstract_model.parent_record.nil?
-          index_path(:parent_id => params[:parent_id], :parent_type => params[:parent_type])
-        else
-          index_path
-        end
+      def scoped_index_path(options = {})
+        options = options.merge(abstract_model.parent_hash)
+        query = Rack::Utils.parse_query(cookies[:params])
+        
+        index_path(query.merge(options))
       end
       
       def redirect_after_update

@@ -6,7 +6,7 @@
           <div class="r-corn">
             <%= link_to abstract_model.label, index_path, :class=>"dark-text" %>
             <div class="act-bl">
-              <%= link_to t('manage.add'), new_path, :class=>"create" %>
+              <%= link_to t('manage.add'), new_path(abstract_model.parent_hash), :class=>"create" %>
             </div>
           </div>
         </div>

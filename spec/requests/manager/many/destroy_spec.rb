@@ -22,6 +22,9 @@ describe "Sunrise Manager destroy" do
       
       it "should update an object with correct attributes" do
         Post.where(:id => @post.id).first.should be_nil
+        
+        page.current_path.should == "/manage/posts"
+        page.current_url.should == "http://www.example.com/manage/posts?parent_id=#{@page.id}&parent_type=#{@page.class.name}"
       end
     end
   end

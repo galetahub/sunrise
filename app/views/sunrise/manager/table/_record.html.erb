@@ -1,9 +1,9 @@
 <%= content_tag(:div, :id => dom_id(record), :class => "dinamic-bl") do %>
   <div class="act-bl" style="display:none;">
-    <%= link_to image_tag("manage/ico_edit.gif", :title=>t('manage.edit')), edit_path(record.id), :class=>"icons" %>
+    <%= link_to manage_icon("edit"), edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class=>"icons", :id => dom_id(record, :edit) %>
 
-    <%= link_to image_tag("manage/ico_del.gif", :title=>t('manage.delete')), delete_path(record.id), 
-          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons" %>
+    <%= link_to manage_icon("delete"), delete_path(abstract_model.parent_hash.merge(:id => record.id)), 
+          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons", :id => dom_id(record, :delete) %>
   </div>
   
   <div class="bot-bg">
