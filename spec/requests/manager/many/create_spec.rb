@@ -32,6 +32,11 @@ describe "Sunrise Manager New" do
         @post.is_visible.should == true
         @post.structure.should == @page
       end
+      
+      it "should redirect with association params" do
+        page.current_path.should == "/manage/posts"
+        page.current_url.should == "http://www.example.com/manage/posts?parent_id=#{@page.id}&parent_type=#{@page.class.name}"
+      end
     end
   end
   
