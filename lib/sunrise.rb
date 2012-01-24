@@ -21,9 +21,9 @@ module Sunrise
   end
   
   module CarrierWave
-    autoload :Glue, 'sunrise/carrier_wave/glue'
-    autoload :BaseUploader, 'sunrise/carrier_wave/base_uploader'
-    autoload :FileSizeValidator, 'sunrise/carrier_wave/file_size_validator'
+    autoload :Glue, 'sunrise/carrierwave/glue'
+    autoload :BaseUploader, 'sunrise/carrierwave/base_uploader'
+    autoload :FileSizeValidator, 'sunrise/carrierwave/file_size_validator'
   end
   
   module NestedSet
