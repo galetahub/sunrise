@@ -17,8 +17,10 @@ module Sunrise
       def store_dir
         "uploads/#{model.class.to_s.underscore}/#{model.id}"
       end
-       
+      
+      # Strips out all embedded information from the image
       # process :strip
+      #
       def strip
         manipulate! do |img|
           img.strip
@@ -27,7 +29,9 @@ module Sunrise
         end
       end
       
+      # Reduces the quality of the image to the percentage given
       # process :quality => 85
+      #
       def quality(percentage)
         manipulate! do |img|
           img.quality(percentage.to_s)
@@ -36,6 +40,9 @@ module Sunrise
         end
       end
       
+      # Rotate image by degress
+      # process :rotate => "-90"
+      #
       def rotate(degrees)
         manipulate! do |img|
           img.rotate(degrees.to_s)

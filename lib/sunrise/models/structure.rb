@@ -28,21 +28,20 @@ module Sunrise
             scope :with_kind, proc {|structure_type| where(:kind => structure_type.id) }
             scope :with_depth, proc {|level| where(:depth => level.to_i) }
             scope :with_position, proc {|position_type| where(:position => position_type.id) }
-            
-            
-            def self.nested_set_options(mover = nil)
-              result = []
-              
-              roots.each do |root|
-                result += root.self_and_descendants.map do |i|
-                  if mover.nil? || mover.new_record? || mover.move_possible?(i)
-                    [yield(i), i.id]
-                  end
-                end.compact
-              end
-              result
-            end
           end
+        end
+        
+        def nested_set_options(mover = nil)
+          result = []
+          
+          roots.each do |root|
+            result += root.self_and_descendants.map do |i|
+              if mover.nil? || mover.new_record? || mover.move_possible?(i)
+                [yield(i), i.id]
+              end
+            end.compact
+          end
+          result
         end
       end
       

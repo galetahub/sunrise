@@ -71,6 +71,7 @@ describe Structure do
     end
     
     it "should generate slug from title" do
+      @structure.friendly_id.should == "some-super-title"
       @structure.slug.should_not be_blank
       @structure.slug.should == 'some-super-title'
     end
@@ -78,6 +79,7 @@ describe Structure do
     it "should not regenerate slug if title changed" do
       @structure.title = 'Other big title'
       @structure.save
+      @structure.friendly_id.should == "some-super-title"
       @structure.slug.should == 'some-super-title'
     end
   end
