@@ -16,9 +16,9 @@ end
 def insert_structures
   Structure.truncate!
   
-  main_page = Structure.create!(:title => "Главная страница", :slug => "main-page", :structure_type => StructureType.main, :parent => nil)
-  #Structure.create!(:title => "Трансляции", :slug => "broadcasts", :structure_type => StructureType.broadcasts, :parent => main_page)
-  #Structure.create!(:title => "Прямые репортажи", :slug => "posts", :structure_type => StructureType.posts, :parent => main_page)
+  main_page = Structure.create!({:title => "Главная страница", :slug => "main-page", :structure_type => StructureType.main, :parent => nil}, :as => :admin)
+  #Structure.create!({:title => "Трансляции", :slug => "broadcasts", :structure_type => StructureType.broadcasts, :parent => main_page}, :as => :admin)
+  #Structure.create!({:title => "Прямые репортажи", :slug => "posts", :structure_type => StructureType.posts, :parent => main_page}, :as => :admin)
 end
 
 insert_user
