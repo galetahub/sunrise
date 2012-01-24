@@ -1,3 +1,5 @@
+require 'csv'
+
 module Sunrise
   module Utils
     class CsvDocument
