@@ -36,30 +36,44 @@ module Sunrise
         end
       end
       
-      def default_url
-        "/images/defaults/#{model.class.to_s.underscore}_#{version_name}.png"
-      end
-      
-      def set_content_type
-        type = file.content_type == 'application/octet-stream' || file.content_type.blank? ? MIME::Types.type_for(original_filename).first.to_s : file.content_type
-         
-        model.data_content_type = type
-      end 
-      
-      def set_size
-        model.data_file_size = file.size
-      end
-      
-      def set_width_and_height
-        if model.image? && model.has_dimensions?
-          magick = ::MiniMagick::Image.new(current_path)
-          model.width, model.height = magick[:width], magick[:height]
+      def rotate(degrees)
+        manipulate! do |img|
+          img.rotate(degrees.to_s)
+          img = yield(img) if block_given?
+          img
         end
       end
-
+      
+      def default_url
+        image_name = [model.class.to_s.underscore, version_name].compact.join('_')
+        "/assets/defaults/#{image_name}.png"
+      end
+      
       def image?
         model.image?
       end
+      
+      protected
+      
+        def set_content_type
+          model.data_content_type = if file.content_type.blank? || file.content_type == 'application/octet-stream'
+            MIME::Types.type_for(original_filename).first.to_s
+          else
+            file.content_type
+          end
+        end 
+        
+        def set_size
+          model.data_file_size = file.size
+        end
+        
+        def set_width_and_height
+          if model.image? && model.has_dimensions?
+            magick = ::MiniMagick::Image.new(current_path)
+            model.width, model.height = magick[:width], magick[:height]
+          end
+        end
+
     end
   end
 end

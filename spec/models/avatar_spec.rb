@@ -63,6 +63,7 @@ describe Avatar do
     it "urls should be valid" do
       @avatar.url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/rails.png"
       @avatar.thumb_url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/thumb_rails.png"
+      @avatar.data.default_url.should == "/assets/defaults/avatar.png"
     end
     
   end
