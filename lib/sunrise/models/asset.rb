@@ -12,9 +12,11 @@ module Sunrise
           base.class_eval do
             belongs_to :user
             belongs_to :assetable, :polymorphic => true
-    
-            #before_validation :make_content_type
-            #before_create :read_dimensions
+            
+            # Store options for image manipulation
+            attr_reader :cropper_geometry, :rotate_degrees
+            
+            before_save :reprocess
             
             delegate :url, :original_filename, :to => :data
             alias :filename :original_filename
@@ -66,6 +68,37 @@ module Sunrise
           Sunrise::Utils::IMAGE_TYPES.include?(self.data_content_type)
         end
         
+        def cropper_geometry=(value)
+          geometry = (value || '').to_s.split(',')
+          
+          unless geometry.map(&:blank?).any?
+            @cropper_geometry_changed = true
+            @cropper_geometry = geometry
+          end
+        end
+        
+        def cropper_geometry_changed?
+          @cropper_geometry_changed === true
+        end
+        
+        def rotate_degrees=(value)
+          unless value.blank?
+            @rotate_degrees_changed = true
+            @rotate_degrees = value.to_s
+          end
+        end
+        
+        def rotate_degrees_changed?
+          @rotate_degrees_changed === true
+        end
+        
+        protected
+        
+          def reprocess
+            if cropper_geometry_changed? || rotate_degrees_changed?
+              data.cache_stored_file!
+            end
+          end
       end
     end
   end

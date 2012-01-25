@@ -18,11 +18,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.rdoc"]
   s.require_paths = ["lib"]
   
-  #s.add_runtime_dependency("sunrise-core", "= #{version}")
-  #s.add_runtime_dependency(%q<sunrise-scaffold>, ["= #{version}"])
   s.add_runtime_dependency("rails", "~> 3.2.0")
   s.add_runtime_dependency("sunrise-file-upload", "~> 0.2.0")
-  #s.add_runtime_dependency("jquery-rails", "~> 2.0.0")
   s.add_runtime_dependency("kaminari", "~> 0.13.0")
   s.add_runtime_dependency("simple_form", "~> 1.5.2")
   

@@ -42,7 +42,7 @@ describe Avatar do
     end
     
     it "file size should be valid" do
-      @avatar.data_file_size.should == 6646
+      @avatar.data_file_size.should == 6623
     end
     
     it "should be image" do
@@ -65,6 +65,65 @@ describe Avatar do
       @avatar.thumb_url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/thumb_rails.png"
       @avatar.data.default_url.should == "/assets/defaults/avatar.png"
     end
+  end
+  
+  context "cropping" do
+    before(:each) do
+      @avatar = Factory.create(:asset_avatar)
+      @avatar.cropper_geometry = "50,64,10,10"
+    end
     
+    it "should construct cropping geometry" do
+      @avatar.cropper_geometry.should == ["50", "64", "10", "10"]
+      @avatar.cropper_geometry_changed?.should == true
+    end
+    
+    it "should set image dimensions before process" do
+      @avatar.width.should == 50
+      @avatar.height.should == 64
+      @avatar.data.dimensions.should == [50,64]
+    end
+    
+    context "reprocess" do  
+      before(:each) do
+        @avatar.save
+      end
+    
+      it "should crop image by specific geometry" do
+        @avatar.width.should == 40
+        @avatar.height.should == 54
+        @avatar.data.dimensions.should == [40,54]
+      end
+    end
+  end
+  
+  context "rotate" do
+    before(:each) do
+      @avatar = Factory.create(:asset_avatar)
+      @avatar.rotate_degrees = "-90"
+    end
+    
+    it "should set property correctly" do
+      @avatar.rotate_degrees.should == "-90"
+      @avatar.rotate_degrees_changed?.should == true
+    end
+    
+    it "should set image dimensions before process" do
+      @avatar.width.should == 50
+      @avatar.height.should == 64
+      @avatar.data.dimensions.should == [50,64]
+    end
+    
+    context "reprocess" do  
+      before(:each) do
+        @avatar.save
+      end
+    
+      it "should crop image by specific geometry" do
+        @avatar.width.should == 64
+        @avatar.height.should == 50
+        @avatar.data.dimensions.should == [64, 50]
+      end
+    end
   end
 end
