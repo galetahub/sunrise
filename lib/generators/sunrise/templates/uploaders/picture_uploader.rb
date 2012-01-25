@@ -1,5 +1,4 @@
 class PictureUploader < Sunrise::CarrierWave::BaseUploader
-  process :strip
   process :quality => 90
   
   version :thumb do

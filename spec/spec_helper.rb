@@ -52,6 +52,7 @@ RSpec.configure do |config|
 
   config.before(:all) do
     DatabaseCleaner.start
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/[^.]*"])
   end
 
   config.after(:all) do
