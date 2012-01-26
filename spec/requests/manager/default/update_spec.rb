@@ -42,6 +42,8 @@ describe "Sunrise Manager Edit" do
     
     describe "Update /manage/pages/:id/edit" do
       before(:each) do
+        @page.update_attributes({:main => "Main", :sidebar => "Sidebar"}, :as => :admin)
+        
         visit edit_path(:model_name => "pages", :id => @page.id)
         
         fill_in "structure[main]", :with => "Main updated"
