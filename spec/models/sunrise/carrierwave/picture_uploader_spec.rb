@@ -39,5 +39,11 @@ describe PictureUploader do
         @uploader.rotate(90)
       }.should_not raise_error
     end
+    
+    it "should crop image" do
+      lambda {
+        @uploader.cropper(["50x60", "+5+5"])
+      }.should_not raise_error
+    end
   end
 end

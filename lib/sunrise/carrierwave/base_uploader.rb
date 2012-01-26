@@ -1,17 +1,27 @@
 # encoding: utf-8
 require 'mime/types'
 require 'mini_magick'
+require 'carrierwave/processing/mini_magick'
+require 'carrierwave/processing/mime_types'
 
 module Sunrise
   module CarrierWave
     class BaseUploader < ::CarrierWave::Uploader::Base
       include ::CarrierWave::MiniMagick
+      include ::CarrierWave::MimeTypes
+      include Sunrise::Utils::EvalHelpers
             
       storage :file
       
       process :set_content_type
-      process :set_size
-      process :set_width_and_height
+      
+      with_options :if => :image? do |img|
+        img.process :strip
+        img.process :cropper => lambda { |model| model.cropper_geometry }
+        img.process :rotate => lambda { |model| model.rotate_degrees }
+      end
+      
+      process :set_model_info
        
       # default store assets path 
       def store_dir
@@ -33,21 +43,46 @@ module Sunrise
       # process :quality => 85
       #
       def quality(percentage)
-        manipulate! do |img|
-          img.quality(percentage.to_s)
-          img = yield(img) if block_given?
-          img
+        percentage = normalize_param(percentage)
+        
+        unless percentage.blank?
+          manipulate! do |img|
+            img.quality(percentage.to_s)
+            img = yield(img) if block_given?
+            img
+          end
         end
       end
       
       # Rotate image by degress
       # process :rotate => "-90"
       #
-      def rotate(degrees)
-        manipulate! do |img|
-          img.rotate(degrees.to_s)
-          img = yield(img) if block_given?
-          img
+      def rotate(degrees = nil)
+        degrees = normalize_param(degrees)
+        
+        unless degrees.blank?
+          manipulate! do |img|
+            img.rotate(degrees.to_s)
+            img = yield(img) if block_given?
+            img
+          end
+        end
+      end
+      
+      # Crop image by specific coordinates
+      # http://www.imagemagick.org/script/command-line-processing.php?ImageMagick=6ddk6c680muj4eu2vr54vdveb7#geometry
+      # process :cropper => [size, offset]
+      # process :cropper => [800, 600, 10, 20]
+      #
+      def cropper(*geometry)
+        geometry = normalize_param(geometry[0]) if geometry.size == 1
+        
+        if geometry && geometry.size == 4
+          manipulate! do |img|
+            img.crop "%ix%i+%i+%i" % geometry
+            img = yield(img) if block_given?
+            img
+          end
         end
       end
       
@@ -56,31 +91,33 @@ module Sunrise
         "/assets/defaults/#{image_name}.png"
       end
       
-      def image?
-        model.image?
+      def image?(new_file = nil)
+        (file || new_file).content_type.include? 'image'
+      end
+      
+      def dimensions
+        magick = ::MiniMagick::Image.new(current_path)
+        [magick[:width], magick[:height]]
       end
       
       protected
-      
-        def set_content_type
-          model.data_content_type = if file.content_type.blank? || file.content_type == 'application/octet-stream'
-            MIME::Types.type_for(original_filename).first.to_s
-          else
-            file.content_type
-          end
-        end 
         
-        def set_size
+        def set_model_info
+          model.data_content_type = file.content_type
           model.data_file_size = file.size
-        end
-        
-        def set_width_and_height
-          if model.image? && model.has_dimensions?
-            magick = ::MiniMagick::Image.new(current_path)
-            model.width, model.height = magick[:width], magick[:height]
+          
+          if image? && model.has_dimensions?
+            model.width, model.height = dimensions
           end
         end
-
+        
+        def normalize_param(value)
+          if value.is_a?(Proc) || value.is_a?(Method)
+            evaluate_method(model, value, file)
+          else
+            value
+          end
+        end
     end
   end
 end

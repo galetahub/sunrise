@@ -11,6 +11,8 @@ Create new project
 
 == Export data
 
+=== XML, JSON, CSV
+
   GET /manage/users/export.xml
   GET /manage/users/export.json
   GET /manage/users/export.csv
