@@ -13,7 +13,7 @@ PATH
       meta_manager (~> 0.0.5)
       mime-types (~> 1.17.2)
       mini_magick (~> 3.4)
-      page_parts (~> 0.0.2)
+      page_parts (~> 0.0.3)
       rails (~> 3.2.0)
       simple_form (~> 1.5.2)
       sunrise-file-upload (~> 0.2.0)
@@ -125,7 +125,7 @@ GEM
     mysql2 (0.3.11)
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
-    page_parts (0.0.2)
+    page_parts (0.0.3)
       activerecord (>= 3.0.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -224,6 +224,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (~> 0.3.11)
   rspec-rails (~> 2.7.0)
+  ruby-progressbar
   ruby2xlsx (~> 0.0.1)
   sass-rails (~> 3.2.3)
   sunrise-cms!
