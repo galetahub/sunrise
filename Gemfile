@@ -25,5 +25,6 @@ group :development, :test do
   gem "fuubar"
   gem "therubyracer"
   gem "launchy"
+  gem "ruby-progressbar"
 end
 
