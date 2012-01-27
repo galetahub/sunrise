@@ -8,7 +8,9 @@
 //= require jquery-ui-timepicker-addon
 //= require datepicker/jquery.ui.datepicker-uk
 //= require datepicker/jquery.ui.datepicker-ru
+//= require chosen.jquery
 
 //= require sunrise/jquery.tooltip
+//= require sunrise/jquery.ddmenu
 //= require sunrise/manage
 //= require ckeditor/ckeditor

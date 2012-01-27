@@ -45,10 +45,9 @@ class ToolTip
     container = $ '#' + dom_id
     
     if container.length is 0
-      holder = ($ '<div></div>', {class:"tooltip_holder", id: dom_id})
-      content = $ '<div class="tooltip_content"></div>'
-      arrow = $ '<div class="tooltip_arrow"></div>'
-      ($ "body").append holder.html(content).prepend(arrow.html('<div class="tooltip_arrow_inner"></div>'))
+      holder = ($ '<div></div>', {class:"black-note", id: dom_id})
+      content = $ '<div class="note-holder"></div>'
+      ($ "body").append holder.html(content)
       holder
     else
       container
@@ -66,7 +65,7 @@ class ToolTip
     text = @element.data 'tt-text'
     pos = this.position()
       
-    @container.find('div.tooltip_content').html(text)
+    @container.find('div.note-holder').html(text)
     
     @container.css { position: "absolute", left: pos.left + "px", top: pos.top + "px", zIndex: 1001}
     @element.addClass "tt-active"

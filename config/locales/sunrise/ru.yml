@@ -69,7 +69,7 @@ ru:
               
   manage:
     title: "Система<br />управления"
-    go_site: "Перейти на сайт"
+    go_site: "Просмотр сайта"
     exit: "Выход"
     page_title: "Управление сайтом"
     site_edit: "Система управления"
@@ -96,9 +96,11 @@ ru:
     pictures: "Фотографии"
     download: "Скачать"
     close: "Закрыть"
+    search: "Поиск"
+    filter: "Фильтр"
     
-    plugins:
-      structures: "Структура"
+    menu:
+      structures: "Разделы и модули"
       users: "Пользователи"
       system_messages: "Системные сообщения"
       settings: "Настройки"

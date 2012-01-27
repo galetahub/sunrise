@@ -96,8 +96,10 @@ en:
     pictures: "Photos"
     download: "Download"
     close: "Close"
+    search: "Search"
+    filter: "Filter"
     
-    plugins:
+    menu:
       structures: "Structure"
       users: "Community"
       system_messages: "System messages"
