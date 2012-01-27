@@ -1,0 +1,35 @@
+<div class="filter-line-wrapper">
+	<div class="filter-line-holder">
+		<div class="struct-name"><%= abstract_model.label %></div>
+		
+		<div class="vline-block">
+		  <%= form_for search_wrapper, :url => scoped_index_path,  :html =>{ :method => :get, :novalidate => true } do |f| %>
+        <%= render :partial => 'sunrise/shared/parent' %>
+        <%= f.text_field :q %>
+        <%= f.submit t('manage.search'), :class => "button" %>
+			<% end %>
+		</div>
+		
+		<div class="vline-block">
+		  <% if abstract_model.search_available? %>
+		    <%= link_to t('manage.filter'), scoped_index_path, :class => "filter-but ddmenu", :rel => "filter" %>
+			<% end %>
+			
+			<% unless abstract_model.without_list? %>
+        <div class="tabs-holder">
+        	<div class="tabs-item"><a href="#" class="table"><img src="images/empty.gif" /></a></div>
+				  <div class="tabs-item"><span class="list"><img src="images/empty.gif" /></span></div>
+        </div>
+        
+			  <select class="chzn-select">
+	        <option>По дате по убыванию</option>
+	        <option>По дате по возрастанию</option>
+	      </select>
+	    <% end %>
+	    
+	    <% if abstract_model.search_available? %>
+	      <%= render :partial => apply_scope("model_filter") %>
+	   	<% end %>
+    </div>
+	</div>
+</div>
