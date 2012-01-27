@@ -100,7 +100,8 @@ ru:
     filter: "Фильтр"
     
     menu:
-      structures: "Разделы и модули"
+      title: "Разделы и модули"
+      structures: "Структура"
       users: "Пользователи"
       system_messages: "Системные сообщения"
       settings: "Настройки"
@@ -114,6 +115,8 @@ ru:
       tracks: "Музыка"
       wallpapers: "Обои"
       reviews: "голоса"
+      actions: "Создать"
+      dashboard: "Dashboard"
     
     settings:
       title: "Настройки"
@@ -139,6 +142,10 @@ ru:
     
     buttons:
       create_structure: "Создать раздел"
+      table: "Таблица"
+      thumbs: "Список"
+      edit_profile: "Мой профайл"
+      exit: "Выход"
     
     user:
       actions: "действия"

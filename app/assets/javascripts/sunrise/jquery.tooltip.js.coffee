@@ -63,9 +63,9 @@ class ToolTip
   
   show: (event) ->
     text = @element.data 'tt-text'
-    pos = this.position()
-      
     @container.find('div.note-holder').html(text)
+
+    pos = this.position()
     
     @container.css { position: "absolute", left: pos.left + "px", top: pos.top + "px", zIndex: 1001}
     @element.addClass "tt-active"

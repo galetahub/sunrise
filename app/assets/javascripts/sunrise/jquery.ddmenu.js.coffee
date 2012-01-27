@@ -33,7 +33,7 @@ class DropdownMenu
     
     @container = $ '#' + dom_id
     @container.addClass('ddm-container')
-    @container.hide()
+    @container.hide()    
   
   register_observers: ->
     @element.bind @options.activation, (evt) => this.activate(evt)
@@ -47,6 +47,8 @@ class DropdownMenu
     return false
   
   killer: ->
+    $(document).trigger 'click.ddmenu'
+    $(document).unbind 'click.ddmenu'
     $(document).bind 'click.ddmenu', (evt) =>
       event = evt || root.window.event
       target = event.target || event.srcElement
@@ -61,11 +63,13 @@ class DropdownMenu
     this.killer()
   
   fadeIn: ->
-    @container.stop(true, true).fadeIn @options.fadeIn
+    #@container.stop(true, true).fadeIn @options.fadeIn
+    @container.stop(true, true).slideDown @options.fadeIn
   
   hide: (event) ->
     @element.removeClass "ddm-active"
-    @container.fadeOut(@options.fadeOut)
+    #@container.fadeOut(@options.fadeOut)
+    @container.slideUp(@options.fadeOut)
     
     $(document).unbind 'click.ddmenu'
     

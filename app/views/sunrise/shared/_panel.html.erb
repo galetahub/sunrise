@@ -5,43 +5,41 @@
 				<li>
 					<%= link_to index_path(:model_name => "structures"), :class => "ddmenu", :rel => "structures" do  %>
 						<span class="modul">
-							<span class="arr"><%= t 'manage.menu.structures' %></span>
+							<span class="arr"><%= t 'manage.menu.title' %></span>
 						</span>
 					<% end %>
 				</li>
 				<li>
-          <a href="#">
+				  <%= link_to index_path(:model_name => "structures"), :class => "ddmenu", :rel => "actions" do %>
             <span class="create">
-              <span class="arr">Создать</span>
+              <span class="arr"><%= t 'manage.menu.actions' %></span>
             </span>
-          </a>
+          <% end %>
         </li>
 			</ul>
 			<ul class="main-menu right">
         <li><%= link_to t('manage.go_site'), main_app.root_path, :class => "watch" %></li>
         <li>
-          <a href="#" class="act">
+          <%= link_to index_path(:model_name => "users"), :class => "ddmenu", :rel => "user" do %>
             <span class="user">
-              <span class="arr">Administrator</span>
+              <span class="arr"><%= current_user.name %></span>
             </span>
-          </a>
+          <% end %>
         </li>
 				 <!--<li>
           <a href="#" class="minimize"><img src="images/top_hide.png" /></a>
         </li>-->
-
       </ul>
 		</div>
 		
 		<div id="structures-container" class="sub-wrapper modul" style="display: none;">
 			<div class="sub-inner">
 				<ul class="main-list">
-					<li><a href="#" class="icon1">Dashboard</a></li>
-					<li><a href="#" class="icon2">Структура</a></li>
-					<li><a href="#" class="icon3">Пользователи</a></li>
-
-					<li><a href="#" class="icon4">Сервисные модули</a></li>
-					<li><a href="#" class="icon5">Настройки</a></li>
+					<li><%= link_to_unless_current t('manage.menu.dashboard'), root_path, :class => "icon1" %></li>
+					<li><%= link_to_unless_current t('manage.menu.structures'), index_path(:model_name => "structures"), :class=>"icon2" %></li>
+					<li><%= link_to_unless_current t('manage.menu.users'), index_path(:model_name => "users"), :class=>"icon3" %></li>
+					<li><a href="#" class="icon4">Сервисные модули?</a></li>
+					<li><%= link_to_unless_current t('manage.menu.settings'), edit_path(:model_name => "settings"), :class=>"icon5" %></li>
 				</ul>
 				<ul class="inner-list">
           <li><a href="#">Новости</a></li>
@@ -54,10 +52,9 @@
 			</div>
 		</div>
 		
-		<div class="sub-wrapper create" style="display: none">
+		<div id="actions-container" class="sub-wrapper create" style="display: none">
       <div class="sub-inner">
         <ul class="inner-list">
-
           <li><a href="#">Новости</a></li>
           <li><a href="#">Награды</a></li>
           <li><a href="#">Вакансии</a></li>
@@ -68,13 +65,12 @@
       </div>
     </div>
 		
-		<div class="sub-wrapper user" style="display: none;">
+		<div id="user-container" class="sub-wrapper user" style="display: none;">
       <div class="sub-inner">
         <ul class="inner-list">
-          <li><a href="#">Настройки</a></li>
-          <li><a href="#">Выход</a></li>
+          <li><%= link_to t('manage.buttons.edit_profile'), edit_path(:model_name => "users", :id => current_user.id) %></li>
+          <li><%= link_to t('manage.buttons.exit'), main_app.destroy_user_session_path, :class=>"exit", :method => :delete %></li>
         </ul>
-
       </div>
     </div>
 		

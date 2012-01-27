@@ -5,8 +5,8 @@ module Sunrise
     @@default_items_per_page = 25
     
     # By default show latest first
-    mattr_accessor :default_sort_reverse
-    @@default_sort_reverse = true
+    mattr_accessor :default_sort_mode
+    @@default_sort_reverse = :desc
     
     # The display for a model instance (i.e. a single database record).
     mattr_accessor :label_methods
