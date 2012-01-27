@@ -36,5 +36,16 @@ module Sunrise
       superclasses
     end
     
+    # Convert sort string to hash
+    # "create_at_desc" to { :column => "created_at", :mode => "desc" }
+    #
+    def self.sort_to_hash(value)
+      items = value.split('_')
+      mode = items.pop
+      column = items.join('_')
+      
+      {:column => column, :mode => mode}
+    end
+    
   end
 end

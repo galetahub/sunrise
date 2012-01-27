@@ -3,7 +3,7 @@
 		<div class="struct-name"><%= abstract_model.label %></div>
 		
 		<div class="vline-block">
-		  <%= form_for search_wrapper, :url => scoped_index_path,  :html =>{ :method => :get, :novalidate => true } do |f| %>
+		  <%= form_for search_wrapper, :url => scoped_index_path,  :html => { :method => :get, :novalidate => true } do |f| %>
         <%= render :partial => 'sunrise/shared/parent' %>
         <%= f.text_field :q %>
         <%= f.submit t('manage.search'), :class => "button" %>
@@ -17,19 +17,43 @@
 			
 			<% unless abstract_model.without_list? %>
         <div class="tabs-holder">
-        	<div class="tabs-item"><a href="#" class="table"><img src="images/empty.gif" /></a></div>
-				  <div class="tabs-item"><span class="list"><img src="images/empty.gif" /></span></div>
+        	<div class="tabs-item">
+        	  <% if abstract_model.current_list == 'table' %>
+        	    <%= content_tag(:span, image_tag('sunrise/empty.gif'), :title => t('manage.buttons.table'), :class => "table") %>
+        	  <% else %>
+          	  <%= link_to image_tag('sunrise/empty.gif'), {:view=>"table"}, :class => "table", :title => t('manage.buttons.table') %>
+        	  <% end %>
+        	</div>
+				  <div class="tabs-item">
+				    <% if abstract_model.current_list == 'thumbs' %>
+        	    <%= content_tag(:span, image_tag('sunrise/empty.gif'), :title => t('manage.buttons.thumbs'), :class => "list") %>
+        	  <% else %>
+          	  <%= link_to image_tag('sunrise/empty.gif'), {:view=>"thumbs"}, :class => "list", :title => t('manage.buttons.thumbs') %>
+        	  <% end %>
+				  </div>
         </div>
         
-			  <select class="chzn-select">
-	        <option>По дате по убыванию</option>
-	        <option>По дате по возрастанию</option>
-	      </select>
-	    <% end %>
+        <% if abstract_model.sort_available? %>
+          <div class="sort-holder">
+            <%= form_tag(scoped_index_path, :method => :get) do %>             
+              <%= select_tag "sort", options_from_collection_for_select(abstract_model.sort_fields, "value", "name", params[:sort]), 
+                :class => "chzn-select" %>
+                
+              <script type="text/javascript">
+                $(document).ready(function(){
+                  window['sunrise'].init_sort_select(); 
+                });
+              </script>
+            <% end %>
+            
+            <%= submit_tag t('manage.search'), :class => "button", :style => "display:none;" %>
+          </div>
+	      <% end %>
 	    
-	    <% if abstract_model.search_available? %>
-	      <%= render :partial => apply_scope("model_filter") %>
-	   	<% end %>
+	      <% if abstract_model.search_available? %>
+	        <%= render :partial => apply_scope("model_filter") %>
+	     	<% end %>
+	    <% end %>
     </div>
 	</div>
 </div>

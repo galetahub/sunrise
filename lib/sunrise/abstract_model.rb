@@ -1,9 +1,11 @@
 require 'sunrise/config/model'
+require 'ostruct'
 
 module Sunrise
   class AbstractModel
     
     class << self
+      
       # Gets the resource_name
       def resource_name
         # Not using superclass_delegating_reader. See +site+ for explanation
@@ -99,6 +101,21 @@ module Sunrise
       list && !list.groups[:search].nil?
     end
     
+    def sort_available?
+      list && !list.groups[:sort].nil?
+    end
+    
+    def sort_fields
+      @sort_fields ||= list.groups[:sort].fields.inject([]) do |items, field|
+        [:desc, :asc].each do |direction|
+          name = [field.name, direction].join('_')
+          items << OpenStruct.new(:name => I18n.t(name, :scope => [:manage, :sort_columns]), :value => name)
+        end
+        
+        items
+      end
+    end
+    
     # Initialize new model and set parent record
     def build_record
       record = model.new
@@ -150,11 +167,13 @@ module Sunrise
     end
     
     def sort_scope(options = nil)
-      options ||= { :column => list.sort_by }
+      options = Utils.sort_to_hash(options) if options.is_a?(String)
+      options = { :column => list.sort_column, :mode => list.sort_mode }.merge(options || {})
       
-      mode = list.sort_reverse? ? :desc : :asc
+      options[:column] = list.sort_column if options[:column].blank?
+      options[:mode] = list.sort_mode     if options[:mode].blank?
       
-      model.order([options[:column], mode].join(' '))
+      model.order([options[:column], options[:mode]].join(' '))
     end
     
     def export_scope(options = nil)

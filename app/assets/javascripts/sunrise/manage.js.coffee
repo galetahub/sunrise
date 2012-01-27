@@ -13,6 +13,10 @@ class Sunrise
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
     if match then decodeURIComponent(match[1].replace(/\+/g, ' ')) else null
 
+  init_sort_select: ->
+    $("#sort").bind 'change', (evt) ->
+      this.form.submit()
+
   # Store params: page, per, sort and view for current namespace
   storeQuery: () ->
     query = {}
