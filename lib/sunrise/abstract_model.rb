@@ -95,6 +95,10 @@ module Sunrise
       config.sections[:list] === false
     end
     
+    def search_available?
+      list && !list.groups[:search].nil?
+    end
+    
     # Initialize new model and set parent record
     def build_record
       record = model.new

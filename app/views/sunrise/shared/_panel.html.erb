@@ -1,34 +1,82 @@
-<% if content_manager? %>
-  <div id="manage-panel">
-    <div class="panel-head">
-      <%= link_to image_tag("manage/panel/maximise_but.gif", :alt=>'', :title=>''), manage_structures_path, :class=>"maximize" %>
-    	<div class="p-logo"><%=raw t('manage.title') %></div>
-      <div class="panel-main-menu">
-      	<ul>
-      	  <% if can? :read, Structure, :context => :sunrise %>
-           	<li><%= link_to_unless_current_span2 t('manage.plugins.structures'), manage_structures_path %></li>
-         	<% end %>
-         	
-         	<% if can? :read, User, :context => :sunrise %>
-            <li><%= link_to_unless_current_span2 t('manage.plugins.users'), manage_users_path %></li>
-          <% end %>
-          
-          <% if can? :read, :settings, :context => :sunrise %>
-            <li><%= link_to_unless_current_span2 t('manage.plugins.settings'), manage_settings_path %></li>
-          <% end %>
+<div class="black-line">
+	<div class="rel-holder">
+		<div class="menu-holder">
+			<ul class="main-menu">
+				<li>
+					<%= link_to index_path(:model_name => "structures"), :class => "ddmenu", :rel => "structures" do  %>
+						<span class="modul">
+							<span class="arr"><%= t 'manage.menu.structures' %></span>
+						</span>
+					<% end %>
+				</li>
+				<li>
+          <a href="#">
+            <span class="create">
+              <span class="arr">Создать</span>
+            </span>
+          </a>
+        </li>
+			</ul>
+			<ul class="main-menu right">
+        <li><%= link_to t('manage.go_site'), main_app.root_path, :class => "watch" %></li>
+        <li>
+          <a href="#" class="act">
+            <span class="user">
+              <span class="arr">Administrator</span>
+            </span>
+          </a>
+        </li>
+				 <!--<li>
+          <a href="#" class="minimize"><img src="images/top_hide.png" /></a>
+        </li>-->
+
+      </ul>
+		</div>
+		
+		<div id="structures-container" class="sub-wrapper modul" style="display: none;">
+			<div class="sub-inner">
+				<ul class="main-list">
+					<li><a href="#" class="icon1">Dashboard</a></li>
+					<li><a href="#" class="icon2">Структура</a></li>
+					<li><a href="#" class="icon3">Пользователи</a></li>
+
+					<li><a href="#" class="icon4">Сервисные модули</a></li>
+					<li><a href="#" class="icon5">Настройки</a></li>
+				</ul>
+				<ul class="inner-list">
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Награды</a></li>
+          <li><a href="#">Вакансии</a></li>
+
+          <li><a href="#">Резюме</a></li>
+          <li><a href="#">Вопросы пользователей</a></li>
         </ul>
-      </div>
-      <div class="p-user">
-        <div class="p-user-info">
-          <div class="p-info">
-            <%= link_to current_user.name, edit_manage_user_path(current_user), :class=>"p-name" %>
-            <%= link_to t('manage.exit'), destroy_user_session_path, :class=>"p-exit", :method => :delete %>
-          </div>
-        </div>
-        <div class="p-user-foto">
-          <%= link_to manage_user_avatar_tag(current_user, :type=>:small), edit_manage_user_path(current_user) %>
-        </div>
+			</div>
+		</div>
+		
+		<div class="sub-wrapper create" style="display: none">
+      <div class="sub-inner">
+        <ul class="inner-list">
+
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Награды</a></li>
+          <li><a href="#">Вакансии</a></li>
+          <li><a href="#">Резюме</a></li>
+          <li><a href="#">Вопросы пользователей</a></li>
+        </ul>
+
       </div>
     </div>
-  </div>
-<% end %>
+		
+		<div class="sub-wrapper user" style="display: none;">
+      <div class="sub-inner">
+        <ul class="inner-list">
+          <li><a href="#">Настройки</a></li>
+          <li><a href="#">Выход</a></li>
+        </ul>
+
+      </div>
+    </div>
+		
+	</div>
+</div>

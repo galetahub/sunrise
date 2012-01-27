@@ -6,6 +6,8 @@ class Sunrise
     
   setup: ->
     ($ '[title]').tooltip()
+    ($ ".chzn-select").chosen()
+    ($ ".ddmenu").ddmenu()
   
   getParameterByName: (name) ->
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
