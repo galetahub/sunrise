@@ -1,127 +1,16 @@
-<div class="duo-bl">
-  <div class="left-part">
-    <div class="content">
-    	<div class="row-container">
-        <div class="white-row">
-          <div class="r-corn">
-            <%= link_to abstract_model.label, index_path, :class=>"dark-text" %>
-            <div class="act-bl">
-              <%= link_to t('manage.add'), new_path(abstract_model.parent_hash), :class=>"create" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="records" class="stage">
-        Table
-        <%= render :partial => "sunrise/manager/table/record", :collection => @records %>
-        <%= paginate @records, :theme => 'sunrise' %>
-      </div>
-      <script type='text/javascript'>
-        $(document).ready(function(){
-          Manage.init_collection('records', 'dinamic-bl');
-        });
-      </script>
-    </div>
-  </div>
-  <div class="right-part">
-    <div class="filter-right">
-      <%= render :partial => "sunrise/manager/table/model_filter" %>
-    </div>
-  </div>
-</div>
-
 <div class="main-item-table">
-
-			<table cellpadding="0" cellspacing="0" border="0" width="100%">
-				<tr>
-					<th></th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>IP</th>
-					<th>Name</th>
-
-          <th>Email</th>
-          <th>IP</th>
-				</tr>
-				<tr>
-          <td><input type="checkbox" /></td>
-          <td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-
-          <td>258.258.258.258</td>
-					<td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-          <td>258.258.258.258</td>
-					<td>
-						<div class="rel">
-						<div class="buts" style="display: none;" >
-
-	            <div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-	            <div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-						</div>
-						</div>
-					</td>
-        </tr>
-				<tr>
-          <td><input type="checkbox" /></td>
-          <td>Name Name</td>
-
-          <td><a href="#">mail@mail.to</a></td>
-          <td>258.258.258.258</td>
-          <td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-          <td>258.258.258.258</td>
-          <td>
-
-            <div class="rel">
-            <div class="buts three" style="display: none;" >
-              <div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-              <div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-							<div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-            </div>
-            </div>
-          </td>
-        </tr>
-
-				<tr>
-          <td><input type="checkbox" /></td>
-          <td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-          <td>258.258.258.258</td>
-          <td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-
-          <td>258.258.258.258</td>
-          <td>
-            <div class="rel">
-            <div class="buts four" style="display: none;" >
-              <div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-              <div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-							<div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-              <div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-
-            </div>
-            </div>
-          </td>
-        </tr>
-				<tr>
-          <td><input type="checkbox" /></td>
-          <td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-
-          <td>258.258.258.258</td>
-          <td>Name Name</td>
-          <td><a href="#">mail@mail.to</a></td>
-          <td>258.258.258.258</td>
-          <td>
-            <div class="rel">
-            <div class="buts" style="display: none;" >
-
-              <div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-              <div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-            </div>
-            </div>
-          </td>
-        </tr>
-			</table>
-		</div>
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" id="records">
+		<tr>
+			<th></th>
+			<th>Name</th>
+			
+			<% abstract_model.list.fields.each do |field|%>
+				<th><%= field.human_name %></th>
+			<% end -%>
+		</tr>
+		
+		<%= render :partial => "sunrise/manager/table/record", :collection => @records %>
+	</table>
+	
+	<%= paginate @records, :theme => 'sunrise' %>
+</div>
