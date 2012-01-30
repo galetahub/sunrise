@@ -1,34 +1,31 @@
-<%= content_tag(:div, :id => dom_id(record), :class => "dinamic-bl") do %>
-  <div class="act-bl" style="display:none;">
-    <%= link_to manage_icon("edit"), edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class=>"icons", :id => dom_id(record, :edit) %>
+<%= content_tag(:div, :id => dom_id(record), :class => "main-item") do %>
+  <div class="check-block"><input type="checkbox" /></div>
+  <div class="img-block"> <%= image_tag 'sunrise/default_ava.png' %> </div>
+  <div class="data-block">
+    <div class="top-info-bl">
+      <%= manage_date_tag(record.created_at)%>
+      <!--<a href="#" class="grey-but">Активировать</a>-->
+    </div>
+    <%= link_to record.send(abstract_model.config.object_label_method), show_path(:id => record.id), :class=>"item-title" %>
+    
+		<div class="bot-info-bl">
+		  
+		  <% abstract_model.list.fields.each do |field|%>
+			<div class="info-item">
+				<b><%= field.human_name %></b> <%= render_field(field, record)%>
+			</div>
+			<% end -%>
 
-    <%= link_to manage_icon("delete"), delete_path(abstract_model.parent_hash.merge(:id => record.id)), 
-          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons", :id => dom_id(record, :delete) %>
+		</div>
   </div>
-  
-  <div class="bot-bg">
-    <div class="dinamic-container">
-    	<div class="right-data">	
-        <div class="right-data-cont">
-          <div class="dinamic-inner">
-          	<div class="r-block">
-              <div class="block-cont">
-                <%= link_to @abstract_model.config.object_label_method, show_path(:id => record.id), :class=>"title" %>
-                
-                <table border="0" width="100%" cellspacing="0" cellpadding="0" class="inf">
-                  <tr>
-                    <td class="left">Section:</td>
-                    <td><%#= category.section.try(:title) %></td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="left-data">
-        <span class="data"><%= raw I18n.l(record.created_at, :format=>"<span>%d/%m</span>%Y") %></span>
-      </div>
+  <div class="but-block" style="display: none">
+    <div class="act-but">
+      <%= link_to image_tag('sunrise/empty.gif'), delete_path(abstract_model.parent_hash.merge(:id => record.id)), 
+          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"but-container del", :id => dom_id(record, :delete) %>
+    </div>
+    
+    <div class="act-but">
+      <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class=>"but-container edit", :id => dom_id(record, :edit) %>
     </div>
   </div>
-<% end %>
+<% end -%>  

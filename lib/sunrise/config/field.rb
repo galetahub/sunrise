@@ -27,6 +27,10 @@ module Sunrise
         @config_options.dup
       end
       
+      def human_name
+        abstract_model.model.human_attribute_name(@name)
+      end
+      
       protected
       
         # Verifies that the conditionals for this field evaluate to true for the

@@ -1,92 +1,11 @@
-<div class="duo-bl">
-  <div class="left-part">
-    <div class="content">
-    	<div class="row-container">
-        <div class="white-row">
-          <div class="r-corn">
-            <%= link_to abstract_model.label, index_path, :class=>"dark-text" %>
-            <div class="act-bl">
-              <%= link_to t('manage.add'), new_path(abstract_model.parent_hash), :class=>"create" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="records" class="stage">
-        <%= render :partial => apply_scope("record"), :collection => @records %>
-        <%= paginate @records, :theme => 'sunrise' %>
-      </div>
-    </div>
-  </div>
-  <div class="right-part">
-    <div class="filter-right">
-      <%= render :partial => apply_scope("model_filter") %>
-    </div>
-  </div>
+<div class="main-item-list" id="records">
+  <%= render :partial => apply_scope("record"), :collection => @records %>
+  <%= paginate @records, :theme => 'sunrise' %>
 </div>
+
 
 <script type='text/javascript'>
   $(document).ready(function(){
     window['sunrise'].storeQuery();
   });
 </script>
-
-<div class="main-item-list">
-      <div class="main-item">
-      	<div class="check-block"><input type="checkbox" /></div>
-				<div class="img-block"><img src="images/default_ava.png" /></div>
-				<div class="data-block">
-          <div class="top-info-bl">
-          	<div class="date-time">
-          		<div class="date">18.01.01</div>
-
-							<div class="time">16:25</div>
-          	</div>
-						<a href="#" class="grey-but">Активировать</a>
-						<div class="grey-but"><input type="checkbox" /><label>На главную</label></div>
-          </div>
-					<a href="#" class="item-title">Накануне Старого Нового Года мы представляем вашему вниманию лучшие творения наших поклонников.</a>
-        </div>
-
-				<div class="but-block" style="display: none">
-					<div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-					<div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-				</div>
-      </div>
-			<div class="main-item">
-        <div class="check-block"><input type="checkbox" /></div>
-        <div class="img-block"><img src="images/default_ava.png" /></div>
-        <div class="data-block">
-
-          <div class="top-info-bl">
-            <div class="date-time">
-              <div class="date">18.01.01</div>
-              <div class="time">16:25</div>
-            </div>
-            <a href="#" class="grey-but">Активировать</a>
-          </div>
-
-          <div class="item-title">Administrator</div>
-					<div class="bot-info-bl">
-						<div class="info-item">
-							<b>Email</b><a href="#">mail@mail.ru</a>
-						</div>
-						<div class="info-item">
-							<b>IP</b>158.258.255.251
-						</div>
-
-						<div class="info-item">
-							<b>Активация</b>
-							<div class="date-time">
-	              <div class="date">18.01.01</div>
-	              <div class="time">16:25</div>
-	            </div>
-						</div>
-
-					</div>
-        </div>
-        <div class="but-block" style="display: none">
-          <div class="act-but"><a href="#" class="but-container del"><img src="images/empty.gif" /></a></div>
-          <div class="act-but"><a href="#" class="but-container edit"><img src="images/empty.gif" /></a></div>
-        </div>
-      </div>
-    </div>
