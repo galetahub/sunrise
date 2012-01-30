@@ -35,44 +35,37 @@
 		<div id="structures-container" class="sub-wrapper modul" style="display: none;">
 			<div class="sub-inner">
 				<ul class="main-list">
-					<li><%= link_to_unless_current t('manage.menu.dashboard'), root_path, :class => "icon1" %></li>
-					<li><%= link_to_unless_current t('manage.menu.structures'), index_path(:model_name => "structures"), :class=>"icon2" %></li>
-					<li><%= link_to_unless_current t('manage.menu.users'), index_path(:model_name => "users"), :class=>"icon3" %></li>
-					<li><a href="#" class="icon4">Сервисные модули?</a></li>
-					<li><%= link_to_unless_current t('manage.menu.settings'), edit_path(:model_name => "settings"), :class=>"icon5" %></li>
+				  <% Sunrise::Config.nav[:main].each do |item| %>
+				    <% if can? :read, item.name, :context => :sunrise %>
+              <li><%= link_to_unless_current item.title, item.url, item.html_options %></li>
+            <% end %>
+          <% end %>
 				</ul>
-				<ul class="inner-list">
-          <li><a href="#">Новости</a></li>
-          <li><a href="#">Награды</a></li>
-          <li><a href="#">Вакансии</a></li>
-
-          <li><a href="#">Резюме</a></li>
-          <li><a href="#">Вопросы пользователей</a></li>
-        </ul>
 			</div>
 		</div>
 		
 		<div id="actions-container" class="sub-wrapper create" style="display: none">
       <div class="sub-inner">
         <ul class="inner-list">
-          <li><a href="#">Новости</a></li>
-          <li><a href="#">Награды</a></li>
-          <li><a href="#">Вакансии</a></li>
-          <li><a href="#">Резюме</a></li>
-          <li><a href="#">Вопросы пользователей</a></li>
+          <% Sunrise::Config.nav[:creates].each do |item| %>
+            <% if can? :create, item.name, :context => :sunrise %>
+              <li><%= link_to_unless_current item.title, item.url, item.html_options %></li>
+            <% end %>
+          <% end %>
         </ul>
-
       </div>
     </div>
 		
 		<div id="user-container" class="sub-wrapper user" style="display: none;">
       <div class="sub-inner">
         <ul class="inner-list">
-          <li><%= link_to t('manage.buttons.edit_profile'), edit_path(:model_name => "users", :id => current_user.id) %></li>
+          <% if can? :edit, current_user, :context => :sunrise %>
+            <li><%= link_to t('manage.buttons.edit_profile'), edit_path(:model_name => "users", :id => current_user.id) %></li>
+          <% end %>
+          
           <li><%= link_to t('manage.buttons.exit'), main_app.destroy_user_session_path, :class=>"exit", :method => :delete %></li>
         </ul>
       </div>
     </div>
-		
 	</div>
 </div>

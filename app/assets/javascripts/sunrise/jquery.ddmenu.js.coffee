@@ -37,6 +37,7 @@ class DropdownMenu
   
   register_observers: ->
     @element.bind @options.activation, (evt) => this.activate(evt)
+    @container.find("a[submenu]").bind 'click', (evt) => this.submenu(evt)
   
   activate: (event) ->
     if @element.hasClass('ddm-active')
@@ -72,4 +73,53 @@ class DropdownMenu
     @container.slideUp(@options.fadeOut)
     
     $(document).unbind 'click.ddmenu'
+  
+  submenu: (event) ->
+    target = event.target || event.srcElement
+    node = $ target
+    
+    if not node.attr('id')?
+      node.attr('id', 'menu-' + this.generate_id())
+    
+    options =
+      url: node.attr 'href' 
+      type: 'GET'
+      dataType: 'json'
+      success: (data, status, xhr) =>
+        this.populate data, node.attr('id')
+        
+    $.rails.ajax options
+    
+    return false
+  
+  populate: (data, dom_id) ->
+    list_id = 'sub' + dom_id
+    
+    if $('#' + list_id).length == 0
+      list = $("<ul></ul>", {class: "inner-list", id: list_id })
+      node = @container.find('div.sub-inner')
+      node.append list      
+    else
+      list = $('#' + list_id)
+    
+    list.html ""
+    
+    $.each data, (index) ->
+      ul = $("<li></li>")
+      link = $("<a></a>", {href: '/manage/structures/' + this.id})
+      link.html this.title
+      list.append ul.append(link)
+    
+    list.next("ul").remove()
+    
+  
+  generate_id: (len = 5, possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') ->
+    randomString = ''
+    
+    for num in [0..len]
+      randomPoz = Math.floor(Math.random() * possible.length)
+      randomString += possible.substring(randomPoz, randomPoz+1)
+      
+    return randomString
+
     
