@@ -101,10 +101,7 @@ ru:
     
     menu:
       title: "Разделы и модули"
-      structures: "Структура"
-      users: "Пользователи"
       system_messages: "Системные сообщения"
-      settings: "Настройки"
       other: "Другие"
       posts: "Новости"
       categories: "Категории"
@@ -116,7 +113,16 @@ ru:
       wallpapers: "Обои"
       reviews: "голоса"
       actions: "Создать"
-      dashboard: "Dashboard"
+      main:
+        dashboard: "Dashboard"
+        structures: "Структура"
+        users: "Пользователи"
+        settings: "Настройки"
+        services: "Сервисные модули"
+      creates:
+        structures: "Раздел"
+        users: "Пользователя"
+        
     
     settings:
       title: "Настройки"

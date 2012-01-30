@@ -1,5 +1,7 @@
 module Sunrise
   module Config
+    autoload :Navigation, 'sunrise/config/navigation'
+    
     # Paginate records per page
     mattr_accessor :default_items_per_page
     @@default_items_per_page = 25
@@ -26,6 +28,10 @@ module Sunrise
     
     def self.scoped_views?
       @@scoped_views === true
+    end
+    
+    def self.nav
+      ::SunriseNavigation.instance.navigations
     end
   end
 end

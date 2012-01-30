@@ -13,7 +13,7 @@ describe Sunrise do
     before(:each) do
       Sunrise.setup do |c|
         c.default_items_per_page = 50
-        c.default_sort_reverse = false
+        c.default_sort_mode = :asc
         c.default_list_view = 'table'
         c.scoped_views = true
       end
@@ -21,7 +21,7 @@ describe Sunrise do
     
     it "should store configuration" do
       Sunrise::Config.default_items_per_page.should == 50
-      Sunrise::Config.default_sort_reverse.should == false
+      Sunrise::Config.default_sort_mode.should == :asc
       Sunrise::Config.default_list_view.should == 'table'
       Sunrise::Config.scoped_views.should == true
     end
