@@ -1,6 +1,8 @@
 Sunrise::Engine.routes.draw do
   root :to => "dashboard#index"
   
+  match "/services", :to => "shared#services", :as => "services"
+  
   controller "manager" do
     scope ":model_name" do
       match "/", :to => :index, :as => "index", :via => [:get, :post]

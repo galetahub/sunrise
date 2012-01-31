@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("sunrise-file-upload", "~> 0.2.0")
   s.add_runtime_dependency("kaminari", "~> 0.13.0")
   s.add_runtime_dependency("simple_form", "~> 1.5.2")
+  s.add_runtime_dependency("jbuilder", "~> 0.3.2")
   
   s.add_runtime_dependency("awesome_nested_set", "~> 2.0.2")
   s.add_runtime_dependency("mime-types", "~> 1.17.2")
