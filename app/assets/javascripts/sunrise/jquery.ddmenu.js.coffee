@@ -106,7 +106,7 @@ class DropdownMenu
     
     $.each data, (index) ->
       ul = $("<li></li>")
-      link = $("<a></a>", {href: '/manage/structures/' + this.id})
+      link = $("<a></a>", {href: this.url })
       link.html this.title
       list.append ul.append(link)
     

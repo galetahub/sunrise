@@ -14,8 +14,13 @@ Create new project
 === XML, JSON, CSV
 
   GET /manage/users/export.xml
-  GET /manage/users/export.json
   GET /manage/users/export.csv
+  
+=== JSON
+
+  GET /manage/users/export.json
+
+For more info look at jbuilder https://rubygems.org/gems/jbuilder.
 
 === Excel
 
