@@ -10,7 +10,7 @@ describe "Sunrise Manager Dashboard" do
   context "admin" do
     before(:each) { login_as @admin }
 
-    describe "GET /manage/posts" do
+    describe "GET /manage" do
       before(:each) do 
         visit root_path
       end

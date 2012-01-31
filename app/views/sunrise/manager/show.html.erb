@@ -1,0 +1,11 @@
+<div class="edit-bl">
+  <div class="bot-bg">
+    <div class="block-title"><%= @record.send(abstract_model.config.object_label_method) %>:</div>
+    
+    <% abstract_model.config.show.fields.each do |field| %>
+      <div class="info-item">
+				<b><%= field.human_name %></b> <%= render_field(field, @record)%>
+			</div>
+    <% end %>
+  </div>
+</div>
