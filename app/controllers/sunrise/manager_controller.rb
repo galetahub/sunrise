@@ -16,6 +16,12 @@ module Sunrise
       end
     end
     
+    def show
+      respond_with(@record) do |format|
+        format.html { render_with_scope } 
+      end
+    end
+    
     def new
       respond_with(@record) do |format|
         format.html { render_with_scope } 

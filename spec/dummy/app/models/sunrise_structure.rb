@@ -20,4 +20,10 @@ class SunriseStructure < Sunrise::AbstractModel
     field :position, :collection => PositionType.all, :include_blank => false
     field :is_visible, :boolean => true
   end
+  
+  show do
+    field :title
+    field :redirect_url
+    field :is_visible
+  end
 end
