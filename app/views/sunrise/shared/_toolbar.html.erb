@@ -24,7 +24,22 @@
 		</div>
 		<div class="but-holder">
 		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), '#', :class => 'but-container sort', :title => 'Sort' %>
+		    <%= link_to image_tag('sunrise/empty.gif'), export_path(:format => :json), :class => 'but-container sort', :title => 'Sort', :id => 'sort-button', :"data-save_title" => 'Save', :"data-cancel_title" => 'Cancel' %>
+		    
+		    <script type="text/javascript">
+		      $(document).ready(function(){
+		        $('#sort-button').sort_dialog();
+		      });
+		    </script>
+		    
+		    <script id="sort-template" type="text/x-jquery-tmpl">
+          <div class="sort-item">
+            <div class="sort-inner">
+              <div class="numb">${<%= abstract_model.sort_column %>}</div>
+              <div>${<%= abstract_model.config.object_label_method %>}</div>
+            </div>
+          </div>
+        </script>
 		  </div>
 		</div>
     <div class="but-holder">

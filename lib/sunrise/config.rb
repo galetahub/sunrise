@@ -18,6 +18,10 @@ module Sunrise
     mattr_accessor :default_list_view
     @@default_list_view = 'thumbs'
     
+    # Defailt list template view
+    mattr_accessor :sort_column
+    @@sort_column = 'sort_order'
+    
     # Find template before rendering
     mattr_accessor :scoped_views
     @@scoped_views = false

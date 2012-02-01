@@ -32,6 +32,10 @@ module Sunrise
         Config.default_list_view
       end
       
+      register_instance_option(:sort_column) do
+        Config.sort_column
+      end
+      
       def associations
         @associations ||= @sections.select { |key, valur| key.to_s.include?('association_') }.values
       end

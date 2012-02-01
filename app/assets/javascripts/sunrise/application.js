@@ -10,6 +10,7 @@
 //= require datepicker/jquery.ui.datepicker-ru
 //= require chosen.jquery
 
+//= require sunrise/jquery.dialog
 //= require sunrise/jquery.tooltip
 //= require sunrise/jquery.ddmenu
 //= require sunrise/manage
