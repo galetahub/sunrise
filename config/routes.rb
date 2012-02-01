@@ -7,6 +7,7 @@ Sunrise::Engine.routes.draw do
     scope ":model_name" do
       match "/", :to => :index, :as => "index", :via => [:get, :post]
       match "/export.:format", :to => :export, :as => "export"
+      match "/sort", :to => :sort, :as => "sort"
       get "/new", :to => :new, :as => "new"
       post "/new", :to => :create, :as => "create"
       
