@@ -96,14 +96,33 @@ class SortDialog extends Dialog
       
   save: ->
     $.ajax
-      url: @element.attr 'href'
+      url: @element.data 'save_path'
       method: 'POST'
     
   load_data: ->
+    klass = this
+    
     $.ajax
       url: @element.attr 'href'
       success: (data, status, xhr) ->
         $('#sort_items').empty()
         $("#sort-template" ).tmpl(data).appendTo('#sort_items')
+        klass.refresh_counters()
+        
+        $("#sort_items").sortable
+          cursor: 'crosshair'
+          opacity: 0.6
+          update: (event, ui) -> 
+            klass.update_sort_item(event, ui)
+            
+  refresh_counters: ->
+    $('.sort-item .numb').each (index) -> 
+      item = $(this)
+      item.text index + 1
+            
+  update_sort_item: (event, ui) ->
+    @save_button.attr 'disabled', false
+    this.refresh_counters()
+  
     
   
