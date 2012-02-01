@@ -58,8 +58,15 @@ module Sunrise
         format.xml  { render :xml => @records }
         format.json { render :json => @records }
         format.csv  { render options.merge(:csv => @records) }
-        format.xlsx { render options.merge(:xlsx => @records) }
+        
+        if defined?(Mime::XLSX)
+          format.xlsx { render options.merge(:xlsx => @records) }
+        end
       end
+    end
+    
+    def sort
+      # TODO update sorted column
     end
     
     protected
