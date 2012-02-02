@@ -117,6 +117,18 @@ module Sunrise
       end
     end
     
+    def update_sort_column(ids)
+      return nil if ids.empty?
+      
+      sql_case = '' 
+      ids.each do |key, value| 
+        sql_case += "WHEN #{key} THEN #{value} "
+      end
+      sql_case += 'END'
+      
+      model.update_all("#{@sort_column} = CASE id #{sql_case}", ["id IN (?)", ids.keys.map(&:to_i)])
+    end
+    
     # Initialize new model and set parent record
     def build_record
       record = model.new

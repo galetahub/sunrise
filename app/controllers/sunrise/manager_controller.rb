@@ -66,7 +66,8 @@ module Sunrise
     end
     
     def sort
-      # TODO update sorted column
+      abstract_model.update_sort_column(params[:ids])
+      respond_with(true)
     end
     
     protected
