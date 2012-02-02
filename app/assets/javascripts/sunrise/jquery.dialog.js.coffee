@@ -95,9 +95,18 @@ class SortDialog extends Dialog
     this.load_data()  
       
   save: ->
+    items = {}
+    klass = this
+    
+    $('.sort-item').each (index) ->
+      items['ids[' + $(this).data('record-id') + ']'] = index + 1
+      
     $.ajax
       url: @element.data 'save_path'
       method: 'POST'
+      data: items
+      success: ->
+        klass.hide()
     
   load_data: ->
     klass = this
@@ -107,7 +116,7 @@ class SortDialog extends Dialog
       success: (data, status, xhr) ->
         $('#sort_items').empty()
         $("#sort-template" ).tmpl(data).appendTo('#sort_items')
-        klass.refresh_counters()
+        # klass.refresh_counters()
         
         $("#sort_items").sortable
           cursor: 'crosshair'
@@ -116,9 +125,8 @@ class SortDialog extends Dialog
             klass.update_sort_item(event, ui)
             
   refresh_counters: ->
-    $('.sort-item .numb').each (index) -> 
-      item = $(this)
-      item.text index + 1
+    $('.sort-item .numb').each (index) ->
+      $(this).text index + 1
             
   update_sort_item: (event, ui) ->
     @save_button.attr 'disabled', false
