@@ -70,6 +70,11 @@ module Sunrise
       respond_with(true)
     end
     
+    def mass_destroy
+      abstract_model.model.destroy_all(["id in (?)", params[:ids]]) unless params[:ids].blank?
+      respond_with(true, :location => scoped_index_path)
+    end
+    
     protected
     
       def find_model

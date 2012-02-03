@@ -9,12 +9,12 @@
 		
 		<div class="but-holder">
 		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), '#', :class => 'but-container del', :title => 'Delete' %>
+		    <%= link_to image_tag('sunrise/empty.gif'), mass_destroy_path, :class => 'but-container del disabled', :title => 'Delete', :"data-confirm-message" => t('manage.confirm_mass_delete'), :"data-editable" => 'destroy' %>
 		  </div>
 		</div>
 		<div class="but-holder">
 		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), '#', :class => 'but-container edit', :title => 'Edit' %>
+		    <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => 0)), :class => 'but-container edit disabled', :title => 'Edit', :"data-editable" => 'edit' %>
 		  </div>
 		</div>
 		<div class="but-holder">

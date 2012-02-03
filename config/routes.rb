@@ -10,6 +10,7 @@ Sunrise::Engine.routes.draw do
       match "/sort", :to => :sort, :as => "sort"
       get "/new", :to => :new, :as => "new"
       post "/new", :to => :create, :as => "create"
+      delete "/mass_destroy", :to => :mass_destroy, :as => "mass_destroy"
       
       scope ":id" do
         get "/", :to => :show, :as => "show"
