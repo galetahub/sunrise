@@ -82,6 +82,7 @@ en:
     posts: "Blog"
     new_post: "Add Post"
     confirm_delete: "Are you sure you want to delete the record?"
+    confirm_mass_delete: "Are you sure you want to delete the record(s)?"
     prev: "Previous"
     next: "Next"
     max_size: "Max dim."

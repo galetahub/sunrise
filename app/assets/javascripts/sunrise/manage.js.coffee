@@ -8,6 +8,7 @@ class Sunrise
     ($ '[title]').tooltip()
     ($ ".chzn-select").chosen()
     ($ ".ddmenu").ddmenu()
+    ($ '[data-editable]').editable()
   
   getParameterByName: (name) ->
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
