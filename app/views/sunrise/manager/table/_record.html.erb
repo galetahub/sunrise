@@ -1,5 +1,5 @@
 <%= content_tag(:tr, :id => dom_id(record)) do %>
-  <td><input type="checkbox" /></td>
+  <td class="check-block"><%= check_box_tag dom_id(record, :editable), record.id, false, :name => :editable %></td>
   <td><%= link_to record.send(abstract_model.config.object_label_method), show_path(:id => record.id), :class=>"title" %></td>
   
   <% abstract_model.list.fields.each do |field|%>
