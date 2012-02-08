@@ -21,6 +21,7 @@ p {
 	margin: 0;
 	padding: 0 0 1em 0;
 }
+
 form {
 	padding: 0;
 	margin: 0;
@@ -44,6 +45,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   -webkit-box-shadow: inset 0 1px 3px #d9d9d9;
   box-shadow: inset 0 1px 3px #d9d9d9;
 	outline: none;
+}
+textarea {
+  display: block;
+  margin: 0;
+  padding: 7px 10px;
+  background: #fff;
+  border: solid 1px #c5c5c5;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  color: #616161;
+  font-size: 13px;  	
 }
 input.button {
 	display: block;
@@ -142,10 +154,13 @@ input[disabled].button.gray {
 	margin: 0 auto;
 	padding-top: 160px;
 }
+.wrapper.without-panel {
+	padding-top: 145px;
+}
 .footer {
 	display: block;
 	margin-top: 20px;
-	padding-top: 20px;
+	padding: 20px 0;
 	border-top: solid 1px #ebebeb;
 	text-align: right;
 }
@@ -157,6 +172,7 @@ input[disabled].button.gray {
 	top: 0;
 	padding-bottom: 4px;
 	background: #fff url(/assets/sunrise/top_line_noscroll.png) repeat-x left bottom;
+	z-index: 200;
 }
 .top-wrapper.scroll {
 	background: #fff url(/assets/sunrise/top_line_scroll.png) repeat-x left bottom;
@@ -456,7 +472,6 @@ input[disabled].button.gray {
 	//font-size: 30px;
 }
 
-
 .act-but {
 	display: block;
 	overflow: hidden;
@@ -504,6 +519,11 @@ input[disabled].button.gray {
 	background-position: center top;
 	background-repeat: no-repeat;
 }
+.act-but .but-container.calend {
+	background-image: url(/assets/sunrise/ico_calend.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+}
 .act-but .but-container.edit {
   background-image: url(/assets/sunrise/ico_edit.png);
   background-position: center top;
@@ -527,7 +547,34 @@ input[disabled].button.gray {
 .act-buttons-wrapper .but-holder .act-but {
 	width: 72px;
 }
-
+.padder {
+	margin: 0 0 20px 0;
+}
+	.padder label {
+		display: block;
+		margin-bottom: 3px;
+	}
+	
+.title-switcher {
+	font-size: 17px;
+	margin: 0 20px 15px 20px;
+	height: 23px;
+	float: left;
+	padding-right: 15px;
+	background-image: url(/assets/sunrise/switcher_arrows.png);
+	background-repeat: no-repeat;
+}
+.title-switcher.up  {
+	background-position: top right;
+}
+.title-switcher.down {
+	background-position: bottom right;
+}
+	.title-switcher span {
+		border-bottom: 1px dotted #000;
+		cursor: pointer;
+	}	
+	
 .filter-line-wrapper {
 	display: block;
 	background: #f5f5f5;
@@ -619,7 +666,47 @@ input[disabled].button.gray {
 	margin-top: 15px;
 }
 
+a.close-but {
+	width: 8px;
+	height: 8px;
+	background: url(/assets/sunrise/chosen-sprite.png) no-repeat -50px -2px;
+	display: block;
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}
 
+a.close-but:hover {
+	background-position: -50px -13px;
+}
+
+.dnd-area {
+	border: 1px dashed #ccc;
+	padding: 20px;
+	color: #b1b1b1;
+	height: 130px;
+}
+
+.dnd-area:active {
+	border-color: #d169d9;
+}
+
+.dnd-area:active .dnd-hints span {
+	color: #d169d9;
+}
+
+	.dnd-hints {
+		text-align: center;
+		margin-top: 30px;	
+	}
+		.dnd-hints .button {
+			margin: 0 auto 3px auto;
+			width: 222px;
+		}
+		.dnd-hints span {
+			display: block;
+			font-size: 17px;
+		}
 
 .tabs-holder {
 	display: block;
@@ -653,6 +740,10 @@ input[disabled].button.gray {
 	border-radius: 2px;
 	-moz-border-radius: 2px;
 	margin-bottom: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #616161;	
 }
 .tabs-holder .tabs-item a:hover {
 	background-color: #f3f3f3;
@@ -678,7 +769,11 @@ input[disabled].button.gray {
   border: solid 1px #dbdbdb;
   border-radius: 2px;
   -moz-border-radius: 2px;
-	background-position: center -56px !important;
+  background-position: center -56px !important;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #616161;	
 }
 
 .main-item-list, .main-item-table {
@@ -892,7 +987,6 @@ input[disabled].button.gray {
 	display: block !important;
 }
 
-
 .dark-bg {
 	display: block;
 	position: absolute;
@@ -1020,3 +1114,315 @@ input[disabled].button.gray {
 .sort-wrapper .sort-items-holder .sort-item .date-time {
 	padding-bottom: 10px;
 }
+
+/* relate posts */
+
+.relate-item {
+	display: block;
+	overflow: hidden;
+	float: left;
+	margin: 5px 20px 5px 0;
+	background: #fff;
+	border: solid 1px #ccc;
+	width: 260px;
+	height: 50px;
+	font-size: 11px;	
+	padding: 10px;
+}
+.relate-item:hover {
+  -moz-box-shadow: 0 0 2px #ccc;
+  -webkit-box-shadow: 0 0 2px #ccc;
+  box-shadow: 0 0 2px #ccc;
+}
+.relate-item:active {
+  -moz-box-shadow: 0 0 5px #d2d2d2;
+  -webkit-box-shadow: 0 0 5px #d2d2d2;
+  box-shadow: 0 0 5px #d2d2d2;
+	border: solid 1px #cf63d8;
+}
+.relate-item .rel-inner {
+	position: relative;
+}
+.relate-item .rel-item-mid {
+	display: block;
+	float: right;
+	width: 100%;
+	margin: 0 0 0 -60px;
+	overflow: hidden;
+}
+.relate-item .rel-item-mid .mid-data {
+  display: block;
+  margin: 0 26px 0 60px;
+  overflow: hidden;
+}
+.relate-item .rel-item-left {
+  display: block;
+  float: left;
+  width: 50px;
+  overflow: hidden;
+}
+.relate-item .rel-item-right {
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  top: -10px; right: -10px;
+  width: 36px;
+  height: 70px;
+  overflow: hidden;
+  background: #333 url(/assets/sunrise/ico_del_single.png) no-repeat center center;
+  cursor: pointer;
+}
+.relate-item:hover .rel-item-right {
+   visibility: visible;
+}
+.relate-item .date-time {
+	padding-bottom: 10px;
+	font-size: 11px;	
+}
+
+/* \\\\\relate posts */
+
+.relate-posts {
+	padding: 20px 0px 20px 20px;
+	overflow: hidden;
+	background-color: #f5f5f5;
+	border: 1px solid #dbdbdb;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	margin-bottom: 40px;	
+}
+
+.relate-holder {
+	overflow: hidden;
+}
+
+	.relate-posts .block-title {
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
+
+	.relate-posts .button {
+		margin-top: 15px;
+		clear: both;
+	}
+/* Post edit styles */
+
+.post-edit-holder {
+	background-color: #f5f5f5;
+	border: 1px solid #dbdbdb;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 0 20px 20px 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+/* post edit tabs */
+
+.post-edit-holder .tabs-holder {
+	display: block;
+	overflow: hidden;
+	float: none;
+	padding-right: 15px;
+}
+.post-edit-holder .tabs-holder .tabs-item {
+	display: block;
+	overflow: hidden;
+	height: auto;
+	width: auto;
+	float: left;
+}
+
+.post-edit-holder .tabs-holder .tabs-item a {
+	padding: 6px 10px 0 10px;
+	height: 22px;
+	border-top: none;
+}
+
+.post-edit-holder .tabs-holder .tabs-item:first-child a,
+.post-edit-holder .tabs-holder .tabs-item:first-child span {
+	border-left: 1px solid #DBDBDB;	
+}
+
+.post-edit-holder .tabs-holder .tabs-item a:hover {
+	background-color: #f3f3f3;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+  	-shadow: none;
+  	color: #444;
+}
+.post-edit-holder .tabs-holder .tabs-item a:active {
+  background-color: #fff;
+  color: #8e2a96;
+}
+
+.tabs-holder .tabs-item span {
+  color: #616161;
+  padding: 6px 10px 0 10px;
+  height: 22px;  
+  border-top: none;
+}
+
+/* eof: post edit tabs*/
+
+/* editor column */
+
+.post-edit-holder .wysiwyg-holder {
+	width: 565px;
+	float: left;
+	margin-top: 20px;
+}
+	
+	.post-edit-holder input[type="text"],
+	.post-edit-holder textarea {
+		width: 95%;
+		font-size: 12px !important;
+	}
+	
+.post-edit-holder .padder.post-excerpt textarea {
+	height: 60px;
+}
+
+.post-edit-holder .padder.post-content textarea {
+	height: 360px;
+}
+	
+	.post-edit-holder .grey-but {
+		float: left;
+	}
+	.post-edit-holder .grey-but label {
+		margin: 0;
+	}
+	
+/* date/meta tags column */
+
+.post-edit-holder .post-properties-holder {
+	float: right;
+	margin-top: 40px;
+	width: 300px;	
+}
+
+	.post-edit-holder .post-properties-holder input[type="text"],
+	.post-edit-holder .post-properties-holder textarea {
+		width: 237px;
+	}
+
+.framed-block {
+	overflow: hidden;
+	background-color: #f5f5f5;
+	border: 1px solid #dbdbdb;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-box-shadow: 0px 0px 1px 1px #fff;
+	-moz-box-shadow: 0px 0px 1px 1px #fff;
+	box-shadow: 0px 0px 1px 1px #fff;
+	padding: 15px 0;
+	margin-bottom: 20px;
+}
+
+	.framed-block .padder {
+		margin-left: 20px;
+		margin-right: 20px;
+		clear: both;
+	}
+
+.padder.post-date input.date {
+	width: 190px;
+	float: left;
+}
+
+.padder.post-date .but-holder {
+	width: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+	.padder.post-date .but-holder .but-container {
+		height: 29px;
+	}
+
+.post-edit-holder .calend-holder {
+	margin-bottom: 10px;
+	height: 30px;
+	position: relative;
+}
+
+.post-edit-holder .padder.meta-descr textarea {
+	height: 60px;
+}
+
+.custom-meta {
+	border-top: 1px solid #DBDBDB;
+	border-bottom: 1px solid #DBDBDB;
+	margin: 5px 0 15px 0;
+	box-shadow: 0 0 1px 1px #FFFFFF;
+	padding: 17px 0 12px;
+	position: relative;
+}
+
+.tags-edit {
+	position: relative;
+}
+
+	.tags-container {
+	    background: none repeat scroll 0 0 #FFFFFF;
+	    border: 1px solid #C5C5C5;
+	    border-radius: 2px 2px 2px 2px;
+	    color: #616161;
+	    display: block;
+	    font-size: 13px;
+	    font-weight: bold;
+	    margin: 0;
+	    padding: 5px 2px 3px;
+	    overflow-x: hidden;
+	}
+	
+		.tags-container .grey-but {
+			background: #f3f3f3 url(/assets/sunrise/but_del_tag.png) no-repeat top right;
+			cursor: pointer;
+			height: 20px;
+			line-height: 20px;
+			padding: 0 25px 0 10px;
+			float: left;
+			font-weight: bold;
+			font-size: 11px;
+		}
+		.tags-container .grey-but:hover {
+			background-position: bottom right;
+		}
+		.tags-container input {
+			float: left;
+			width: auto;
+			padding: 4px 0 3px;
+			border: none;
+			font-size: 11px;
+		}
+		.tags-container input:focus {
+			border: none;
+			box-shadow: none;
+		}
+	
+	
+
+.album-chooser {
+	height: 28px;
+	margin-bottom: 15px;
+}
+
+	.album-chooser .chzn-container {
+		float: left;
+	}
+
+	.create-newalbum {
+		display: inline-block;
+		padding-top: 5px;
+		height: 24px;
+		float: left;
+		margin-left: 15px;
+		font-size: 12px;
+	}
+	
+		.create-newalbum a {
+			text-decoration: none;
+			border-bottom: 1px dotted #4f78c2;
+		}
