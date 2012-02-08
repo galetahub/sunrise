@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 def insert_user  
   User.truncate!
   Role.truncate!
