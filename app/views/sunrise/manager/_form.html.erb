@@ -11,3 +11,199 @@
   
   <%= f.button :submit, :url => scoped_index_path %>
 <% end %>
+
+<!-- Блок редактирования поста  -->
+<div class="post-edit-holder">
+	<div class="tabs-holder">
+		<div class="tabs-item"><span>Русский</span></div>
+		<div class="tabs-item"><a href="#">Украинский</a></div>
+		<div class="tabs-item"><a href="#">Английский</a></div>
+	</div>
+<!-- Редактор -->
+	<div class="wysiwyg-holder">
+		<div class="padder post-title">
+			<label>Название</label>
+			<input type="text" value="Компания UDP поддержала Второй Одесский Международный Кинофес" />
+		</div>
+		<div class="padder post-excerpt">
+			<label>Краткое описание</label>
+			<textarea cols="5" rows="3"></textarea>
+		</div>
+		<div class="padder post-content">
+			<label>Содержание</label>
+			<textarea cols="5" rows="7"></textarea>
+		</div>    				
+	</div>
+<!-- дата/статус публикации, мета-теги -->
+	<div class="post-properties-holder">
+		<div class="framed-block">
+		<div class="padder post-date">
+				<label>Дата публикации</label>  					
+				<div class="calend-holder">
+					<input type="text" class="date" value="Wed May 04 21:00:00 UTC 2011" />
+					<div class="but-holder"><div class="act-but"><a class="but-container calend" href="#"><img alt="" src="/assets/sunrise/empty.gif" /></a></div></div>
+				</div>
+			<div class="grey-but"><input id="onhomepage" type="checkbox" /><label for="onhomepage">На главной</label></div>
+			<div class="grey-but"><input id="public" type="checkbox" checked="checked" /><label for="public">Опубликовано</label></div>
+		</div>
+	</div>
+	
+	<div class="framed-block">
+		<div class="title-switcher up"><span>Meta tags</span></div>
+		<div class="padder meta-title">
+				<label>Meta title</label>  	
+			<input type="text" value="" />
+		</div>
+		<div class="padder meta-descr">
+				<label>Meta description</label>  	
+			<textarea cols="2" rows="3"></textarea>
+		</div>
+		<div class="padder meta-keywords">						
+				<label>Meta keywords</label>  	
+			<input type="text" value="" />
+		</div>	
+		
+		<div class="custom-meta">
+			<a href="#" class="close-but"></a>
+			<div class="padder custom-meta-name">
+					<label>Name</label>  	
+				<input type="text" value="" />
+			</div>
+			<div class="padder custom-meta-cont">						
+					<label>Content</label>  	
+				<input type="text" value="" />
+			</div>						
+		</div>
+		<div class="padder">
+			<input type="submit" class="button" value="+Еще тег" />
+		</div>
+	</div>				
+	</div>
+</div>
+<!-- //////Блок редактирования поста  -->
+<!-- Теги  -->
+<div class="tags-edit padder">
+<label>Теги (Не закончено)</label>
+<div class="tags-container">
+	<div class="grey-but">Webdesign</div>
+	<div class="grey-but">Бигуди</div>
+	<div class="grey-but">Дизайн бигудей</div>
+	<input style="padding-left" class="tags-input" type="text" value="Бигу.." />
+</div>
+</div>
+
+<!-- Обложка/Альбом  -->
+<div class="cover-select padder">
+<label>Обложка</label>  	
+<div class="dnd-area">
+	<div class="dnd-hints">
+		<input type="button" class="button gray" value="Выберите файл на компьютере" />
+		или<span>Перетащите фотографию сюда</span>
+	</div>
+</div>		
+</div>
+<div class="album-select padder">
+<label>Альбом</label>
+<div class="album-chooser"> 
+	<select class="chzn-select">
+		<option>Турция 2011</option>
+		<option>Финляндия 2012</option>
+		<option>Франция 2010</option>
+      	</select>
+      	<div class="create-newalbum">Или <a href="#">создать новый альбом</a></div>
+    </div>	
+<div class="dnd-area">
+	<div class="dnd-hints">
+		<input type="button" class="button gray" value="Выберите файл на компьютере" />
+		или<span>Перетащите фотографию сюда</span>
+	</div>
+</div>		
+</div>			
+<!-- Похожие публикации  -->
+<div class="relate-posts">
+<div class="block-title">Похожие публикации</div>
+<div class="relate-holder">
+		
+	  <div class="relate-item">
+        <div class="rel-inner">
+          <div class="rel-item-right"></div>
+          <div class="rel-item-mid">
+            <div class="mid-data">
+              <div class="date-time">
+                <div class="date">18.09.2011</div>
+                <div class="time">16:21</div>
+              </div>
+              <div>Новопечерские Липки» приняли участие в ART-Kyiv сontemporary</div>
+            </div>
+          </div>		          
+          <div class="rel-item-left"><img alt="" src="/assets/sunrise/default_ava_small.png" /></div>
+        </div>
+      </div>
+      
+	  <div class="relate-item">
+        <div class="rel-inner">
+          <div class="rel-item-right"></div>
+          <div class="rel-item-mid">
+            <div class="mid-data">
+              <div class="date-time">
+                <div class="date">18.09.2011</div>
+                <div class="time">16:21</div>
+              </div>
+              <div>Новопечерские Липки» приняли участие в ART-Kyiv сontemporary</div>
+            </div>
+          </div>		          
+          <div class="rel-item-left"><img alt="" src="/assets/sunrise/default_ava_small.png" /></div>
+        </div>
+      </div>	
+      
+      
+	  <div class="relate-item">
+        <div class="rel-inner">
+          <div class="rel-item-right"></div>
+          <div class="rel-item-mid">
+            <div class="mid-data">
+              <div class="date-time">
+                <div class="date">18.09.2011</div>
+                <div class="time">16:21</div>
+              </div>
+              <div>Новопечерские Липки» приняли участие в ART-Kyiv сontemporary</div>
+            </div>
+          </div>		          
+          <div class="rel-item-left"><img alt="" src="/assets/sunrise/default_ava_small.png" /></div>
+        </div>
+      </div>	
+      
+	  <div class="relate-item">
+        <div class="rel-inner">
+          <div class="rel-item-right"></div>
+          <div class="rel-item-mid">
+            <div class="mid-data">
+              <div class="date-time">
+                <div class="date">18.09.2011</div>
+                <div class="time">16:21</div>
+              </div>
+              <div>Новопечерские Липки» приняли участие в ART-Kyiv сontemporary</div>
+            </div>
+          </div>		          
+          <div class="rel-item-left"><img alt="" src="/assets/sunrise/default_ava_small.png" /></div>
+        </div>
+      </div>
+      
+	  <div class="relate-item">
+        <div class="rel-inner">
+          <div class="rel-item-right"></div>
+          <div class="rel-item-mid">
+            <div class="mid-data">
+              <div class="date-time">
+                <div class="date">18.09.2011</div>
+                <div class="time">16:21</div>
+              </div>
+              <div>Новопечерские Липки» приняли участие в ART-Kyiv сontemporary</div>
+            </div>
+          </div>		          
+          <div class="rel-item-left"><img alt="" src="/assets/sunrise/default_ava_small.png" /></div>
+        </div>
+      </div>
+</div>		      		      		      		      			
+<input type="button" value="Добавить публикацию" class="button" />
+</div>  		

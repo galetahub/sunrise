@@ -41,7 +41,7 @@ module Sunrise
       partials << "sunrise/shared/header"
       
       partials.each do |pname|
-        return render(:partial => pname) if view_paths.exists?(pname, [], true)
+        return render(:partial => pname) if lookup_context.exists?(pname, [], true)
       end
       
       return ''
