@@ -31,20 +31,5 @@ module Sunrise
         item.to_s
       end
     end
-    
-    def render_header(options={})
-      action ||= controller.action_name
-    
-      partials = options[:partials] || []
-      partials << "sunrise/#{controller.controller_name}/header_#{action}"
-      partials << "sunrise/#{controller.controller_name}/header"
-      partials << "sunrise/shared/header"
-      
-      partials.each do |pname|
-        return render(:partial => pname) if lookup_context.exists?(pname, [], true)
-      end
-      
-      return ''
-    end
   end
 end
