@@ -30,6 +30,10 @@ module Sunrise
         ActiveRecord::Base.send :include, Sunrise::Utils::Mysql
       end
       
+      ActiveSupport.on_load :action_view do
+        ActionView::Base.send :include, Sunrise::Views::Helper
+      end
+      
       FriendlyId.send :include, Sunrise::Hooks::FriendlyId
     end
     

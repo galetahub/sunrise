@@ -34,6 +34,7 @@ module Sunrise
   module Views
     autoload :FormBuilder, 'sunrise/views/form_builder'
     autoload :SearchWrapper, 'sunrise/views/search_wrapper'
+    autoload :Helper, 'sunrise/views/helper'
   end
   
   module Hooks
