@@ -6,42 +6,43 @@
     
     <!-- Редактор -->
 	  <div class="wysiwyg-holder">
-      <% abstract_model.config.edit.groups[:translate].fields.each do |field| %>
-        <div class="padder post-title">
-          <%= f.input field.name, field.input_options if field.visible?(f.object) %>
+	    <% Sunrise::Config.available_locales.each do |locale| %>
+	      <div class="lang-block lang-<%= locale %>" style="display:none;">
+          <% (abstract_model.config.edit.groups[:translate].try(:fields) || []).each do |field| %>
+            <div class="padder">
+              <%= f.input field.name, field.input_options.merge({:locale => locale}) if field.visible?(f.object) %>
+            </div>
+          <% end -%>
         </div>
       <% end -%>
       
       
       <% abstract_model.config.edit.fields.each do |field| %>
-        <%= f.input field.name, field.input_options if field.visible?(f.object) %>
+        <div class="padder">
+          <%= f.input field.name, field.input_options if field.visible?(f.object) %>
+        </div>
       <% end %>
-      
-		
-			  <label>Название</label>
-			  <input type="text" value="Компания UDP поддержала Второй Одесский Международный Кинофес" />
-		  </div>
-		  <div class="padder post-excerpt">
-			  <label>Краткое описание</label>
-			  <textarea cols="5" rows="3"></textarea>
-		  </div>
-		  <div class="padder post-content">
-			  <label>Содержание</label>
-			  <textarea cols="5" rows="7"></textarea>
-		  </div>    				
+        				
 	  </div>
     <!-- дата/статус публикации, мета-теги -->
 	  <div class="post-properties-holder">
 		  <div class="framed-block">
+		  <% (abstract_model.config.edit.groups[:sidebar].try(:fields) || []).each do |field| %>
+		    <div class="padder">
+		      <%= f.input field.name, field.input_options if field.visible?(f.object) %>
+		    </div>
+		  <% end -%>
+		  
 		  <div class="padder post-date">
-				  <label>Дата публикации</label>  					
-				  <div class="calend-holder">
-					  <input type="text" class="date" value="Wed May 04 21:00:00 UTC 2011" />
-					  <div class="but-holder"><div class="act-but"><a class="but-container calend" href="#"><img alt="" src="/assets/sunrise/empty.gif" /></a></div></div>
-				  </div>
-			  <div class="grey-but"><input id="onhomepage" type="checkbox" /><label for="onhomepage">На главной</label></div>
-			  <div class="grey-but"><input id="public" type="checkbox" checked="checked" /><label for="public">Опубликовано</label></div>
+			  <label>Дата публикации</label>  					
+			  <div class="calend-holder">
+				  <input type="text" class="date" value="Wed May 04 21:00:00 UTC 2011" />
+				  <div class="but-holder"><div class="act-but"><a class="but-container calend" href="#"><img alt="" src="/assets/sunrise/empty.gif" /></a></div></div>
+			  </div>
 		  </div>
+		  
+		  <div class="grey-but"><input id="onhomepage" type="checkbox" /><label for="onhomepage">На главной</label></div>
+			<div class="grey-but"><input id="public" type="checkbox" checked="checked" /><label for="public">Опубликовано</label></div>
 	  </div>
 	
 	  <div class="framed-block">

@@ -14,5 +14,6 @@
 //= require sunrise/jquery.dialog
 //= require sunrise/jquery.tooltip
 //= require sunrise/jquery.ddmenu
+//= require sunrise/jquery.lang-tabs
 //= require sunrise/manage
 //= require ckeditor/ckeditor

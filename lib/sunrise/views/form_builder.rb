@@ -1,5 +1,5 @@
 require 'simple_form'
-#require 'sunrise/views/inputs/date_time_input'
+require 'sunrise/views/date_time_input'
 
 module Sunrise
   module Views

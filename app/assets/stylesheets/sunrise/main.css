@@ -1326,18 +1326,18 @@ a.close-but:hover {
 		clear: both;
 	}
 
-.padder.post-date input.date {
+.padder .date input.date, .padder .datetime input.datetime {
 	width: 190px;
 	float: left;
 }
 
-.padder.post-date .but-holder {
+.padder .but-holder {
 	width: 50px;
 	position: absolute;
 	top: 0;
 	right: 0;
 }
-	.padder.post-date .but-holder .but-container {
+	.padder .but-holder .but-container {
 		height: 29px;
 	}
 

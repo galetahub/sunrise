@@ -9,6 +9,7 @@ class Sunrise
     ($ ".chzn-select").chosen()
     ($ ".ddmenu").ddmenu()
     ($ '[data-editable]').editable()
+    ($ '[data-lang]').lang_tabs()
   
   getParameterByName: (name) ->
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
