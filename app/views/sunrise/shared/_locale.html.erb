@@ -1,14 +1,8 @@
-<% param ||= "s"%>
-<ul class="lang-tabs" id="lang_tab_ul_<%=param%>">
+<div class="tabs-holder" data-current-lang="<%= I18n.locale %>" id="lang-tabs">
   <% Sunrise::Config.available_locales.each do |locale| %>
-    <%= content_tag(:li, :class=>(I18n.locale.to_s == locale.to_s ? 'active' : 'not-active')) do %>
-      <span><%= link_to_function t("manage.locale.#{locale}"), 'TabPanel.click(event)', :class=>locale, :id=>"#{param + locale.to_s}" %></span>
-    <% end %>
-  <% end %>
-</ul>
-
-<div class="tabs-holder">
-	<div class="tabs-item"><span>Русский</span></div>
-	<div class="tabs-item"><a href="#">Украинский</a></div>
-	<div class="tabs-item"><a href="#">Английский</a></div>
+	  <div class="tabs-item lang">
+	    <%= link_to t("manage.locale.#{locale}"), 'javascript:void(0);', :"data-lang" => locale %>
+	    <%= content_tag :span, t("manage.locale.#{locale}"), :style => 'display:none;' %>
+	  </div>
+	<% end -%>
 </div>
