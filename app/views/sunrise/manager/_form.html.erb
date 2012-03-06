@@ -8,73 +8,49 @@
 	  <div class="wysiwyg-holder">
 	    <% Sunrise::Config.available_locales.each do |locale| %>
 	      <div class="lang-block lang-<%= locale %>" style="display:none;">
-          <% (abstract_model.config.edit.groups[:translate].try(:fields) || []).each do |field| %>
-            <div class="padder">
-              <%= f.input field.name, field.input_options.merge({:locale => locale}) if field.visible?(f.object) %>
-            </div>
-          <% end -%>
+	        <%= render :partial => 'field', :collection => (abstract_model.config.edit.groups[:translate].try(:fields) || []), :locals => {:options => {:locale => locale}, :form => f} %>
         </div>
       <% end -%>
       
-      
-      <% abstract_model.config.edit.fields.each do |field| %>
-        <div class="padder">
-          <%= f.input field.name, field.input_options if field.visible?(f.object) %>
-        </div>
-      <% end %>
+      <%= render :partial => 'field', :collection => abstract_model.config.edit.fields, :locals => {:form => f} %>
         				
 	  </div>
     <!-- дата/статус публикации, мета-теги -->
 	  <div class="post-properties-holder">
 		  <div class="framed-block">
-		  <% (abstract_model.config.edit.groups[:sidebar].try(:fields) || []).each do |field| %>
-		    <div class="padder">
-		      <%= f.input field.name, field.input_options if field.visible?(f.object) %>
-		    </div>
-		  <% end -%>
-		  
-		  <div class="padder post-date">
-			  <label>Дата публикации</label>  					
-			  <div class="calend-holder">
-				  <input type="text" class="date" value="Wed May 04 21:00:00 UTC 2011" />
-				  <div class="but-holder"><div class="act-but"><a class="but-container calend" href="#"><img alt="" src="/assets/sunrise/empty.gif" /></a></div></div>
-			  </div>
-		  </div>
-		  
-		  <div class="grey-but"><input id="onhomepage" type="checkbox" /><label for="onhomepage">На главной</label></div>
-			<div class="grey-but"><input id="public" type="checkbox" checked="checked" /><label for="public">Опубликовано</label></div>
-	  </div>
+		    <%= render :partial => 'field', :collection => (abstract_model.config.edit.groups[:sidebar].try(:fields) || []), :locals => {:form => f} %>
+	    </div>
 	
-	  <div class="framed-block">
-		  <div class="title-switcher up"><span>Meta tags</span></div>
-		  <div class="padder meta-title">
-				  <label>Meta title</label>  	
-			  <input type="text" value="" />
-		  </div>
-		  <div class="padder meta-descr">
-				  <label>Meta description</label>  	
-			  <textarea cols="2" rows="3"></textarea>
-		  </div>
-		  <div class="padder meta-keywords">						
-				  <label>Meta keywords</label>  	
-			  <input type="text" value="" />
-		  </div>	
+	    <div class="framed-block">
+		    <div class="title-switcher up"><span>Meta tags</span></div>
+		    <div class="padder meta-title">
+				    <label>Meta title</label>  	
+			    <input type="text" value="" />
+		    </div>
+		    <div class="padder meta-descr">
+				    <label>Meta description</label>  	
+			    <textarea cols="2" rows="3"></textarea>
+		    </div>
+		    <div class="padder meta-keywords">						
+				    <label>Meta keywords</label>  	
+			    <input type="text" value="" />
+		    </div>	
 		
-		  <div class="custom-meta">
-			  <a href="#" class="close-but"></a>
-			  <div class="padder custom-meta-name">
-					  <label>Name</label>  	
-				  <input type="text" value="" />
-			  </div>
-			  <div class="padder custom-meta-cont">						
-					  <label>Content</label>  	
-				  <input type="text" value="" />
-			  </div>						
-		  </div>
-		  <div class="padder">
-			  <input type="submit" class="button" value="+Еще тег" />
-		  </div>
-	  </div>				
+		    <div class="custom-meta">
+			    <a href="#" class="close-but"></a>
+			    <div class="padder custom-meta-name">
+					    <label>Name</label>  	
+				    <input type="text" value="" />
+			    </div>
+			    <div class="padder custom-meta-cont">						
+					    <label>Content</label>  	
+				    <input type="text" value="" />
+			    </div>						
+		    </div>
+		    <div class="padder">
+			    <input type="submit" class="button" value="+Еще тег" />
+		    </div>
+	    </div>				
 	  </div>
   </div>
   <!-- //////Блок редактирования поста  -->
