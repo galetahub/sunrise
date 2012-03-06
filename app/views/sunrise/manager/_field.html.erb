@@ -1,0 +1,4 @@
+<% options ||= {} %>
+<%= content_tag :div, :class =>  "padder #{'grey-but' if field.input_options[:boolean]}" do %>
+  <%= form.input field.name, field.input_options.merge(options) if field.visible?(form.object) %>
+<% end -%>

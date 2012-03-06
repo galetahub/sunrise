@@ -1,0 +1,31 @@
+<%= content_tag(:div, :id => dom_id(record), :class => "main-item") do %>
+  <div class="check-block"><input type="checkbox" /></div>
+  <div class="img-block"> <%= image_tag 'sunrise/default_ava.png' %> </div>
+  <div class="data-block">
+    <div class="top-info-bl">
+      <%= manage_date_tag(record.created_at)%>
+      <!--<a href="#" class="grey-but">Активировать</a>-->
+    </div>
+    <%= link_to record.send(abstract_model.config.object_label_method), structure_path(record), :class=>"item-title" %>
+    
+		<div class="bot-info-bl">
+		  
+		  <% abstract_model.list.fields.each do |field|%>
+			<div class="info-item">
+				<b><%= field.human_name %></b> <%= render_field(field, record)%>
+			</div>
+			<% end -%>
+
+		</div>
+  </div>
+  <div class="but-block" style="display: none">
+    <div class="act-but">
+      <%= link_to image_tag('sunrise/empty.gif'), delete_path(abstract_model.parent_hash.merge(:id => record.id)), 
+          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"but-container del", :id => dom_id(record, :delete) if can?(:delete, record) %>
+    </div>
+    
+    <div class="act-but">
+      <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class=>"but-container edit", :id => dom_id(record, :edit) if can?(:edit, record) %>
+    </div>
+  </div>
+<% end -%>  

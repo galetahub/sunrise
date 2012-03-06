@@ -3,7 +3,7 @@
 	  <div class="struct-name"><%= t('manage.add')%></div>
 	
 	  <div class="vline-block">
-		  <input type="submit" value="Сохранить" class="button" />
+	    <%= submit_tag t('manage.create'), :url => scoped_index_path, :class => "button" %>
 		  <input type="submit" value="Отмена" class="button gray" />
 	  </div>
   </div>

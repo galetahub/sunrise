@@ -5,6 +5,7 @@ require 'sunrise/config/edit'
 require 'sunrise/config/association'
 require 'sunrise/config/export'
 require 'sunrise/config/show'
+require 'sunrise/config/helpers'
 
 module Sunrise
   module Config
@@ -38,6 +39,12 @@ module Sunrise
       
       def associations
         @associations ||= @sections.select { |key, valur| key.to_s.include?('association_') }.values
+      end
+      
+      def helpers(&block)
+        @sections[:helpers] ||= Helpers.new abstract_model, self
+        @sections[:helpers].instance_eval &block if block
+        @sections[:helpers]
       end
       
       # Register accessors for all the sections in this namespace
