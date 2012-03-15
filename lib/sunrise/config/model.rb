@@ -12,6 +12,9 @@ module Sunrise
     class Model < Base
       attr_reader :sections
       
+      class_attribute :_helpers
+      self._helpers = Module.new
+      
       def initialize(abstract_model, parent = nil, options = nil)
         super
         @sections ||= {}
@@ -33,6 +36,10 @@ module Sunrise
         Config.default_list_view
       end
       
+      register_instance_option(:available_list_view) do
+        Config.available_list_view
+      end
+      
       register_instance_option(:sort_column) do
         Config.sort_column
       end
@@ -42,9 +49,8 @@ module Sunrise
       end
       
       def helpers(&block)
-        @sections[:helpers] ||= Helpers.new abstract_model, self
-        @sections[:helpers].instance_eval &block if block
-        @sections[:helpers]
+        self.class._helpers.module_eval &block if block
+        self.class._helpers
       end
       
       # Register accessors for all the sections in this namespace
