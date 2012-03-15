@@ -18,6 +18,9 @@ module Sunrise
     mattr_accessor :default_list_view
     @@default_list_view = 'thumbs'
     
+    mattr_accessor :available_list_view
+    @@available_list_view = [:list, :thumbs, :table]
+    
     # Defailt list template view
     mattr_accessor :sort_column
     @@sort_column = 'sort_order'

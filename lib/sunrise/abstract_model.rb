@@ -44,7 +44,7 @@ module Sunrise
       end
     end
     
-    attr_accessor :model_name, :current_list, :sort_column, :scoped_path
+    attr_accessor :model_name, :current_list, :sort_column, :scoped_path, :available_list_view
         
     delegate :config, :model, :to => 'self.class'
     delegate :label, :to => 'self.class.config'
@@ -53,6 +53,7 @@ module Sunrise
     def initialize(params = {})
       @model_name = model.model_name
       @current_list = config.default_list_view
+      @available_list_view = config.available_list_view
       @sort_column = config.sort_column
       @scoped_path = @model_name.plural
       @request_params = params
