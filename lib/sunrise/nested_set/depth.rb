@@ -33,17 +33,15 @@ module Sunrise
           end
       end
       
-      module InstanceMethods
         
-        # Check is model has depth column
-        def depth?
-          self.class.depth?
-        end
+      # Check is model has depth column
+      def depth?
+        self.class.depth?
+      end
 
-        # Update cached_level attribute
-        def update_depth
-          update_attribute(:depth, level)
-        end
+      # Update cached_level attribute
+      def update_depth
+        update_attribute(:depth, level)
       end
     end
   end

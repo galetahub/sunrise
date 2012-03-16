@@ -39,7 +39,7 @@ module Sunrise
     
     initializer "sunrise.awesome_nested_set" do
       CollectiveIdea::Acts::NestedSet::Model.send :include, Sunrise::NestedSet::Depth
-      CollectiveIdea::Acts::NestedSet::Model::InstanceMethods.send :include, Sunrise::NestedSet::Descendants
+      CollectiveIdea::Acts::NestedSet::Model.send :include, Sunrise::NestedSet::Descendants
     end
     
     initializer "sunrise.acts_as_audited" do

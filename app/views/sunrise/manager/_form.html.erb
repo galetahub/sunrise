@@ -13,6 +13,10 @@
       <% end -%>
       
       <%= render :partial => 'field', :collection => abstract_model.config.edit.fields, :locals => {:form => f} %>
+      
+      <%#= f.association :sidebar_banners, :as => :check_boxes%>
+      
+      <%= render :partial => 'association', :collection => (abstract_model.config.edit.groups[:associations].try(:fields) || []), :locals => {:form => f} %>
         				
 	  </div>
     <!-- дата/статус публикации, мета-теги -->
@@ -55,6 +59,7 @@
   </div>
   <!-- //////Блок редактирования поста  -->
   <!-- Теги  -->
+  <%= render :partial => 'association', :collection => (abstract_model.config.edit.groups[:associations].try(:fields) || []), :locals => {:form => f, :options => {:multiple => true} } %>
   <div class="tags-edit padder">
   <label>Теги (Не закончено)</label>
   <div class="tags-container">
