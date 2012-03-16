@@ -1,6 +1,8 @@
 module Sunrise
   module NestedSet
     module Descendants
+      extend ActiveSupport::Concern
+      
       # Returns the number of nested children of this object.
       def descendants_count
         return (right - left - 1)/2

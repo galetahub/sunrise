@@ -2,35 +2,31 @@
 module Sunrise
   module Models
     module Structure
-      def self.included(base)
-        base.send :include, InstanceMethods
-        base.send :extend,  ClassMethods
+      extend ActiveSupport::Concern
+      
+      included do
+        include Utils::Header
+        include ::PageParts::ActiveRecordExtension
+        
+        enumerated_attribute :structure_type, :id_attribute => :kind
+        enumerated_attribute :position_type, :id_attribute => :position
+        
+        validates_presence_of :title
+        validates_numericality_of :position, :only_integer => true
+        
+        acts_as_nested_set
+        set_callback :move, :after, :update_depth
+        
+        extend ::FriendlyId
+        friendly_id :title, :use => [:slugged, :static]
+        
+        scope :visible, where(:is_visible => true)
+        scope :with_kind, proc {|structure_type| where(:kind => structure_type.id) }
+        scope :with_depth, proc {|level| where(:depth => level.to_i) }
+        scope :with_position, proc {|position_type| where(:position => position_type.id) }
       end
       
       module ClassMethods
-        def self.extended(base)
-          base.send(:include, Utils::Header)
-          base.send(:include, ::PageParts::ActiveRecordExtension)
-          base.class_eval do
-            enumerated_attribute :structure_type, :id_attribute => :kind
-            enumerated_attribute :position_type, :id_attribute => :position
-            
-            validates_presence_of :title
-            validates_numericality_of :position, :only_integer => true
-            
-            acts_as_nested_set
-            set_callback :move, :after, :update_depth
-            
-            extend ::FriendlyId
-            friendly_id :title, :use => [:slugged, :static]
-            
-            scope :visible, where(:is_visible => true)
-            scope :with_kind, proc {|structure_type| where(:kind => structure_type.id) }
-            scope :with_depth, proc {|level| where(:depth => level.to_i) }
-            scope :with_position, proc {|position_type| where(:position => position_type.id) }
-          end
-        end
-        
         def nested_set_options(mover = nil)
           result = []
           
@@ -45,10 +41,8 @@ module Sunrise
         end
       end
       
-      module InstanceMethods
-        def moveable?
-          new_record? || !root?
-        end
+      def moveable?
+        new_record? || !root?
       end
     end
   end
