@@ -35,12 +35,7 @@ module Sunrise
       end
       
       FriendlyId.send :include, Sunrise::Hooks::FriendlyId
-    end
-    
-    initializer "sunrise.awesome_nested_set" do
-      CollectiveIdea::Acts::NestedSet::Model.send :include, Sunrise::NestedSet::Depth
-      CollectiveIdea::Acts::NestedSet::Model.send :include, Sunrise::NestedSet::Descendants
-    end
+    end 
     
     initializer "sunrise.acts_as_audited" do
       ::Audit.send :include, Sunrise::Hooks::Kaminari
