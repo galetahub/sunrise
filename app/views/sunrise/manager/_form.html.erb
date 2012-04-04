@@ -60,15 +60,7 @@
   <!-- //////Блок редактирования поста  -->
   <!-- Теги  -->
   <%= render :partial => 'association', :collection => (abstract_model.config.edit.groups[:associations].try(:fields) || []), :locals => {:form => f, :options => {:multiple => true} } %>
-  <div class="tags-edit padder">
-  <label>Теги (Не закончено)</label>
-  <div class="tags-container">
-	  <div class="grey-but">Webdesign</div>
-	  <div class="grey-but">Бигуди</div>
-	  <div class="grey-but">Дизайн бигудей</div>
-	  <input style="padding-left" class="tags-input" type="text" value="Бигу.." />
-  </div>
-  </div>
+
 
   <!-- Обложка/Альбом  -->
   <div class="cover-select padder">

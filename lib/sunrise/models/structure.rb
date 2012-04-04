@@ -15,7 +15,6 @@ module Sunrise
         validates_numericality_of :position, :only_integer => true
         
         acts_as_nested_set
-        set_callback :move, :after, :update_depth
         
         extend ::FriendlyId
         friendly_id :title, :use => [:slugged, :static]

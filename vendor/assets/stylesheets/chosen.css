@@ -120,6 +120,7 @@
 }
 
 /* @group Multi Chosen */
+
 .chzn-container-multi .chzn-choices {
   background-color: #fff;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
@@ -137,6 +138,7 @@
   height: auto !important;
   height: 1%;
   position: relative;
+  width: 928px;
 }
 .chzn-container-multi .chzn-choices li {
   float: left;
