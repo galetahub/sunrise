@@ -10,6 +10,8 @@ class Sunrise
     ($ ".ddmenu").ddmenu()
     ($ '[data-editable]').editable()
     ($ '[data-lang]').lang_tabs()
+    
+    this.init_submit_buttons()
   
   getParameterByName: (name) ->
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
@@ -18,6 +20,14 @@ class Sunrise
   init_sort_select: ->
     $("#sort").bind 'change', (evt) ->
       this.form.submit()
+      
+  init_submit_buttons: ->
+    $('#cancel-submit-form-button').bind 'click', (evt) ->
+      window.history.back()
+    
+    $('#submit-form-button').bind 'click', (evt) ->
+      $('form:first').submit()
+    
 
   # Store params: page, per, sort and view for current namespace
   storeQuery: () ->

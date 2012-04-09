@@ -25,7 +25,7 @@
 		    <%= render :partial => 'field', :collection => (abstract_model.config.edit.groups[:sidebar].try(:fields) || []), :locals => {:form => f} %>
 	    </div>
 	
-	    <div class="framed-block">
+	    <!--<div class="framed-block">
 		    <div class="title-switcher up"><span>Meta tags</span></div>
 		    <div class="padder meta-title">
 				    <label>Meta title</label>  	
@@ -54,7 +54,8 @@
 		    <div class="padder">
 			    <input type="submit" class="button" value="+Еще тег" />
 		    </div>
-	    </div>				
+	    </div>-->		
+	    	
 	  </div>
   </div>
   <!-- //////Блок редактирования поста  -->
@@ -63,7 +64,7 @@
 
 
   <!-- Обложка/Альбом  -->
-  <div class="cover-select padder">
+  <!--<div class="cover-select padder">
   <label>Обложка</label>  	
   <div class="dnd-area">
 	  <div class="dnd-hints">
@@ -88,11 +89,13 @@
 		  или<span>Перетащите фотографию сюда</span>
 	  </div>
   </div>		
-  </div>			
+  </div>-->			
+  
+  
   <!-- Похожие публикации  -->
-  <div class="relate-posts">
-  <div class="block-title">Похожие публикации</div>
-  <div class="relate-holder">
+  <!--<div class="relate-posts">
+    <div class="block-title">Похожие публикации</div>
+    <div class="relate-holder">
 		
 	    <div class="relate-item">
           <div class="rel-inner">
@@ -176,5 +179,5 @@
         </div>
     </div>		      		      		      		      			
   <input type="button" value="Добавить публикацию" class="button" />
-  </div>  		
+  </div>-->  		
 <% end %>
