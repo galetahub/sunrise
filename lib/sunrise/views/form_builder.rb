@@ -81,7 +81,7 @@ module Sunrise
           :asset_klass => params[:klass]
         }
         
-        template.render(:partial => "manage/fileupload/container", :locals => locals)
+        template.render(:partial => "sunrise/manager/fileupload/container", :locals => locals)
       end
       
       protected
