@@ -61,18 +61,18 @@
   <!-- //////Блок редактирования поста  -->
   <!-- Теги  -->
   <%= render :partial => 'association', :collection => (abstract_model.config.edit.groups[:associations].try(:fields) || []), :locals => {:form => f, :options => {:multiple => true} } %>
+  
+  
+  <% unless abstract_model.config.edit.groups[:attachments].blank? %>
+    <% abstract_model.config.edit.groups[:attachments].fields.each do |field| %>
+      <%= f.attach_file_field field.name.to_sym, field.input_options %>
+    <% end -%>
+    
+    <%= f.hidden_field :fileupload_guid if f.object.new_record? %>
+  <% end -%>  
 
 
-  <!-- Обложка/Альбом  -->
-  <!--<div class="cover-select padder">
-  <label>Обложка</label>  	
-  <div class="dnd-area">
-	  <div class="dnd-hints">
-		  <input type="button" class="button gray" value="Выберите файл на компьютере" />
-		  или<span>Перетащите фотографию сюда</span>
-	  </div>
-  </div>		
-  </div>
+ <!--
   <div class="album-select padder">
   <label>Альбом</label>
   <div class="album-chooser"> 
