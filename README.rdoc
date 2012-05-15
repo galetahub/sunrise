@@ -6,7 +6,7 @@ Aimbulance mini content management system for programmers.
 
 Create new project
 
-  rails new [PROJECT_NAME] -m https://gist.github.com/1523718.txt
+  rails new [PROJECT_NAME] -d mysql -T -m https://gist.github.com/1523718.txt
 
 
 == Export data
