@@ -13,34 +13,33 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "sunrise-cms"
   s.homepage = "https://github.com/galetahub/sunrise"
   
-  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "VERSION", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc", "CHANGELOG.rdoc"]
   s.test_files = Dir["{spec}/**/*"]
-  s.extra_rdoc_files = ["README.rdoc"]
+  s.extra_rdoc_files = ["README.rdoc", "CHANGELOG.rdoc"]
   s.require_paths = ["lib"]
   
   s.add_runtime_dependency("rails", "~> 3.2.0")
-  s.add_runtime_dependency("sunrise-file-upload", "~> 0.2.0")
   s.add_runtime_dependency("kaminari", "~> 0.13.0")
-  s.add_runtime_dependency("simple_form", "~> 1.5.2")
-  s.add_runtime_dependency("jbuilder", "~> 0.3.2")
+  s.add_runtime_dependency("simple_form", "~> 2.0.2")
+  s.add_runtime_dependency("jbuilder", "~> 0.4.0")
   
-  s.add_runtime_dependency("awesome_nested_set", "~> 2.1.2")
-  s.add_runtime_dependency("mime-types", "~> 1.17.2")
+  s.add_runtime_dependency("awesome_nested_set", "~> 2.1.3")
+  s.add_runtime_dependency("mime-types", "~> 1.18")
   s.add_runtime_dependency("mini_magick", "~> 3.4")
-  s.add_runtime_dependency("carrierwave", "~> 0.5.8")
+  s.add_runtime_dependency("carrierwave", "~> 0.6.2")
   s.add_runtime_dependency("cancan", "~> 1.6.7")
   s.add_runtime_dependency("cancan_namespace", "~> 0.1.3")
-  s.add_runtime_dependency("friendly_id", "~> 4.0.0")
-  s.add_runtime_dependency("galetahub-enum_field", "~> 0.1.4")
-  s.add_runtime_dependency("acts_as_audited", "~> 2.0.0")
+  s.add_runtime_dependency("friendly_id", "~> 4.0.5")
+  s.add_runtime_dependency("galetahub-enum_field", "~> 0.2.0")
+  s.add_runtime_dependency("acts_as_audited", "~> 2.1.0")
   s.add_runtime_dependency("page_parts", "~> 0.0.3")
   s.add_runtime_dependency("meta_manager", "~> 0.0.5")
   s.add_runtime_dependency("progressbar", "~> 0.11.0")
   
-  s.add_development_dependency("rspec-rails", "~> 2.7.0")
-  s.add_development_dependency("generator_spec", "~> 0.8.4")
+  s.add_development_dependency("rspec-rails", "~> 2.10.1")
+  s.add_development_dependency("generator_spec", "~> 0.8.5")
   s.add_development_dependency("mysql2", "~> 0.3.11")
   s.add_development_dependency("database_cleaner", ">= 0")
-  s.add_development_dependency("factory_girl", "~> 2.3.2")
+  s.add_development_dependency("factory_girl", "~> 3.3.0")
   s.add_development_dependency("capybara", "~> 1.1.2")
 end
