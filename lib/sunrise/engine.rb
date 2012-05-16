@@ -12,9 +12,6 @@ require 'page_parts'
 require 'meta_manager'
 require 'jbuilder'
 
-require 'sunrise-cms'
-require 'sunrise-file-upload'
-
 module Sunrise
   class Engine < ::Rails::Engine
     engine_name "sunrise"

@@ -1,6 +1,8 @@
 # encoding: utf-8
 module Sunrise
   module Models
+    include EnumField::DefineEnum
+    
     class StructureType
       def initialize(value)
         @kind = value
