@@ -1,4 +1,4 @@
-class SunriseCreateRoles < ActiveRecord::Migration
+class CreateRoles < ActiveRecord::Migration
   def self.up
     create_table :roles do |t|
       t.integer :role_type, :limit => 1, :default => 0
