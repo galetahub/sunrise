@@ -27,7 +27,7 @@ describe "Sunrise Manager Export" do
         
         headers["Content-Transfer-Encoding"].should == "binary"
         headers["Content-Type"].should == "application/vnd.ms-excel"
-        headers["Content-Disposition"].should == "attachment; filename=\"users_2012-01-01_16h00m00.xlsx\""
+        headers["Content-Disposition"].should == "attachment; filename=\"users_2012-01-01_16h00m00.xls\""
       end
     end
     
@@ -87,7 +87,7 @@ describe "Sunrise Manager Export" do
         
         headers["Content-Transfer-Encoding"].should == "binary"
         headers["Content-Type"].should == "application/vnd.ms-excel"
-        headers["Content-Disposition"].should == "attachment; filename=\"structures_2012-01-01_16h00m00.xlsx\""
+        headers["Content-Disposition"].should == "attachment; filename=\"structures_2012-01-01_16h00m00.xls\""
       end
     end
     

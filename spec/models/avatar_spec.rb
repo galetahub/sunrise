@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Avatar do
   before(:all) do
-    @avatar = Factory.build(:asset_avatar)
+    @avatar = FactoryGirl.build(:asset_avatar)
   end
   
   it "should create a new instance given valid attributes" do
@@ -22,7 +22,7 @@ describe Avatar do
     end
     
     it "should not be valid with big size image" do
-      @avatar = Factory.build(:asset_avatar_big)
+      @avatar = FactoryGirl.build(:asset_avatar_big)
       @avatar.should_not be_valid
       @avatar.errors[:data].first.should =~ /is\stoo\sbig/
     end
@@ -30,7 +30,7 @@ describe Avatar do
   
   context "after create" do
     before(:each) do
-      @avatar = Factory.create(:asset_avatar)
+      @avatar = FactoryGirl.create(:asset_avatar)
     end
     
     it "filename should be valid" do
@@ -69,7 +69,7 @@ describe Avatar do
   
   context "cropping" do
     before(:each) do
-      @avatar = Factory.create(:asset_avatar)
+      @avatar = FactoryGirl.create(:asset_avatar)
       @avatar.cropper_geometry = "50,64,10,10"
     end
     
@@ -99,7 +99,7 @@ describe Avatar do
   
   context "rotate" do
     before(:each) do
-      @avatar = Factory.create(:asset_avatar)
+      @avatar = FactoryGirl.create(:asset_avatar)
       @avatar.rotate_degrees = "-90"
     end
     

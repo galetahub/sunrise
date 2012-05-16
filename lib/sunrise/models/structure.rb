@@ -43,6 +43,10 @@ module Sunrise
       def moveable?
         new_record? || !root?
       end
+      
+      def descendants_count
+        (right - left - 1) / 2
+      end
     end
   end
 end

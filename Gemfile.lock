@@ -19,6 +19,11 @@ PATH
       rails (~> 3.2.0)
       simple_form (~> 2.0.2)
 
+PATH
+  remote: /var/www/gems/rails-uploader
+  specs:
+    rails-uploader (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -86,6 +91,8 @@ GEM
       orm_adapter (~> 0.0.7)
       railties (~> 3.1)
       warden (~> 1.1.1)
+    devise-encryptable (0.1.1)
+      devise (>= 2.1.0.rc)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.3.2)
@@ -226,6 +233,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise
+  devise-encryptable (~> 0.1.1)
   factory_girl (~> 3.3.0)
   fuubar
   generator_spec (~> 0.8.5)
@@ -233,6 +241,7 @@ DEPENDENCIES
   launchy
   mini_magick
   mysql2 (~> 0.3.11)
+  rails-uploader!
   rspec-rails (~> 2.10.1)
   ruby-progressbar
   ruby2xlsx (~> 0.0.1)

@@ -1,11 +1,12 @@
+# encoding: utf-8
 FactoryGirl.define do
   factory :admin_user, :class => User do
     name 'Admin'
-    email { Factory.next(:email) }
+    email { FactoryGirl.generate(:email) }
     password               'password'
     password_confirmation  'password'
     
-    after_build do |u| 
+    after(:build) do |u| 
       u.roles.build(:role_type => RoleType.admin)
       u.skip_confirmation!
     end
@@ -13,11 +14,11 @@ FactoryGirl.define do
 
   factory :redactor_user, :class => User do
     name 'Redactor'
-    email 
+    email { FactoryGirl.generate(:email) }
     password               'password'
     password_confirmation  'password'
     
-    after_build do |u| 
+    after(:build) do |u| 
       u.roles.build(:role_type => RoleType.redactor)
       u.skip_confirmation!
     end
@@ -25,11 +26,11 @@ FactoryGirl.define do
 
   factory :default_user, :class => User do
     name 'Test'
-    email 
+    email { FactoryGirl.generate(:email) }
     password               'password'
     password_confirmation  'password'
     
-    after_build do |u| 
+    after(:build) do |u| 
       u.roles.build(:role_type => RoleType.default)
       u.skip_confirmation!
     end
@@ -37,7 +38,7 @@ FactoryGirl.define do
 
   factory :user, :class => User do
     name 'Test'
-    email 
+    email { FactoryGirl.generate(:email) }
     password               'password'
     password_confirmation  'password'
   end
