@@ -1,4 +1,4 @@
-class SunriseCreateHeaders < ActiveRecord::Migration
+class CreateHeaders < ActiveRecord::Migration
   def self.up
     create_table :headers do |t|
       t.string    :title

@@ -1,4 +1,4 @@
-class SunriseCreateStructures < ActiveRecord::Migration
+class CreateStructures < ActiveRecord::Migration
   def self.up
     create_table :structures do |t|
       t.string    :title, :null => false
