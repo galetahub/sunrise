@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :admin_user, :class => User do |user|
     user.name 'Admin'
-    user.email { Factory.next(:email) }
+    user.email { FactoryGirl.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
     
-    user.after_build do |u| 
+    user.after(:build) do |u| 
       u.roles.build(:role_type => RoleType.admin)
       u.skip_confirmation!
     end
@@ -13,11 +13,11 @@ FactoryGirl.define do
 
   factory :redactor_user, :class => User do |user|
     user.name 'Redactor'
-    user.email { Factory.next(:email) }
+    user.email { FactoryGirl.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
     
-    user.after_build do |u| 
+    user.after(:build) do |u| 
       u.roles.build(:role_type => RoleType.redactor)
       u.skip_confirmation!
     end
@@ -25,11 +25,11 @@ FactoryGirl.define do
 
   factory :moderator_user, :class => User do |user|
     user.name 'Redactor'
-    user.email { Factory.next(:email) }
+    user.email { FactoryGirl.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
     
-    user.after_build do |u| 
+    user.after(:build) do |u| 
       u.roles.build(:role_type => RoleType.moderator)
       u.skip_confirmation!
     end
@@ -37,11 +37,11 @@ FactoryGirl.define do
 
   factory :default_user, :class => User do |user|
     user.name 'Test'
-    user.email { Factory.next(:email) }
+    user.email { FactoryGirl.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
     
-    user.after_build do |u| 
+    user.after(:build) do |u| 
       u.roles.build(:role_type => RoleType.default)
       u.skip_confirmation!
     end
@@ -49,7 +49,7 @@ FactoryGirl.define do
 
   factory :user, :class => User do |user|
     user.name 'Test'
-    user.email { Factory.next(:email) }
+    user.email { FactoryGirl.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
   end

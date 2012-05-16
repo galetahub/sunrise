@@ -2,7 +2,7 @@
 FactoryGirl.define do
   factory :structure_page, :class => Structure do
     title 'Structure'
-    slug { Factory.next(:slug) }
+    slug { FactoryGirl.generate(:slug) }
     structure_type StructureType.page
     position_type PositionType.menu
     is_visible true
