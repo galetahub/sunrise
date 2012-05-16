@@ -5,8 +5,6 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-#gem "page_parts", :path => '/var/www/gems/cms/page_parts'
-
 # jquery-rails is used by the dummy application
 gem "jquery-rails", "~> 2.0.0"
 gem 'devise'

@@ -2,6 +2,8 @@
 module Sunrise
   module Models
     class RoleType
+      include EnumField::DefineEnum
+      
       def initialize(code)
         @code = code.to_sym
       end
