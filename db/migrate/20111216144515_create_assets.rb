@@ -20,8 +20,8 @@ class SunriseCreateAssets < ActiveRecord::Migration
     end
     
     add_index "assets", ["assetable_type", "type", "assetable_id"]
-		add_index "assets", ["assetable_type", "assetable_id"]
 		add_index "assets", ["user_id"]
+		add_index "assets", ["guid"]
   end
 
   def self.down

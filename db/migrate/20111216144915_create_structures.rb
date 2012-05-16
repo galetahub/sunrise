@@ -16,7 +16,7 @@ class SunriseCreateStructures < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :structures, [:kind, :slug], :uniq => true
+    add_index :structures, [:kind, :slug], :unique => true
     add_index :structures, :parent_id
     add_index :structures, [:lft, :rgt]
   end
