@@ -11,7 +11,7 @@ class SunriseCreateHeaders < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :headers, [:headerable_type, :headerable_id], :uniq => true
+    add_index :headers, [:headerable_type, :headerable_id], :unique => true
   end
 
   def self.down
