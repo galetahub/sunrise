@@ -1,4 +1,6 @@
 # encoding: utf-8
+require "csv"
+
 module Sunrise
   module Models
     module User
@@ -26,7 +28,7 @@ module Sunrise
           options = { :columns => [:id, :email, :name, :current_sign_in_ip] }.merge(options)
           query = unscoped.order("#{quoted_table_name}.id ASC").select(options[:columns])
         
-          CSV.generate do |csv|
+          ::CSV.generate do |csv|
             csv << options[:columns]
             
             query.find_in_batches do |group|

@@ -3,8 +3,8 @@ require 'spec_helper'
 
 describe Structure do
   before(:all) do
-    @root = Factory.create(:structure_main)
-    @structure = Factory.build(:structure_page, :parent => @root)
+    @root = FactoryGirl.create(:structure_main)
+    @structure = FactoryGirl.build(:structure_page, :parent => @root)
   end
   
   it "should create a new instance given valid attributes" do
@@ -49,7 +49,7 @@ describe Structure do
     end
     
     it 'should calc depth column' do
-      st = Factory.build(:structure_page, :parent => nil)
+      st = FactoryGirl.build(:structure_page, :parent => nil)
       st.parent_id = @structure.id
       st.save
       
@@ -63,7 +63,7 @@ describe Structure do
   
   context "friendly_id" do
     before(:all) do
-      @structure = Factory.build(:structure_page, :title => 'Bla bla bla', :parent => @root)
+      @structure = FactoryGirl.build(:structure_page, :title => 'Bla bla bla', :parent => @root)
       
       @structure.should be_new_record
       @structure.title = 'Some super title'
