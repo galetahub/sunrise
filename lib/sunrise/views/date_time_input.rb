@@ -1,3 +1,5 @@
+require 'simple_form'
+
 module SimpleForm
   module Inputs
     class DateTimeInput < Base

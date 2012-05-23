@@ -7,8 +7,8 @@ module Sunrise
       #
       # If group with given name does not yet exist it will be created. If a
       # block is passed it will be evaluated in the context of the group
-      def group(name, &block)
-        groups[name] ||= Sunrise::Config::Group.new(abstract_model, self, name)
+      def group(name, options = nil, &block)
+        groups[name] ||= Sunrise::Config::Group.new(abstract_model, self, name, options)
         groups[name].instance_eval &block if block
         groups[name]
       end
