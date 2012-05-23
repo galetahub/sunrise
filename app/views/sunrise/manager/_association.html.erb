@@ -1,4 +1,0 @@
-<% options ||= {} %>
-<%= content_tag :div, :class => "#{options[:multiple] ? 'tags-edit' : ''} padder" do %>
-  <%= form.association association.name.to_sym, association.input_options.merge(options) %>
-<% end if (options[:multiple] && association.input_options.keys.detect{|k| k == :multiple}) || (!options[:multiple] && !association.input_options.keys.detect{|k| k == :multiple}) -%>

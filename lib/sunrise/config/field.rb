@@ -31,6 +31,18 @@ module Sunrise
         abstract_model.model.human_attribute_name(@name)
       end
       
+      def html_options
+        css = ["padder"]
+        css << "grey-but" if input_options[:boolean]
+        css << "tags-edit" if association?
+        
+        { :class => css.join(' ') }
+      end
+      
+      def association?
+        input_options[:association] === true
+      end
+      
       protected
       
         # Verifies that the conditionals for this field evaluate to true for the

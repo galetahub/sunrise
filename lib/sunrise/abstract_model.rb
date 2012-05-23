@@ -210,6 +210,35 @@ module Sunrise
       @export_filename ||= [plural, Time.now.strftime("%Y-%m-%d_%Hh%Mm%S")].join('_')
     end
     
+    def edit_fields
+      config.edit.fields || []
+    end
+    
+    # Has translated columns
+    def translate?
+      !config.edit.groups[:translate].blank?
+    end
+    
+    # Files to translate
+    def translate_fields
+      config.edit.groups[:translate].try(:fields) || []
+    end
+    
+    # Find sidebar groups
+    def sidebar_groups
+      @sidebar_groups ||= config.edit.groups.values.select { |v| v.sidebar? }
+    end
+    
+    # Check if sidebar groups exists
+    def sidebar_groups?
+      !sidebar_groups.empty?
+    end
+    
+    # Find bottom groups
+    def bottom_groups
+      @bottom_groups ||= config.edit.groups.values.select { |v| v.bottom? }
+    end
+    
     protected
       
       # Try to find parent object if any association present

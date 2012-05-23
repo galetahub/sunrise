@@ -109,7 +109,6 @@ ru:
       statisticts: "Статистика"
       videos: "Конкурсное видео"
       questions: "Вопросы и ответы"
-      cocktails: "Shake в банке"
       tracks: "Музыка"
       wallpapers: "Обои"
       reviews: "голоса"
@@ -123,7 +122,6 @@ ru:
       creates:
         structures: "Раздел"
         users: "Пользователя"
-        
     
     settings:
       title: "Настройки"
