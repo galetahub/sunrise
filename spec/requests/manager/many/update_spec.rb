@@ -24,7 +24,7 @@ describe "Sunrise Manager Edit many" do
         fill_in "post[content]", :with => "Tra la la"
         uncheck('post[is_visible]')
         
-        click_button "Refresh"
+        click_button "submit-button-hidden"
       end
       
       it "should update an object with correct attributes" do

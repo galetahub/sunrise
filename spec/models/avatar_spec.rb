@@ -42,7 +42,7 @@ describe Avatar do
     end
     
     it "file size should be valid" do
-      @avatar.data_file_size.should == 6623
+      @avatar.data_file_size.should == 6428
     end
     
     it "should be image" do

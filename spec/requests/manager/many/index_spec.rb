@@ -31,7 +31,7 @@ describe "Sunrise Manager Index many" do
         visit index_path(:model_name => "posts", :parent_id => @page.id, :parent_type => @page.class.name)
         
         fill_in "search[title]", :with => "Aimbulance"
-        click_button "search"
+        click_button "submit-button-search"
       end
       
       it "should find post" do
