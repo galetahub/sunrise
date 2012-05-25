@@ -23,7 +23,7 @@ describe "Sunrise Manager Edit" do
         select(PositionType.default.title, :from => "structure_position")
         uncheck('structure[is_visible]')
         
-        click_button "Refresh"
+        click_button "submit-button-hidden"
       end
       
       it "should update an object with correct attributes" do
@@ -49,7 +49,7 @@ describe "Sunrise Manager Edit" do
         fill_in "structure[main]", :with => "Main updated"
         fill_in "structure[sidebar]", :with => "Sidebar updated"
         
-        click_button "Refresh"
+        click_button "submit-button-hidden"
       end
       
       it "should update an object with correct attributes" do

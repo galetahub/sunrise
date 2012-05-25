@@ -16,7 +16,7 @@ describe "Sunrise Manager New" do
         select(PositionType.menu.title, :from => "structure[position]")
         check('structure[is_visible]')
         
-        click_button "Create"
+        click_button "submit-button-hidden"
         
         @structure = Structure.last
       end

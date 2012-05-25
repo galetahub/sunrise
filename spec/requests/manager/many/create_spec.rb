@@ -20,7 +20,7 @@ describe "Sunrise Manager New" do
         fill_in "post[content]", :with => "Some long text" * 10
         check('post[is_visible]')
         
-        click_button "Create"
+        click_button "submit-button-hidden"
         
         @post = Post.last
       end

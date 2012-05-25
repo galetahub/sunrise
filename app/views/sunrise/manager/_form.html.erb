@@ -28,4 +28,6 @@
   <% abstract_model.bottom_groups.each do |group| -%>
     <%= render :partial => 'field', :collection => group.fields, :locals => {:form => f} %>
   <% end -%>
+  
+  <%= f.button :submit, :style => "display:none;", :id => "submit-button-hidden" %>
 <% end -%>

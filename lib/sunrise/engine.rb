@@ -11,6 +11,8 @@ require 'acts_as_audited'
 require 'page_parts'
 require 'meta_manager'
 require 'jbuilder'
+require 'rails-uploader'
+require 'sunrise'
 
 module Sunrise
   class Engine < ::Rails::Engine
