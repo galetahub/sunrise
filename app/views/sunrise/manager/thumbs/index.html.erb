@@ -1,11 +1,13 @@
-<div class="main-item-list" id="records">
-  <%= render :partial => apply_scope("record"), :collection => @records %>
-  <%= paginate @records, :theme => 'sunrise' %>
+<div class="wrapper">
+  <div class="main-item-list" id="records">
+    <%= render :partial => apply_scope("record"), :collection => @records %>
+    <%= paginate @records, :theme => 'sunrise' %>
+  </div>
+
+
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      window['sunrise'].storeQuery();
+    });
+  </script>
 </div>
-
-
-<script type='text/javascript'>
-  $(document).ready(function(){
-    window['sunrise'].storeQuery();
-  });
-</script>

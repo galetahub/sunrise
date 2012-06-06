@@ -15,20 +15,21 @@
   <%= javascript_include_tag "sunrise/application" %>
 </head>
 <body>
-	<div class="top-wrapper"> <!-- scroll -->
-		<%= render :partial => "sunrise/shared/panel" %>
-		
-		<%= render_header %>
-	</div>
-
-  <div class="wrapper">
+  <div class="outer">
+	  <div class="top-wrapper">
+		  <%= render :partial => "sunrise/shared/panel" %>
+		  <%= render_header %>
+	  </div>
+	  
     <%= yield %>
-    
-		<div class="footer">
-      <%= image_tag("sunrise/created.png", :alt => "Aimbulance.com") %>
-  	</div>
-  </div>
+	</div>
 	
+	<div class="footer">
+	  <div class="fwrapper">
+      <%= image_tag("sunrise/created.png", :alt => "Aimbulance.com") %>
+	  </div>
+	</div>
+  	
 	<div id="dark-shadow" class="dark-bg" style="display:none;"></div>
 </body>
 </html>

@@ -7,7 +7,6 @@ require 'enum_field'
 require 'friendly_id'
 require 'cancan'
 require 'cancan_namespace'
-require 'acts_as_audited'
 require 'page_parts'
 require 'meta_manager'
 require 'jbuilder'
@@ -34,10 +33,6 @@ module Sunrise
       end
       
       FriendlyId.send :include, Sunrise::Hooks::FriendlyId
-    end 
-    
-    initializer "sunrise.acts_as_audited" do
-      ::Audit.send :include, Sunrise::Hooks::Kaminari
     end
     
     initializer "sunrise.csv_renderer" do

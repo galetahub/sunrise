@@ -1,16 +1,18 @@
-<div class="main-item-table">
-	<table cellpadding="0" cellspacing="0" border="0" width="100%" id="records">
-		<tr>
-			<th></th>
-			<th>Name</th>
+<div class="wrapper">
+  <div class="main-item-table">
+	  <table cellpadding="0" cellspacing="0" border="0" width="100%" id="records">
+		  <tr>
+			  <th></th>
+			  <th>Name</th>
 			
-			<% abstract_model.list.fields.each do |field|%>
-				<th><%= field.human_name %></th>
-			<% end -%>
-		</tr>
+			  <% abstract_model.list.fields.each do |field|%>
+				  <th><%= field.human_name %></th>
+			  <% end -%>
+		  </tr>
 		
-		<%= render :partial => "sunrise/manager/table/record", :collection => @records %>
-	</table>
+		  <%= render :partial => "sunrise/manager/table/record", :collection => @records %>
+	  </table>
 	
-	<%= paginate @records, :theme => 'sunrise' %>
+	  <%= paginate @records, :theme => 'sunrise' %>
+  </div>
 </div>
