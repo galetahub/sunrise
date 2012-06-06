@@ -16,11 +16,11 @@ describe "Sunrise Manager Dashboard" do
       end
       
       it "should show page title" do
-        should have_content "Events"
+        should have_content "Dashboard"
       end
       
       it "should render records" do
-        should have_selector("#audit_#{@audit.id}")
+        should have_selector("#audited_adapters_active_record_audit_#{@audit.id}")
       end
     end
   end

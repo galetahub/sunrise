@@ -11,6 +11,7 @@ gem 'devise'
 gem "devise-encryptable", "~> 0.1.1"
 gem "mini_magick"
 gem "ruby2xlsx", "~> 0.0.1"
+gem "audited-activerecord"
 
 # Gems used only for assets and not required
 # in production environments by default.
