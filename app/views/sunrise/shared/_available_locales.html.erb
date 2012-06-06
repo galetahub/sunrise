@@ -1,5 +1,5 @@
 <% Sunrise::Config.available_locales.each do |locale| -%>
   <div class="lang-block lang-<%= locale %>" style="display:none;">
-    <%= render :partial => "sunrise/manager/field", :collection => abstract_model.translate_fields, :locals => {:options => {:locale => locale}, :form => f} %>
+    <%= render :partial => "sunrise/manager/field", :collection => abstract_model.translate_fields, :locals => {:options => {:locale => locale}, :form => form} %>
   </div>
 <% end -%>
