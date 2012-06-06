@@ -2,20 +2,19 @@ PATH
   remote: .
   specs:
     sunrise-cms (0.3.0.rc)
-      acts_as_audited (~> 2.1.0)
       awesome_nested_set (~> 2.1.3)
       cancan (~> 1.6.7)
       cancan_namespace (~> 0.1.3)
       carrierwave (~> 0.6.2)
       friendly_id (~> 4.0.5)
-      galetahub-enum_field (~> 0.2.0)
+      galetahub-enum_field
       jbuilder (~> 0.4.0)
       kaminari (~> 0.13.0)
-      meta_manager (~> 0.0.5)
+      meta_manager
       mime-types (~> 1.18)
       mini_magick (~> 3.4)
-      page_parts (~> 0.0.3)
-      progressbar (~> 0.11.0)
+      page_parts
+      progressbar
       rails (~> 3.2.0)
       rails-uploader
       simple_form (~> 2.0.2)
@@ -50,10 +49,12 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts_as_audited (2.1.0)
-      rails (~> 3.0, >= 3.0.3)
     addressable (2.2.8)
     arel (3.0.2)
+    audited (3.0.0.rc1)
+    audited-activerecord (3.0.0.rc1)
+      activerecord (~> 3.0)
+      audited (= 3.0.0.rc1)
     awesome_nested_set (2.1.3)
       activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
@@ -128,7 +129,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_manager (0.0.5)
+    meta_manager (0.0.6)
       activerecord (>= 3.1.3)
     mime-types (1.18)
     mini_magick (3.4)
@@ -226,6 +227,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  audited-activerecord
   capybara (~> 1.1.2)
   coffee-rails (~> 3.2.1)
   database_cleaner

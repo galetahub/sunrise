@@ -51,7 +51,7 @@ describe "Sunrise Manager Index" do
       it "should render 404 page" do
         lambda {
           visit index_path(:model_name => "pages")
-        }.should raise_error ActiveRecord::RecordNotFound
+        }.should raise_error AbstractController::ActionNotFound
       end
     end
   end

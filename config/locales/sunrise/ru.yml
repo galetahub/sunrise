@@ -66,6 +66,13 @@ ru:
         remote_ip: "IP адрес"
         user_agent: "Версия браузера"
         message: "Сообщение"
+      
+      audit:
+        created_at: "Дата"
+        user: "Пользователь"
+        action: "Что"
+        auditable: "Объект"
+        remote_address: "IP"
               
   manage:
     title: "Система<br />управления"
