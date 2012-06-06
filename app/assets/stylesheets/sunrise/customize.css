@@ -21,3 +21,29 @@
 .top-wrapper .menu-holder .main-menu li .ddm-active .user .arr {
 	background: url(/assets/sunrise/top_arr_up.png) no-repeat right center !important;
 }
+
+input[type="text"], input[type="password"], input[type="email"], input[type="phone"], input[type="number"], input[type="tel"], input[type="url"], input[type="float"], input[type="decimal"], textarea {
+  display: block;
+  width: 200px;
+  margin: 0;
+  padding: 7px 10px;
+  background: #fff;
+  border: solid 1px #c5c5c5;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  color: #616161;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="phone"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="float"]:focus, input[type="decimal"]:focus, textarea:focus {
+  border: solid 1px #fbcc66;
+  -moz-box-shadow: inset 0 1px 3px #d9d9d9;
+  -webkit-box-shadow: inset 0 1px 3px #d9d9d9;
+  box-shadow: inset 0 1px 3px #d9d9d9;
+	outline: none;
+}
+
+.dbTable {
+  margin: 20px 0 30px 0;
+}

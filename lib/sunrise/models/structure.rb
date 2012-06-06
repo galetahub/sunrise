@@ -5,9 +5,6 @@ module Sunrise
       extend ActiveSupport::Concern
       
       included do
-        include Utils::Header
-        include ::PageParts::ActiveRecordExtension
-        
         enumerated_attribute :structure_type, :id_attribute => :kind
         enumerated_attribute :position_type, :id_attribute => :position
         

@@ -143,7 +143,7 @@ module Sunrise
     
     # Convert request params to model scopes
     def apply_scopes(params = nil)
-      raise ::ActiveRecord::RecordNotFound, "List config is turn off" if without_list?
+      raise ::AbstractController::ActionNotFound.new("List config is turn off") if without_list?
       params ||= @request_params
       
       scope = default_scope(params)

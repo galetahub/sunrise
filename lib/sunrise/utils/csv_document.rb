@@ -39,7 +39,7 @@ module Sunrise
       def each_with_index
         count = 0
         
-        if @source.is_a?(::ActiveRecord::Relation)
+        if @source.respond_to?(:find_each)
           @source.find_each do |item|
             yield item, count
             count += 1

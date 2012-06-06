@@ -96,8 +96,11 @@ module Sunrise
       end
       
       def dimensions
-        magick = ::MiniMagick::Image.new(current_path)
         [magick[:width], magick[:height]]
+      end
+      
+      def magick
+        @magick ||= ::MiniMagick::Image.new(current_path)
       end
       
       protected
