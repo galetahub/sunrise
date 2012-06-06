@@ -5,7 +5,7 @@
     <%= render :partial => "sunrise/shared/locale" if abstract_model.translate? %>
     
 	  <div class="wysiwyg-holder">
-	    <%= render :partial => "sunrise/shared/available_locales" :locals => {:form => f} if abstract_model.translate? %>
+	    <%= render :partial => "sunrise/shared/available_locales", :locals => {:form => f} if abstract_model.translate? %>
       
       <%= render :partial => 'field', :collection => abstract_model.edit_fields, :locals => {:form => f} %>
 	  </div>
