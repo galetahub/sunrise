@@ -1,20 +1,37 @@
 <div class="wrapper without-panel">
   <div class="dbTable">
-	  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+	  <table id="events-table" cellpadding="0" cellspacing="0" border="0" width="100%">
 		  <tbody>
 		  <tr class="theader">
-			  <th><%= image_tag("sunrise/ico_date.png") %> <%= Audited.audit_class.human_attribute_name("audit.created_at") %></th>
-			  <th><%= image_tag("sunrise/ico_user.png") %> <%= Audited.audit_class.human_attribute_name("audit.user") %></th>
-			  <th><%= image_tag("sunrise/ico_what.png") %> <%= Audited.audit_class.human_attribute_name("audit.action") %></th>
-			  <th><%= image_tag("sunrise/ico_object.png") %> <%= Audited.audit_class.human_attribute_name("audit.auditable") %></th>
-			  <th><%= image_tag("sunrise/ico_what.png") %> <%= Audited.audit_class.human_attribute_name("audit.remote_address") %></th>
+		    <% ["created_at", "user", "action", "auditable", "remote_address"].each do |attr| %>
+  			  <th>
+  			    <%= image_tag("sunrise/audit/#{attr}.png") %>
+  			    <%= Audited.audit_class.human_attribute_name("audit.#{attr}") %>
+  			  </th>
+			  <% end -%>
 		  </tr>
 		  <%= render :partial => 'event', :collection => @events %>  	    	    
 	    </tbody>
 	  </table>
 
 	  <% if @events.count >= Sunrise::Config.audit_events_per_page -%>
-	    <div class="centerBtnHolder"><a href="#" class="button" style="width: 100px;">Показать еще 50</a></div>	    
+	    <div class="centerBtnHolder">
+	      <a id="events-next" href="#" class="button" style="width: 100px;">Показать еще 50</a>
+	      
+	      <script type="text/javascript">
+	        $(document).ready(function(){
+	          $("#events-table").pagination({
+	            url: '/manage/dashboard',
+	            binder: '#events-next',
+	            event: 'click',
+	            callback: function(data){
+	              var rows = $(data).find("#events-table tr.event");
+	              $('#events-table tbody').append(rows);
+	            }
+	          });
+	        });
+	      </script>
+	    </div>
 	  <% end -%>
   </div>
 </div>

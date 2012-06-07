@@ -1,4 +1,4 @@
-<%= content_tag(:tr, :id => dom_id(event)) do -%>
+<%= content_tag(:tr, :id => dom_id(event), :class => "event") do -%>
   <td><%= I18n.l(event.created_at, :format => "%d.%m.%Y") %></td>
   <% if event.user -%>
     <td><%= link_to event.user.name, edit_path(:model_name => "users", :id => event.user_id) %></td>

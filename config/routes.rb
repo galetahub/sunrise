@@ -2,6 +2,7 @@ Sunrise::Engine.routes.draw do
   root :to => "dashboard#index"
   
   match "/services", :to => "shared#services", :as => "services"
+  match "/dashboard/p/:page", :to => "dashboard#index", :page => /\d+/
   
   controller "manager" do
     scope ":model_name" do
