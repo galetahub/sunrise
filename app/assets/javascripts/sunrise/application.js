@@ -15,5 +15,7 @@
 //= require sunrise/jquery.tooltip
 //= require sunrise/jquery.ddmenu
 //= require sunrise/jquery.lang-tabs
+//= require sunrise/jquery.pagination
+
 //= require sunrise/manage
 //= require ckeditor/init
