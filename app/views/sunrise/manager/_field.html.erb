@@ -2,7 +2,7 @@
 <%= content_tag :div, field.html_options do %>
   <% if field.visible?(form.object) -%>
     <% if field.association? -%>
-      <%= form.association field.name, field.input_options.merge(options) %>
+      <%= form.association field.name.to_sym, field.input_options.merge(options) %>
     <% else -%>
       <%= form.input field.name, field.input_options.merge(options)  %>
     <% end -%>
