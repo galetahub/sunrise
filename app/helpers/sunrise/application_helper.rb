@@ -6,7 +6,9 @@ module Sunrise
     end
     
     def render_header(options={})
-      action ||= controller.action_name
+      action = controller.action_name
+      action = 'new' if action == 'create'
+      action = 'edit' if action == 'update'
     
       partials = options[:partials] || []
       partials << "sunrise/#{controller.controller_name}/header_#{action}"
