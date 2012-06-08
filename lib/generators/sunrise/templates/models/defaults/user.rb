@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :avatar_attributes, :as => :admin
   
   fileuploads :avatar
   
-#  acts_as_audited :protect => false, :only => [:name, :email, :password]
+  # audited :protect => false, :only => [:name, :email, :password]
 end
