@@ -1,10 +1,14 @@
 # encoding: utf-8
+require 'rails-uploader'
+
 module Sunrise
   module Models
     module Asset
       extend ActiveSupport::Concern
+      include Uploader::Asset
       
       included do
+        
         belongs_to :user
         belongs_to :assetable, :polymorphic => true
         
@@ -84,6 +88,28 @@ module Sunrise
       
       def rotate_degrees_changed?
         @rotate_degrees_changed === true
+      end
+      
+      def uploader_create(params, request = nil)
+        if uploader_can?(:create, request)
+          self.user = request.env['warden'].user
+          super
+        else
+          errors.add(:id, :access_denied)
+        end
+      end
+      
+      def uploader_destroy(params, request = nil)
+        if uploader_can?(:delete, request)
+          super
+        else
+          errors.add(:id, :access_denied)
+        end
+      end
+      
+      def uploader_can?(action, request)
+        ability = Ability.new(request.env['warden'].user)
+        ability.can? action.to_sym, self
       end
       
       protected
