@@ -11,4 +11,15 @@ class SunriseUser < Sunrise::AbstractModel
       field :name
     end
   end
+  
+  edit do
+    field :name
+    field :email
+    field :password
+    field :password_confirmation
+    
+    group :bottom, :holder => :bottom do
+      field :avatar, :as => :uploader
+    end
+  end
 end
