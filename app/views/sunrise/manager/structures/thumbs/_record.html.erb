@@ -6,13 +6,13 @@
       <%= manage_date_tag(record.created_at)%>
       <!--<a href="#" class="grey-but">Активировать</a>-->
     </div>
-    <%= link_to record.send(abstract_model.config.object_label_method), structure_path(record), :class=>"item-title" %>
+    <%= link_to record.send(abstract_model.config.object_label_method), manage_structure_path(record), :class=>"item-title" %>
     
 		<div class="bot-info-bl">
 		  
 		  <% abstract_model.list.fields.each do |field|%>
 			<div class="info-item">
-				<b><%= field.human_name %></b> <%= render_field(field, record)%>
+				<b><%= field.human_name %></b> <%= manage_render_field(field, record)%>
 			</div>
 			<% end -%>
 

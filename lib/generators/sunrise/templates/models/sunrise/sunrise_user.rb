@@ -22,4 +22,10 @@ class SunriseUser < Sunrise::AbstractModel
       field :avatar, :as => :uploader
     end
   end
+  
+  export do
+    field :id
+    field :name
+    field :email
+  end
 end

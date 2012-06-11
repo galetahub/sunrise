@@ -31,7 +31,7 @@ module Sunrise
     
     # Find template before rendering
     mattr_accessor :scoped_views
-    @@scoped_views = false
+    @@scoped_views = true
     
     # Set available locales in app
     mattr_accessor :available_locales

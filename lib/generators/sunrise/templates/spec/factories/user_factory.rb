@@ -1,3 +1,4 @@
+# encoding: utf-8
 FactoryGirl.define do
   factory :admin_user, :class => User do |user|
     user.name 'Admin'

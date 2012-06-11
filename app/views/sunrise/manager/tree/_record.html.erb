@@ -4,6 +4,6 @@
 	</div>
 	
 	<% unless record.descendants_count.zero? %>
-     <%= render :partial=>"record", :collection => record.children %>
+     <%= render :partial => apply_scope("record"), :collection => record.children %>
   <% end %>
 <% end -%>

@@ -3,11 +3,18 @@ class SunriseStructure < Sunrise::AbstractModel
   self.resource_name = "Structure"
   
   default_list_view :tree
+  available_list_view [:tree, :thumbs]
   
   list :tree do    
     field :title
     field :updated_at
     field :id
+  end
+  
+  show do
+    field :title
+    field :redirect_url
+    field :is_visible
   end
   
   edit do

@@ -3,7 +3,7 @@
   <td><%= link_to record.send(abstract_model.config.object_label_method), show_path(:id => record.id), :class=>"title" %></td>
   
   <% abstract_model.list.fields.each do |field|%>
-	  <td><%= render_field(field, record)%></td>
+	  <td><%= manage_render_field(field, record)%></td>
 	<% end -%>
   
 	<td>

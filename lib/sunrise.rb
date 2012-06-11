@@ -18,6 +18,7 @@ module Sunrise
     autoload :Header, 'sunrise/models/header'
     autoload :User, 'sunrise/models/user'
     autoload :Ability, 'sunrise/models/ability'
+    autoload :Settings, 'sunrise/models/settings'
   end
   
   module CarrierWave

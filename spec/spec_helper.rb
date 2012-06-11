@@ -26,6 +26,12 @@ Rails.backtrace_cleaner.remove_silencers!
 ActiveRecord::Migrator.migrate File.expand_path("../../db/migrate/", __FILE__)
 ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
 
+require 'carrierwave'
+CarrierWave.configure do |config|
+  config.storage = :file
+  config.enable_processing = true
+end
+
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 

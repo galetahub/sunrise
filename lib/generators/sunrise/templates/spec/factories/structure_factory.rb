@@ -1,4 +1,4 @@
-# This will guess the Structure class
+# encoding: utf-8
 FactoryGirl.define do
   factory :structure_page, :class => Structure do
     title 'Structure'

@@ -1,0 +1,13 @@
+<%= simple_form_for Settings, :url => settings_path, :html => {:method => :put} do |f| -%>
+  <div class="post-edit-holder">
+    <div class="wysiwyg-holder">
+      <% @settings.each do |key, value| -%>
+        <div class="padder">
+          <%= f.input key, :value => value %>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+  
+  <%= f.button :submit, :style => "display:none;", :id => "submit-button-hidden" %>
+<% end -%>

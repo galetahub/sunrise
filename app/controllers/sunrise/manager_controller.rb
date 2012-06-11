@@ -6,6 +6,7 @@ module Sunrise
     before_filter :find_record, :only => [:show, :edit, :update, :destroy]
     before_filter :authorize_resource
     
+    helper :all
     helper_method :abstract_model, :apply_scope, :scoped_index_path
     
     respond_to :html, :xml, :json
@@ -82,7 +83,7 @@ module Sunrise
       def find_model
         @abstract_model = Utils.get_model(params[:model_name], params)
         raise ActiveRecord::RecordNotFound, "Sunrise model #{params[:model_name]} not found" if @abstract_model.nil?
-        self.class.send(:add_template_helper, Sunrise::Config::Model._helpers)
+        self.class.send(:add_template_helper, Sunrise::Config::Model._helpers) if @abstract_model.config.helpers?
         @abstract_model
       end
       

@@ -5,3 +5,8 @@ if Object.const_defined?("Sunrise")
     #config.flash_keys = [ :success, :failure ]
   end
 end
+
+#if Settings.table_exists?
+#  Settings.defaults[:some_setting] = "value"
+#  Settings.defaults[:some_setting2] = "value2"
+#end
