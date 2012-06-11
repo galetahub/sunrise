@@ -4,10 +4,11 @@ module Sunrise
     class RoleType
       include EnumField::DefineEnum
       
+      attr_reader :code
+      
       def initialize(code)
         @code = code.to_sym
       end
-      attr_reader :code
       
       def title
         I18n.t(@code, :scope => [:manage, :role, :kind])
