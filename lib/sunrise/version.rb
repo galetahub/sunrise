@@ -1,3 +1,3 @@
 module Sunrise
-  VERSION = "0.3.0.rc".freeze
+  VERSION = "0.3.0.rc2".freeze
 end
