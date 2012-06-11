@@ -5,7 +5,7 @@ module Sunrise
       image_tag("sunrise/ico_#{image}.gif", options)
     end
     
-    def render_header(options={})
+    def manage_render_header(options={})
       action = controller.action_name
       action = 'new' if action == 'create'
       action = 'edit' if action == 'update'

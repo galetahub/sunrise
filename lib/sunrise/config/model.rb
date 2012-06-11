@@ -5,7 +5,6 @@ require 'sunrise/config/edit'
 require 'sunrise/config/association'
 require 'sunrise/config/export'
 require 'sunrise/config/show'
-require 'sunrise/config/helpers'
 
 module Sunrise
   module Config
@@ -18,6 +17,7 @@ module Sunrise
       def initialize(abstract_model, parent = nil, options = nil)
         super
         @sections ||= {}
+        @has_helpers = false
       end
       
       register_instance_option(:label) do
@@ -49,8 +49,16 @@ module Sunrise
       end
       
       def helpers(&block)
-        self.class._helpers.module_eval &block if block
+        if block_given?
+          @has_helpers = true
+          self.class._helpers.module_eval &block
+        end
+        
         self.class._helpers
+      end
+      
+      def helpers?
+        @has_helpers
       end
       
       # Register accessors for all the sections in this namespace

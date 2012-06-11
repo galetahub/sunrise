@@ -12,7 +12,7 @@
 		  
 		  <% abstract_model.list.fields.each do |field|%>
 			<div class="info-item">
-				<b><%= field.human_name %></b> <%= render_field(field, record)%>
+				<b><%= field.human_name %></b> <%= manage_render_field(field, record)%>
 			</div>
 			<% end -%>
 

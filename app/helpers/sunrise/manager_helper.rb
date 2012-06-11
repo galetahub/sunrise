@@ -20,7 +20,7 @@ module Sunrise
       content_tag(:div, tags.join.html_safe, :class => 'date-time')
     end
     
-    def render_field(field, record)
+    def manage_render_field(field, record)
       item = record.send(field.name)
       
       if [Date, DateTime, Time].detect{|klass| item.is_a?(klass)}

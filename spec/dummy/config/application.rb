@@ -13,6 +13,7 @@ module Dummy
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/../../lib/generators/sunrise/templates/models/defaults 
+                                #{config.root}/../../lib/generators/sunrise/templates/models/sunrise
                                 #{config.root}/../../lib/generators/sunrise/templates/uploaders)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
