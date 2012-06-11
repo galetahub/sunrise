@@ -2,7 +2,12 @@ require 'spec_helper'
 
 describe Avatar do
   before(:all) do
+    AvatarUploader.enable_processing = true
     @avatar = FactoryGirl.build(:asset_avatar)
+  end
+  
+  after(:all) do
+    AvatarUploader.enable_processing = false
   end
   
   it "should create a new instance given valid attributes" do
