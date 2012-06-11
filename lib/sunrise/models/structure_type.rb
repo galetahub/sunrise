@@ -4,10 +4,11 @@ module Sunrise
     class StructureType
       include EnumField::DefineEnum
       
-      def initialize(value)
-        @kind = value
-      end
       attr_reader :kind
+      
+      def initialize(value)
+        @kind = value.to_sym
+      end
       
       def title
         I18n.t(@kind, :scope => [:manage, :structure, :kind])
