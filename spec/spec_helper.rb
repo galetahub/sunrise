@@ -29,7 +29,7 @@ ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__
 require 'carrierwave'
 CarrierWave.configure do |config|
   config.storage = :file
-  config.enable_processing = true
+  config.enable_processing = false
 end
 
 # Load support files
