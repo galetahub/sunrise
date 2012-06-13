@@ -364,22 +364,36 @@ input[disabled].button.gray {
 	text-decoration: none;
 	font-size: 15px;
 }
+.sub-wrapper .main-list li span {
+	background-color: #252525 !important;
+	border-top: 1px solid #131313;
+	border-bottom: 1px solid #353535;
+	padding: 9px 30px 9px 65px;
+	font-size: 15px;
+	display: block;
+	color: #952c9e;
+}
 .sub-wrapper .main-list li a:hover, .sub-wrapper .inner-list li a:hover {
 	background-color: #000 !important;
 }
-.sub-wrapper .main-list li a.icon1 {
+.sub-wrapper .main-list li a.icon1,
+.sub-wrapper .main-list li span.icon1 {
 	background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
 }
-.sub-wrapper .main-list li a.icon2 {
+.sub-wrapper .main-list li a.icon2,
+.sub-wrapper .main-list li span.icon2 {
   background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
 }
-.sub-wrapper .main-list li a.icon3 {
+.sub-wrapper .main-list li a.icon3,
+.sub-wrapper .main-list li span.icon3 {
   background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
 }
-.sub-wrapper .main-list li a.icon4 {
+.sub-wrapper .main-list li a.icon4,
+.sub-wrapper .main-list li span.icon4 {
   background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
 }
-.sub-wrapper .main-list li a.icon5 {
+.sub-wrapper .main-list li a.icon5,
+.sub-wrapper .main-list li span.icon5 {
   background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
 }
 .sub-wrapper .inner-list {
@@ -398,6 +412,15 @@ input[disabled].button.gray {
   color: #fff;
   text-decoration: none;
   font-size: 13px;
+}
+.sub-wrapper .inner-list li span {
+	background-color: #252525 !important;
+	border-top: 1px solid #131313;
+	border-bottom: 1px solid #353535;
+	padding: 10px 15px;
+	font-size: 13px;
+	display: block;
+	color: #952c9e;
 }
 .sub-wrapper.create .inner-list, .sub-wrapper.user .inner-list {
 	padding: 0;
