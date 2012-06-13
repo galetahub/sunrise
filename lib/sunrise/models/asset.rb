@@ -8,7 +8,6 @@ module Sunrise
       include Uploader::Asset
       
       included do
-        
         belongs_to :user
         belongs_to :assetable, :polymorphic => true
         
@@ -18,7 +17,6 @@ module Sunrise
         before_save :reprocess
         
         delegate :url, :original_filename, :to => :data
-        alias :filename :original_filename
       end
       
       module ClassMethods        
@@ -26,10 +24,21 @@ module Sunrise
           update_all(["sort_order = ?", index], ["id = ?", id.to_i])
         end
       end
-      
         
       def thumb_url
         data.thumb.url
+      end
+      
+      def filename
+        data_file_name        
+      end
+      
+      def size
+        data_file_size
+      end
+      
+      def content_type
+        data_content_type
       end
       
       def format_created_at
@@ -50,12 +59,12 @@ module Sunrise
       
       def as_json(options = nil)
         options = {
-          :only => [:id, :guid, :assetable_id, :assetable_type, :user_id, :data_file_size, :data_content_type], 
+          :only => [:id, :guid, :assetable_id, :assetable_type, :user_id], 
           :root => 'asset',
-          :methods => [:filename, :url, :thumb_url]
+          :methods => [:filename, :url, :thumb_url, :size, :content_type]
         }.merge(options || {})
         
-        super
+        super(options)
       end
       
       def has_dimensions?
