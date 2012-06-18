@@ -26,7 +26,6 @@ module Sunrise
           end
 
           option_name = option_name.to_s
-
           options[option_name] = nil
 
           # If it's a boolean create an alias for it and remove question mark

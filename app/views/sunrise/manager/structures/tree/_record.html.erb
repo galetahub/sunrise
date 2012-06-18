@@ -1,8 +1,9 @@
-<%= content_tag :li, :id => dom_id(record) do %>
+<%= content_tag :li, :id => dom_id(record) do -%>
   <div> 
     <%= link_to record.send(abstract_model.config.object_label_method), manage_structure_path(record) %>
     
     <%= link_to '', edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class => "btn_edit", :id => dom_id(record, :edit) if can?(:edit, record) %>
+    
     <%= link_to '', delete_path(abstract_model.parent_hash.merge(:id => record.id)), :method => :delete, :confirm => t("manage.confirm_delete"), :class => "btn_del", :id => dom_id(record, :delete) if can?(:delete, record) %>
     
     <a href="#" class="dnd_link"></a>

@@ -30,13 +30,13 @@ server {
     passenger_enabled on;
     rails_env production;
 
-    root    <%= app_path %>/public;
+    root <%= app_path %>/public;
 
     location ~ /\.[^\/]+ {
         return 404;
     }
     
-    location ~ ^/assets/ {
+    location ~ ^/(assets|uploads)/ {
       expires 1y;
       add_header Cache-Control public;
       access_log off;

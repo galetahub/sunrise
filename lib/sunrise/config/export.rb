@@ -6,6 +6,7 @@ module Sunrise
     class Export < Base
       include Sunrise::Config::HasFields
       
+      # Default scope
       register_instance_option(:scope) do
         nil
       end

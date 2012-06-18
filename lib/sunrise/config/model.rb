@@ -45,7 +45,7 @@ module Sunrise
       end
       
       def associations
-        @associations ||= @sections.select { |key, valur| key.to_s.include?('association_') }.values
+        @associations ||= @sections.select { |key, value| key.to_s.include?('association_') }.values
       end
       
       def helpers(&block)

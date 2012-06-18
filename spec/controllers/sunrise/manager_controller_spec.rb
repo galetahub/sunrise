@@ -36,7 +36,7 @@ describe Sunrise::ManagerController do
       it "should render 404 page" do
         lambda {
           get :index, :model_name => "wrong"
-        }.should raise_error ActiveRecord::RecordNotFound
+        }.should raise_error ActionController::RoutingError
       end
     end
   end

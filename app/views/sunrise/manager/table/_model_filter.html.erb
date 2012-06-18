@@ -1,25 +1,12 @@
-<div class="bot-bg">
-  <div class="filt-bl">
-    <%= link_to_function t('manage.model_filter.title'), "Manage.toggle_element('block_filter')", :class=>"dark-arr" %>
+<div id="filter-container" class="filter-form" style="display:none;">
+  <%= simple_form_for search_wrapper, :url => scoped_index_path,  :html =>{ :method => :get, :novalidate => true } do |f| -%>
+    <%= render :partial => 'sunrise/shared/parent' %>
     
-    <%= t('manage.model_filter.total_count') %>: <%= @records.total_count %>
+    <% abstract_model.list.groups[:search].fields.each do |field| -%>
+      <%= f.input field.name, field.input_options.merge(:required => false) if field.visible?(f.object) %>
+    <% end -%>
     
-    <%= content_tag(:div, :id => "block_filter", :class => "filt") do %>
-      <%= simple_form_for search_wrapper, :url => scoped_index_path,  :html =>{ :method => :get, :novalidate => true } do |f| %>
-        <%= render :partial => 'sunrise/shared/parent' %>
-        
-        <% abstract_model.list.groups[:search].fields.each do |field| %>
-          <%= f.input field.name, field.input_options.merge(:required => false) if field.visible?(f.object) %>
-        <% end %>
-        
-        <div class="buts">
-          <%= content_tag(:button, :value => "search", :type => "submit", :name => "commit", :class => "gr cupid-green") do %>
-            <%= t('manage.model_filter.search') %>
-          <% end %>
-                          
-          <%= link_to t('manage.model_filter.clear'), scoped_index_path, :class=>"erase" %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+    <%= f.submit t('manage.search'), :class => "button", :id => "submit-button-search" %>
+    <%= link_to t('manage.model_filter.clear'), scoped_index_path, :class=>"grey-but" %>
+  <% end -%>
 </div>
