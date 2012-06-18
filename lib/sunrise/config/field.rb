@@ -28,7 +28,7 @@ module Sunrise
       end
       
       def human_name
-        abstract_model.model.human_attribute_name(@name)
+        @config_options[:label] || abstract_model.model.human_attribute_name(@name)
       end
       
       def html_options
@@ -41,6 +41,10 @@ module Sunrise
       
       def association?
         input_options[:association] === true
+      end
+      
+      def label?
+        @config_options[:label] != false
       end
       
       protected

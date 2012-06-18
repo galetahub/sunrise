@@ -53,7 +53,7 @@ module Sunrise
     end
     
     def export
-      @records = abstract_model.export_scope(params)
+      @records = abstract_model.apply_scopes(params)
       options = { :filename => abstract_model.export_filename,
                   :columns => abstract_model.export_columns }
       
@@ -82,7 +82,7 @@ module Sunrise
     
       def find_model
         @abstract_model = Utils.get_model(params[:model_name], params)
-        raise ActiveRecord::RecordNotFound, "Sunrise model #{params[:model_name]} not found" if @abstract_model.nil?
+        raise ActionController::RoutingError.new("Sunrise model #{params[:model_name]} not found") if @abstract_model.nil?
         self.class.send(:add_template_helper, Sunrise::Config::Model._helpers) if @abstract_model.config.helpers?
         @abstract_model
       end

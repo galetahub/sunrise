@@ -20,7 +20,7 @@ describe "Sunrise Manager Edit" do
       it "should raise NotFound" do
         lambda {
           visit edit_path(:model_name => "whatever", :id => @page.id)
-        }.should raise_error ActiveRecord::RecordNotFound
+        }.should raise_error ActionController::RoutingError
       end
     end
 

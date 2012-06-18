@@ -2,7 +2,10 @@ class SunriseUser < Sunrise::AbstractModel
   self.resource_name = "User"
   
   list :thumbs do    
-    field :email
+    scope { User.includes(:avatar) }
+    preview { lambda { |user| user.avatar.try(:url, :thumb) } }
+    
+    field :email, :label => false
     field :updated_at
     field :id
     

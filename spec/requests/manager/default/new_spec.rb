@@ -11,7 +11,7 @@ describe "Sunrise Manager New" do
       it "should raise NotFound" do
         lambda {
           visit new_path(:model_name => "whatever")
-        }.should raise_error ActiveRecord::RecordNotFound
+        }.should raise_error ActionController::RoutingError
       end
     end
 

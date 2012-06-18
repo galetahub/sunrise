@@ -1,8 +1,8 @@
-<%= content_tag(:tr, :id => dom_id(record)) do %>
+<%= content_tag(:tr, :id => dom_id(record)) do -%>
   <td class="check-block"><%= check_box_tag dom_id(record, :editable), record.id, false, :name => :editable %></td>
   <td><%= link_to record.send(abstract_model.config.object_label_method), show_path(:id => record.id), :class=>"title" %></td>
   
-  <% abstract_model.list.fields.each do |field|%>
+  <% abstract_model.list.fields.each do |field| -%>
 	  <td><%= manage_render_field(field, record)%></td>
 	<% end -%>
   
@@ -11,12 +11,17 @@
 		  <div class="buts" style="display: none;">
         <div class="act-but">
           <%= link_to image_tag('sunrise/empty.gif'), delete_path(abstract_model.parent_hash.merge(:id => record.id)), 
-          :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"but-container del", :id => dom_id(record, :delete) if can?(:delete, record)%>
+            :method=>:delete, 
+            :confirm=>t("manage.confirm_delete"), 
+            :class=>"but-container del", 
+            :id => dom_id(record, :delete) if can?(:delete, record)%>
         </div>
         <div class="act-but">
-          <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class=>"but-container edit", :id => dom_id(record, :edit) if can?(:edit, record) %>
+          <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => record.id)), 
+            :class=>"but-container edit", 
+            :id => dom_id(record, :edit) if can?(:edit, record) %>
         </div>
 		  </div>
 		</div>
 	</td>
-<% end %>
+<% end -%>

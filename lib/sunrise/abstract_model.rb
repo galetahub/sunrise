@@ -166,6 +166,7 @@ module Sunrise
       
       scope = scope.merge(association_scope) unless parent_record.nil?
       scope = scope.merge(sort_scope(params[:sort])) unless params[:sort].blank?
+      scope = scope.merge(list.scope) unless list.scope.nil?
       
       scope
     end
@@ -188,12 +189,6 @@ module Sunrise
       options[:mode] = list.sort_mode     if options[:mode].blank?
       
       model.order([options[:column], options[:mode]].join(' '))
-    end
-    
-    def export_scope(options = nil)
-      scope = default_scope(options)
-      scope = scope.merge(config.export.scope)
-      scope
     end
     
     # List of columns names to be exported

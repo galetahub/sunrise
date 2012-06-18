@@ -1,12 +1,12 @@
 <div id="filter-container" class="filter-form" style="display:none;">
-  <%= simple_form_for search_wrapper, :url => scoped_index_path,  :html =>{ :method => :get, :novalidate => true } do |f| %>
+  <%= simple_form_for search_wrapper, :url => scoped_index_path,  :html =>{ :method => :get, :novalidate => true } do |f| -%>
     <%= render :partial => 'sunrise/shared/parent' %>
     
-    <% abstract_model.list.groups[:search].fields.each do |field| %>
+    <% abstract_model.list.groups[:search].fields.each do |field| -%>
       <%= f.input field.name, field.input_options.merge(:required => false) if field.visible?(f.object) %>
-    <% end %>
+    <% end -%>
     
     <%= f.submit t('manage.search'), :class => "button", :id => "submit-button-search" %>
     <%= link_to t('manage.model_filter.clear'), scoped_index_path, :class=>"grey-but" %>
-  <% end %>
+  <% end -%>
 </div>

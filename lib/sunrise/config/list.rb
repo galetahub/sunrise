@@ -22,6 +22,24 @@ module Sunrise
       register_instance_option :sort_mode do
         Sunrise::Config.default_sort_mode
       end
+      
+      # Default scope
+      register_instance_option(:scope) do
+        nil
+      end
+      
+      # Image path for preview
+      register_instance_option(:preview) do
+        false
+      end
+      
+      def preview_for(record)
+        if preview.respond_to?(:call)
+          preview.call(record) || "sunrise/default_ava.png"
+        else
+          preview
+        end
+      end
     end
   end
 end

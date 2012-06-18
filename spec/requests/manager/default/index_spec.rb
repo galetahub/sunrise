@@ -22,7 +22,7 @@ describe "Sunrise Manager Index" do
       it "should raise NotFound" do
         lambda {
           visit '/manage/whatever'
-        }.should raise_error ActiveRecord::RecordNotFound
+        }.should raise_error ActionController::RoutingError
       end
     end
 
