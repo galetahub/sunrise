@@ -1421,25 +1421,26 @@ a.close-but:hover {
 		clear: both;
 	}
 
-.padder.post-date input.date {
+div.input.date input.date {
 	width: 190px;
 	float: left;
 }
 
-.padder.post-date .but-holder {
+div.input.date .but-holder {
 	width: 50px;
 	position: absolute;
 	top: 0;
 	right: 0;
 }
-	.padder.post-date .but-holder .but-container {
+	div.input.date .but-holder .but-container {
 		height: 29px;
 	}
 
-.post-edit-holder .calend-holder {
+div.input.date .calend-holder {
 	margin-bottom: 10px;
 	height: 30px;
 	position: relative;
+	width: 220px;
 }
 
 .post-edit-holder .padder.meta-descr textarea {

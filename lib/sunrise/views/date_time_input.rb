@@ -9,7 +9,7 @@ module SimpleForm
         input_html_options[:value] ||= formated_value
         month_count = input_html_options[:month_count] || 1
         
-        icon = "<div class='but-holder'><div class='act-but'><a class='but-container calend' href='javascript:void(0);' id='#{@builder.object_name}_#{attribute_name}_icon'><img src='/assets/sunrise/empty.gif' /></a></div></div>".html_safe
+        icon = "<div class='but-holder icon'><div class='act-but'><a class='but-container calend' href='javascript:void(0);' id='#{@builder.object_name}_#{attribute_name}_icon'><img src='/assets/sunrise/empty.gif' /></a></div></div>".html_safe
         html = [content_tag(:div, @builder.text_field(attribute_name, input_html_options) + icon, :class => 'calend-holder')]
         
         html << case input_type
