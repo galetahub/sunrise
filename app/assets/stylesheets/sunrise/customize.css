@@ -47,3 +47,13 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .dbTable {
   margin: 20px 0 30px 0;
 }
+
+.treeHolder li.tree-state-shadow div {
+	width:100px;
+	height:15px;
+	color: #972DA0;
+}
+
+.treeHolder li.ui-sortable-helper {
+  background: none;
+}

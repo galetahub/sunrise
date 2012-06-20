@@ -39,6 +39,102 @@ class Sunrise
       query[this] = value if value?
       
     $.cookie('params', $.param(query), { expires: 30, path: @namespace })
+  
+  serialize: (items, options) ->
+    str = []
+    defaults = 
+      attribute: 'id'
+      listType: 'ul'
+      expression: /(.+)[-=_](.+)/
+      key: null
+      
+    o = $.extend defaults, options
+
+    $(items).each((index) ->
+      res = ($(o.item || this).attr(o.attribute) || '').match(o.expression)
+      pid = ($(o.item || this).parent(o.listType).parent('li').attr(o.attribute) || '').match(o.expression)
+
+      if (res)
+        idx = 2#if o.key and o.expression then 1 else 2
+        str.push(((o.key || res[1]) + '[' + res[idx] + ']') + '=' + index + ':' + (if pid then pid[idx] else 'root'))
+    )
+
+    if not str.length and o.key
+      str.push(o.key + '=')
+
+    return str.join('&')
+  
+  serializeTree: (element, options) ->
+    defaults = 
+      attribute: 'id'
+      listType: 'ul'
+      expression: /(.+)[-=_](.+)/
+      key: "tree"
+      startDepthCount: 0
+      root: false
+      
+    o = $.extend defaults, options
+    sDepth = o.startDepthCount
+    ret = []
+    left = 1
+    
+    if o.root
+      sDepth += 1
+      left += 1
+    
+    fn_recursiveArray = (item, depth, left) ->
+      right = left + 1
+
+      if $(item).children(o.listType).children('li').length > 0
+        depth += 1
+        
+        $(item).children(o.listType).children('li').each(() ->
+          right = fn_recursiveArray($(this), depth, right)
+        )
+        
+        depth -= 1
+
+      id = ($(item).attr(o.attribute)).match(o.expression)
+
+      if depth is sDepth
+        pid = 'root'
+      else
+        parentItem = ($(item).parent(o.listType).parent('li').attr(o.attribute)).match(o.expression)
+        pid = parentItem[2]
+
+      if id
+        ret.push({"item_id": id[2], "parent_id": pid, "depth": depth, "left": left, "right": right})
+
+      left = right + 1
+      return left
+    
+    if o.root
+      ret.push(
+        "item_id": 'root'
+        "parent_id": 'none'
+        "depth": sDepth
+        "left": '1'
+        "right": ($('li', element).length + 1) * 2
+      )
+    
+    $(element).children('li').each(() ->
+      left = fn_recursiveArray(this, sDepth, left)
+    )
+
+    ret = ret.sort((a,b) -> return (a.left - b.left) )
+    
+    if o.key
+      arr = []
+      $.each(ret, () ->
+        hash = {}
+        param = o.key + "[" + this.item_id + "]"
+        hash[param] = this
+        arr.push $.param(hash)
+      )
+      
+      return arr.join("&")
+    else
+      return ret
 
 $(document).ready ->
   window['sunrise'] ?= new Sunrise(window.location.pathname)

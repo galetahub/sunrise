@@ -10,7 +10,7 @@
   </div>
 
   <% unless record.descendants_count.zero? -%>
-    <ul>
+    <ul class="children">
       <%= render :partial => apply_scope("record"), :collection => record.children %>
     </ul>
   <% end -%>

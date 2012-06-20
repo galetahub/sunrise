@@ -69,13 +69,21 @@ module Sunrise
     end
     
     def sort
-      abstract_model.update_sort_column(params[:ids])
-      respond_with(true)
+      abstract_model.update_sort(params)
+
+      respond_to do |format|
+        format.html { redirect_to redirect_after_update }
+        format.json { render :json => params }
+      end
     end
     
     def mass_destroy
       abstract_model.model.destroy_all(["id in (?)", params[:ids]]) unless params[:ids].blank?
-      respond_with(true, :location => redirect_after_update)
+      
+      respond_to do |format|
+        format.html { redirect_to redirect_after_update }
+        format.json { render :json => params }
+      end
     end
     
     protected

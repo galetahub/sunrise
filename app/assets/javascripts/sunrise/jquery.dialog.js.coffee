@@ -102,7 +102,7 @@ class SortDialog extends Dialog
       items['ids[' + $(this).data('record-id') + ']'] = index + 1
       
     $.ajax
-      url: @element.data 'save_path'
+      url: @element.data 'url'
       method: 'POST'
       data: items
       success: ->

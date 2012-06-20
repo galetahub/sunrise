@@ -1,13 +1,27 @@
 <div class="wrapper" style="padding-top:90px;">
 	<div class="treeHolder">
-	  <ul>
+	  <%= content_tag(:ul, :id => "sortable", :"data-url" => sort_path(:format => :json)) do -%>
 	    <%= render :partial => apply_scope("record"), :collection => @records %>
-	  </ul>
+	  <% end -%>
 	</div>
 </div>
 
 <script type='text/javascript'>
   $(document).ready(function(){
     window['sunrise'].storeQuery();
+    
+    $("#sortable ul").sortable({
+      placeholder: "tree-state-shadow",
+			handle: "a.dnd_link",
+			items: "li",
+			connectWith: "ul.children",
+			delay: 400,
+			opacity: 0.7,
+      start: function (e, ui) { ui.placeholder.html("<div></div>"); },
+      update: function(event, ui) {
+        var query = window["sunrise"].serializeTree('#sortable');
+        $.ajax({url: $("#sortable").data('url'), type: 'POST', dataType: 'json', data: query});
+      }
+		}).disableSelection();
   });
 </script>
