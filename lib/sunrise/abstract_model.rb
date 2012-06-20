@@ -118,6 +118,27 @@ module Sunrise
       end
     end
     
+    def update_sort(params)
+      if !params[:ids].blank?
+        update_sort_column(params[:ids])
+      elsif !params[:tree].blank?
+        update_sort_tree(params[:tree])
+      end
+    end
+    
+    # Update nested tree
+    # {"id"=>{"parent_id"=>"root", "depth"=>"0", "left"=>"1", "right"=>"22"}
+    #
+    def update_sort_tree(ids)
+      return nil if ids.empty?
+      
+      ids.each do |key, value|
+        hash = { :parent_id => nil, :depth => value[:depth], :lft => value[:left], :rgt => value[:right] }
+        hash[:parent_id] = value[:parent_id] unless value[:parent_id] == "root"
+        model.where(:id => key).update_all(hash)
+      end
+    end
+    
     def update_sort_column(ids)
       return nil if ids.empty?
       
