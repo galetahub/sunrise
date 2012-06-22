@@ -214,8 +214,8 @@ module Sunrise
     
     # List of columns names to be exported
     def export_columns
-      if config.export.fields
-        config.export.fields.map(&:name)
+      if config.list.fields
+        config.list.fields.map(&:name)
       else
         model.column_names
       end

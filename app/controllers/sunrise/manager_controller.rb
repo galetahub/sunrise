@@ -10,6 +10,7 @@ module Sunrise
     helper_method :abstract_model, :apply_scope, :scoped_index_path
     
     respond_to :html, :xml, :json
+    respond_to :csv, :xlsx, :only => [:export]
     
     def index
       @records = abstract_model.apply_scopes(params)
@@ -53,6 +54,7 @@ module Sunrise
     end
     
     def export
+      abstract_model.current_list = "export"
       @records = abstract_model.apply_scopes(params)
       options = { :filename => abstract_model.export_filename,
                   :columns => abstract_model.export_columns }

@@ -1,18 +1,18 @@
-root = this
 $ = jQuery
 
 $.fn.extend({
   tooltip: (options) ->
-    # Do no harm and return as soon as possible for unsupported browsers, namely IE6 and IE7
-    return this if $.browser.msie and ($.browser.version is "6.0" or $.browser.version is "7.0")
     $(this).each((input_field) ->
-      new ToolTip(this, options) unless ($ this).hasClass "tt-done"
+      tooltip = $(this).data("tooltip")
+      tooltip ?= new ToolTip(this, options)
+      
+      return tooltip
     )
 })
 
 class ToolTip
 
-  constructor: (@form_field, options = {}) ->
+  constructor: (@dom_element, options = {}) ->
     defaults =
       activation: "hover"
       keepAlive: false
@@ -27,15 +27,17 @@ class ToolTip
     
     @options = $.extend defaults, options
     
-    this.setup()
-    this.register_observers()
+    this._setup()
+    this._register_observers()
   
-  setup: ->
-    @element = $ @form_field
+  _setup: ->
+    @element = $ @dom_element
     @element.addClass "tt-done"
     
     text = @element.attr @options.attribute
     @element.data 'tt-text', text
+    @element.data 'tooltip', this
+    
     @element.removeAttr @options.attribute
     
     @container = this.create_container(@options.container_id)
@@ -52,7 +54,7 @@ class ToolTip
     else
       container
   
-  register_observers: ->
+  _register_observers: ->
     @element.bind @options.activation, (evt) => this.activate(evt)
   
   activate: (event) ->
@@ -65,7 +67,7 @@ class ToolTip
     text = @element.data 'tt-text'
     @container.find('div.note-holder').html(text)
 
-    pos = this.position()
+    pos = this._position()
     
     @container.css { position: "absolute", left: pos.left + "px", top: pos.top + "px", zIndex: 1001}
     @element.addClass "tt-active"
@@ -82,7 +84,7 @@ class ToolTip
     clearTimeout @timeout if @timeout
     @container.fadeOut(@options.fadeOut)
   
-  position: ->
+  _position: ->
     width = @container.outerWidth()
     height = @container.outerHeight()
       

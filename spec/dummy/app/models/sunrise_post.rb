@@ -20,7 +20,7 @@ class SunrisePost < Sunrise::AbstractModel
     field :is_visible
   end
   
-  export do
+  list :export do
     scope { Post.includes(:structure) }
     
     field :id
