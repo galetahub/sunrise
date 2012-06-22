@@ -3,7 +3,6 @@ require 'sunrise/config/base'
 require 'sunrise/config/list'
 require 'sunrise/config/edit'
 require 'sunrise/config/association'
-require 'sunrise/config/export'
 require 'sunrise/config/show'
 
 module Sunrise
@@ -62,7 +61,7 @@ module Sunrise
       end
       
       # Register accessors for all the sections in this namespace
-      [:list, :show, :edit, :export, :association].each do |section|
+      [:list, :show, :edit, :association].each do |section|
         klass = "Sunrise::Config::#{section.to_s.classify}".constantize
         send(:define_method, section) do |*args, &block|
           options = args.extract_options!

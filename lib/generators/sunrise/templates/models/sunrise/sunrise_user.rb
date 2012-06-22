@@ -26,7 +26,7 @@ class SunriseUser < Sunrise::AbstractModel
     end
   end
   
-  export do
+  list :export do
     field :id
     field :name
     field :email

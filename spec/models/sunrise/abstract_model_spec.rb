@@ -78,8 +78,7 @@ describe Sunrise::AbstractModel do
   
   describe "SunriseUser" do
     it "should return empty list on not defined fields" do
-      SunrisePage.config.export.should_not be_nil
-      SunrisePage.config.export.fields.should == []
+      SunrisePage.config.sections[:list_export].should be_nil
     end
   end
 end
