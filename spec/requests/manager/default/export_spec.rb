@@ -45,7 +45,7 @@ describe "Sunrise Manager Export" do
         
         page.status_code.should == 200
         page.body.should_not be_blank
-        #page.body.should include(@admin.email)
+        page.body.should include(@admin.email)
       end
     end
     
@@ -77,8 +77,8 @@ describe "Sunrise Manager Export" do
         
         page.status_code.should == 200
         page.body.should_not be_blank
-        #page.body.should include(@page.title)
-        #page.body.should include(@page.slug)
+        page.body.should include(@page.title)
+        page.body.should include(@page.slug)
       end
     end
     
