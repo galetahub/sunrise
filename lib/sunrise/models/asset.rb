@@ -102,6 +102,8 @@ module Sunrise
       def uploader_create(params, request = nil)
         if uploader_can?(:create, request)
           self.user = request.env['warden'].user
+          params[:assetable_type] = "Noname" if params[:assetable_type].blank?
+          params[:assetable_id] = 0 if params[:assetable_id].blank?
           super
         else
           errors.add(:id, :access_denied)
