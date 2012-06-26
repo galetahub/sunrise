@@ -245,7 +245,7 @@ uk:
       short: "%d %b"
       long: "%d %B %Y"
 
-    day_names:
+    standalone_day_names:
       - неділя
       - понеділок
       - вівторок
@@ -253,7 +253,7 @@ uk:
       - четвер
       - "п'ятниця"
       - субота
-    abbr_day_names:
+    standalone_abbr_day_names:
       - нд.
       - пн.
       - вт.
@@ -263,7 +263,7 @@ uk:
       - сб.
 
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names:
+    standalone_month_names:
       - ~
       - Січень
       - Лютий
@@ -277,7 +277,8 @@ uk:
       - Жовтень
       - Листопад
       - Грудень
-    abbr_month_names:
+      
+    standalone_abbr_month_names:
       - ~
       - січ.
       - лют.
@@ -291,6 +292,22 @@ uk:
       - жовт.
       - лист.
       - груд.
+    
+    common_month_names:
+      - ~
+      - січня
+      - лютого
+      - березня
+      - квітня
+      - травня
+      - червня
+      - липня
+      - серпня
+      - вересня
+      - жовтня
+      - листопада
+      - грудня
+      
     # Used in date_select and datime_select.
     order:
       - :day

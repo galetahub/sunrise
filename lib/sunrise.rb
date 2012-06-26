@@ -43,6 +43,12 @@ module Sunrise
     autoload :FriendlyId, 'sunrise/hooks/friendly_id'
   end
   
+  # Regexp machers for context-based russian month names and day names translation
+  LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%b)/
+  LOCALIZE_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%B)/
+  LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH = /^%a/
+  LOCALIZE_STANDALONE_DAY_NAMES_MATCH = /^%A/
+  
   def self.root_path
     @root_path ||= Pathname.new( File.dirname(File.expand_path('../', __FILE__)) )
   end

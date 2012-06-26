@@ -21,7 +21,8 @@ module Sunrise
     config.i18n.load_path += Dir[Sunrise.root_path.join('config/locales/**', '*.{rb,yml}')]
     
     initializer "sunrise.setup" do
-      I18n.backend = Sunrise::Utils::I18nBackend.new
+      I18n::Backend::Simple.send(:include, I18n::Backend::Pluralization)
+      I18n::Backend::Simple.send(:include, I18n::Backend::Transliterator)
       
       ActiveSupport.on_load :active_record do
         ActiveRecord::Base.send :include, Sunrise::CarrierWave::Glue

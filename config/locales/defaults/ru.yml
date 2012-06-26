@@ -17,7 +17,7 @@ ru:
       short: "%d %b"
       long: "%d %B %Y"
 
-    day_names:
+    standalone_day_names:
       - воскресенье
       - понедельник
       - вторник
@@ -25,7 +25,7 @@ ru:
       - четверг
       - пятница
       - суббота
-    abbr_day_names:
+    standalone_abbr_day_names:
       - Вс
       - Пн
       - Вт
@@ -34,22 +34,23 @@ ru:
       - Пт
       - Сб
 
-    month_names:
+    standalone_month_names:
       - ~
-      - января
-      - февраля
-      - марта
-      - апреля
-      - мая
-      - июня
-      - июля
-      - августа
-      - сентября
-      - октября
-      - ноября
-      - декабря
+      - Январь
+      - Февраль
+      - Март
+      - Апрель
+      - Май
+      - Июнь
+      - Июль
+      - Август
+      - Сентябрь
+      - Октябрь
+      - Ноябрь
+      - Декабрь
+      
     # see russian gem for info on "standalone" day names
-    abbr_month_names:
+    standalone_abbr_month_names:
       - ~
       - янв.
       - февр.
@@ -63,6 +64,22 @@ ru:
       - окт.
       - нояб.
       - дек.
+    
+    common_month_names:
+      - ~
+      - января
+      - февраля
+      - марта
+      - апреля
+      - мая
+      - июня
+      - июля
+      - августа
+      - сентября
+      - октября
+      - ноября
+      - декабря
+    
     order:
       - :day
       - :month

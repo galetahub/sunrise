@@ -1,7 +1,6 @@
 module Sunrise
   module Utils
     autoload :Transliteration, 'sunrise/utils/transliteration'
-    autoload :I18nBackend, 'sunrise/utils/i18n_backend'
     autoload :Mysql, 'sunrise/utils/mysql'
     autoload :EvalHelpers, 'sunrise/utils/eval_helpers'
     autoload :CsvDocument, 'sunrise/utils/csv_document'

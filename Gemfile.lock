@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sunrise-cms (0.3.1)
+    sunrise-cms (0.3.3)
       awesome_nested_set (~> 2.1.3)
       cancan (~> 1.6.7)
       cancan_namespace (~> 0.1.3)
