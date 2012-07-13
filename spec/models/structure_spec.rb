@@ -64,6 +64,7 @@ describe Structure do
   context "friendly_id" do
     before(:all) do
       @structure = FactoryGirl.build(:structure_page, :title => 'Bla bla bla', :parent => @root)
+      @slug = @structure.slug
       
       @structure.should be_new_record
       @structure.title = 'Some super title'
@@ -71,16 +72,25 @@ describe Structure do
     end
     
     it "should generate slug from title" do
-      @structure.friendly_id.should == "some-super-title"
+      @structure.friendly_id.should == @slug
       @structure.slug.should_not be_blank
-      @structure.slug.should == 'some-super-title'
+      @structure.slug.should == @slug
     end
     
     it "should not regenerate slug if title changed" do
       @structure.title = 'Other big title'
       @structure.save
-      @structure.friendly_id.should == "some-super-title"
-      @structure.slug.should == 'some-super-title'
+      @structure.friendly_id.should == @slug
+      @structure.slug.should == @slug
+    end
+
+    it "should not generate slug if it's already exist" do
+      struct = FactoryGirl.build(:structure_page, :title => 'Tra ta ta', :parent => @root)
+      struct.slug = 'original-slug'
+      struct.save
+      struct.reload
+
+      struct.slug.should == 'original-slug'
     end
   end
   

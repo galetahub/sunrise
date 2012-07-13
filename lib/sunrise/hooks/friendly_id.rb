@@ -10,7 +10,7 @@ module Sunrise
           return false if base.nil? && slug_value.nil?
           
           # Otherwise, if this is a new record, we're definitely going to try to create a new slug.
-          new_record? || slug_value.blank?
+          slug_value.blank?
         end
       end
     end
