@@ -16,7 +16,7 @@ describe "Sunrise Manager New" do
       before(:each) do
         visit new_path(:model_name => "posts", :parent_id => @page.id, :parent_type => @page.class.name)
         
-        fill_in "post[title]", :with => "Aimbulance"
+        fill_in "post[title]", :with => "Good title"
         fill_in "post[content]", :with => "Some long text" * 10
         check('post[is_visible]')
         
@@ -27,7 +27,7 @@ describe "Sunrise Manager New" do
       
       it "should create an object with correct attributes" do
         @post.should_not be_nil
-        @post.title.should == "Aimbulance"
+        @post.title.should == "Good title"
         @post.content.should_not be_blank
         @post.is_visible.should == true
         @post.structure.should == @page

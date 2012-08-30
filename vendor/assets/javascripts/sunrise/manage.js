@@ -1,8 +1,3 @@
-/* ------------------------------------------------------------------------
- * manage.js
- * Copyright (c) 2007-2011 Aimbulance, LLC. All rights reserved.
- * ------------------------------------------------------------------------ */
-
 $(document).ready(function(){
   //$("input[type='text']:first", document.forms[0]).focus();
   var element = $('input:visible,select:visible,textarea:visible', document).get(0);

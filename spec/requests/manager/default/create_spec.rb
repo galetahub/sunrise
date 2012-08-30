@@ -11,7 +11,7 @@ describe "Sunrise Manager New" do
       before(:each) do
         visit new_path(:model_name => "structures")
         
-        fill_in "structure[title]", :with => "Aimbulance"
+        fill_in "structure[title]", :with => "Good day"
         select(StructureType.page.title, :from => "structure[kind]")
         select(PositionType.menu.title, :from => "structure[position]")
         check('structure[is_visible]')
@@ -23,7 +23,7 @@ describe "Sunrise Manager New" do
       
       it "should create an object with correct attributes" do
         @structure.should_not be_nil
-        @structure.title.should == "Aimbulance"
+        @structure.title.should == "Good day"
         @structure.structure_type.should == StructureType.page
         @structure.position_type.should == PositionType.menu
         @structure.is_visible.should == true

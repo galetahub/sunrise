@@ -18,7 +18,7 @@ describe "Sunrise Manager Edit" do
         
         #save_and_open_page
         
-        fill_in "structure[title]", :with => "Aimbulance updated"
+        fill_in "structure[title]", :with => "Title updated"
         select(StructureType.posts.title, :from => "structure_kind")
         select(PositionType.default.title, :from => "structure_position")
         uncheck('structure[is_visible]')
@@ -29,7 +29,7 @@ describe "Sunrise Manager Edit" do
       it "should update an object with correct attributes" do
         @page.reload
         
-        @page.title.should == "Aimbulance updated"
+        @page.title.should == "Title updated"
         @page.structure_type.should == StructureType.posts
         @page.position_type.should == PositionType.default
         @page.is_visible.should == false
