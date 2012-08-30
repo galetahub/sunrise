@@ -20,7 +20,7 @@ describe "Sunrise Manager Edit many" do
         
         #save_and_open_page
         
-        fill_in "post[title]", :with => "Aimbulance updated"
+        fill_in "post[title]", :with => "Title updated"
         fill_in "post[content]", :with => "Tra la la"
         uncheck('post[is_visible]')
         
@@ -30,7 +30,7 @@ describe "Sunrise Manager Edit many" do
       it "should update an object with correct attributes" do
         @post.reload
         
-        @post.title.should == "Aimbulance updated"
+        @post.title.should == "Title updated"
         @post.content.should == "Tra la la"
         @post.structure.should == @page
         @post.is_visible.should == false

@@ -26,11 +26,11 @@ describe "Sunrise Manager Index many" do
     
     describe "search" do
       before(:each) do
-        @post2 = FactoryGirl.create(:post, :title => "Aimbulance", :structure => @page)
+        @post2 = FactoryGirl.create(:post, :title => "Good day", :structure => @page)
         
         visit index_path(:model_name => "posts", :parent_id => @page.id, :parent_type => @page.class.name)
         
-        fill_in "search[title]", :with => "Aimbulance"
+        fill_in "search[title]", :with => "Good day"
         click_button "submit-button-search"
       end
       

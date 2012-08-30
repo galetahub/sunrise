@@ -1,6 +1,6 @@
 = Sunrise CMS
 
-Aimbulance mini content management system for programmers.
+Open source mini content management system for programmers.
 
 == Instructions
 
@@ -28,4 +28,4 @@ For more info look at jbuilder https://rubygems.org/gems/jbuilder.
 
   GET /manage/users/export.xlsx
 
-Copyright (c) 2011 Aimbulance, released under the MIT license
+Copyright (c) 2012 Fodojo, released under the MIT license

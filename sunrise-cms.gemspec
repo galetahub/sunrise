@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = Sunrise::VERSION.dup
   s.platform = Gem::Platform::RUBY 
   s.summary = "Rails CMS"
-  s.description = "Sunrise is a Aimbulance CMS"
+  s.description = "Sunrise is a Open Source CMS"
   s.authors = ["Igor Galeta", "Pavlo Galeta"]
   s.email = "galeta.igor@gmail.com"
   s.rubyforge_project = "sunrise-cms"
