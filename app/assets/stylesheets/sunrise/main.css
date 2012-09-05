@@ -354,16 +354,28 @@ input[disabled].button.gray {
 	margin: 0;
 	list-style: none;
 }
-.sub-wrapper .main-list li, .sub-wrapper .inner-list li {
+.sub-wrapper .main-list li,
+.sub-wrapper .inner-list li {
 	display: block;
+}
+/* new css code */
+.sub-wrapper .main-list li {
+	padding:10px 0 10px 30px;
+	font-weight:bold;
+  text-shadow:#000 1px 2px 0;
 }
 .sub-wrapper .main-list li a {
 	display: block;
-	padding: 10px 30px 10px 65px;
+	height:27px;
+	padding: 10px 30px 0 65px;
+  margin:-10px 0 -10px -30px;
 	color: #fff;
 	text-decoration: none;
 	font-size: 15px;
+	font-weight:normal;
+	text-shadow:none;
 }
+/* end new css code */
 .sub-wrapper .main-list li span {
 	background-color: #252525 !important;
 	border-top: 1px solid #131313;
