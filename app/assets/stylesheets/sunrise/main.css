@@ -360,7 +360,6 @@ input[disabled].button.gray {
 }
 /* new css code */
 .sub-wrapper .main-list li {
-	padding:10px 0 10px 30px;
 	font-weight:bold;
   text-shadow:#000 1px 2px 0;
 }
@@ -368,7 +367,6 @@ input[disabled].button.gray {
 	display: block;
 	height:27px;
 	padding: 10px 30px 0 65px;
-  margin:-10px 0 -10px -30px;
 	color: #fff;
 	text-decoration: none;
 	font-size: 15px;
@@ -383,7 +381,7 @@ input[disabled].button.gray {
 	padding: 9px 30px 9px 65px;
 	font-size: 15px;
 	display: block;
-	color: #952c9e;
+/*	color: #952c9e;*/
 }
 .sub-wrapper .main-list li a:hover, .sub-wrapper .inner-list li a:hover {
 	background-color: #000 !important;
@@ -407,6 +405,12 @@ input[disabled].button.gray {
 .sub-wrapper .main-list li a.icon5,
 .sub-wrapper .main-list li span.icon5 {
   background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
+}
+.sub-wrapper .main-list li span.icon1,
+.sub-wrapper .main-list li span.icon2,
+.sub-wrapper .main-list li span.icon3,
+.sub-wrapper .main-list li span.icon4 {
+  background: url(/assets/sunrise/top_logo_black.png) no-repeat 30px center;
 }
 .sub-wrapper .inner-list {
   display: block;
@@ -1699,3 +1703,27 @@ div.input.date .calend-holder {
 							}	*/																		
 
 /* \\\\tree stuff */
+
+
+/* first_structure_icons */
+.treeHolder ul li div {
+	padding-right: 50px;
+}
+.treeHolder ul li div.first_structure_icons {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+	padding: 0;
+	height: 36px;
+}
+.treeHolder ul li div.first_structure_icons a {
+	right: 0;
+}
+.treeHolder ul li div.first_structure_icons a.btn_edit {
+	right: 10px;
+}
+.treeHolder ul li div.first_structure_icons a.btn_del {
+	right: 10px;
+}
+/* end first_structure_icons */
