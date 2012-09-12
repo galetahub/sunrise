@@ -80,7 +80,7 @@ module Sunrise
     end
     
     def mass_destroy
-      abstract_model.model.destroy_all(["id in (?)", params[:ids]]) unless params[:ids].blank?
+      abstract_model.model.destroy_all(:id => params[:ids]) unless params[:ids].blank?
       
       respond_to do |format|
         format.html { redirect_to redirect_after_update }
@@ -144,7 +144,7 @@ module Sunrise
       end
       
       def authorize_resource
-        authorize!(action_name, @record || abstract_model.model, :context => :sunrise)
+        authorize!(action_name.to_sym, @record || abstract_model.model, :context => :sunrise)
       end
       
       def scoped_index_path(options = {})
