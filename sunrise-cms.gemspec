@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   
   s.add_runtime_dependency("rails", "~> 3.2.0")
-  s.add_runtime_dependency("kaminari", "~> 0.13.0")
+  s.add_runtime_dependency("kaminari", "~> 0.14.0")
   s.add_runtime_dependency("simple_form", "~> 2.0.2")
   s.add_runtime_dependency("jbuilder", "~> 0.4.0")
   
