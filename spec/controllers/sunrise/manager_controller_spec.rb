@@ -38,6 +38,11 @@ describe Sunrise::ManagerController do
           get :index, :model_name => "wrong"
         }.should raise_error ActionController::RoutingError
       end
+
+      it "should not destroy root structure" do
+        controller.should_not receive(:destroy)
+        delete :destroy, :id => @root.id
+      end
     end
   end
 end
