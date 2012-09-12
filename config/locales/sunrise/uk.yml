@@ -160,23 +160,23 @@ uk:
       exit: "Вихід"
     
     user:
-      actions: "действия"
+      actions: "дії"
       events:
-        register: "Регистрация"
-        suspend: "Заморозить"
-        delete: "Удалить"
-        unsuspend: "Разморозить"
-        activate: "Активировать"
-        unlock: "Разблокировать"
-      roles: "Роли"
+        register: "Реєстрація"
+        suspend: "Заморозити"
+        delete: "Видалити"
+        unsuspend: "Розморозити"
+        activate: "Активувати"
+        unlock: "Розблокувати"
+      roles: "Ролі"
       
     users:
-      activated_at: "активация"
+      activated_at: "активація"
       last_login_ip: "ip"
       email: "email"
-      category: "категория"
-      name: "Имя"
-      export: "Экспортировать"
+      category: "категорія"
+      name: "Ім'я"
+      export: "Експортувати"
       
       sort:
         _: "-"
@@ -187,30 +187,29 @@ uk:
     
     structure:
       kind:
-        page: "Текстовая страничка"
+        page: "Текстова сторінка"
         posts: "Блоги"
-        main: "Главная страничка"
+        main: "Головна сторінка"
         promo: "Конкурс"
-        lessons: "Приватные уроки"
-        faq: "Вопросы и ответы"
-        shake: "Shake в банке"
+        lessons: "Приватні уроки"
+        faq: "Питання та відповіді"
         downloads: "Downloads"
         redirect: "Redirect"
-        tracks: "Музыка"
-        wallpapers: "Обои"
-        group: "Група страничок"
+        tracks: "Музика"
+        wallpapers: "Шпалери"
+        group: "Група сторінок"
       
       position:
-        default: "По умолчанию"
-        menu: "Главное меню"
+        default: "За замовчуванням"
+        menu: "Головне меню"
         bottom: "Внизу"
     
     role:
       kind:
-        guest: "Гость"
-        default: "Клиент"
+        guest: "Гість"
+        default: "Клієнт"
         moderator: "Модератор"
-        admin: "Aдминистратор"
+        admin: "Aдміністратор"
         redactor: "Редактор"
         
     tags:
@@ -245,15 +244,15 @@ uk:
       sort_order_asc: "по сортировке по возрастанию"
     
     fileupload:
-      button: "Выберите файл"
+      button: "Виберіть файл"
       max_size: "Макс. р."
       
     icons:
-      down: "Опустить вниз"
-      up: "Поднять вверх"
-      edit: "Редактировать"
+      down: "Опустити вниз"
+      up: "Підняти вгору"
+      edit: "Редагувати"
       settings: "Настройки"
-      delete: "Удалить"
+      delete: "Видалити"
   
   views:
     pagination:
