@@ -6,10 +6,11 @@ module Sunrise
     
     def index
       per_page = Sunrise::Config.audit_events_per_page
+      sort_mode = Sunrise::Config.default_sort_reverse
       cur_page = (params[:page] || 1).to_i
       offset = (cur_page - 1) * per_page
       
-      @events = Audited.audit_class.includes(:user).limit(per_page).offset(offset)
+      @events = Audited.audit_class.includes(:user).limit(per_page).offset(offset).order("audits.id #{sort_mode}")
       
       respond_with(@events) do |format|
         format.html { render :layout => params[:time].blank? }
