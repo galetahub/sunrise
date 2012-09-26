@@ -130,6 +130,10 @@ module Sunrise
             self[key] = value
           end
         end
+
+        def to_key
+          ['settings']
+        end
       end
       
       #get the value field, YAML decoded

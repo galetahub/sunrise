@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("rails", "~> 3.2.0")
   s.add_runtime_dependency("kaminari", "~> 0.14.0")
   s.add_runtime_dependency("simple_form", "~> 2.0.2")
-  s.add_runtime_dependency("jbuilder", "~> 0.4.0")
+  s.add_runtime_dependency("jbuilder", "~> 0.5.0")
   
   s.add_runtime_dependency("awesome_nested_set", "~> 2.1.3")
   s.add_runtime_dependency("mime-types", "~> 1.18")
