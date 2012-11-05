@@ -4,7 +4,7 @@ module Sunrise
   module Config
     class Field < Base
       include Sunrise::Utils::EvalHelpers
-      
+
       # The condition that must be met on an object
       attr_reader :if_condition
       
@@ -45,6 +45,10 @@ module Sunrise
       
       def label?
         @config_options[:label] != false
+      end
+
+      def nested?
+        false
       end
       
       protected

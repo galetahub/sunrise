@@ -158,6 +158,7 @@ uk:
       thumbs: "Список"
       edit_profile: "Мій профайл"
       exit: "Вихід"
+      add_nested_field: "+Ще"
     
     user:
       actions: "дії"

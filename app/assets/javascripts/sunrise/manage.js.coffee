@@ -136,6 +136,24 @@ class Sunrise
     else
       return ret
 
+  insert_fields: (link, method, content) ->
+    new_id = new Date().getTime();
+    regexp = new RegExp("new_" + method, "g")
+
+    console.log link
+  
+    $(link).parents("div.nested_bottom").before(content.replace(regexp, new_id))
+
+  remove_fields: (link) ->
+    hidden_field = $(link).prev("input[type=hidden]")
+  
+    if hidden_field.length isnt 0
+      hidden_field.val('1')
+
+    console.log link
+    
+    $(link).closest("div.nested_item").hide()
+
 $(document).ready ->
   window['sunrise'] ?= new Sunrise(window.location.pathname)
   window['sunrise'].setup()

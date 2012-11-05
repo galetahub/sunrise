@@ -140,6 +140,7 @@ en:
     
     buttons:
       create_structure: "Create Section"
+      add_nested_field: "+Add"
     
     user:
       actions: "action"

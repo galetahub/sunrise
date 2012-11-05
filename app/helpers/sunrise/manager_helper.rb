@@ -31,5 +31,35 @@ module Sunrise
         item.to_s
       end
     end
+
+    def manage_remove_child_link(name, form, options = {})
+      options[:onclick] = h("sunrise.remove_fields(this);")
+      form.hidden_field(:_destroy) + link_to(name, "javascript:void(0);", options)
+    end
+
+    def manage_add_child_link(name, form, field, options={})
+      options.symbolize_keys!
+      
+      method = field.name.to_sym
+      html_options = (options.delete(:html) || {})
+      fields = manage_new_child_fields(form, field, options)
+      
+      html_options[:class] ||= "button"
+      html_options[:onclick] = h("sunrise.insert_fields(this, \"#{method}\", \"#{escape_javascript(fields)}\");")
+      
+      link_to(name, "javascript:void(0);", html_options)
+    end
+    
+    def manage_new_child_fields(form_builder, field, options = {})
+      method = field.name.to_sym
+
+      options[:object] ||= form_builder.object.class.reflect_on_association(method).klass.new
+      options[:partial] ||= method.to_s.singularize
+      options[:form_builder_local] ||= :form
+      
+      form_builder.fields_for(method, options[:object], :child_index => "new_#{method}") do |f|
+        render(:partial => options[:partial], :locals => { options[:form_builder_local] => f, :field => field })
+      end
+    end
   end
 end

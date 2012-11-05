@@ -57,3 +57,46 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .treeHolder li.ui-sortable-helper {
   background: none;
 }
+
+/* Nested form */
+.nested {
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 1px 1px #fff;
+  -moz-box-shadow: 0px 0px 1px 1px #fff;
+  box-shadow: 0px 0px 1px 1px #fff;
+  padding: 15px 0;
+  margin-bottom: 20px;
+}
+.nested .nested_item {
+  border-top: 1px solid #DBDBDB;
+  border-bottom: 1px solid #DBDBDB;
+  margin: 5px 0 -6px 0;
+  box-shadow: 0 0 1px 1px #FFFFFF;
+  padding: 15px 0 0px;
+  position: relative;
+  overflow: hidden;
+}
+.nested .nested_bottom {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  clear: both;
+}
+.nested .nested_bottom .button {
+  display: inline-block;
+}
+.nested .padder {
+  margin-left: 20px;
+  margin-right: 20px;
+  float:left;
+  width:200px;
+  clear: none;
+}
+.nested .title-switcher {
+  float:none;
+}
+/* End nested form */

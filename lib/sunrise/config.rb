@@ -12,7 +12,7 @@ module Sunrise
     
     # By default show latest first
     mattr_accessor :default_sort_mode
-    @@default_sort_reverse = :desc
+    @@default_sort_mode = :desc
     
     # The display for a model instance (i.e. a single database record).
     mattr_accessor :label_methods
