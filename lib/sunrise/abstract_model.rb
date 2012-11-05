@@ -151,14 +151,11 @@ module Sunrise
       model.update_all("#{@sort_column} = CASE id #{sql_case}", ["id IN (?)", ids.keys.map(&:to_i)])
     end
     
-    # Initialize new model and set parent record
+    # Initialize new model, sets parent record and call build_defaults method
     def build_record
       record = model.new
-      
-      if parent_record
-        record.send("#{parent_association.name}=", parent_record)
-      end
-      
+      record.send("#{parent_association.name}=", parent_record) if parent_record
+      record.build_defaults if record.respond_to?(:build_defaults)
       record
     end
     

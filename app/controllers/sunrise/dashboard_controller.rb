@@ -6,7 +6,7 @@ module Sunrise
     
     def index
       per_page = Sunrise::Config.audit_events_per_page
-      sort_mode = Sunrise::Config.default_sort_reverse
+      sort_mode = Sunrise::Config.default_sort_mode
       cur_page = (params[:page] || 1).to_i
       offset = (cur_page - 1) * per_page
       

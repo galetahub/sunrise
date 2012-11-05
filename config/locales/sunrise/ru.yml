@@ -158,6 +158,7 @@ ru:
       thumbs: "Список"
       edit_profile: "Мой профайл"
       exit: "Выход"
+      add_nested_field: "+Еще"
     
     user:
       actions: "действия"

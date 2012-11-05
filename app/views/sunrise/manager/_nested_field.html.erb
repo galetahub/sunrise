@@ -1,0 +1,4 @@
+<div class="nested_item">
+  <%= manage_remove_child_link '', form, :class => "close-but" %>
+  <%= render :partial => 'field', :collection => field.fields, :locals => {:form => form} %>
+</div>
