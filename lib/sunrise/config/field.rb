@@ -36,7 +36,9 @@ module Sunrise
         css << "grey-but" if input_options[:boolean]
         css << "tags-edit" if association?
         
-        { :class => css.join(' ') }
+        opts = { :class => css.join(' ') }
+        opts.merge!({ :style => input_options[:div_style] }) if input_options[:div_style]
+        opts
       end
       
       def association?
