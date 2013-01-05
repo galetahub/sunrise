@@ -72,7 +72,6 @@ describe Structure do
     end
     
     it "should generate slug from title" do
-      @structure.friendly_id.should == @slug
       @structure.slug.should_not be_blank
       @structure.slug.should == @slug
     end
@@ -80,7 +79,6 @@ describe Structure do
     it "should not regenerate slug if title changed" do
       @structure.title = 'Other big title'
       @structure.save
-      @structure.friendly_id.should == @slug
       @structure.slug.should == @slug
     end
 
@@ -101,7 +99,7 @@ describe Structure do
     
     it "should find structure by permalink" do
       Structure.find(@structure.id).should == @structure
-      Structure.find(@structure.slug).should == @structure
+      Structure.where(:slug => @structure.slug).first.should == @structure
     end
     
     it "should not find structure with wrong permalink" do
@@ -115,11 +113,8 @@ describe Structure do
     end
     
     it "should raise exception if structure not found" do
-      lambda {
-        Structure.find('wrong')
-      }.should raise_exception ActiveRecord::RecordNotFound
-      
-      Structure.find(@structure.slug).should == @structure
+      Structure.where(:slug => 'wrong').first.should be_nil
+      Structure.where(:slug => @structure.slug).first.should == @structure
     end
   end
 end

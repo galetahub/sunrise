@@ -23,7 +23,7 @@ module Sunrise
       
       module ClassMethods
         def cache_key(var_name)
-          [target_id, target_type, var_name].compact.join("::")
+          [target_id, target_type, var_name].compact.map(&:to_s).join("::")
         end
         
         #get or set a variable with the variable as the called method
@@ -65,9 +65,9 @@ module Sunrise
 
         #retrieve all settings as a hash (optionally starting with a given namespace)
         def all(starting_with=nil)
-          query = target_scoped.select([:var, :value])
+          query = target_scoped
           query = query.where(["var LIKE ?", "#{starting_with}%"]) if starting_with
-          
+
           result = defaults.dup
           
           query.all.each do |record|
@@ -90,7 +90,9 @@ module Sunrise
         
         #set a setting value by [] notation
         def []=(var_name, value)
-          record = target_scoped.find_or_initialize_by_var(var_name.to_s)
+          record = target_scoped.where(:var => var_name.to_s).first
+          record ||= new(:var => var_name.to_s)
+
           record.value = value
           record.save!
           cache.write(cache_key(var_name), value, cache_options)

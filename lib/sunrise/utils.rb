@@ -15,10 +15,9 @@ module Sunrise
   
     # Given a string +model_name+, finds the corresponding model class
     def self.lookup(model_name, klass = nil)
-      klass ||= ActiveRecord::Base if Object.const_defined?("ActiveRecord")
-      
       model = model_name.constantize rescue nil
-      if model && model.is_a?(Class) && superclasses(model).include?(klass) && !model.abstract_class?
+
+      if model && model.is_a?(Class)
         model
       else
         nil
@@ -47,6 +46,11 @@ module Sunrise
       
       {:column => column, :mode => mode}
     end
-    
+
+    # Convert input to friendly slug using babosa gem
+    #
+    def self.normalize_friendly_id(input)
+      input.to_s.to_slug.normalize(:transliterations => Sunrise::Config.transliteration).to_s
+    end
   end
 end

@@ -10,7 +10,7 @@ module Sunrise
       cur_page = (params[:page] || 1).to_i
       offset = (cur_page - 1) * per_page
       
-      @events = Audited.audit_class.includes(:user).limit(per_page).offset(offset).order("audits.id #{sort_mode}")
+      @events = Sunrise::Config.audit_scope.limit(per_page).offset(offset)
       
       respond_with(@events) do |format|
         format.html { render :layout => params[:time].blank? }

@@ -41,7 +41,7 @@ describe User do
     end
     
     it "should search users by role" do
-      User.with_role(::RoleType.default.id).all.should include(@user)
+      User.with_role(::RoleType.default).all.should include(@user)
     end
     
     it "export users in csv format" do
@@ -56,10 +56,6 @@ describe User do
     it "should set default role" do
       @user.role_type_id.should == RoleType.default.id
       @user.role_symbol.should == RoleType.default.code
-    end
-    
-    it 'should return default avatar image' do
-      @user.avatar_small_url.should == "/images/manage/user_pic_small.gif"
     end
     
     it "should return current user events" do

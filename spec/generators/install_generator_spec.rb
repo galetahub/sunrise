@@ -18,10 +18,6 @@ describe Sunrise::Generators::InstallGenerator do
     run_generator
   end
   
-  it "should copy_stylesheets" do
-    assert_file "app/assets/stylesheets/alert.css"
-  end
-  
   it "should copy_views" do
     assert_directory "app/views/pages"
     assert_directory "app/views/shared"
@@ -30,8 +26,8 @@ describe Sunrise::Generators::InstallGenerator do
   end
   
   it "should copy_configurations" do
-    ["db/seeds.rb", "config/initializers/sunrise.rb", "config/application.yml.sample", "config/database.yml.sample",
-     "config/logrotate-config.sample", "config/nginx-config-passenger.sample"].each do |file|
+    ["db/seeds.rb", "config/initializers/sunrise.rb", "config/database.yml.sample",
+     "config/logrotate-config.sample", "config/nginx-config.sample"].each do |file|
       assert_file file
     end
   end

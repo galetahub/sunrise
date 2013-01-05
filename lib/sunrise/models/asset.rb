@@ -72,7 +72,7 @@ module Sunrise
       end
       
       def image?
-        Sunrise::Utils::IMAGE_TYPES.include?(self.data_content_type)
+        Sunrise::Utils::IMAGE_TYPES.include?(data_content_type)
       end
       
       def cropper_geometry=(value)

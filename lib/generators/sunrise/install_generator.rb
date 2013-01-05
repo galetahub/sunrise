@@ -5,12 +5,11 @@ module Sunrise
     class InstallGenerator < Rails::Generators::Base
       desc "Creates a Sunrise initializer and copy general files to your application."
       source_root File.expand_path(File.join(File.dirname(__FILE__), 'templates'))
-      
-      # copy stylesheets
-      def copy_stylesheets
-        copy_file('stylesheets/alert.css', 'app/assets/stylesheets/alert.css')
-      end
-      
+
+      # ORM configuration
+      class_option :orm, :type => :string, :default => "active_record",
+        :desc => "Configure ORM active_record/mongoid (by default active_record)"
+            
       # copy views
       def copy_views
         directory "views", "app/views"
@@ -25,15 +24,15 @@ module Sunrise
         copy_file('config/seeds.rb', 'db/seeds.rb')
         copy_file('config/sunrise.rb', 'config/initializers/sunrise.rb')
         
-        template('config/application.yml', 'config/application.yml.sample')
         template('config/database.yml', 'config/database.yml.sample')
         template('config/logrotate-config', 'config/logrotate-config.sample')
-        template('config/nginx-config-passenger', 'config/nginx-config-passenger.sample')
+        template('config/nginx-config', 'config/nginx-config.sample')
       end
       
       # copy models
       def copy_models
-        directory "models", "app/models"
+        directory "models/#{orm}", "app/models/defaults"
+        directory "models/sunrise", "app/models/sunrise"
       end
       
       # Add devise routes
@@ -87,6 +86,10 @@ module Sunrise
         
         def app_path
           @app_path ||= Rails.root.to_s
+        end
+
+        def orm
+          options[:orm] || "active_record"
         end
     end
   end

@@ -10,3 +10,5 @@ if Settings.table_exists?
   Settings.defaults[:some_setting] = "value"
   Settings.defaults[:some_setting2] = "value2"
 end
+
+require "page_parts/orm/#{SUNRISE_ORM}"

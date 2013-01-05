@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe "Sunrise Manager Index" do
   subject { page }
-  before(:all) do 
+  before(:all) do
     @admin = FactoryGirl.create(:admin_user)
-    
     @root = FactoryGirl.create(:structure_main)
     @page = FactoryGirl.create(:structure_page, :parent => @root)
   end

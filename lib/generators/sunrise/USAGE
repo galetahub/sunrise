@@ -1,7 +1,13 @@
 Usage:
+
   rails generate sunrise:install
 
+  rails generate sunrise:install --orm=mongoid
+
 Options:
+  
+  orm - active_record/mongoid
                  
 Example:
+
   rails g sunrise:install

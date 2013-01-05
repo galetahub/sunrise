@@ -6,7 +6,7 @@
 		    <% ["created_at", "user", "action", "auditable", "remote_address"].each do |attr| %>
   			  <th>
   			    <%= image_tag("sunrise/audit/#{attr}.png") %>
-  			    <%= Audited.audit_class.human_attribute_name("audit.#{attr}") %>
+  			    <%= t(attr, :scope => [:sunrise, :audit]) %>
   			  </th>
 			  <% end -%>
 		  </tr>

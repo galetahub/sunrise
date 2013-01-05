@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Sunrise::DashboardController do
   render_views  
   
-  before(:all) do 
+  before(:all) do
     @audit = FactoryGirl.create(:audit)
   end
   

@@ -5,7 +5,8 @@ module Sunrise
     respond_to :json, :only => [:services]
     
     def services
-      @services = Structure.with_depth(1)
+      root = Structure.roots.first
+      @services = root.children
       respond_with(@services)
     end
   end

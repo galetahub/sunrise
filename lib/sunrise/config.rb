@@ -36,6 +36,11 @@ module Sunrise
     # Set available locales in app
     mattr_accessor :available_locales
     @@available_locales = []
+
+    # Set transliteration for babosa gem
+    # more info here: https://github.com/norman/babosa
+    mattr_accessor :transliteration
+    @@transliteration = :russian
     
     def self.scoped_views?
       @@scoped_views === true
@@ -43,6 +48,14 @@ module Sunrise
     
     def self.nav
       ::SunriseNavigation.instance.navigations
+    end
+
+    def self.audit_scope
+      if Object.const_defined?("Audited")
+        Audited.audit_class.includes(:user).order("audits.id #{sort_mode}")
+      else
+        HistoryTracker.scoped
+      end
     end
   end
 end

@@ -27,20 +27,10 @@ module Sunrise
     autoload :FileSizeValidator, 'sunrise/carrierwave/file_size_validator'
   end
   
-  module NestedSet
-    autoload :Descendants, 'sunrise/nested_set/descendants'
-    autoload :Depth, 'sunrise/nested_set/depth'
-  end
-  
   module Views
     autoload :FormBuilder, 'sunrise/views/form_builder'
     autoload :SearchWrapper, 'sunrise/views/search_wrapper'
     autoload :Helper, 'sunrise/views/helper'
-  end
-  
-  module Hooks
-    autoload :Kaminari, 'sunrise/hooks/kaminari'
-    autoload :FriendlyId, 'sunrise/hooks/friendly_id'
   end
   
   # Regexp machers for context-based russian month names and day names translation

@@ -169,9 +169,9 @@ module Sunrise
       if current_list == :tree
         scope = scope.roots
       else
-        scope = scope.merge(page_scope(params[:page], params[:per]))
+        scope = page_scope(scope, params[:page], params[:per])
       end
-      
+
       scope
     end
     
@@ -195,8 +195,11 @@ module Sunrise
       end
     end
     
-    def page_scope(page = 1, per_page = nil)
-      model.page(page).per(per_page || list.items_per_page)
+    def page_scope(scope, page = 1, per_page = nil)
+      page = 1 if page.blank? || page.to_i <= 0
+      per_page ||= list.items_per_page
+      
+      scope.page(page).per(per_page)
     end
     
     def sort_scope(options = nil)

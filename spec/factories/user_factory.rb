@@ -1,49 +1,49 @@
 # encoding: utf-8
 FactoryGirl.define do
+  sequence(:email) { |n| "testing#{n}@example.com" }
+
   factory :admin_user, :class => User do
     name 'Admin'
-    email { FactoryGirl.generate(:email) }
+    email { generate(:email) }
     password               'password'
     password_confirmation  'password'
+    role_type_id RoleType.admin.id
     
     after(:build) do |u| 
-      u.roles.build(:role_type => RoleType.admin)
       u.skip_confirmation!
     end
   end
 
   factory :redactor_user, :class => User do
     name 'Redactor'
-    email { FactoryGirl.generate(:email) }
+    email { generate(:email) }
     password               'password'
     password_confirmation  'password'
+    role_type_id RoleType.redactor.id
     
     after(:build) do |u| 
-      u.roles.build(:role_type => RoleType.redactor)
       u.skip_confirmation!
     end
   end
 
   factory :default_user, :class => User do
     name 'Test'
-    email { FactoryGirl.generate(:email) }
+    email { generate(:email) }
     password               'password'
     password_confirmation  'password'
-    
+    role_type_id RoleType.default.id
+
     after(:build) do |u| 
-      u.roles.build(:role_type => RoleType.default)
       u.skip_confirmation!
     end
   end
 
   factory :user, :class => User do
     name 'Test'
-    email { FactoryGirl.generate(:email) }
+    email { generate(:email) }
     password               'password'
     password_confirmation  'password'
   end
   
-  sequence :email do |n|
-    "testing#{n}@example.com"
-  end
+  
 end
