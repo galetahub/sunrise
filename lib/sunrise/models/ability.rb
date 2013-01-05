@@ -13,8 +13,8 @@ module Sunrise
         @user = (user || ::User.new) # guest user (not logged in)
         @context = context
         
-        if @user.current_role && @user.current_role.role_type
-          send @user.current_role.role_type.code
+        if @user.persisted? && @user.role_type
+          send @user.role_type.code
         else
           guest
         end

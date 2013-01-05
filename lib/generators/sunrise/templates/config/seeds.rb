@@ -5,10 +5,15 @@ def insert_user
   Role.truncate!
   password = Rails.env.production? ? Devise.friendly_token : (1..9).to_a.join
   
-  admin = User.new(:name=>'Administrator', :email=>'dev@example.com',
-                   :password=>password, :password_confirmation=>password)
-  admin.login = 'admin' if admin.respond_to?(:login)
-  admin.roles.build(:role_type => RoleType.admin)
+  admin = User.new do |u|
+    u.name = "Administrator"
+    u.email = 'dev@example.com'
+    u.password = password
+    u.password_confirmation = password
+    u.login = = 'admin' if u.respond_to?(:login)
+    u.role_type = RoleType.admin
+  end
+    
   admin.skip_confirmation!
   admin.save!
 

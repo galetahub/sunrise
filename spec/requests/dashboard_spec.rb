@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Sunrise Manager Dashboard" do
   subject { page }
   before(:all) do 
-    @admin = FactoryGirl.create(:admin_user)    
+    @admin = FactoryGirl.create(:admin_user, :email => "#{Time.now.to_i}@gmail.com")    
     @audit = FactoryGirl.create(:audit)
   end
 
@@ -20,7 +20,8 @@ describe "Sunrise Manager Dashboard" do
       end
       
       it "should render records" do
-        should have_selector("#audited_adapters_active_record_audit_#{@audit.id}")
+        dom_id = ["audit", "event", @audit.id].join('_')
+        should have_selector("#" + dom_id)
       end
     end
   end

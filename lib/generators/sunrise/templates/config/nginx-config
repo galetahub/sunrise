@@ -1,0 +1,99 @@
+# <%= app_name %>
+#
+upstream <%= app_name %>_backend {
+  server unix:/var/www/<%= app_name %>/tmp/sockets/unicorn.sock;
+}
+
+server {
+  listen 5.9.17.136:80;
+  server_name <%= app_name %>.fodojo.com;
+  
+  access_log off;
+  error_log off;
+  server_tokens off;
+  
+  root /var/www/<%= app_name %>/public;
+  
+  if (-f $request_filename) { 
+    break;
+  }
+
+  if (-f /cache$request_filename) { 
+    rewrite (.*) /cache$1 break;
+    break;
+  }
+
+  if (-f /cache$request_filename.html) { 
+    rewrite (.*) /cache$1.html break;
+    break;
+  }
+  
+  if (-f $document_root/cache$request_uri.html) {
+    rewrite (.*) /cache$1.html break;
+  }
+  
+  if (-f $document_root/cache$request_uri/index.html) {
+    rewrite (.*) /cache$1/index.html break;
+  }
+  
+  # This directive prohibits direct access to the cache directory from outside
+  location ^~ /cache {
+    internal;
+  }
+  
+  location ~ /\.[^\/]+ {
+    return 404;
+  }
+  
+  location / {
+    proxy_redirect     off;
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    # proxy_set_header X-Forwarded-Proto https; # for SSL, add this
+
+    client_max_body_size       20m;
+    client_body_buffer_size    128k;
+
+    proxy_connect_timeout      90;
+    proxy_send_timeout         90;
+    proxy_read_timeout         90;
+
+    proxy_buffer_size          4k;
+    proxy_buffers              4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+
+    if (!-f $request_filename) {
+      proxy_pass http://<%= app_name %>_backend;
+      break;
+    }
+  }
+  
+  location ~ ^/(assets|ckeditor_assets|images|javascripts|stylesheets)/ {
+    expires 1y;
+    add_header Cache-Control public;
+   
+    # Some browsers still send conditional-GET requests if there's a
+    # Last-Modified header or an ETag header even if they haven't
+    # reached the expiry date sent in the Expires header.
+    add_header Last-Modified "";
+    add_header ETag "";
+    break;
+  }
+  
+  # This rewrites all the requests to the maintenance.html page if it exists in the doc root.
+  if (-f $document_root/system/maintenance.html) {
+    return 503;
+  }
+   
+  error_page 503 @503;
+  location @503 {
+    # Serve static assets if found.
+    if (-f $request_filename) {
+      break;
+    }
+   
+    rewrite ^(.*)$ /system/maintenance.html break;
+  }
+}

@@ -1,8 +1,13 @@
 # Configure Rails Envinronment
 ENV["RAILS_ENV"] = "test"
+SUNRISE_ORM = (ENV["SUNRISE_ORM"] || :active_record).to_sym
+
+puts "\n==> Sunrise.orm = #{SUNRISE_ORM.inspect}. SUNRISE_ORM = (active_record|mongoid)"
 
 require 'fileutils'
 FileUtils.rm_rf(File.expand_path("../tmp/", __FILE__))
+
+require "orm/kaminari/#{SUNRISE_ORM}"
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
@@ -10,6 +15,9 @@ require "rspec/rails"
 require "database_cleaner"
 require "generator_spec/test_case"
 require "capybara/rspec"
+
+# Run specific orm operations
+require "orm/#{SUNRISE_ORM}"
 
 # Fixtures replacement with a straightforward definition syntax
 require 'factory_girl'
@@ -21,10 +29,6 @@ ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.default_url_options[:host] = "test.com"
 
 Rails.backtrace_cleaner.remove_silencers!
-
-# Run any available migration
-ActiveRecord::Migrator.migrate File.expand_path("../../db/migrate/", __FILE__)
-ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
 
 require 'carrierwave'
 CarrierWave.configure do |config|
@@ -54,12 +58,16 @@ RSpec.configure do |config|
   
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
+  end
+
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/[^.]*"])
   end
 
   config.before(:all) do
-    DatabaseCleaner.start
-    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/[^.]*"])
-  end
+    DatabaseCleaner.clean
+  end  
 
   config.after(:all) do
     DatabaseCleaner.clean

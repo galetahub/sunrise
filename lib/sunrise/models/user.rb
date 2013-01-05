@@ -1,26 +1,31 @@
 # encoding: utf-8
 require "csv"
+require "enum_field"
 
 module Sunrise
   module Models
     module User
       extend ActiveSupport::Concern
       
-      included do       
-        has_many :roles, :dependent => :delete_all, :autosave => true
+      included do
+        extend EnumField::EnumeratedAttribute
+        
+        enumerated_attribute :role_type
+        
         has_one :avatar, :as => :assetable, :dependent => :destroy, :autosave => true
         
         before_validation :generate_login, :if => :has_login?
-        before_create :set_default_role, :if => :roles_empty?
+        before_validation :set_default_role, :if => :role_empty?
         
         validates_presence_of :name
+        validate :check_role
         
         scope :with_email, lambda {|email| where(["email LIKE ?", "#{email}%"]) }
         scope :with_name, lambda {|name| where(["name LIKE ?", "#{name}%"]) }
-        scope :with_role, lambda {|role_id| joins(:roles).merge(::Role.with_type(role_id)) }
-        scope :defaults, with_role(::RoleType.default.id)
-        scope :moderators, with_role(::RoleType.moderator.id)
-        scope :admins, with_role(::RoleType.admin.id)            
+        scope :with_role, lambda {|role_type| where(:role_type_id => role_type.id) }
+        scope :defaults, lambda { with_role(::RoleType.default) }
+        scope :moderators, lambda { with_role(::RoleType.moderator) }
+        scope :admins, lambda { with_role(::RoleType.admin) }
       end
       
       module ClassMethods    
@@ -58,47 +63,20 @@ module Sunrise
         role_symbols.include?(role_name.to_sym)
       end
       
-      def roles_empty?
-        self.roles.empty?
+      def role_empty?
+        self.role_type_id.nil?
       end
       
       def has_login?
         respond_to?(:login)
       end
       	
-      def roles_attributes=(value)
-        options = value || {}
-        options.each do |k, v|
-          create_or_destroy_role(k.to_i, v.to_i == 1)
-        end
-      end
-
       def role_symbols
-        (roles || []).map {|r| r.to_sym}
+        [role_type.try(:code)]
       end
       
       def role_symbol
         role_symbols.first
-      end
-      
-      def current_role
-        self.roles.first
-      end
-      
-      def role_type_id
-        if current_role
-          current_role.role_type.id
-        end
-      end
-      
-      def role_type_id=(value)
-        role_id = value.blank? ? nil : value.to_i
-        
-        if ::RoleType.legal?(role_id)
-          ::RoleType.all.each do |role_type|
-            create_or_destroy_role(role_type.id, role_type.id == role_id)
-          end
-        end
       end
       
       def state
@@ -117,29 +95,10 @@ module Sunrise
         events
       end
       
-      def avatar_small_url
-        if self.avatar
-          self.avatar.data.small.url
-        else
-          "/images/manage/user_pic_small.gif"
-        end
-      end
-      
       protected
         
         def set_default_role
-          unless has_role?(:default)
-            self.roles.build(:role_type => ::RoleType.default)
-          end
-        end
-        
-        def create_or_destroy_role(role_id, need_create = true)
-          role = self.roles.detect { |r| r.role_type.id == role_id }
-          if need_create
-            role ||= self.roles.build(:role_type => ::RoleType.find(role_id))
-          elsif !role.nil?
-            self.roles.delete(role)
-          end
+          self.role_type ||= ::RoleType.default
         end
         
         def generate_login
@@ -149,6 +108,10 @@ module Sunrise
       		    tmp_login.parameterize.downcase.gsub(/[^A-Za-z0-9-]+/, '-').gsub(/-+/, '-')
       		  end
           end
+        end
+
+        def check_role
+          errors.add(:role_type_id, :invalid) unless ::RoleType.legal?(role_type_id)
         end
     end
   end

@@ -2,7 +2,13 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-Bundler.require
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # If you want your assets lazily compiled in production, use this line
+  Bundler.require(SUNRISE_ORM)
+end
+
 require "sunrise-cms"
 
 module Dummy
@@ -12,9 +18,12 @@ module Dummy
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/../../lib/generators/sunrise/templates/models/defaults 
-                                #{config.root}/../../lib/generators/sunrise/templates/models/sunrise
-                                #{config.root}/../../lib/generators/sunrise/templates/uploaders)
+    config.autoload_paths += %W(
+        #{config.root}/../../lib/generators/sunrise/templates/models/#{SUNRISE_ORM}
+        #{config.root}/../../lib/generators/sunrise/templates/uploaders
+        #{config.root}/../../lib/generators/sunrise/templates/models/sunrise
+        #{config.root}/app/models/#{SUNRISE_ORM}
+        #{config.root}/app/models/sunrise)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

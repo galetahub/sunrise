@@ -34,6 +34,8 @@ class CreateUsers < ActiveRecord::Migration
       
       ## Encryptable
       t.string :password_salt
+
+      t.integer :role_type_id, :limit => 1, :default => 1
       
       # Token authenticatable
       # t.string :authentication_token
@@ -48,6 +50,7 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :reset_password_token, :unique => true
     add_index :users, :confirmation_token,   :unique => true
     add_index :users, :unlock_token,         :unique => true    
+    add_index :users, :role_type_id
   end
 
   def self.down

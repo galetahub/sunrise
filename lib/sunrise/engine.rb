@@ -1,16 +1,4 @@
 require 'rails'
-require 'kaminari'
-require 'simple_form'
-require 'awesome_nested_set'
-require 'carrierwave'
-require 'enum_field'
-require 'friendly_id'
-require 'cancan'
-require 'cancan_namespace'
-require 'page_parts'
-require 'meta_manager'
-require 'jbuilder'
-require 'rails-uploader'
 require 'sunrise'
 
 module Sunrise
@@ -32,8 +20,6 @@ module Sunrise
       ActiveSupport.on_load :action_view do
         ActionView::Base.send :include, Sunrise::Views::Helper
       end
-      
-      FriendlyId.send :include, Sunrise::Hooks::FriendlyId
     end
     
     initializer "sunrise.csv_renderer" do

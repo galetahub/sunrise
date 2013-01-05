@@ -14,7 +14,7 @@ module Sunrise
     
     def index
       @records = abstract_model.apply_scopes(params)
-      
+
       respond_with(@records) do |format|
         format.html { render_with_scope(abstract_model.current_list) }
       end

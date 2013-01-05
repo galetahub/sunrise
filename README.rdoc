@@ -4,9 +4,20 @@ Open source mini content management system for programmers.
 
 == Instructions
 
-Create new project
-
+=== ActiveRecord
+  
   rails new [PROJECT_NAME] -d mysql -T -m https://raw.github.com/gist/2700424
+
+=== Mongoid
+
+  gem "mongoid"
+  gem "bson_ext"
+  gem "mongoid_nested_set"
+  gem "carrierwave-mongoid", :require => "carrierwave/mongoid"
+  gem "mongoid_nested_set"
+  gem "mongoid-history"
+
+  rails g sunrise:install --orm=mongoid
 
 == Export data
 

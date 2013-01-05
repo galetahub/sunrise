@@ -1,5 +1,5 @@
 Structure.class_eval do
-  has_many :posts, :dependent => :delete_all
+  has_many :posts, :dependent => :delete
   
   page_parts :main, :sidebar
   
