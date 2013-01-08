@@ -32,6 +32,13 @@ module Sunrise
     autoload :SearchWrapper, 'sunrise/views/search_wrapper'
     autoload :Helper, 'sunrise/views/helper'
   end
+
+  module Hooks
+    module Adapters
+      autoload :ActiveRecord, 'sunrise/hooks/adapters/active_record'
+      autoload :Mongoid, 'sunrise/hooks/adapters/mongoid'
+    end
+  end
   
   # Regexp machers for context-based russian month names and day names translation
   LOCALIZE_ABBR_MONTH_NAMES_MATCH = /(%[-\d]?d|%e)(.*)(%b)/

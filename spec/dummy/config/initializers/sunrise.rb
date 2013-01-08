@@ -12,3 +12,4 @@ if Settings.table_exists?
 end
 
 require "page_parts/orm/#{SUNRISE_ORM}"
+require "meta_manager/orm/#{SUNRISE_ORM}"

@@ -24,6 +24,7 @@ gem "jbuilder"
 gem "progressbar"
 gem "babosa"
 gem "page_parts", "~> 0.1.2"
+gem "meta_manager", "~> 0.1.1"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -46,7 +47,6 @@ group :active_record do
   gem "activerecord"
   gem "audited-activerecord"
   gem "awesome_nested_set"
-  gem "meta_manager"
 end
 
 group :mongoid do

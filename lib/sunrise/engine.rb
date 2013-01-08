@@ -20,6 +20,10 @@ module Sunrise
       ActiveSupport.on_load :action_view do
         ActionView::Base.send :include, Sunrise::Views::Helper
       end
+
+      if defined?(Mongoid::Document)
+        Mongoid::Criteria.send :include, Sunrise::Hooks::Adapters::Mongoid
+      end
     end
     
     initializer "sunrise.csv_renderer" do

@@ -52,7 +52,7 @@ module Sunrise
 
     def self.audit_scope
       if Object.const_defined?("Audited")
-        Audited.audit_class.includes(:user).order("audits.id #{sort_mode}")
+        Audited.audit_class.includes(:user).order("audits.id #{default_sort_mode}")
       else
         HistoryTracker.scoped
       end

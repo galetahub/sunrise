@@ -20,8 +20,8 @@ module Sunrise
         validates_presence_of :name
         validate :check_role
         
-        scope :with_email, lambda {|email| where(["email LIKE ?", "#{email}%"]) }
-        scope :with_name, lambda {|name| where(["name LIKE ?", "#{name}%"]) }
+        scope :with_email, lambda {|email| where(:email => email) }
+        scope :with_name, lambda {|name| where(:name => name) }
         scope :with_role, lambda {|role_type| where(:role_type_id => role_type.id) }
         scope :defaults, lambda { with_role(::RoleType.default) }
         scope :moderators, lambda { with_role(::RoleType.moderator) }
@@ -31,16 +31,14 @@ module Sunrise
       module ClassMethods    
         def to_csv(options = {})
           options = { :columns => [:id, :email, :name, :current_sign_in_ip] }.merge(options)
-          query = unscoped.order("#{quoted_table_name}.id ASC").select(options[:columns])
-        
+          query = unscoped.order([:id, :desc]).select(options[:columns])
+
           ::CSV.generate do |csv|
             csv << options[:columns]
             
-            query.find_in_batches do |group|
-              group.each do |user|
-                csv << options[:columns].inject([]) do |items, attr_name|
-                  items << user.send(attr_name)
-                end
+            query.find_each do |user|
+              csv << options[:columns].inject([]) do |items, attr_name|
+                items << user.send(attr_name)
               end
             end
           end

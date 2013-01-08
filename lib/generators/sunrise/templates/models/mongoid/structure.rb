@@ -3,6 +3,7 @@ class Structure
   include Mongoid::Timestamps
   include Sunrise::Models::Structure
   include PageParts::Extension
+  include MetaManager::Taggable
   # include Mongoid::History::Trackable
 
   # Columns

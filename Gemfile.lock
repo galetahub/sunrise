@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    sunrise (0.4.2)
+    sunrise-cms (0.4.2)
       babosa
       cancan
       cancan_namespace
@@ -16,9 +16,10 @@ PATH
       galetahub-enum_field
       jbuilder
       kaminari
+      meta_manager (>= 0.1.1)
       mime-types
       mini_magick
-      page_parts (>= 0.1.0)
+      page_parts (>= 0.1.2)
       progressbar
       rails (~> 3.2.0)
       rails-uploader
@@ -143,8 +144,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_manager (0.0.8)
-      activerecord (>= 3.1.3)
+    meta_manager (0.1.1)
+      orm_adapter
     mime-types (1.19)
     mini_magick (3.4)
       subexec (~> 0.2.1)
@@ -279,7 +280,7 @@ DEPENDENCIES
   kaminari
   launchy
   libv8 (~> 3.11.8.4)
-  meta_manager
+  meta_manager (~> 0.1.1)
   mime-types
   mini_magick
   mongoid
@@ -294,6 +295,6 @@ DEPENDENCIES
   ruby2xlsx (~> 0.0.1)
   sass-rails (~> 3.2.3)
   simple_form
-  sunrise!
+  sunrise-cms!
   therubyracer
   uglifier (>= 1.0.3)
