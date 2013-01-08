@@ -25,7 +25,7 @@ class SunriseStructure < Sunrise::AbstractModel
     field :parent_id, :collection => lambda { Structure.nested_set_options() {|i| "#{'–' * i.depth} #{i.title}"} }, :if => lambda { |s| s.moveable? }
     field :kind, :collection => lambda { StructureType.all }, :include_blank => false
     field :position, :collection => lambda { PositionType.all }, :include_blank => false
-    field :is_visible, :boolean => true
+    field :is_visible, :as => :boolean
 
     group :meta_tags, :holder => :sidebar do
       field :tag_title
