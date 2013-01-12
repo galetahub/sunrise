@@ -2,15 +2,14 @@
 
 def insert_user  
   User.truncate!
-  Role.truncate!
   password = Rails.env.production? ? Devise.friendly_token : (1..9).to_a.join
   
   admin = User.new do |u|
     u.name = "Administrator"
-    u.email = 'dev@example.com'
+    u.email = 'dev@fodojo.com'
     u.password = password
     u.password_confirmation = password
-    u.login = = 'admin' if u.respond_to?(:login)
+    u.login = 'admin' if u.respond_to?(:login)
     u.role_type = RoleType.admin
   end
     
