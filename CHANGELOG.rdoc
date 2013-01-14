@@ -1,3 +1,10 @@
+== 0.5.0
+  * Dynamic navigation
+  * Role type now in user model
+  * Special file - "redactor.js" for includes external files
+  * Mongoid support
+  * And many others small changes
+
 == 0.3.0
   * New manager for models aka rails_admin
   * New filter

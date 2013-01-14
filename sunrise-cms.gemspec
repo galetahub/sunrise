@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   
   s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc", "CHANGELOG.rdoc"]
   s.test_files = Dir["{spec}/**/*"]
-  s.extra_rdoc_files = ["README.rdoc", "CHANGELOG.rdoc"]
+  s.extra_rdoc_files = ["README.md", "CHANGELOG.rdoc"]
   s.require_paths = ["lib"]
   
   s.add_runtime_dependency("rails", "~> 3.2.0")
