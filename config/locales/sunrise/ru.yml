@@ -129,6 +129,10 @@ ru:
       creates:
         structures: "Раздел"
         users: "Пользователя"
+
+      panel:
+        main: "Разделы и модули"
+        creates: "Создать"
     
     settings:
       title: "Настройки"

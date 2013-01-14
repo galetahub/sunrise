@@ -57,8 +57,17 @@ class DropdownMenu
       
       this.hide() if !node.hasClass('ddm-container') and node.parents('.ddm-container').length is 0
   
+  _position: () ->
+    pos = @element.position()
+
+    pos.top += @element.height()
+    pos.left -= 5
+
+    @container.css(pos)
+
   show: (event) ->
     @element.addClass "ddm-active"
+    this._position()
     this.fadeIn()
     
     this.killer()

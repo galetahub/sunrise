@@ -115,6 +115,9 @@ en:
       tracks: "Music"
       wallpapers: "Wallpaper"
       reviews: "vote"
+      panel:
+        main: "Structure"
+        creates: "Create"
     
     settings:
       title: "Settings"

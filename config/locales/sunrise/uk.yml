@@ -129,6 +129,10 @@ uk:
       creates:
         structures: "Розділ"
         users: "Користувача"
+
+      panel:
+        main: "Розділи та модулі"
+        creates: "Створити"
         
     settings:
       title: "Налаштування"
