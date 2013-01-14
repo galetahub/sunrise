@@ -77,7 +77,7 @@ Just create class:
       group :bottom, :holder => :bottom do
         nested_attributes :variants do
           field :size
-          field :total_stock
+          field :total_stock, :div_style => 'width:100%;clear:both;'
           field :item_model_id, :collection => lambda { ItemModel.all }, :include_blank => false
         end
       
@@ -87,4 +87,4 @@ Just create class:
   end
 
 
-Copyright (c) 2012 Fodojo, released under the MIT license
+Copyright (c) 2013 Fodojo, released under the MIT license
