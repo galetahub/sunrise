@@ -3,7 +3,9 @@ class SunrisePost < Sunrise::AbstractModel
   
   association :structure
   
-  list :thumbs do    
+  list :thumbs do
+    buttons [:new, :edit, :delete, :sort]
+
     field :title
     field :updated_at
     field :id
