@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "sunrise-cms"
   s.homepage = "https://github.com/galetahub/sunrise"
   
-  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc", "CHANGELOG.rdoc"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md", "CHANGELOG.rdoc"]
   s.test_files = Dir["{spec}/**/*"]
   s.extra_rdoc_files = ["README.md", "CHANGELOG.rdoc"]
   s.require_paths = ["lib"]
