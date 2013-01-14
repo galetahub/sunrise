@@ -30,25 +30,6 @@ List of gems for [mongoid](https://gist.github.com/4529926#file-gemfile-mongoid)
 $> rails g sunrise:install --orm=mongoid
 ```
 
-## Export data
-
-### XML, JSON, CSV
-
-  GET /manage/users/export.xml
-  GET /manage/users/export.csv
-  
-### JSON
-
-  GET /manage/users/export.json
-
-For more info look at jbuilder https://rubygems.org/gems/jbuilder.
-
-### Excel
-
-  gem "ruby2xlsx", "~> 0.0.1"
-
-  GET /manage/users/export.xlsx
-
 ## Usage
 
 Just create class:
@@ -97,6 +78,31 @@ class SunriseProduct < Sunrise::AbstractModel
     end
   end
 end
+```
+
+### Export data
+
+#### XML, JSON, CSV
+
+```
+  GET /manage/users/export.xml
+  GET /manage/users/export.csv
+```
+
+#### JSON
+
+```
+  GET /manage/users/export.json
+```
+
+For more info look at jbuilder https://rubygems.org/gems/jbuilder.
+
+#### Excel
+
+```
+  gem "ruby2xlsx", "~> 0.0.1"
+
+  GET /manage/users/export.xlsx
 ```
 
 ### Include additional js codes

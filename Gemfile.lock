@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    sunrise-cms (0.5.0.rc2)
+    sunrise-cms (0.5.0.rc3)
       babosa
       cancan
       cancan_namespace
