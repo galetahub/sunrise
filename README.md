@@ -6,7 +6,7 @@ Open source mini content management system for programmers.
 
 ### ActiveRecord
   
-Create @Gemfile@ for [active_record](https://gist.github.com/4529926#file-gemfile-active_record).
+List of gems for [active_record](https://gist.github.com/4529926#file-gemfile-active_record).
 
 ```bash
 $> rails g devise:install
@@ -24,7 +24,7 @@ $> rake meta_manager_engine:install:migrations
 
 ### Mongoid
 
-Create @Gemfile@ for [mongoid](https://gist.github.com/4529926#file-gemfile-mongoid).
+List of gems for [mongoid](https://gist.github.com/4529926#file-gemfile-mongoid).
 
 ```bash
 $> rails g sunrise:install --orm=mongoid

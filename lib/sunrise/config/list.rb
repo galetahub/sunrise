@@ -32,6 +32,11 @@ module Sunrise
       register_instance_option(:preview) do
         false
       end
+
+      # List of toolbar buttons
+      register_instance_option(:buttons) do
+        Sunrise::Config.default_toolbar_buttons
+      end
       
       def preview_for(record)
         if preview.respond_to?(:call)

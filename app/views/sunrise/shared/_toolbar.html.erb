@@ -1,51 +1,13 @@
 <div class="top-line-holder">
-	<div class="act-buttons-wrapper">
-		<div class="but-holder"><div class="check"><input type="checkbox" /></div></div>
+  <div class="act-buttons-wrapper">
+    <div class="but-holder"><div class="check"><input type="checkbox" /></div></div>
 
-		<!--<div class="but-holder"><a href="#" class="del"><img src="images/empty.gif" /></a></div>
-		<div class="but-holder disabled"><span class="edit"><img src="images/empty.gif" /></span></div>
-		<div class="but-holder"><a href="#" class="add"><img src="images/empty.gif" /></a></div>
-		<div class="but-holder"><a href="#" class="opt"><img src="images/empty.gif" /></a></div>-->
-		
-		<div class="but-holder">
-		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), mass_destroy_path, :class => 'but-container del disabled', :title => 'Delete', :"data-confirm-message" => t('manage.confirm_mass_delete'), :"data-editable" => 'destroy' %>
-		  </div>
-		</div>
-		<div class="but-holder">
-		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => 0)), :class => 'but-container edit disabled', :title => 'Edit', :"data-editable" => 'edit' %>
-		  </div>
-		</div>
-		<div class="but-holder">
-		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), new_path(abstract_model.parent_hash), :class => 'but-container add', :title => 'Add' %>
-		  </div>
-		</div>
-		<div class="but-holder">
-		  <div class="act-but">
-		    <%= link_to image_tag('sunrise/empty.gif'), export_path(:format => :json), :class => 'but-container sort', :title => 'Sort', :id => 'sort-button', :"data-save_title" => 'Save', :"data-cancel_title" => 'Cancel', :"data-url" => sort_path(:format => :json) %>
-		    
-		    <script type="text/javascript">
-		      $(document).ready(function(){
-		        $('#sort-button').sort_dialog();
-		      });
-		    </script>
-		    
-		    <script id="sort-template" type="text/x-jquery-tmpl">
-          <div class="sort-item" data-record-id="${id}">
-            <div class="sort-inner">
-              <div class="numb">${<%= abstract_model.sort_column %>}</div>
-              <div>${<%= abstract_model.config.object_label_method %>}</div>
-            </div>
-          </div>
-        </script>
-		  </div>
-		</div>
-    <div class="but-holder">
-      <div class="act-but">
-        <%= link_to image_tag('sunrise/empty.gif'), export_path(:format => :csv), :class => 'but-container opt', :title => 'Export' %>
-      </div>
-    </div>
-	</div>
+    <% unless abstract_model.without_list? %>
+      <% abstract_model.list.buttons.each do |name| %>
+        <% if can? name, abstract_model.model, :context => :sunrise %>
+          <%= render :partial => "sunrise/manager/buttons/#{name}", :locals => {:model => abstract_model} %>
+        <% end -%>
+      <% end -%>
+    <% end -%>
+  </div>
 </div>

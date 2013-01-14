@@ -1,0 +1,20 @@
+<div class="but-holder">
+  <div class="act-but">
+    <%= link_to image_tag('sunrise/empty.gif'), export_path(:format => :json), :class => 'but-container sort', :title => 'Sort', :id => 'sort-button', :"data-save_title" => 'Save', :"data-cancel_title" => 'Cancel', :"data-url" => sort_path(:format => :json) %>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#sort-button').sort_dialog();
+      });
+    </script>
+    
+    <script id="sort-template" type="text/x-jquery-tmpl">
+      <div class="sort-item" data-record-id="${id}">
+        <div class="sort-inner">
+          <div class="numb">${<%= abstract_model.sort_column %>}</div>
+          <div>${<%= model.config.object_label_method %>}</div>
+        </div>
+      </div>
+    </script>
+  </div>
+</div>

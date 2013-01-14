@@ -41,6 +41,10 @@ module Sunrise
     # more info here: https://github.com/norman/babosa
     mattr_accessor :transliteration
     @@transliteration = :russian
+
+    # Set list toolbar buttons
+    mattr_accessor :default_toolbar_buttons
+    @@default_toolbar_buttons = [:delete, :edit, :new, :sort, :export]
     
     def self.scoped_views?
       @@scoped_views === true
