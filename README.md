@@ -99,4 +99,19 @@ class SunriseProduct < Sunrise::AbstractModel
 end
 ```
 
+### Include additional js codes
+
+For example your want to include ckeditor editor.
+In "Gemfile" include gem:
+
+```ruby
+gem "ckeditor"
+```
+
+Create file "app/assets/javascripts/sunrise/redactor.js":
+
+```
+//= require ckeditor/init
+```
+
 Copyright (c) 2013 Fodojo, released under the MIT license
