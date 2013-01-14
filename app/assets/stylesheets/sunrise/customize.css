@@ -100,3 +100,65 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   float:none;
 }
 /* End nested form */
+
+/* Main panel */
+.top-wrapper .menu-holder .main-menu .main {
+  display: block;
+  width: 150px;
+  overflow: hidden;
+  background: url(/assets/sunrise/top_logo.png) no-repeat 30px center;
+  padding: 0 30px 0 60px;
+}
+.top-wrapper .menu-holder .main-menu .creates {
+  display: block;
+  width: 75px;
+  overflow: hidden;
+  background: url(/assets/sunrise/top_plus.png) no-repeat 15px center;
+  padding: 0 20px 0 35px;
+}
+.top-wrapper .menu-holder .main-menu .main .arr, 
+.top-wrapper .menu-holder .main-menu .creates .arr {
+  display: block;
+  overflow: hidden;
+  background: url(/assets/sunrise/top_arr_down.png) no-repeat right center;
+  padding-right: 15px;
+}
+.top-wrapper .menu-holder .main-menu li .ddm-active .main .arr,
+.top-wrapper .menu-holder .main-menu li .ddm-active .creates .arr {
+  background: url(/assets/sunrise/top_arr_up.png) no-repeat right center !important;
+}
+
+/*.sub-wrapper .default-list li a {
+  padding: 10px 15px;
+}*/
+
+.sub-wrapper .default-list {
+  display: block;
+  float: left;
+  overflow: hidden;
+  width: 180px;
+  padding: 0 0 0 1px;
+  margin: 0 0 0 1px;
+  list-style: none;
+  border-left: solid 1px #000;
+}
+.sub-wrapper .default-list li a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+.sub-wrapper .default-list li span {
+  background-color: #252525;
+  border-top: 1px solid #131313;
+  border-bottom: 1px solid #353535;
+  padding: 10px 15px;
+  font-size: 13px;
+  display: block;
+  color: #952c9e;
+}
+.sub-wrapper .default-list li a:hover {
+  background-color: #000;
+}
+/* End main panel */
