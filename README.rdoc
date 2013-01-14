@@ -6,16 +6,21 @@ Open source mini content management system for programmers.
 
 === ActiveRecord
   
-  rails new [PROJECT_NAME] -d mysql -T -m https://raw.github.com/gist/2700424
+Create @Gemfile@ for {active_record}[https://gist.github.com/4529926#file-gemfile-active_record].
+
+  rails g devise:install
+  rails g audited:install
+  rails g sunrise:install --orm=active_record
+
+Copy db migrations files:
+  
+  rake sunrise:install:migrations
+  rake page_parts_engine:install:migrations
+  rake meta_manager_engine:install:migrations
 
 === Mongoid
 
-  gem "mongoid"
-  gem "bson_ext"
-  gem "mongoid_nested_set"
-  gem "carrierwave-mongoid", :require => "carrierwave/mongoid"
-  gem "mongoid_nested_set"
-  gem "mongoid-history"
+Create @Gemfile@ for {mongoid}[https://gist.github.com/4529926#file-gemfile-mongoid].
 
   rails g sunrise:install --orm=mongoid
 
@@ -42,6 +47,7 @@ For more info look at jbuilder https://rubygems.org/gems/jbuilder.
 
 Just create class:
 
+``` ruby
   class SunriseProduct < Sunrise::AbstractModel
     self.resource_name = "Product"
     
@@ -85,6 +91,6 @@ Just create class:
       end
     end
   end
-
+```
 
 Copyright (c) 2013 Fodojo, released under the MIT license
