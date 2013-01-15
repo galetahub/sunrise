@@ -9,8 +9,8 @@ module Sunrise
     helper :all
     helper_method :abstract_model, :apply_scope, :scoped_index_path
     
-    respond_to :html, :xml, :json
-    respond_to :csv, :xlsx, :only => [:export]
+    respond_to *Sunrise::Config.navigational_formats
+    respond_to :xml, :csv, :xlsx, :only => [:export]
     
     def index
       @records = abstract_model.apply_scopes(params)
