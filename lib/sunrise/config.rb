@@ -46,6 +46,10 @@ module Sunrise
     mattr_accessor :default_toolbar_buttons
     @@default_toolbar_buttons = [:delete, :edit, :new, :sort, :export]
     
+    # Lists the formats that should be treated as navigational
+    mattr_accessor :navigational_formats
+    @@navigational_formats = [:html, :json]
+
     def self.scoped_views?
       @@scoped_views === true
     end

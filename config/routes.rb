@@ -1,16 +1,16 @@
 Sunrise::Engine.routes.draw do
   root :to => "dashboard#index"
   
-  match "/services", :to => "shared#services", :as => "services"
-  match "/dashboard/p/:page", :to => "dashboard#index", :page => /\d+/
+  get "/services", :to => "shared#services", :as => "services"
+  get "/dashboard/p/:page", :to => "dashboard#index", :page => /\d+/
   
   resource :settings, :only => [:edit, :update]
   
   controller "manager" do
     scope ":model_name" do
-      match "/", :to => :index, :as => "index", :via => [:get, :post]
-      match "/export.:format", :to => :export, :as => "export"
-      match "/sort", :to => :sort, :as => "sort"
+      get "/", :to => :index, :as => "index", :via => [:get, :post]
+      get "/export.:format", :to => :export, :as => "export"
+      get "/sort", :to => :sort, :as => "sort"
       get "/new", :to => :new, :as => "new"
       post "/new", :to => :create, :as => "create"
       delete "/mass_destroy", :to => :mass_destroy, :as => "mass_destroy"
