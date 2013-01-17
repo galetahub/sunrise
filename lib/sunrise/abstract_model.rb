@@ -56,8 +56,12 @@ module Sunrise
       @available_list_view = config.available_list_view
       @sort_column = config.sort_column
       @scoped_path = @model_name.plural
-      @request_params = params
+      @request_params = params.symbolize_keys
       self.current_list = params[:view]
+    end
+
+    def model_params
+      @request_params[param_key.to_sym]
     end
     
     # Save current list view
@@ -70,11 +74,6 @@ module Sunrise
     # Key which stored list settings
     def list_key
       ["list", current_list].compact.join('_').to_sym
-    end
-    
-    # Read record request params
-    def attrs
-      @request_params[param_key.to_sym]
     end
     
     # Load association record
@@ -224,6 +223,17 @@ module Sunrise
     
     def edit_fields
       config.edit.fields || []
+    end
+
+    def permited_attributes_for(user)
+      value = config.edit.permited_attributes
+      
+      attrs = case value
+      when Proc then value.call(user)
+      else value
+      end
+
+      attrs == :all ? model_params.try(:keys) : Array.wrap(attrs)
     end
     
     # Has translated columns

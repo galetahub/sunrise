@@ -20,7 +20,4 @@ class Structure
 
   # track_history :on => [:title, :kind, :position, :is_visible]
   # page_parts :content, :sidebar
-  
-  attr_accessible :title, :kind, :position, :parent_id, :redirect_url,
-                  :position_type, :slug, :parent, :structure_type, :is_visible, :as => :admin
 end

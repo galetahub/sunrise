@@ -25,6 +25,7 @@ gem "progressbar"
 gem "babosa"
 gem "page_parts", "~> 0.1.2"
 gem "meta_manager", "~> 0.1.1"
+gem "strong_parameters"
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -17,4 +17,4 @@
 //= require sunrise/jquery.pagination
 
 //= require sunrise/manage
-//= require sunrise/redactor
+//= require sunrise/plugins

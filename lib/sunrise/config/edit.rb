@@ -6,6 +6,11 @@ module Sunrise
     class Edit < Base
       include Sunrise::Config::HasFields
       include Sunrise::Config::HasGroups
+
+      # List of permissible attributes
+      register_instance_option :permited_attributes do
+        :all
+      end
     end
   end
 end

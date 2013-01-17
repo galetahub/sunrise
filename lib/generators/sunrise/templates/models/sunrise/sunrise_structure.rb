@@ -21,7 +21,6 @@ class SunriseStructure < Sunrise::AbstractModel
     field :title
     field :redirect_url
     field :slug
-    #field :headers, :partial => true
     field :parent_id, :collection => lambda { Structure.nested_set_options() {|i| "#{'–' * i.depth} #{i.title}"} }, :if => lambda { |s| s.moveable? }
     field :kind, :collection => lambda { StructureType.all }, :include_blank => false
     field :position, :collection => lambda { PositionType.all }, :include_blank => false

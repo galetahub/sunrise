@@ -43,8 +43,10 @@ module Sunrise
             else
               # Invocation without args nor block --> It's the use of the option, i.e. getter
               value = instance_variable_get("@#{option_name}_registered")
+
               case value
-                when Proc
+              when Proc then
+                unless value.lambda?
                   # Track recursive invocation with an instance variable. This prevents run-away recursion
                   # and allows configurations such as
                   # label { "#{label}".upcase }
@@ -56,9 +58,11 @@ module Sunrise
                     value = instance_eval &value
                     instance_variable_set("@#{option_name}_recurring", false)
                   end
-                when nil
-                  value = instance_eval &default
+                end
+              when nil then
+                value = instance_eval &default
               end
+
               value
             end
           end
