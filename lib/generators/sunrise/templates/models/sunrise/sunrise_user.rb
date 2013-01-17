@@ -14,7 +14,7 @@ class SunriseUser < Sunrise::AbstractModel
 
   list :thumbs do    
     scope { User.includes(:avatar) }
-    preview { lambda { |user| user.avatar.try(:url, :thumb) } }
+    preview lambda { |user| user.avatar.try(:url, :thumb) }
     
     field :email, :label => false
     field :updated_at, :label => false
@@ -27,6 +27,10 @@ class SunriseUser < Sunrise::AbstractModel
   end
   
   edit do
+    permited_attributes lambda { |user| 
+      user.admin? ? :all : [:name, :password, :password_confirmation, :avatar_attributes] 
+    }
+
     field :name
     field :email
     field :password

@@ -55,6 +55,9 @@ module Dummy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Disable the default whitelisting that occurs in later versions of Rails
+    config.active_record.whitelist_attributes = false
   end
 end
 

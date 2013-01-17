@@ -9,8 +9,6 @@ class Settings
   
   index({var: 1}, {unique: true})
 
-  attr_accessible :var, :value
-
   def self.table_exists?
     true
   end

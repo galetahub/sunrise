@@ -1,4 +1,5 @@
 == 0.5.0
+  * Integrate "strong_parameters" gem
   * Add config option "navigational_formats"
   * Dynamic navigation
   * Role type now in user model

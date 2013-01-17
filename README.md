@@ -37,6 +37,8 @@ Just create class:
 ```ruby
 class SunriseProduct < Sunrise::AbstractModel
   self.resource_name = "Product"
+
+  association :structure
   
   list :thumbs do
     scope { Product.includes(:picture) }
@@ -105,6 +107,35 @@ For more info look at jbuilder https://rubygems.org/gems/jbuilder.
   GET /manage/users/export.xlsx
 ```
 
+### Strong parameters
+
+Sunrise include gem [strong_parameters](https://github.com/rails/strong_parameters)
+In all models your need include module ActiveModel::ForbiddenAttributesProtection:
+
+``` ruby
+class Post < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+end
+```
+
+Now in sunrise file you can perform attributes check. 
+By default permited_attributes allow edit all attributes.
+
+```ruby
+class SunrisePost < Sunrise::AbstractModel
+  self.resource_name = "Post"
+  edit do
+    # Default value
+    # permited_attributes :all 
+
+    # Pre user check
+    permited_attributes lambda { |user| 
+      user.admin? ? :all : [:title, :content] 
+    }
+  end
+end
+```
+
 ### Include additional js codes
 
 For example your want to include ckeditor editor.
@@ -114,7 +145,7 @@ In "Gemfile" include gem:
 gem "ckeditor"
 ```
 
-Create file "app/assets/javascripts/sunrise/redactor.js":
+Create file "app/assets/javascripts/sunrise/plugins.js":
 
 ```
 //= require ckeditor/init

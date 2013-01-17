@@ -33,7 +33,7 @@ module Sunrise
     end
     
     def create
-      @record.update_attributes(abstract_model.attrs, :as => current_user.role_symbol)
+      @record.update_attributes(model_params)
       respond_with(@record, :location => redirect_after_update)
     end
     
@@ -44,7 +44,7 @@ module Sunrise
     end
     
     def update
-      @record.update_attributes(abstract_model.attrs, :as => current_user.role_symbol)
+      @record.update_attributes(model_params)
       respond_with(@record, :location => redirect_after_update)
     end
     
@@ -160,6 +160,11 @@ module Sunrise
         else
           scoped_index_path
         end
+      end
+
+      def model_params
+        attrs = abstract_model.permited_attributes_for(current_user)
+        params.require(abstract_model.param_key).permit(*attrs)
       end
   end
 end
