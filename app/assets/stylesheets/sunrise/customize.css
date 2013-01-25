@@ -162,3 +162,8 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   background-color: #000;
 }
 /* End main panel */
+
+.field_with_errors span.error {
+  color: #ff0000;
+  font-size: 12px; 
+}

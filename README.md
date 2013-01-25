@@ -42,7 +42,7 @@ class SunriseProduct < Sunrise::AbstractModel
   
   list :thumbs do
     scope { Product.includes(:picture) }
-    preview { lambda { |product| product.picture.try(:url, :thumb) } }
+    preview lambda { |product| product.picture.try(:url, :thumb) }
 
     field :title
     field :price

@@ -233,7 +233,7 @@ module Sunrise
       else value
       end
 
-      attrs == :all ? model_params.try(:keys) : Array.wrap(attrs)
+      (attrs == :all ? model_params.try(:keys) : Array.wrap(attrs)).map(&:to_sym)
     end
     
     # Has translated columns
