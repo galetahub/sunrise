@@ -101,14 +101,14 @@ en:
     filter: "Filter"
     
     menu:
-      title: "Sections and modules"
+      title: "Sections & modules"
       system_messages: "System messages"
       other: "Other"
       posts: "News"
       categories: "Categories"
       statisticts: "Statisticts"
       videos: "Videos"
-      questions: "Questions and Answers"
+      questions: "Questions & Answers"
       tracks: "Traks"
       wallpapers: "wallpapers"
       reviews: "reviews"
@@ -121,10 +121,10 @@ en:
         services: "Services"
       creates:
         structures: "Structure"
-        users: "user"
+        users: "User"
 
       panel:
-        main: "Sections and modules"
+        main: "Sections & modules"
         creates: "Creates"
     
     settings:
@@ -252,6 +252,9 @@ en:
       edit: "Edit"
       settings: "Settings"
       delete: "Delete"
+
+    groups:
+      meta_tags: "Meta tags"
   
   views:
     pagination:
