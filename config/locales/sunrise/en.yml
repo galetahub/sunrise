@@ -101,23 +101,31 @@ en:
     filter: "Filter"
     
     menu:
-      structures: "Structure"
-      users: "Community"
+      title: "Sections and modules"
       system_messages: "System messages"
-      settings: "Settings"
-      other: "Others"
+      other: "Other"
       posts: "News"
       categories: "Categories"
-      statisticts: "Statistics"
-      videos: "Video Contest"
-      questions: "FAQ"
-      cocktails: "Shake the Bank"
-      tracks: "Music"
-      wallpapers: "Wallpaper"
-      reviews: "vote"
+      statisticts: "Statisticts"
+      videos: "Videos"
+      questions: "Questions and Answers"
+      tracks: "Traks"
+      wallpapers: "wallpapers"
+      reviews: "reviews"
+      actions: "Create"
+      main:
+        dashboard: "Dashboard"
+        structures: "Structure"
+        users: "Users"
+        settings: "Settings"
+        services: "Services"
+      creates:
+        structures: "Structure"
+        users: "user"
+
       panel:
-        main: "Structure"
-        creates: "Create"
+        main: "Sections and modules"
+        creates: "Creates"
     
     settings:
       title: "Settings"
@@ -143,8 +151,12 @@ en:
     
     buttons:
       create_structure: "Create Section"
+      table: "Table"
+      thumbs: "List"
+      edit_profile: "My profile"
+      exit: "Exit"
       add_nested_field: "+Add"
-    
+
     user:
       actions: "action"
       events:
