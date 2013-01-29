@@ -167,3 +167,11 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   color: #ff0000;
   font-size: 12px; 
 }
+
+div.input.check_boxes span.checkbox {
+  display: block;
+}
+
+div.input.check_boxes span.checkbox label {
+  display: inline;
+}
