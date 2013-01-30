@@ -119,7 +119,7 @@ module Sunrise
       end
       
       def uploader_can?(action, request)
-        ability = Ability.new(request.env['warden'].user)
+        ability = ::Ability.new(request.env['warden'].user)
         ability.can? action.to_sym, self
       end
       
