@@ -93,7 +93,6 @@ module Sunrise
       def find_model
         @abstract_model = Utils.get_model(params[:model_name], params)
         raise ActionController::RoutingError.new("Sunrise model #{params[:model_name]} not found") if @abstract_model.nil?
-        self.class.send(:add_template_helper, Sunrise::Config::Model._helpers) if @abstract_model.config.helpers?
         @abstract_model
       end
       
