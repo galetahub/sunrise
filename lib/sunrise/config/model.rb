@@ -10,13 +10,10 @@ module Sunrise
     class Model < Base
       attr_reader :sections
       
-      class_attribute :_helpers
-      self._helpers = Module.new
       
       def initialize(abstract_model, parent = nil, options = nil)
         super
         @sections ||= {}
-        @has_helpers = false
       end
       
       register_instance_option(:label) do
@@ -45,19 +42,6 @@ module Sunrise
       
       def associations
         @associations ||= @sections.select { |key, value| key.to_s.include?('association_') }.values
-      end
-      
-      def helpers(&block)
-        if block_given?
-          @has_helpers = true
-          self.class._helpers.module_eval &block
-        end
-        
-        self.class._helpers
-      end
-      
-      def helpers?
-        @has_helpers
       end
       
       # Register accessors for all the sections in this namespace
