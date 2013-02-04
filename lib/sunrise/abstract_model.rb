@@ -44,7 +44,7 @@ module Sunrise
       end
     end
     
-    attr_accessor :model_name, :current_list, :sort_column, :scoped_path, :available_list_view
+    attr_accessor :model_name, :current_list, :sort_column, :available_list_view
         
     delegate :config, :model, :to => 'self.class'
     delegate :label, :to => 'self.class.config'
@@ -55,7 +55,6 @@ module Sunrise
       @current_list = config.default_list_view
       @available_list_view = config.available_list_view
       @sort_column = config.sort_column
-      @scoped_path = @model_name.plural
       @request_params = params.symbolize_keys
       self.current_list = params[:view]
     end
@@ -190,7 +189,7 @@ module Sunrise
     
     def association_scope
       if parent_record
-        parent_record.send(@scoped_path).scoped
+        parent_record.send(parent_association.relation_name).scoped
       end
     end
     

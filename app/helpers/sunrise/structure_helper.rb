@@ -12,7 +12,7 @@ module Sunrise
     end
 
     def show_model_path(abstract_model, record)
-      model_name = abstract_model.scoped_path
+      model_name = abstract_model.plural
 
       case model_name
       when :some_collection then index_path(:model_name => :stores, :parent_type => :some_collection, :parent_id => record.id)

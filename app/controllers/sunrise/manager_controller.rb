@@ -115,7 +115,7 @@ module Sunrise
         templates << [path, scope, action] if scope
         
         if Sunrise::Config.scoped_views?
-          templates << [path, abstract_model.scoped_path, scope, action]
+          templates << [path, abstract_model.plural, scope, action]
         end
         
         templates.reverse.each do |keys|
@@ -129,8 +129,8 @@ module Sunrise
         templates << [ path, abstract_model.current_list, scope ]
         
         if Sunrise::Config.scoped_views?
-          templates << [ path, abstract_model.scoped_path, scope ]
-          templates << [ path, abstract_model.scoped_path, abstract_model.current_list, scope ]
+          templates << [ path, abstract_model.plural, scope ]
+          templates << [ path, abstract_model.plural, abstract_model.current_list, scope ]
         end
         
         templates.reverse.each do |keys|
@@ -155,7 +155,7 @@ module Sunrise
       
       def redirect_after_update
         if abstract_model.without_list?
-          index_path(:model_name => abstract_model.scoped_path)
+          index_path(:model_name => abstract_model.plural)
         else
           scoped_index_path
         end
