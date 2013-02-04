@@ -8,7 +8,7 @@
       <%= manage_date_tag(record.created_at)%>
       <!--<a href="#" class="grey-but">Активировать</a>-->
     </div>
-    <%= link_to record.send(abstract_model.config.object_label_method), show_path(:id => record.id), :class=>"item-title" %>
+    <%= link_to record.send(abstract_model.config.object_label_method), show_model_path(abstract_model, record), :class=>"item-title" %>
     
 		<div class="bot-info-bl">  
 		  <% abstract_model.list.fields.each do |field| -%>

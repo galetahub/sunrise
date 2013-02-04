@@ -1,6 +1,6 @@
 <%= content_tag :li, :id => dom_id(record) do %>
 	<div> 
-	  <%= link_to record.send(abstract_model.config.object_label_method), show_path(:id => record.id) %> 
+	  <%= link_to record.send(abstract_model.config.object_label_method), show_model_path(abstract_model, record) %> 
 	</div>
 	
 	<% unless record.descendants_count.zero? %>
