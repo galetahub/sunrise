@@ -46,5 +46,19 @@ describe Sunrise::ManagerController do
         delete :destroy, :model_name => "structures", :id => @root.id
       end
     end
+
+    context "posts" do
+      before(:all) do
+        @post = FactoryGirl.create(:post)
+      end
+
+      it "should respond successfully" do
+        get :index, :model_name => "posts"
+        
+        assigns(:records).should include(@post)
+        
+        response.should render_template('index')
+      end
+    end
   end
 end
