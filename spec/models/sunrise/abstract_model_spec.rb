@@ -22,7 +22,7 @@ describe Sunrise::AbstractModel do
       
       it "should return valid attributes" do
         @abstract_model.current_list.should == :tree
-        @abstract_model.scoped_path.should == 'structures'
+        @abstract_model.plural.should == 'structures'
         @abstract_model.model_name.should == Structure.model_name
       end
       
