@@ -175,3 +175,49 @@ div.input.check_boxes span.checkbox {
 div.input.check_boxes span.checkbox label {
   display: inline;
 }
+
+/* Boolean checkbox */
+div.input.boolean {
+  float: left;
+}
+div.input.boolean label {
+  margin: 0;
+}
+div.input.boolean {
+  display: block;
+  overflow: hidden;
+  margin: 0 3px 3px;
+  background: #f3f3f3;
+  border: solid 1px #dbdbdb;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  padding: 0 10px;
+  line-height: 24px;
+  font-size: 10px;
+  color: #616161;
+  text-decoration: none;
+  font-weight: bold;
+}
+div.input.boolean:hover {
+  border: solid 1px #c6c6c6;
+  color: #444;
+  -moz-box-shadow: 0 2px 3px #e6e6e6;
+  -webkit-box-shadow: 0 2px 3px #e6e6e6;
+  box-shadow: 0 2px 3px #e6e6e6;
+}
+div.input.boolean:active {
+  border: solid 1px #b25cb9;
+  color: #444;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+div.input.boolean input, div.input.boolean label {
+  display: block;
+  float: left;
+}
+div.input.boolean input {
+  margin: 5px 5px 0 0;
+  padding: 5px 0; /* for Opera, need to test  */
+}
+/* End boolean checkbox */
