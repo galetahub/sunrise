@@ -14,7 +14,7 @@ module Sunrise
     
       # Compare relation by model_type
       def is_this?(model_type)
-        (name.to_s.downcase == model_type.to_s.downcase) || (resource_name == model_type)
+        [name.to_s, resource_name].map(&:downcase).include?(model_type.to_s.downcase)
       end
 
       def relation_name
