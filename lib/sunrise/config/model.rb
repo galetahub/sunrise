@@ -10,7 +10,6 @@ module Sunrise
     class Model < Base
       attr_reader :sections
       
-      
       def initialize(abstract_model, parent = nil, options = nil)
         super
         @sections ||= {}
