@@ -15,15 +15,15 @@ module Sunrise
   
     # Given a string +model_name+, finds the corresponding model class
     def self.lookup(model_name, klass = nil)
-      model = model_name.constantize rescue nil
+      model = model_name.constantize
 
       if model && model.is_a?(Class)
         model
       else
         nil
       end
-    rescue LoadError
-      Sunrise::Engine.logger.error "Error while loading '#{model_name}': #{$!}"
+    rescue LoadError, NameError
+      Rails.logger.error "Error while loading '#{model_name}': #{$!}"
       nil
     end
     
