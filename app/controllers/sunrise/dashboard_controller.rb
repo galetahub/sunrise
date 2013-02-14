@@ -9,8 +9,9 @@ module Sunrise
       cur_page = (params[:page] || 1).to_i
       offset = (cur_page - 1) * per_page
       
-      @events = Sunrise::Config.audit_scope.limit(per_page).offset(offset)
-      
+      @events = PublicActivity::Activity.includes(:owner, :trackable, :recipient)
+      @events = @events.limit(per_page).offset(offset)
+
       respond_with(@events) do |format|
         format.html { render :layout => params[:time].blank? }
       end

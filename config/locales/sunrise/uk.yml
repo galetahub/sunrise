@@ -163,6 +163,7 @@ uk:
       edit_profile: "Мій профайл"
       exit: "Вихід"
       add_nested_field: "+Ще"
+      next_50: "Показати ще 50"
     
     user:
       actions: "дії"

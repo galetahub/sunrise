@@ -4,7 +4,7 @@ class Structure
   include Sunrise::Models::Structure
   include PageParts::Extension
   include MetaManager::Taggable
-  # include Mongoid::History::Trackable
+  include PublicActivity::Model
 
   # Columns
   field :title, :type => String
@@ -18,6 +18,6 @@ class Structure
   index({:position => 1})
   index({:parent_id => 1})
 
-  # track_history :on => [:title, :kind, :position, :is_visible]
+  tracked owner: ->(controller, model) { controller.try(:current_user) }
   # page_parts :content, :sidebar
 end

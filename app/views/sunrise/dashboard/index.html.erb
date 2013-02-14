@@ -1,37 +1,29 @@
 <div class="wrapper without-panel">
   <div class="dbTable">
-	  <table id="events-table" cellpadding="0" cellspacing="0" border="0" width="100%">
-		  <tbody>
-		  <tr class="theader">
-		    <% ["created_at", "user", "action", "auditable", "remote_address"].each do |attr| %>
-  			  <th>
-  			    <%= image_tag("sunrise/audit/#{attr}.png") %>
-  			    <%= t(attr, :scope => [:sunrise, :audit]) %>
-  			  </th>
-			  <% end -%>
-		  </tr>
-		  <%= render :partial => 'event', :collection => @events %>  	    	    
-	    </tbody>
-	  </table>
+    <div id="activity-feed">
+      <% @events.each do |event| %>
+        <%= render_activity(event, :layout => "layouts/sunrise/activity_wrapper") %>
+      <% end %>
+    </div>
 
-	  <% if @events.count >= Sunrise::Config.audit_events_per_page -%>
-	    <div class="centerBtnHolder">
-	      <a id="events-next" href="#" class="button" style="width: 100px;">Показать еще 50</a>
-	      
-	      <script type="text/javascript">
-	        $(document).ready(function(){
-	          $("#events-table").pagination({
-	            url: '/manage/dashboard',
-	            binder: '#events-next',
-	            event: 'click',
-	            callback: function(data){
-	              var rows = $(data).find("#events-table tr.event");
-	              $('#events-table tbody').append(rows);
-	            }
-	          });
-	        });
-	      </script>
-	    </div>
-	  <% end -%>
+    <% if @events.count >= Sunrise::Config.audit_events_per_page -%>
+      <div class="centerBtnHolder">
+        <%= link_to t('manage.buttons.next_50'), "#", :class=>"button", :style=>"width:100px;", :id=>"events-next" %>
+        
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $("#activity-feed").pagination({
+              url: '/manage/dashboard',
+              binder: '#events-next',
+              event: 'click',
+              callback: function(data){
+                var rows = $(data).find("#activity-feed div.activity");
+                $('#activity-feed').append(rows);
+              }
+            });
+          });
+        </script>
+      </div>
+    <% end -%>
   </div>
 </div>

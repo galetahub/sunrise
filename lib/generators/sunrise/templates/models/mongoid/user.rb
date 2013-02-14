@@ -3,7 +3,7 @@ class User
   include Mongoid::Timestamps
   include Sunrise::Models::User
   include Uploader::Fileuploads
-  # include Mongoid::History::Trackable
+  include PublicActivity::Model
   
   # Columns
   field :name, :type => String, :default => ""
@@ -53,5 +53,5 @@ class User
   
   fileuploads :avatar
 
-  # track_history :on => [:name, :email, :password]
+  tracked owner: ->(controller, model) { controller.try(:current_user) }
 end

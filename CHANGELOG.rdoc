@@ -1,3 +1,8 @@
+== 0.6.0
+  * Integrate "public_activity" gem
+  * Remove "activerecord-audited" and "mongoid-history" gems
+  * Fix search class in Utils
+
 == 0.5.0
   * Integrate "strong_parameters" gem
   * Add config option "navigational_formats"

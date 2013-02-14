@@ -35,11 +35,12 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("page_parts", ">= 0.1.2")
   s.add_runtime_dependency("meta_manager", ">= 0.1.1")
   s.add_runtime_dependency("strong_parameters")
+  s.add_runtime_dependency("public_activity", ">= 1.0.0")
   
   s.add_development_dependency("rspec-rails", "~> 2.10.1")
   s.add_development_dependency("generator_spec", "~> 0.8.5")
   s.add_development_dependency("mysql2", "~> 0.3.11")
   s.add_development_dependency("database_cleaner", ">= 0")
-  s.add_development_dependency("factory_girl_rails", "~> 4.1.0")
+  s.add_development_dependency("factory_girl_rails", "~> 4.2.0")
   s.add_development_dependency("capybara", "~> 1.1.2")
 end

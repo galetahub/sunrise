@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :pages, :only => [:show]
+  resources :posts, :only => [:index, :show]
 
   root :to => "welcome#index"
 end

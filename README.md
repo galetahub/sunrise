@@ -10,7 +10,6 @@ List of gems for [active_record](https://gist.github.com/4529926#file-gemfile-ac
 
 ```bash
 $> rails g devise:install
-$> rails g audited:install
 $> rails g sunrise:install --orm=active_record
 ```
 
@@ -20,6 +19,7 @@ Copy db migrations files:
 $> rake sunrise:install:migrations
 $> rake page_parts_engine:install:migrations
 $> rake meta_manager_engine:install:migrations
+$> rails g public_activity:migration
 ```
 
 ### Mongoid
