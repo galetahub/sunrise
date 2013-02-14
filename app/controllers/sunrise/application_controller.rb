@@ -1,5 +1,7 @@
 module Sunrise
   class ApplicationController < ::ApplicationController
+    include ::PublicActivity::StoreController
+
     prepend_before_filter :authenticate_user!
     check_authorization
     

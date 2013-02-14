@@ -2,7 +2,7 @@ if Object.const_defined?("Mongoid")
   class Post
     include Mongoid::Document
     include Mongoid::Timestamps
-    include Mongoid::History::Trackable
+    include PublicActivity::Model
     
     # Columns
     field :title, :type => String
@@ -13,7 +13,7 @@ if Object.const_defined?("Mongoid")
     
     delegate :title, :parent_id, :slug, :to => :structure, :prefix => true
 
-    track_history :on => [:title, :content]
+    tracked
     
     def self.sunrise_search(params)
       query = scoped

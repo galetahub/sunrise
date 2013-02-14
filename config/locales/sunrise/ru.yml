@@ -163,6 +163,7 @@ ru:
       edit_profile: "Мой профайл"
       exit: "Выход"
       add_nested_field: "+Еще"
+      next_50: "Показать еще 50"
     
     user:
       actions: "действия"

@@ -4,7 +4,9 @@ describe Sunrise::DashboardController do
   render_views  
   
   before(:all) do
-    @audit = FactoryGirl.create(:audit)
+    @post = FactoryGirl.create(:post)
+    @user = FactoryGirl.create(:redactor_user)
+    @event = @post.create_activity :key => 'post.create', :owner => @user
   end
   
   describe "admin" do
@@ -12,7 +14,7 @@ describe Sunrise::DashboardController do
     
     it "should render index action" do
       get :index
-      assigns(:events).should include(@audit)
+      assigns(:events).should include(@event)
       response.should render_template('index')
     end
   end

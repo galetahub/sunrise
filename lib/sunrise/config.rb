@@ -57,13 +57,5 @@ module Sunrise
     def self.nav
       ::SunriseNavigation.instance.navigations
     end
-
-    def self.audit_scope
-      if Object.const_defined?("Audited")
-        Audited.audit_class.includes(:user).order("audits.id #{default_sort_mode}")
-      else
-        HistoryTracker.scoped
-      end
-    end
   end
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Sunrise::Models::User
+  include PublicActivity::Model
   include ActiveModel::ForbiddenAttributesProtection
   
   # Include default devise modules.
@@ -9,5 +10,5 @@ class User < ActiveRecord::Base
 
   fileuploads :avatar
   
-  # audited :protect => false, :only => [:name, :email, :password]
+  tracked owner: ->(controller, model) { controller.try(:current_user) }
 end

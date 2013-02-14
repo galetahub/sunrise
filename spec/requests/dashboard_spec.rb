@@ -4,7 +4,10 @@ describe "Sunrise Manager Dashboard" do
   subject { page }
   before(:all) do 
     @admin = FactoryGirl.create(:admin_user, :email => "#{Time.now.to_i}@gmail.com")    
-    @audit = FactoryGirl.create(:audit)
+
+    @post = FactoryGirl.create(:post)
+    @user = FactoryGirl.create(:redactor_user)
+    @event = @post.create_activity :key => 'post.create', :owner => @user
   end
 
   context "admin" do
@@ -20,7 +23,7 @@ describe "Sunrise Manager Dashboard" do
       end
       
       it "should render records" do
-        dom_id = ["audit", "event", @audit.id].join('_')
+        dom_id = ["activity", @event.id].join('_')
         should have_selector("#" + dom_id)
       end
     end

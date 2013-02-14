@@ -156,6 +156,7 @@ en:
       edit_profile: "My profile"
       exit: "Exit"
       add_nested_field: "+Add"
+      next_50: "Show more 50"
 
     user:
       actions: "action"

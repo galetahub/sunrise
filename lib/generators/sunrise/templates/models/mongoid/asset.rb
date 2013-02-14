@@ -19,7 +19,8 @@ class Asset
   index({:user_id => 1})
   index({:assetable_type => 1, :assetable_id => 1, :type => 1})
 
+  # Validations
   validates_presence_of :data
-
+  
   default_scope asc(:sort_order)
 end

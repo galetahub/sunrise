@@ -26,6 +26,7 @@ gem "babosa"
 gem "page_parts", "~> 0.1.2"
 gem "meta_manager", "~> 0.1.1"
 gem "strong_parameters"
+gem "public_activity", ">= 1.0.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -46,15 +47,13 @@ end
 
 group :active_record do
   gem "activerecord"
-  gem "audited-activerecord"
   gem "awesome_nested_set"
 end
 
 group :mongoid do
-  gem "mongoid"
+  gem "mongoid", ">= 3.1.0"
   gem "bson_ext"
   gem "carrierwave-mongoid", :require => "carrierwave/mongoid"
   gem "mongoid_nested_set", :git => "git://github.com/thinkwell/mongoid_nested_set.git"
-  gem "mongoid-history"
 end
 
