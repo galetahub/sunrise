@@ -13,7 +13,7 @@ if Object.const_defined?("Mongoid")
     
     delegate :title, :parent_id, :slug, :to => :structure, :prefix => true
 
-    tracked
+    tracked owner: ->(controller, model) { controller.try(:current_user) }
     
     def self.sunrise_search(params)
       query = scoped
