@@ -5,7 +5,7 @@ module Sunrise
     authorize_resource :class => false
     
     def index
-      per_page = Sunrise::Config.audit_events_per_page
+      per_page = Sunrise::Config.activities_per_page
       cur_page = (params[:page] || 1).to_i
       offset = (cur_page - 1) * per_page
       
