@@ -70,7 +70,7 @@ server {
     }
   }
   
-  location ~ ^/(assets|ckeditor_assets|images|javascripts|stylesheets)/ {
+  location ~ ^/(assets|uploads|images|javascripts|stylesheets)/ {
     expires 1y;
     add_header Cache-Control public;
    

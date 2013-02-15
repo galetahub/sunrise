@@ -6,7 +6,7 @@
       <% end %>
     </div>
 
-    <% if @events.count >= Sunrise::Config.audit_events_per_page -%>
+    <% if @events.count >= Sunrise::Config.activities_per_page -%>
       <div class="centerBtnHolder">
         <%= link_to t('manage.buttons.next_50'), "#", :class=>"button", :style=>"width:100px;", :id=>"events-next" %>
         

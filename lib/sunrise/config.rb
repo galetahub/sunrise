@@ -7,8 +7,8 @@ module Sunrise
     @@default_items_per_page = 25
     
     # Display audits events (dashboard)
-    mattr_accessor :audit_events_per_page
-    @@audit_events_per_page = 50
+    mattr_accessor :activities_per_page
+    @@activities_per_page = 50
     
     # By default show latest first
     mattr_accessor :default_sort_mode
