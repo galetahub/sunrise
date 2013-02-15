@@ -18,7 +18,7 @@ describe Structure do
     end
     
     it "should not be valid with invalid position" do
-      @structure.position = 'wrong'
+      @structure.position_type_id = 'wrong'
       @structure.should_not be_valid
     end
     

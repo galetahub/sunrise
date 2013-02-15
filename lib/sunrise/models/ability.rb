@@ -28,7 +28,7 @@ module Sunrise
         cannot :destroy, ::User, :id => @user.id, :context => :sunrise
 
         # User cannot destroy root structure
-        cannot :destroy, ::Structure, :kind => ::StructureType.main.id, :context => :sunrise
+        cannot :destroy, ::Structure, :structure_type_id => ::StructureType.main.id, :context => :sunrise
       end
     end
   end

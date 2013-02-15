@@ -38,8 +38,8 @@ describe "Sunrise Manager Edit" do
         should have_selector "input[@name='structure[redirect_url]']"
         should have_selector "input[@name='structure[slug]']"
         should have_selector "#structure_parent_id"
-        should have_selector "#structure_kind"
-        should have_selector "#structure_position"
+        should have_selector "#structure_structure_type_id"
+        should have_selector "#structure_position_type_id"
         should have_selector "input[@name='structure[is_visible]']"
       end
     end

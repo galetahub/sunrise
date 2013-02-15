@@ -12,8 +12,8 @@ describe "Sunrise Manager New" do
         visit new_path(:model_name => "structures")
         
         fill_in "structure[title]", :with => "Good day"
-        select(StructureType.page.title, :from => "structure[kind]")
-        select(PositionType.menu.title, :from => "structure[position]")
+        select(StructureType.page.title, :from => "structure[structure_type_id]")
+        select(PositionType.menu.title, :from => "structure[position_type_id]")
         check('structure[is_visible]')
         
         click_button "submit-button-hidden"

@@ -19,8 +19,8 @@ describe "Sunrise Manager Edit" do
         #save_and_open_page
         
         fill_in "structure[title]", :with => "Title updated"
-        select(StructureType.posts.title, :from => "structure_kind")
-        select(PositionType.default.title, :from => "structure_position")
+        select(StructureType.posts.title, :from => "structure_structure_type_id")
+        select(PositionType.default.title, :from => "structure_position_type_id")
         uncheck('structure[is_visible]')
         
         click_button "submit-button-hidden"

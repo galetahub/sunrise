@@ -1,4 +1,5 @@
 == 0.6.0
+  * Raname attributes kind and position to structure_type_id and position_type_id
   * Integrate "public_activity" gem
   * Remove "activerecord-audited" and "mongoid-history" gems
   * Fix search class in Utils

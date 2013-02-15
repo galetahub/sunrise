@@ -40,7 +40,7 @@ describe Sunrise::ManagerController do
       end
 
       it "should not destroy root structure" do
-        @root.kind.should == ::StructureType.main.id
+        @root.structure_type_id.should == ::StructureType.main.id
         
         controller.should_not_receive(:destroy)
         delete :destroy, :model_name => "structures", :id => @root.id
