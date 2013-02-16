@@ -66,6 +66,13 @@ en:
         remote_ip: "IP address"
         user_agent: "Browser Version"
         message: "Message"
+
+      activity:
+        created_at: "Created at"
+        owner: "User"
+        key: "Action"
+        trackable: "Object"
+        remote_address: "IP"
               
   manage:
     title: "System <br /> Management"

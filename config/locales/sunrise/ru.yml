@@ -67,11 +67,11 @@ ru:
         user_agent: "Версия браузера"
         message: "Сообщение"
       
-      audit:
+      activity:
         created_at: "Дата"
-        user: "Пользователь"
-        action: "Что"
-        auditable: "Объект"
+        owner: "Пользователь"
+        key: "Что"
+        trackable: "Объект"
         remote_address: "IP"
               
   manage:

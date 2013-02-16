@@ -1,0 +1,16 @@
+<%= content_tag(:tr, :id => ["activity", activity.id].join("_"), :class => "event") do -%>
+  <td><%= I18n.l activity.created_at, :format => "%d.%m.%Y %H:%M" %></td>
+  <% if activity.owner -%>
+    <td>
+      <%= link_to activity.owner.name, edit_path(:model_name => activity.owner_type, :id => activity.owner_id) %>
+    </td>
+  <% else -%>
+    <td>someone</td>
+  <% end -%>
+  <td><%= activity.key %></td>
+  <td>
+    <% if ['create', 'update'].include?(activity.key.split('.').last) %>
+      <%= link_to_trackable activity.trackable, activity.trackable_type %>
+    <% end %>
+  </td>
+<% end -%>
