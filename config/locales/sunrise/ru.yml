@@ -20,9 +20,9 @@ ru:
         title_en: "Название (eng.)"
         parent_id: "Главная категория"
         is_visible: "Отображать?"
-        kind: "Тип страницы"
+        structure_type_id: "Тип страницы"
         redirect_url: "Перенаправление (URL)"
-        position: "Позиция"
+        position_type_id: "Позиция"
         slug: "URL"
       
       header:
@@ -260,6 +260,9 @@ ru:
       edit: "Редактировать"
       settings: "Настройки"
       delete: "Удалить"
+
+    groups:
+      meta_tags: "Мета теги"
   
   views:
     pagination:
