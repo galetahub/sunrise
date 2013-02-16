@@ -1,3 +1,6 @@
+# require 'meta_manager/orm/active_record'
+# require 'page_parts/orm/active_record'
+
 # Use this hook to configure sunrise
 Sunrise.setup do |config|
   # Paginate records per page (default: 25)
