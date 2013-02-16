@@ -12,6 +12,7 @@ class Sunrise
     ($ '[data-lang]').lang_tabs()
     
     this.init_submit_buttons()
+    this.init_group_menus()
   
   getParameterByName: (name) ->
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
@@ -27,7 +28,18 @@ class Sunrise
     
     $('#submit-form-button').bind 'click', (evt) ->
       $('form:first').submit()
-    
+
+  init_group_menus: ->
+    $(".title-switcher").bind('click', (e) ->
+      $(this).parent().find(".padder").toggle()
+
+      if $(this).hasClass('up')
+        $(this).removeClass('up').addClass('down')
+      else
+        $(this).removeClass('down').addClass('up')
+
+      return false
+    )
 
   # Store params: page, per, sort and view for current namespace
   storeQuery: () ->

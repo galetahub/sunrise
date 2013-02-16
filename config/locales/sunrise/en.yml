@@ -20,9 +20,9 @@ en:
         title_en: "Name (eng.)"
         parent_id: "Main Categories"
         is_visible: "Show?"
-        kind: "Page Type"
+        structure_type_id: "Page Type"
         redirect_url: "Redirect (URL)"
-        position: "Position"
+        position_type_id: "Position"
         slug: "Slug"
       
       header:

@@ -20,9 +20,9 @@ uk:
         title_en: "Назва (eng.)"
         parent_id: "Головна категорія"
         is_visible: "Відображати?"
-        kind: "Тип сторінки"
+        structure_type_id: "Тип сторінки"
         redirect_url: "Перенаправлення (URL)"
-        position: "Позиція"
+        position_type_id: "Позиція"
         slug: "URL"
       
       header:
@@ -259,6 +259,9 @@ uk:
       edit: "Редагувати"
       settings: "Настройки"
       delete: "Видалити"
+
+    groups:
+      meta_tags: "Мета теги"
   
   views:
     pagination:
