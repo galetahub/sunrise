@@ -22,7 +22,7 @@ module Sunrise
       
       def copy_configurations
         copy_file('config/seeds.rb', 'db/seeds.rb')
-        copy_file('config/sunrise.rb', 'config/initializers/sunrise.rb')
+        copy_file("config/#{orm}/sunrise.rb", 'config/initializers/sunrise.rb')
         
         template('config/database.yml', 'config/database.yml.sample')
         template('config/logrotate-config', 'config/logrotate-config.sample')
