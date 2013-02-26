@@ -1,5 +1,5 @@
-# require 'meta_manager/orm/active_record'
-# require 'page_parts/orm/active_record'
+require 'meta_manager/orm/active_record'
+require 'page_parts/orm/active_record'
 
 # Use this hook to configure sunrise
 Sunrise.setup do |config|
@@ -41,9 +41,9 @@ Sunrise.setup do |config|
   # config.navigational_formats = [:html, :json]
 end
 
-#PublicActivity::Config.set do
-#  orm :mongoid
-#end
+PublicActivity::Config.set do
+  orm :active_record
+end
 
 #if Settings.table_exists?
 #  Settings.defaults[:some_setting] = "value"
