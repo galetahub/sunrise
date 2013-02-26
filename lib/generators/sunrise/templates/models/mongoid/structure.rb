@@ -9,13 +9,13 @@ class Structure
   # Columns
   field :title, :type => String
   field :slug, :type => String
-  field :kind, :type => Integer, :default => 0
-  field :position, :type => Integer, :default => 0
+  field :structure_type_id, :type => Integer, :default => 0
+  field :position_type_id, :type => Integer, :default => 0
   field :is_visible, :type => Boolean, :default => true
   field :redirect_url, :type => String
 
-  index({:kind => 1})
-  index({:position => 1})
+  index({:structure_type_id => 1})
+  index({:position_type_id => 1})
   index({:parent_id => 1})
 
   tracked owner: ->(controller, model) { controller.try(:current_user) }
