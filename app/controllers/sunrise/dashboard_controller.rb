@@ -9,7 +9,7 @@ module Sunrise
       cur_page = (params[:page] || 1).to_i
       offset = (cur_page - 1) * per_page
       
-      @events = PublicActivity::Activity.includes(:owner, :trackable, :recipient)
+      @events = Sunrise.activities
       @events = @events.limit(per_page).offset(offset)
 
       respond_with(@events) do |format|
