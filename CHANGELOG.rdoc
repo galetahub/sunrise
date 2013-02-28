@@ -1,3 +1,8 @@
+== 0.6.1
+  * New callbacks after_sort, before_sort, after_mass_destroy, before_mass_destroy in Abstract model.
+  * Translate sort buttons
+  * New nginx config (using try_files)
+
 == 0.6.0
   * Raname attributes kind and position to structure_type_id and position_type_id
   * Integrate "public_activity" gem

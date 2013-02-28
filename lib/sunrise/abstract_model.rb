@@ -3,7 +3,8 @@ require 'ostruct'
 
 module Sunrise
   class AbstractModel
-    
+    extend ::ActiveModel::Callbacks
+
     class << self
       
       # Gets the resource_name
@@ -49,6 +50,8 @@ module Sunrise
     delegate :config, :model, :to => 'self.class'
     delegate :label, :to => 'self.class.config'
     delegate :param_key, :singular, :plural, :route_key, :to => :model_name
+
+    define_model_callbacks :sort, :mass_destroy, :only => [:before, :after]
     
     def initialize(params = {})
       @model_name = model.model_name
@@ -117,10 +120,20 @@ module Sunrise
     end
     
     def update_sort(params)
-      if !params[:ids].blank?
-        update_sort_column(params[:ids])
-      elsif !params[:tree].blank?
-        update_sort_tree(params[:tree])
+      run_callbacks :sort do
+        if !params[:ids].blank?
+          update_sort_column(params[:ids])
+        elsif !params[:tree].blank?
+          update_sort_tree(params[:tree])
+        end
+      end
+    end
+
+    def destroy_all(params)
+      return if params[:ids].blank?
+
+      run_callbacks :mass_destroy do
+        model.where(:id => params[:ids]).destroy_all
       end
     end
     
@@ -139,14 +152,10 @@ module Sunrise
     
     def update_sort_column(ids)
       return nil if ids.empty?
-      
-      sql_case = '' 
+
       ids.each do |key, value| 
-        sql_case += "WHEN #{key} THEN #{value} "
+        model.where(:id => key).update_all(["#{@sort_column} = ?", value])
       end
-      sql_case += 'END'
-      
-      model.update_all("#{@sort_column} = CASE id #{sql_case}", ["id IN (?)", ids.keys.map(&:to_i)])
     end
     
     # Initialize new model, sets parent record and call build_defaults method
