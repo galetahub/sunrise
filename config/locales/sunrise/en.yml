@@ -164,6 +164,9 @@ en:
       exit: "Exit"
       add_nested_field: "+Add"
       next_50: "Show more 50"
+      sort: "Sort"
+      save: "Save"
+      cancel: "Cancel"
 
     user:
       actions: "action"

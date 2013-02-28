@@ -164,6 +164,9 @@ ru:
       exit: "Выход"
       add_nested_field: "+Еще"
       next_50: "Показать еще 50"
+      sort: "Сортировать"
+      save: "Сохранить"
+      cancel: "Отмена"
     
     user:
       actions: "действия"
