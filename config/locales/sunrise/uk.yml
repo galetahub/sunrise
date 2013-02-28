@@ -164,6 +164,9 @@ uk:
       exit: "Вихід"
       add_nested_field: "+Ще"
       next_50: "Показати ще 50"
+      sort: "Сортувати"
+      save: "Зберегти"
+      cancel: "Скасувати"
     
     user:
       actions: "дії"
