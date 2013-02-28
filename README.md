@@ -39,6 +39,8 @@ class SunriseProduct < Sunrise::AbstractModel
   self.resource_name = "Product"
 
   association :structure
+
+  after_sort :clear_cache
   
   list :thumbs do
     scope { Product.includes(:picture) }
@@ -79,6 +81,12 @@ class SunriseProduct < Sunrise::AbstractModel
       field :picture, :as => :uploader
     end
   end
+
+  protected
+
+    def clear_cache
+      Rails.cache.clear
+    end
 end
 ```
 

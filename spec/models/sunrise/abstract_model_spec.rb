@@ -52,6 +52,14 @@ describe Sunrise::AbstractModel do
         model = Sunrise::Utils.get_model("structures", {:view => 'table'})
         model.current_list.should == :table
       end
+
+      it "should destroy all items" do
+        @structure = FactoryGirl.create(:structure_page)
+
+        lambda {
+          @abstract_model.destroy_all({:ids => [@structure.id]})
+        }.should change { Structure.count }.by(-1)
+      end
     end
   end
   

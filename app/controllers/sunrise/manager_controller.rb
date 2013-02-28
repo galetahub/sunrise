@@ -80,7 +80,7 @@ module Sunrise
     end
     
     def mass_destroy
-      abstract_model.model.destroy_all(:id => params[:ids]) unless params[:ids].blank?
+      abstract_model.destroy_all(params)
       
       respond_to do |format|
         format.html { redirect_to redirect_after_update }
