@@ -47,11 +47,19 @@ module Sunrise
   LOCALIZE_STANDALONE_DAY_NAMES_MATCH = /^%A/
   
   def self.root_path
-    @root_path ||= Pathname.new( File.dirname(File.expand_path('../', __FILE__)) )
+    @root_path ||= Pathname.new(File.dirname(File.expand_path('../', __FILE__)))
   end
   
   def self.setup
     yield Config
+  end
+
+  def self.activities
+    if defined?(Mongoid::Document)
+      PublicActivity::Activity.desc(:created_at)
+    else
+      PublicActivity::Activity.order("created_at DESC")
+    end
   end
 end
 
