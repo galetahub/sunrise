@@ -61,7 +61,7 @@ server {
    
   error_page 503 @503;
   location @503 {
-    root /var/www/designinterior/public;
+    root /var/www/<%= app_name %>/public;
     rewrite ^(.*)$ /system/maintenance.html break;
   }
 }
