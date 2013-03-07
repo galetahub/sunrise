@@ -28,7 +28,6 @@ describe Sunrise::AbstractModel do
       
       it "should return record attrs" do
         @abstract_model.param_key.should == 'structure'
-        @abstract_model.permited_attributes_for(nil).should == @params[:structure].keys
       end
       
       it "should return current list view" do

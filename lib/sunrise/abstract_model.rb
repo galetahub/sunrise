@@ -233,15 +233,21 @@ module Sunrise
       config.edit.fields || []
     end
 
-    def permited_attributes_for(user)
+    def permit_attributes(params, user = nil)
       value = config.edit.permited_attributes
-      
+
       attrs = case value
       when Proc then value.call(user)
+      when String then value.to_sym
       else value
       end
 
-      (attrs == :all ? model_params.try(:keys) : Array.wrap(attrs)).map(&:to_sym)
+      if attrs == :all
+        params.require(param_key).permit!
+      else
+        attrs = Array.wrap(attrs).map(&:to_sym)
+        params.require(param_key).permit(*attrs)
+      end
     end
     
     # Has translated columns

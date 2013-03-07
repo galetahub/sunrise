@@ -1,13 +1,17 @@
 require 'spec_helper'
+require 'carrierwave/test/matchers'
 
 describe Avatar do
-  before(:all) do
+  include CarrierWave::Test::Matchers
+
+  before(:each) do
     AvatarUploader.enable_processing = true
     @avatar = FactoryGirl.build(:asset_avatar)
   end
   
-  after(:all) do
+  after(:each) do
     AvatarUploader.enable_processing = false
+    @avatar.destroy if @avatar.persisted?
   end
   
   it "should create a new instance given valid attributes" do
@@ -35,7 +39,7 @@ describe Avatar do
   
   context "after create" do
     before(:each) do
-      @avatar = FactoryGirl.create(:asset_avatar)
+      @avatar.save!
     end
     
     it "filename should be valid" do
@@ -74,7 +78,7 @@ describe Avatar do
   
   context "cropping" do
     before(:each) do
-      @avatar = FactoryGirl.create(:asset_avatar)
+      @avatar.save!
       @avatar.cropper_geometry = "50,64,10,10"
     end
     
@@ -104,7 +108,7 @@ describe Avatar do
   
   context "rotate" do
     before(:each) do
-      @avatar = FactoryGirl.create(:asset_avatar)
+      @avatar.save
       @avatar.rotate_degrees = "-90"
     end
     
