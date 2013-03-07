@@ -162,8 +162,7 @@ module Sunrise
       end
 
       def model_params
-        attrs = abstract_model.permited_attributes_for(current_user)
-        params.require(abstract_model.param_key).permit(*attrs)
+        abstract_model.permit_attributes(params, current_user)
       end
   end
 end
