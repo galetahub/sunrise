@@ -1,5 +1,7 @@
 <%= content_tag(:div, :id => dom_id(record), :class => "main-item") do -%>
-  <div class="check-block"><input type="checkbox" /></div>
+  <div class="check-block">
+    <%= check_box_tag dom_id(record, :editable), record.id, false, :name => :editable %>
+  </div>
   <% if abstract_model.list.preview -%>  
     <div class="img-block"><%= image_tag abstract_model.list.preview_for(record) %></div>
   <% end -%>
