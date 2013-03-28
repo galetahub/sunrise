@@ -14,12 +14,12 @@
             :method=>:delete, 
             :confirm=>t("manage.confirm_delete"), 
             :class=>"but-container del", 
-            :id => dom_id(record, :delete) if can?(:delete, record)%>
+            :id => dom_id(record, :delete) if can?(:delete, record, :context => :sunrise)%>
         </div>
         <div class="act-but">
           <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => record.id)), 
             :class=>"but-container edit", 
-            :id => dom_id(record, :edit) if can?(:edit, record) %>
+            :id => dom_id(record, :edit) if can?(:edit, record, , :context => :sunrise) %>
         </div>
 		  </div>
 		</div>

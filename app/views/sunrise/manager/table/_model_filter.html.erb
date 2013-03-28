@@ -6,7 +6,7 @@
       <%= f.input field.name, field.input_options.merge(:required => false) if field.visible?(f.object) %>
     <% end -%>
     
-    <%= f.submit t('manage.search'), :class => "button", :id => "submit-button-search" %>
-    <%= link_to t('manage.model_filter.clear'), scoped_index_path, :class=>"grey-but" %>
+    <%= f.submit t('manage.search'), :class => "button but-filter-submit", :id => "submit-button-search" %>
+    <%= link_to t('manage.model_filter.clear'), scoped_index_path, :class=>"grey-but but-filter-reset" %>
   <% end -%>
 </div>

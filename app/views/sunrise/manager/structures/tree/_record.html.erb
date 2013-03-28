@@ -4,12 +4,12 @@
 
     <% if record.root? %>
       <div class="first_structure_icons">
-        <%= link_to '', edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class => "btn_edit", :id => dom_id(record, :edit) if can?(:edit, record) %>
+        <%= link_to '', edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class => "btn_edit", :id => dom_id(record, :edit) if can?(:edit, record, :context => :sunrise) %>
       </div>
     <% else %>
-      <%= link_to '', edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class => "btn_edit", :id => dom_id(record, :edit) if can?(:edit, record) %>
+      <%= link_to '', edit_path(abstract_model.parent_hash.merge(:id => record.id)), :class => "btn_edit", :id => dom_id(record, :edit) if can?(:edit, record, :context => :sunrise) %>
         
-        <%= link_to '', delete_path(abstract_model.parent_hash.merge(:id => record.id)), :method => :delete, :confirm => t("manage.confirm_delete"), :class => "btn_del", :id => dom_id(record, :delete) if can?(:delete, record) %>
+        <%= link_to '', delete_path(abstract_model.parent_hash.merge(:id => record.id)), :method => :delete, :confirm => t("manage.confirm_delete"), :class => "btn_del", :id => dom_id(record, :delete) if can?(:delete, record, :context => :sunrise) %>
     <% end %>
     
     <a href="#" class="dnd_link"></a>
