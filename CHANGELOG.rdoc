@@ -1,3 +1,6 @@
+== 0.6.3
+  * Special layout for devise login page
+
 == 0.6.1
   * New callbacks after_sort, before_sort, after_mass_destroy, before_mass_destroy in Abstract model.
   * Translate sort buttons
