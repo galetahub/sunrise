@@ -159,4 +159,12 @@ Create file "app/assets/javascripts/sunrise/plugins.js":
 //= require ckeditor/init
 ```
 
+### Layout for devise login page
+
+``` ruby
+config.to_prepare do
+  Devise::SessionsController.layout "devise"
+end
+```
+
 Copyright (c) 2013 Fodojo, released under the MIT license
