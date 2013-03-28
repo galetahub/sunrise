@@ -162,8 +162,11 @@ Create file "app/assets/javascripts/sunrise/plugins.js":
 ### Layout for devise login page
 
 ``` ruby
+# config/application.rb
 config.to_prepare do
-  Devise::SessionsController.layout "devise"
+  Devise::SessionsController.layout "sunrise/devise"
+  Devise::PasswordsController.layout "sunrise/devise"
+  Devise::ConfirmationsController.layout "sunrise/devise"
 end
 ```
 
