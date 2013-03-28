@@ -1,5 +1,7 @@
 == 0.6.3
   * Special layout for devise login page
+  * Add controls buttons for record
+  * Fix filter form
 
 == 0.6.1
   * New callbacks after_sort, before_sort, after_mass_destroy, before_mass_destroy in Abstract model.
