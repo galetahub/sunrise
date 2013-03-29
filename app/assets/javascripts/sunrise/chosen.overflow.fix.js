@@ -2,7 +2,25 @@
   Chosen gets "cut" when placed in area with "overflow:hidden".
   https://github.com/harvesthq/chosen/issues/86#issuecomment-11632999 
 */
+Chosen.prototype.results_reposition = function() {
+  var dd_top, offset, scrolly, toppy;
+
+  dd_top = this.is_multiple ? this.container.height() : this.container.height() - 1;
+
+  // when in a modal get the scroll distance and apply to top of .chzn-drop
+  offset = this.container.offset();
+  scrolly = parseInt($(window).scrollTop(), 10);
+  scrolly = scrolly < 0 ? 0 : scrolly;
+  toppy = offset.top+ dd_top - scrolly;
+
+  this.dropdown.css({
+    "top": toppy + "px",
+    "left": offset.left + "px"
+  });
+};
+
 Chosen.prototype.results_show = function() {
+  var dd_top;
   var self = this;
 
   // hide .chzn-drop when the window resizes else it will stay fixed with previous top and left coordinates
@@ -10,7 +28,6 @@ Chosen.prototype.results_show = function() {
     self.results_hide();
   });
 
-  var dd_top;
   if (!this.is_multiple) {
     this.selected_item.addClass("chzn-single-with-drop");
     if (this.result_single_selected) {
@@ -28,17 +45,14 @@ Chosen.prototype.results_show = function() {
   });
 
   if($('.post-edit-holder').length) {
-    // when in a modal get the scroll distance and apply to top of .chzn-drop
-    var offset = this.container.offset();
-    var scrolly = parseInt($(window).scrollTop(), 10);
-    scrolly = scrolly < 0 ? 0 : scrolly;
-    var toppy = offset.top+ dd_top - scrolly;
-    this.dropdown.css({
-      "top": toppy + "px",
-      "left": offset.left + "px"
+    this.results_reposition();
+
+    $(window).scroll(function() {
+      if (self.results_showing) {
+        self.results_reposition();
+      }
     });
   } else {
-    // proceed as normal
     this.dropdown.css({
       "top": dd_top + "px",
       "left": 0
