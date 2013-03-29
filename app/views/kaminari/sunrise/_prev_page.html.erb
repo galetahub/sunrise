@@ -7,4 +7,7 @@
     remote:        data-remote
 -%>
 
-<%= link_to_unless_span current_page.first?, image_tag('sunrise/page_prev_arr.gif', :alt => t('views.pagination.previous')), url, :rel => 'prev', :remote => remote, :class => "prev_page disabled" %>
+<li>
+<%= link_to_unless_span current_page.first?, raw("&larr;"), url, :rel => 'prev', :remote => remote, :class => "prev_page disabled" %>
+</li>
+

@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="main-item-list" id="records">
     <%= render :partial => apply_scope("record"), :collection => @records %>
-    <%= paginate @records, :theme => 'sunrise' %>
+    <%= paginate @records, :theme => 'sunrise', :outer_window => 2 %>
   </div>
 
   <script type='text/javascript'>

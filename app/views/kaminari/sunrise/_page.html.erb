@@ -9,7 +9,11 @@
 -%>
 
 <% unless page.current? %>
-  <%= link_to page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
+  <li>
+    <%= link_to page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
+  </li>
 <% else -%>
-  <%= content_tag(:span, page)%>
+  <li class="active">
+    <%= content_tag(:span, page)%>
+  </li>
 <% end -%>
