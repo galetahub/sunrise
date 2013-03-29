@@ -239,3 +239,44 @@ div.input.boolean input {
   float: left;
   margin-right: 15px;
 }
+
+/* Datepicker */
+.padder input.date,
+.padder input.datetime {
+  width: 190px;
+  float: left;
+}
+.padder .calend-holder .but-holder {
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.padder .calend-holder .but-holder .but-container {
+  height: 29px;
+}
+.padder .calend-holder {
+  margin-bottom: 10px;
+  height: 30px;
+  position: relative;
+  width: 255px;
+}
+.ui-datepicker {
+  font-size: 12px !important;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+.post-edit-holder .chzn-container .chzn-drop {
+  position:fixed;
+}

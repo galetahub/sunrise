@@ -6,7 +6,8 @@ class Sunrise
     
   setup: ->
     ($ '[title]').tooltip()
-    ($ ".chzn-select").chosen()
+    ($ "select.select").css("width", "225")
+    ($ "select.select").chosen({allow_single_deselect: true})
     ($ ".ddmenu").ddmenu()
     ($ '[data-editable]').editable()
     ($ '[data-lang]').lang_tabs()
