@@ -4,7 +4,8 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require sunrise/main.css
  *= require sunrise/customize.css
- *= require chosen.css
+ *= require sunrise/plugins.css
+ *= require sunrise/chosen.css
  *= require smoothness/jquery-ui-1.8.16.custom.css
  *= require uploader/application
 */
