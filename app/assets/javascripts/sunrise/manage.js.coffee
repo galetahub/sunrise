@@ -6,11 +6,14 @@ class Sunrise
     
   setup: ->
     ($ '[title]').tooltip()
-    ($ "select.select").css("width", "225")
-    ($ "select.select").chosen({allow_single_deselect: true})
     ($ ".ddmenu").ddmenu()
     ($ '[data-editable]').editable()
     ($ '[data-lang]').lang_tabs()
+    ($ "select.select").css("width", "225")
+    ($ "select.select").chosen(
+      allow_single_deselect: true
+      disable_search_threshold: 10
+    )
     
     this.init_submit_buttons()
     this.init_group_menus()

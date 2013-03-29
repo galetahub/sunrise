@@ -12,6 +12,6 @@
 		  <%= render :partial => "sunrise/manager/table/record", :collection => @records %>
 	  </table>
 	
-	  <%= paginate @records, :theme => 'sunrise' %>
+	  <%= paginate @records, :theme => 'sunrise', :outer_window => 2 %>
   </div>
 </div>

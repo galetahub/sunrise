@@ -6,4 +6,6 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<%= link_to_unless_span current_page.last?, image_tag('sunrise/page_next_arr.gif', :alt => t('views.pagination.next')), url, :rel => 'next', :remote => remote, :class => "next_page disabled" %>
+<li>
+<%= link_to_unless_span current_page.last?, raw("&rarr;"), url, :rel => 'next', :remote => remote, :class => "next_page disabled" %>
+</li>
