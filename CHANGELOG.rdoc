@@ -1,3 +1,8 @@
+== 0.6.4
+  * Pagination style via twitter bootstrap
+  * Use chosen for all selects
+  * Fix datetime select
+
 == 0.6.3
   * Special layout for devise login page
   * Add controls buttons for record

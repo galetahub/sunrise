@@ -9,7 +9,7 @@ class Sunrise
     ($ ".ddmenu").ddmenu()
     ($ '[data-editable]').editable()
     ($ '[data-lang]').lang_tabs()
-    ($ "select.select").css("width", "225")
+    ($ "select.select:hidden").css("width", "225")
     ($ "select.select").chosen(
       allow_single_deselect: true
       disable_search_threshold: 10
