@@ -3,8 +3,6 @@ $ = jQuery
 
 $.fn.extend({
   ddmenu: (options) ->
-    # Do no harm and return as soon as possible for unsupported browsers, namely IE6 and IE7
-    return this if $.browser.msie and $.browser.version is "6.0"
     $(this).each((input_field) ->
       new DropdownMenu(this, options) unless ($ this).hasClass "ddm-done"
     )
