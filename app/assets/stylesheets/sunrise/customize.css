@@ -280,3 +280,8 @@ div.input.boolean input {
 .post-edit-holder .chzn-container .chzn-drop {
   position:fixed;
 }
+
+/*Uploader button*/
+.uploader-button span {
+  line-height: 30px;
+}
