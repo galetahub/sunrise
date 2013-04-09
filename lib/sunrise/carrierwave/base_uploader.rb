@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'mime/types'
 require 'mini_magick'
 require 'carrierwave/processing/mini_magick'
@@ -92,7 +91,8 @@ module Sunrise
       end
       
       def image?(new_file = nil)
-        (file || new_file).content_type.include? 'image'
+        ctype = (file || new_file).content_type
+        ctype.include?('image') && !['photoshop', 'psd'].any? {|t| ctype.include?(t) }
       end
       
       def dimensions
