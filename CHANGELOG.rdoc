@@ -1,3 +1,6 @@
+== 0.6.5
+  * Fix bugs
+
 == 0.6.4
   * Pagination style via twitter bootstrap
   * Use chosen for all selects
