@@ -1,5 +1,5 @@
 <% options ||= {} %>
-<%= content_tag :div, field.html_options do %>
+<%= content_tag :div, field.html_options do -%>
   <% if field.visible?(form.object) -%>
     <% if field.nested? -%>
       <div class="nested">
