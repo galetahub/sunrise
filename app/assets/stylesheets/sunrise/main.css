@@ -731,9 +731,9 @@ input[disabled].button.gray {
 }
 
 a.close-but {
-	width: 8px;
-	height: 8px;
-	background: url(/assets/sunrise/chosen-sprite.png) no-repeat -50px -2px;
+	width: 9px;
+	height: 9px;
+  background: url(/assets/sunrise/chosen-sprite.png) no-repeat -43px 0px;
 	display: block;
 	position: absolute;
 	top: 12px;
@@ -741,7 +741,7 @@ a.close-but {
 }
 
 a.close-but:hover {
-	background-position: -50px -13px;
+	background-position: -43px -11px;
 }
 
 .dnd-area {

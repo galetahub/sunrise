@@ -34,6 +34,17 @@ describe "Sunrise Manager New" do
         end
       end
     end
+
+    describe "GET /manage/structures/new with params" do
+      before(:each) do
+        @title = "Default-title"
+        visit new_path(:model_name => "structures", :structure => { :title => @title })
+      end
+
+      it "should pre-fill attributes" do
+        should have_selector "input[@value='#{@title}']"
+      end
+    end
   end
   
   describe "anonymous user" do
