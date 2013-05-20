@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'rails-uploader'
 
 module Sunrise
@@ -99,9 +98,13 @@ module Sunrise
         @rotate_degrees_changed === true
       end
       
+      def uploader_user(request)
+        request.env['warden'].user
+      end
+
       def uploader_create(params, request = nil)
         if uploader_can?(:create, request)
-          self.user = request.env['warden'].user
+          self.user_id = uploader_user(request).try(:id)
           params[:assetable_type] = "Noname" if params[:assetable_type].blank?
           params[:assetable_id] = 0 if params[:assetable_id].blank?
           super
@@ -119,7 +122,7 @@ module Sunrise
       end
       
       def uploader_can?(action, request)
-        ability = ::Ability.new(request.env['warden'].user)
+        ability = ::Ability.new(uploader_user(request))
         ability.can? action.to_sym, self
       end
       
