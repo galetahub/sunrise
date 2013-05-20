@@ -50,6 +50,18 @@ class SunriseProduct < Sunrise::AbstractModel
     field :price
     field :total_stock
   end
+
+  list :export do
+    scope { Product.includes(:picture).recently.with_state(:finished) }
+
+    field :id
+    field :product_title
+    field :size
+    field :started_at
+    field :finished_at
+    field :unique_accounts_count
+    field :total_points
+  end
   
   show do
     field :title
@@ -72,9 +84,9 @@ class SunriseProduct < Sunrise::AbstractModel
     end
 
     group :bottom, :holder => :bottom do
-      nested_attributes :variants do
+      nested_attributes :variants, :multiply => true do
         field :size
-        field :total_stock, :div_style => 'width:100%;clear:both;'
+        field :total_stock, :html => { :style => 'width:100%;clear:both;' }
         field :item_model_id, :collection => lambda { ItemModel.all }, :include_blank => false
       end
     

@@ -27,6 +27,7 @@ module Sunrise
     end
     
     def new
+      @record.attributes = abstract_model.model_params
       respond_with(@record) do |format|
         format.html { render_with_scope } 
       end

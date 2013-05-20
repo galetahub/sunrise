@@ -1,4 +1,4 @@
 <div class="nested_item">
-  <%= manage_remove_child_link '', form, :class => "close-but" %>
+  <%= manage_remove_child_link('', form, :class => "close-but") if field.multiply? %>
   <%= render :partial => 'field', :collection => field.fields, :locals => {:form => form} %>
 </div>

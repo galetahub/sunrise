@@ -1,3 +1,10 @@
+== 0.6.6
+  * Allow pre-fill attributes on new form
+  * Add :html option on field config to setup holder
+
+== 0.6.5
+  * Fix bugs
+
 == 0.6.4
   * Pagination style via twitter bootstrap
   * Use chosen for all selects
