@@ -832,7 +832,7 @@ a.close-but:hover {
   box-shadow: none;
 	background-position: center -28px !important;
 }
-.tabs-holder .tabs-item span {
+.tabs-holder .tabs-item span.tt-done {
   display: block;
   overflow: hidden;
   height: 28px;
@@ -1368,7 +1368,7 @@ a.close-but:hover {
   color: #8e2a96;
 }
 
-.tabs-holder .tabs-item span {
+.post-edit-holder .tabs-holder .tabs-item span {
   color: #616161;
   padding: 6px 10px 0 10px;
   height: 22px;  
