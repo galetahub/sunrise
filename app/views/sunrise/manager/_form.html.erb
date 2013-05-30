@@ -1,4 +1,4 @@
-<%= manage_form_for @record do |f| -%> 
+<%= manage_form_for @record, :html => { :multipart => true } do |f| -%> 
   <%= render :partial => 'sunrise/shared/parent' %>
 
   <div class="post-edit-holder">
