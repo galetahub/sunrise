@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("meta_manager", ">= 0.1.1")
   s.add_runtime_dependency("strong_parameters")
   s.add_runtime_dependency("public_activity", ">= 1.0.0")
+  s.add_runtime_dependency("dalli", ">= 2.6.4")
   
   s.add_development_dependency("rspec-rails", "~> 2.10.1")
   s.add_development_dependency("generator_spec", "~> 0.8.5")

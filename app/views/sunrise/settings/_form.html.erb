@@ -3,7 +3,7 @@
     <div class="wysiwyg-holder">
       <% @settings.each do |key, value| -%>
         <div class="padder">
-          <%= f.input key, :value => value %>
+          <%= f.input key, :value => value, :required => false %>
         </div>
       <% end -%>
     </div>

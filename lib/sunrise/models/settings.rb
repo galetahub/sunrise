@@ -1,5 +1,5 @@
-# encoding: utf-8
-require "active_support/cache/memory_store"
+require "dalli"
+require "active_support/cache/dalli_store"
 
 module Sunrise
   module Models
@@ -14,7 +14,7 @@ module Sunrise
 
         # cache must follow the contract of ActiveSupport::Cache. Defaults to no-op.
         cattr_accessor :cache
-        self.cache = ActiveSupport::Cache::MemoryStore.new
+        self.cache = ::ActiveSupport::Cache::DalliStore.new
 
         # options passed to cache.fetch() and cache.write(). example: {:expires_in => 5.minutes}
         cattr_accessor :cache_options
@@ -71,7 +71,7 @@ module Sunrise
           result = defaults.dup
           
           query.all.each do |record|
-            result[record.var] = record.value
+            result[record.var.to_sym] = record.value
           end
           
           result.with_indifferent_access
@@ -83,7 +83,7 @@ module Sunrise
             if (var = target(var_name)).present?
               var.value
             else
-              defaults[var_name.to_s]
+              defaults[var_name.to_sym]
             end
           end
         end
@@ -131,21 +131,13 @@ module Sunrise
           attrs.each do |key, value|
             self[key] = value
           end
+
+          cache.clear
         end
 
         def to_key
           ['settings']
         end
-      end
-      
-      #get the value field, YAML decoded
-      def value
-        YAML::load(self[:value])
-      end
-      
-      #set the value field, YAML encoded
-      def value=(new_value)
-        self[:value] = new_value.to_yaml
       end
     end
   end
