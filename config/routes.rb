@@ -10,7 +10,7 @@ Sunrise::Engine.routes.draw do
     scope ":model_name" do
       get "/", :to => :index, :as => "index", :via => [:get, :post]
       get "/export.:format", :to => :export, :as => "export"
-      get "/sort", :to => :sort, :as => "sort"
+      post "/sort", :to => :sort, :as => "sort"
       get "/new", :to => :new, :as => "new"
       post "/new", :to => :create, :as => "create"
       delete "/mass_destroy", :to => :mass_destroy, :as => "mass_destroy"
