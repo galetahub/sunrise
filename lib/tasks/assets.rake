@@ -19,7 +19,7 @@ namespace :assets do
       pbar.set(index)
     }
     
-    if defined? Mongoid::Document && klass.ancestors.include? Mongoid::Document
+    if defined?(Mongoid::Document) && klass.ancestors.include?(Mongoid::Document)
       klass.all.each &reprocess
     else
       klass.find_each &reprocess
