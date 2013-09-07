@@ -4,7 +4,6 @@ module Sunrise
   module Models
     module Asset
       extend ActiveSupport::Concern
-      include Uploader::Asset
       
       included do
         belongs_to :user
@@ -18,7 +17,7 @@ module Sunrise
         delegate :url, :original_filename, :to => :data
       end
       
-      module ClassMethods        
+      module ClassMethods
         def move_to(index, id)
           update_all(["sort_order = ?", index], ["id = ?", id.to_i])
         end
@@ -97,7 +96,7 @@ module Sunrise
       def rotate_degrees_changed?
         @rotate_degrees_changed === true
       end
-      
+
       def uploader_user(request)
         request.env['warden'].user
       end

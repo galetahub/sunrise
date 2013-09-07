@@ -1,4 +1,5 @@
 class Asset < ActiveRecord::Base
+  include Uploader::Asset
   include Sunrise::Models::Asset
 
   validates_presence_of :data

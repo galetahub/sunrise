@@ -1,6 +1,8 @@
 class Asset
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Uploader::Asset
+  
   include Sunrise::CarrierWave::Glue
   include Sunrise::Models::Asset
   
