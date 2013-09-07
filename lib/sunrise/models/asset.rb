@@ -1,5 +1,3 @@
-require 'rails-uploader'
-
 module Sunrise
   module Models
     module Asset

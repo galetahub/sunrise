@@ -1,3 +1,5 @@
+require 'rails-uploader'
+
 class Asset
   include Mongoid::Document
   include Mongoid::Timestamps
