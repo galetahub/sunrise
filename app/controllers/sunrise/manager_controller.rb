@@ -35,7 +35,7 @@ module Sunrise
     
     def create
       @record.update_attributes(model_params)
-      respond_with(@record, :location => redirect_after_update)
+      respond_with(@record, :location => redirect_after_update(@record))
     end
     
     def edit
@@ -46,7 +46,7 @@ module Sunrise
     
     def update
       @record.update_attributes(model_params)
-      respond_with(@record, :location => redirect_after_update)
+      respond_with(@record, :location => redirect_after_update(@record))
     end
     
     def destroy
@@ -154,7 +154,7 @@ module Sunrise
         index_path(query.merge(options))
       end
       
-      def redirect_after_update
+      def redirect_after_update(record = nil)
         if abstract_model.without_list?
           index_path(:model_name => abstract_model.plural)
         else
