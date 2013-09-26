@@ -102,6 +102,16 @@ class SunriseProduct < Sunrise::AbstractModel
 end
 ```
 
+Assets uploading detect ccurrent user by request.env['warden'].user. To overwrite it use:
+
+```ruby
+class Asset
+  def uploader_user(request)
+    request.env['warden'].user(:account) || request.env['warden'].user(:user)
+  end
+end
+```
+
 ### Export data
 
 #### XML, JSON, CSV

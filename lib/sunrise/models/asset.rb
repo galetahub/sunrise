@@ -55,8 +55,8 @@ module Sunrise
       
       def as_json(options = nil)
         options = {
-          :only => [:id, :guid, :assetable_id, :assetable_type, :user_id], 
-          :root => 'asset',
+          :root => "asset",
+          :only => [:id, :guid, :assetable_id, :assetable_type, :user_id, :public_token], 
           :methods => [:filename, :url, :thumb_url, :size, :content_type]
         }.merge(options || {})
         

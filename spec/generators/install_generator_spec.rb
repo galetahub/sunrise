@@ -27,7 +27,7 @@ describe Sunrise::Generators::InstallGenerator do
   
   it "should copy_configurations" do
     ["db/seeds.rb", "config/initializers/sunrise.rb", "config/database.yml.sample",
-     "config/logrotate-config.sample", "config/nginx-config.sample"].each do |file|
+     "config/logrotate-config.sample", "config/nginx-unicorn.sample", "config/nginx-passenger.sample"].each do |file|
       assert_file file
     end
   end

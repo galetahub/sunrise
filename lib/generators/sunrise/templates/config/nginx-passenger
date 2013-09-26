@@ -1,0 +1,50 @@
+# <%= app_name %>
+#
+
+server {
+  listen 5.9.144.130:80;
+  server_name <%= app_name %>.fodojo.com;
+  
+  access_log off;
+  error_log off;
+  server_tokens off;
+  
+  root /var/www/<%= app_name %>/public;
+  
+  try_files $uri $uri.html $uri/index.html /cache/$uri/index.html /cache/$uri.html /cache/$uri @app;
+  
+  location ^~ /cache {
+    return 404;
+  }
+  
+  location ~ /\.[^\/]+ {
+    return 404;
+  }
+  
+  location @app {
+    client_max_body_size       20m;
+    client_body_buffer_size    128k;
+    
+    passenger_ruby /usr/local/rvm/wrappers/ruby-1.9.3-p448@global/ruby;
+    passenger_enabled on;
+  }
+  
+  location ~ ^/(assets|uploads|images|javascripts|stylesheets)/ {
+    expires 1y;
+    add_header Cache-Control public;
+    add_header Last-Modified "";
+    add_header ETag "";
+    break;
+  }
+  
+  # This rewrites all the requests to the maintenance.html page if it exists in the doc root.
+  if (-f $document_root/system/maintenance.html) {
+    return 503;
+  }
+   
+  error_page 503 @503;
+  location @503 {
+    root /var/www/<%= app_name %>/public;
+    rewrite ^(.*)$ /system/maintenance.html break;
+  }
+}

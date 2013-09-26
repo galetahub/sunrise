@@ -26,7 +26,8 @@ module Sunrise
         
         template('config/database.yml', 'config/database.yml.sample')
         template('config/logrotate-config', 'config/logrotate-config.sample')
-        template('config/nginx-config', 'config/nginx-config.sample')
+        template('config/nginx-unicorn', 'config/nginx-unicorn.sample')
+        template('config/nginx-passenger', 'config/nginx-passenger.sample')
       end
       
       # copy models
