@@ -101,9 +101,9 @@ class SortDialog extends Dialog
     $('.sort-item').each (index) ->
       items['ids[' + $(this).data('record-id') + ']'] = index + 1
       
-    $.ajax
+    $.rails.ajax
       url: @element.data 'url'
-      method: 'POST'
+      type: 'POST'
       data: items
       success: ->
         klass.hide()
