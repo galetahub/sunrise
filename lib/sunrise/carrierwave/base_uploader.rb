@@ -91,8 +91,8 @@ module Sunrise
       end
       
       def image?(new_file = nil)
-        ctype = (file || new_file).content_type
-        ctype.include?('image') && !['photoshop', 'psd'].any? {|t| ctype.include?(t) }
+        _type = (file || new_file).content_type
+        _type.include?('image') && !['photoshop', 'psd'].any? {|p| _type.include?(p) }
       end
       
       def dimensions

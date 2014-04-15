@@ -1,7 +1,6 @@
 class Settings
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Sunrise::Models::Settings
   include PublicActivity::Model
   
   # Columns

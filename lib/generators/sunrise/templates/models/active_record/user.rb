@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   include Sunrise::Models::User
   include PublicActivity::Model
-  include ActiveModel::ForbiddenAttributesProtection
   
   # Include default devise modules.
   devise :database_authenticatable, :confirmable, :lockable, :timeoutable,

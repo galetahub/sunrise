@@ -19,5 +19,5 @@ class Structure
   index({:parent_id => 1})
 
   tracked owner: ->(controller, model) { controller.try(:current_user) }
-  # page_parts :content, :sidebar
+  page_parts :content
 end

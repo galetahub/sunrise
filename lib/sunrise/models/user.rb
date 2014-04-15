@@ -14,10 +14,9 @@ module Sunrise
         
         has_one :avatar, :as => :assetable, :dependent => :destroy, :autosave => true
         
-        before_validation :generate_login, :if => :has_login?
-        before_validation :set_default_role, :if => :role_empty?
+        after_initialize :set_default_role
         
-        validates_presence_of :name
+        validates :name, :presence => true
         validate :check_role
         
         scope :with_email, lambda {|email| where(:email => email) }
@@ -64,10 +63,6 @@ module Sunrise
       def role_empty?
         self.role_type_id.nil?
       end
-      
-      def has_login?
-        respond_to?(:login)
-      end
       	
       def role_symbols
         [role_type.try(:code)]
@@ -79,33 +74,15 @@ module Sunrise
       
       def state
         return 'active'   if active_for_authentication?
-        return 'register' unless confirmed?
+        return 'confirm'  unless confirmed?
         return 'suspend'  if access_locked?
         return 'pending'
-      end
-      
-      def events_for_current_state
-        events = []
-        events << 'activate' unless confirmed?
-        events << 'unlock' if access_locked?
-        # TODO: ban access for active users
-        # events << 'suspend' if active_for_authentication?
-        events
       end
       
       protected
         
         def set_default_role
           self.role_type ||= ::RoleType.default
-        end
-        
-        def generate_login
-          self.login ||= begin
-            unless email.blank?
-              tmp_login = email.split('@').first 
-      		    tmp_login.parameterize.downcase.gsub(/[^A-Za-z0-9-]+/, '-').gsub(/-+/, '-')
-      		  end
-          end
         end
 
         def check_role
