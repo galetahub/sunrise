@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   
   # Include default devise modules.
   devise :database_authenticatable, :confirmable, :lockable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :encryptable, :encryptor => :sha512
+         :recoverable, :rememberable, :trackable, :validatable
 
   fileuploads :avatar
   
