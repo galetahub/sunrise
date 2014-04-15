@@ -34,7 +34,7 @@ describe Sunrise::Generators::InstallGenerator do
   
   it "should copy_models" do
     assert_directory "app/models/defaults"
-    assert_directory "app/models/sunrise"
+    assert_directory "app/sunrise"
     assert_directory "app/uploaders"
   end
 

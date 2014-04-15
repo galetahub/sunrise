@@ -20,3 +20,4 @@ spec/dummy/config/database.yml
 spec/dummy/log/development.log
 .bundle/
 vendor/bundle/
+.DS_Store

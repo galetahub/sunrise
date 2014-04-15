@@ -33,7 +33,7 @@ module Sunrise
       # copy models
       def copy_models
         directory "models/#{orm}", "app/models/defaults"
-        directory "models/sunrise", "app/models/sunrise"
+        directory "models/sunrise", "app/sunrise"
       end
       
       # Add devise routes
@@ -48,7 +48,7 @@ module Sunrise
         log :autoload_paths, "models/defaults"
         sentinel = /\.autoload_paths\s+\+=\s+\%W\(\#\{config\.root\}\/extras\)\s*$/
       
-        code = 'config.autoload_paths += %W(#{config.root}/app/models/defaults #{config.root}/app/models/sunrise)'
+        code = 'config.autoload_paths += %W(#{config.root}/app/models/defaults #{config.root}/app/sunrise)'
           
         in_root do
           inject_into_file 'config/application.rb', "    #{code}\n", { :after => sentinel, :verbose => false }
