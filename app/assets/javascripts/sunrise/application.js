@@ -1,15 +1,16 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+
+//= require jquery.ui.sortable
+//= require jquery.ui.datepicker
+//= require datepicker/jquery.ui.datepicker-uk
+//= require datepicker/jquery.ui.datepicker-ru
 
 //= require sunrise/jquery.tmpl.min
 //= require sunrise/jquery.cookie
 //= require sunrise/jquery-ui-timepicker-addon
 //= require sunrise/chosen.jquery
 //= require sunrise/chosen.overflow.fix
-
-//= require datepicker/jquery.ui.datepicker-uk
-//= require datepicker/jquery.ui.datepicker-ru
 
 //= require sunrise/jquery.editable
 //= require sunrise/jquery.dialog

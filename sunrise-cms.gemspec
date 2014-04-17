@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("progressbar")
   s.add_runtime_dependency("rails-uploader")
   s.add_runtime_dependency("babosa")
+  s.add_runtime_dependency("jquery-ui-rails")
   s.add_runtime_dependency("page_parts", ">= 0.1.2")
   s.add_runtime_dependency("meta_manager", ">= 0.1.1")
   s.add_runtime_dependency("public_activity", ">= 1.0.0")

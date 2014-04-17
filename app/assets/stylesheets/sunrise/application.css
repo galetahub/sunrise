@@ -7,6 +7,9 @@
  *= require sunrise/customize.css
  *= require sunrise/plugins.css
  *= require sunrise/chosen.css
- *= require smoothness/jquery-ui-1.8.16.custom.css
  *= require uploader/application
+
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require jquery.ui.datepicker
 */

@@ -16,7 +16,7 @@ module Sunrise
       end
       
       register_instance_option(:label) do
-        (@label ||= {})[::I18n.locale] ||= abstract_model.model.model_name.human(:default => abstract_model.model.model_name.demodulize.underscore.humanize)
+        (@label ||= {})[::I18n.locale] ||= abstract_model.model.model_name.human(:default => abstract_model.model.model_name.to_s.underscore.humanize)
       end
       
       # The display for a model instance (i.e. a single database record).
