@@ -1,5 +1,6 @@
 <div class="but-holder">
   <div class="act-but">
-    <%= link_to image_tag('sunrise/empty.gif'), mass_destroy_path, :class => 'but-container del disabled', :title => 'Delete', :"data-confirm-message" => t('manage.confirm_mass_delete'), :"data-editable" => 'destroy' %>
+    <%= link_to image_tag('sunrise/empty.gif'), mass_destroy_path, :class => 'but-container del disabled', :title => 'Delete', 
+      :data => { :confirm => t('manage.confirm_mass_delete'), :editable => 'destroy'} %>
   </div>
 </div>

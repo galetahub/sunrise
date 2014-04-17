@@ -25,7 +25,7 @@
     <div class="act-but">
       <%= link_to image_tag('sunrise/empty.gif'), delete_path(abstract_model.parent_hash.merge(:id => record.id)),
           :method=>:delete, 
-          :confirm=>t("manage.confirm_delete"), 
+          :data => {:confirm => t("manage.confirm_delete") }, 
           :class=>"but-container del", 
           :id => dom_id(record, :delete) if can?(:delete, record, :context => :sunrise) %>
     </div>
