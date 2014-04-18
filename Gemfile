@@ -6,9 +6,9 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem "jquery-rails", "~> 2.0.0"
+gem "jquery-rails"
 gem 'devise'
-gem "devise-encryptable", "~> 0.1.1"
+gem "devise-encryptable"
 gem "mini_magick"
 gem "ruby2xlsx", "~> 0.0.1"
 gem "galetahub-enum_field", :require => "enum_field"
@@ -23,16 +23,16 @@ gem "simple_form"
 gem "jbuilder"
 gem "progressbar"
 gem "babosa"
-gem "page_parts", "~> 0.1.2"
-gem "meta_manager", "~> 0.1.1"
-gem "strong_parameters"
+gem "page_parts", "~> 0.1.3"
+gem "meta_manager", "~> 0.2.0"
 gem "public_activity", ">= 1.0.0"
+gem "jquery-ui-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   
   gem "libv8", "~> 3.11.8.4", :platforms => :ruby
   gem 'therubyracer', :platforms => :ruby
@@ -51,7 +51,8 @@ group :active_record do
 end
 
 group :mongoid do
-  gem "mongoid", ">= 3.1.0"
+  # gem "mongoid", ">= 3.1.0"
+  gem 'mongoid', '~> 4.0.0.beta1'
   gem "bson_ext"
   gem "carrierwave-mongoid", :require => "carrierwave/mongoid"
   gem "mongoid_nested_set", :git => "git://github.com/thinkwell/mongoid_nested_set.git"

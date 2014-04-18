@@ -18,7 +18,7 @@ Sunrise::Engine.routes.draw do
       scope ":id" do
         get "/", :to => :show, :as => "show"
         get "/edit", :to => :edit, :as => "edit"
-        put "/edit", :to => :update, :as => "update"
+        patch "/edit", :to => :update, :as => "update"
         get "/delete", :to => :delete, :as => "delete"
         delete "/delete", :to => :destroy, :as => "destroy"
       end

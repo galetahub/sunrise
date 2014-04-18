@@ -6,5 +6,5 @@ class Asset < ActiveRecord::Base
 
   validates_presence_of :data
 	
-	default_scope order("#{quoted_table_name}.sort_order")
+	default_scope lambda { order("#{quoted_table_name}.sort_order") }
 end 

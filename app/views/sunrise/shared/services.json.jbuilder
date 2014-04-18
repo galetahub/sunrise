@@ -1,4 +1,4 @@
-json.array! @services do |json, service|
+json.array! @services do |service|
   json.id service.id
   json.title service.title
   json.url edit_path(:model_name => ActiveModel::Naming.plural(service), :id => service.id)
