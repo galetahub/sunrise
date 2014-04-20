@@ -2,11 +2,23 @@
 
 Open source mini content management system for programmers.
 
+## Setup
+
+For rails 4.x.x:
+
+```ruby
+  gem "sunrise-cms", :require => "sunrise"
+```
+
+For rails 3.x.x:
+
+```ruby
+  gem "sunrise-cms", "~> 0.7.x" :require => "sunrise"
+```
+
 ## Instructions
 
 ### ActiveRecord
-  
-List of gems for [active_record](https://gist.github.com/4529926#file-gemfile-active_record).
 
 ```bash
 $> rails g devise:install
@@ -24,8 +36,6 @@ $> rails g public_activity:migration
 
 ### Mongoid
 
-List of gems for [mongoid](https://gist.github.com/4529926#file-gemfile-mongoid).
-
 ```bash
 $> rails g sunrise:install --orm=mongoid
 ```
@@ -42,7 +52,7 @@ class SunriseProduct < Sunrise::AbstractModel
 
   after_sort :clear_cache
   
-  list :thumbs do
+  index :thumbs do
     scope { Product.includes(:picture) }
     preview lambda { |product| product.picture.try(:url, :thumb) }
 
@@ -51,7 +61,7 @@ class SunriseProduct < Sunrise::AbstractModel
     field :total_stock
   end
 
-  list :export do
+  export do
     scope { Product.includes(:picture).recently.with_state(:finished) }
 
     field :id
@@ -71,7 +81,7 @@ class SunriseProduct < Sunrise::AbstractModel
     field :is_visible
   end
   
-  edit do
+  form do
     field :title
     field :price
     field :total_stock
@@ -139,15 +149,6 @@ For more info look at jbuilder https://rubygems.org/gems/jbuilder.
 
 ### Strong parameters
 
-Sunrise include gem [strong_parameters](https://github.com/rails/strong_parameters)
-In all models your need include module ActiveModel::ForbiddenAttributesProtection:
-
-``` ruby
-class Post < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
-end
-```
-
 Now in sunrise file you can perform attributes check. 
 By default permited_attributes allow edit all attributes.
 
@@ -192,4 +193,4 @@ config.to_prepare do
 end
 ```
 
-Copyright (c) 2013 Fodojo, released under the MIT license
+Copyright (c) 2014 Fodojo, released under the MIT license
