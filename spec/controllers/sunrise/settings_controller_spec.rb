@@ -4,8 +4,8 @@ describe Sunrise::SettingsController do
   render_views  
   
   before(:all) do 
-    Settings.defaults[:some_setting] = "value"
-    Settings.defaults[:some_setting2] = "value2"
+    Settings.some_setting = "value"
+    Settings.some_setting2 = "value2"
   end
   
   describe "admin" do

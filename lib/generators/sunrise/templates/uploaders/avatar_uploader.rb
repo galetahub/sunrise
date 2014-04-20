@@ -2,7 +2,7 @@ class AvatarUploader < Sunrise::CarrierWave::BaseUploader
   process :quality => 90
   
   version :thumb do
-    process :resize_to_fill => [50, 50]
+    process :resize_to_fill => [100, 100]
   end
   
   version :small do

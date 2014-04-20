@@ -1,6 +1,7 @@
 module Sunrise
   module Config
     autoload :Navigation, 'sunrise/config/navigation'
+    autoload :PagePresenter, 'sunrise/config/page_presenter'
     
     # Paginate records per page
     mattr_accessor :default_items_per_page
@@ -18,16 +19,16 @@ module Sunrise
     mattr_accessor :label_methods
     @@label_methods = [:title, :name]
     
-    # Defailt list template view
-    mattr_accessor :default_list_view
-    @@default_list_view = 'thumbs'
+    # Default index template view
+    mattr_accessor :default_index_view
+    @@default_index_view = :thumbs
     
-    mattr_accessor :available_list_view
-    @@available_list_view = [:list, :thumbs, :table]
+    mattr_accessor :available_index_views
+    @@available_index_views = [:tree, :thumbs, :table]
     
-    # Defailt list template view
+    # Default sort column
     mattr_accessor :sort_column
-    @@sort_column = 'sort_order'
+    @@sort_column = :sort_order
     
     # Find template before rendering
     mattr_accessor :scoped_views
@@ -42,19 +43,23 @@ module Sunrise
     mattr_accessor :transliteration
     @@transliteration = :russian
 
-    # Set list toolbar buttons
+    # Set index toolbar buttons
     mattr_accessor :default_toolbar_buttons
     @@default_toolbar_buttons = [:delete, :edit, :new, :sort, :export]
     
-    # Lists the formats that should be treated as navigational
+    # Index the formats that should be treated as navigational
     mattr_accessor :navigational_formats
     @@navigational_formats = [:html, :json]
+
+    # Welcome (root) controller path
+    mattr_accessor :root_controller
+    @@root_controller = "dashboard#index"
 
     def self.scoped_views?
       @@scoped_views === true
     end
     
-    def self.nav
+    def self.navigation
       ::SunriseNavigation.instance.navigations
     end
   end

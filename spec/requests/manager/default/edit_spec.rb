@@ -54,7 +54,7 @@ describe "Sunrise Manager Edit" do
       end
       
       it "should generate field to edit" do
-        should have_selector "textarea[@name='structure[main]']"
+        should have_selector "textarea[@name='structure[content]']"
         should have_selector "textarea[@name='structure[sidebar]']"
       end
     end

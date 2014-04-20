@@ -42,11 +42,11 @@ describe "Sunrise Manager Edit" do
     
     describe "Update /manage/pages/:id/edit" do
       before(:each) do
-        @page.update_attributes({:main => "Main", :sidebar => "Sidebar"})
+        @page.update_attributes({:content => "Main", :sidebar => "Sidebar"})
         
         visit edit_path(:model_name => "pages", :id => @page.id)
         
-        fill_in "structure[main]", :with => "Main updated"
+        fill_in "structure[content]", :with => "Main updated"
         fill_in "structure[sidebar]", :with => "Sidebar updated"
         
         click_button "submit-button-hidden"
@@ -55,7 +55,7 @@ describe "Sunrise Manager Edit" do
       it "should update an object with correct attributes" do
         @page.reload
         
-        @page.main.should == "Main updated"
+        @page.content.should == "Main updated"
         @page.sidebar.should == "Sidebar updated"
       end
     end

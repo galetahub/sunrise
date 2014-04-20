@@ -3,7 +3,7 @@ class SunrisePost < Sunrise::AbstractModel
   
   association :structure
   
-  list :thumbs do
+  index :thumbs do
     buttons [:new, :edit, :delete, :sort]
 
     field :title
@@ -16,13 +16,13 @@ class SunrisePost < Sunrise::AbstractModel
     end
   end
   
-  edit do
+  form do
     field :title
     field :content
     field :is_visible
   end
   
-  list :export do
+  export do
     scope { Post.includes(:structure) }
     
     field :id

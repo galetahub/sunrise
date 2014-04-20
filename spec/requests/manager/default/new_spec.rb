@@ -25,7 +25,7 @@ describe "Sunrise Manager New" do
       end
       
       it "should generate field to edit" do
-        SunriseStructure.config.edit.fields.each do |f|
+        SunriseStructure.config.form.fields.each do |f|
           if ['structure_type_id', 'parent_id', 'position_type_id'].include?(f.name)
             should have_selector "select[@name='structure[#{f.name}]']"
           else

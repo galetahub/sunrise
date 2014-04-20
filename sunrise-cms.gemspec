@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("rails", "~> 4.0.0")
   s.add_runtime_dependency("kaminari")
   s.add_runtime_dependency("simple_form")
-  s.add_runtime_dependency("jbuilder")
   
   s.add_runtime_dependency("mime-types")
   s.add_runtime_dependency("mini_magick")

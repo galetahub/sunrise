@@ -15,13 +15,13 @@ Sunrise.setup do |config|
   # The display for a model instance (i.e. a single database record).
   # config.label_methods = [:title, :name]
   
-  # Defailt list template view (default: "thumbs")
-  # config.default_list_view = "thumbs"
+  # Default list template view (default: "thumbs")
+  # config.default_index_view = "thumbs"
   
   # Avariable lists views (default: [:list, :thumbs, :table])
-  # config.available_list_view = [:list, :thumbs, :table]
+  # config.available_index_views = [:list, :thumbs, :table]
   
-  # Defailt list template view (default: "sort_order")
+  # Default sort order column (default: "sort_order")
   # config.sort_column = "sort_order"
   
   # Find template before rendering (default: true)
@@ -39,6 +39,9 @@ Sunrise.setup do |config|
   
   # Lists the formats that should be treated as navigational (default: [:html, :json])
   # config.navigational_formats = [:html, :json]
+
+  # Welcome (root) controller path
+  # config.root_controller = "dashboard#index"
 end
 
 PublicActivity::Config.set do
@@ -46,6 +49,6 @@ PublicActivity::Config.set do
 end
 
 #if Settings.table_exists?
-#  Settings.defaults[:some_setting] = "value"
-#  Settings.defaults[:some_setting2] = "value2"
+#  Settings.some_setting = "value"
+#  Settings.some_setting2 = "value2"
 #end

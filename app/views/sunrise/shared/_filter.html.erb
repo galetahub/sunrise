@@ -15,7 +15,7 @@
 		    <%= link_to t('manage.filter'), scoped_index_path, :class => "filter-but ddmenu", :rel => "filter" %>
 			<% end %>
 			
-			<% unless abstract_model.without_list? %>
+			<% unless abstract_model.without_index? %>
         <div class="tabs-holder">
         	<%= content_tag :div, :class => 'tabs-item' do %>
         	  <% if abstract_model.current_list == :table %>
@@ -23,7 +23,7 @@
         	  <% else %>
           	  <%= link_to image_tag('sunrise/empty.gif'), {:view=>"table"}, :class => "table", :title => t('manage.buttons.table') %>
         	  <% end %>
-        	<% end  if abstract_model.config.available_list_view.include?(:table) -%>
+        	<% end  if abstract_model.config.available_index_views.include?(:table) -%>
         	
         	<%= content_tag :div, :class => 'tabs-item' do %>
 			      <% if abstract_model.current_list == :thumbs %>
@@ -31,7 +31,7 @@
         	  <% else %>
           	  <%= link_to image_tag('sunrise/empty.gif'), {:view=>"thumbs"}, :class => "list", :title => t('manage.buttons.thumbs') %>
         	  <% end %>
-				  <% end if abstract_model.config.available_list_view.include?(:thumbs) -%>
+				  <% end if abstract_model.config.available_index_views.include?(:thumbs) -%>
         </div>
         
         <% if abstract_model.sort_available? %>

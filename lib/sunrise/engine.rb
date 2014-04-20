@@ -14,7 +14,6 @@ module Sunrise
       
       ActiveSupport.on_load :active_record do
         ActiveRecord::Base.send :include, Sunrise::CarrierWave::Glue
-        ActiveRecord::Base.send :include, Sunrise::Utils::Mysql
       end
       
       ActiveSupport.on_load :action_view do

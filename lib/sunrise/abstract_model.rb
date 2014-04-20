@@ -55,8 +55,8 @@ module Sunrise
     
     def initialize(params = {})
       @model_name = model.model_name
-      @current_list = config.default_list_view
-      @available_list_view = config.available_list_view
+      @current_list = config.default_index_view
+      @available_index_views = config.available_index_views
       @sort_column = config.sort_column
       @request_params = params.symbolize_keys
       self.current_list = params[:view]
@@ -68,14 +68,9 @@ module Sunrise
     
     # Save current list view
     def current_list=(value)
-      unless value.blank?
-        @current_list = value.to_s.downcase.to_sym
+      if value && @available_index_views.include?(value.to_sym)
+        @current_list = value.to_sym
       end
-    end
-    
-    # Key which stored list settings
-    def list_key
-      ["list", current_list].compact.join('_').to_sym
     end
     
     # Load association record
@@ -91,13 +86,13 @@ module Sunrise
     
     # Get current list settings
     def list
-      return false if without_list?
-      config.sections[list_key] ||= Config::List.new(self.class)
+      return false if without_index?
+      config.index(current_list)
     end
     
-    # Is list config disabled
-    def without_list?
-      config.sections[:list] === false
+    # Is index config disabled
+    def without_index?
+      config.index === false
     end
     
     def search_available?
@@ -167,15 +162,15 @@ module Sunrise
     end
     
     # Convert request params to model scopes
-    def apply_scopes(params = nil)
-      raise ::AbstractController::ActionNotFound.new("List config is turn off") if without_list?
+    def apply_scopes(params = nil, pagination = true)
+      raise ::AbstractController::ActionNotFound.new("List config is turn off") if without_index?
       params ||= @request_params
       
       scope = default_scope(params)
 
       if current_list == :tree
         scope = scope.roots
-      else
+      elsif pagination
         scope = page_scope(scope, params[:page], params[:per])
       end
 
@@ -187,7 +182,7 @@ module Sunrise
       params ||= @request_params
       
       scope = model.sunrise_search(params[:search]) if model.respond_to?(:sunrise_search) && !params[:search].blank?
-      scope ||= model.scoped
+      scope ||= model.where(nil)
       
       scope = scope.merge(association_scope) unless parent_record.nil?
       scope = scope.merge(sort_scope(params[:sort])) unless params[:sort].blank?
@@ -221,20 +216,27 @@ module Sunrise
     
     # List of columns names to be exported
     def export_columns
-      list.fields ? list.fields.map(&:name) : model.column_names
+      @export_columns ||= (config.export ? config.export.fields.map(&:name) : model.column_names)
     end
     
     # Filename for export data
     def export_filename
       @export_filename ||= [plural, Time.now.strftime("%Y-%m-%d_%Hh%Mm%S")].join('_')
     end
+
+    def export_options
+      { 
+        :filename => export_filename,
+        :columns => export_columns 
+      }
+    end
     
-    def edit_fields
-      config.edit.fields || []
+    def form_fields
+      config.form.fields || []
     end
 
     def permit_attributes(params, user = nil)
-      value = config.edit.permited_attributes
+      value = config.form.permited_attributes
 
       attrs = case value
       when Proc then value.call(user)
@@ -252,17 +254,17 @@ module Sunrise
     
     # Has translated columns
     def translate?
-      !config.edit.groups[:translate].blank?
+      !config.form.groups[:translate].blank?
     end
     
     # Files to translate
     def translate_fields
-      config.edit.groups[:translate].try(:fields) || []
+      config.form.groups[:translate].try(:fields) || []
     end
     
     # Find sidebar groups
     def sidebar_groups
-      @sidebar_groups ||= config.edit.groups.values.select { |v| v.sidebar? }
+      @sidebar_groups ||= config.form.groups.values.select { |v| v.sidebar? }
     end
     
     # Check if sidebar groups exists
@@ -272,7 +274,7 @@ module Sunrise
     
     # Find bottom groups
     def bottom_groups
-      @bottom_groups ||= config.edit.groups.values.select { |v| v.bottom? }
+      @bottom_groups ||= config.form.groups.values.select { |v| v.bottom? }
     end
     
     protected

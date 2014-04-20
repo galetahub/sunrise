@@ -1,7 +1,7 @@
 class SunriseUser < Sunrise::AbstractModel
   self.resource_name = "User"
   
-  list :table do    
+  index :table do    
     field :email
     field :updated_at
     field :id
@@ -12,12 +12,12 @@ class SunriseUser < Sunrise::AbstractModel
     end
   end
 
-  list :thumbs do    
+  index :thumbs do    
     scope { User.includes(:avatar) }
     preview lambda { |user| user.avatar.try(:url, :thumb) }
     
-    field :email, :label => false
-    field :updated_at, :label => false
+    field :email, label: false
+    field :updated_at, label: false
     field :id
     
     group :search do
@@ -25,8 +25,14 @@ class SunriseUser < Sunrise::AbstractModel
       field :name
     end
   end
+
+  export do
+    field :id
+    field :name
+    field :email
+  end
   
-  edit do
+  form do
     permited_attributes lambda { |user| 
       user.admin? ? :all : [:name, :password, :password_confirmation, :avatar_attributes] 
     }
@@ -35,16 +41,10 @@ class SunriseUser < Sunrise::AbstractModel
     field :email
     field :password
     field :password_confirmation
-    field :role_type_id, :collection => lambda { RoleType.all }
+    field :role_type_id, collection: lambda { RoleType.all }
     
-    group :bottom, :holder => :bottom do
-      field :avatar, :as => :uploader
+    group :bottom, holder: :bottom do
+      field :avatar, as: :uploader
     end
-  end
-  
-  list :export do
-    field :id
-    field :name
-    field :email
   end
 end

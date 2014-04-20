@@ -3,7 +3,7 @@ module Sunrise
     authorize_resource :class => false
     
     def edit
-      @settings = Settings.all
+      @settings = Settings.get_all
       respond_with(@settings)
     end
     

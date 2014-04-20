@@ -30,10 +30,6 @@ describe Sunrise::AbstractModel do
         @abstract_model.param_key.should == 'structure'
       end
       
-      it "should return current list view" do
-        @abstract_model.list_key.should == :list_tree
-      end
-      
       it "should not load parent record" do
         @abstract_model.parent_record.should be_nil
       end
@@ -48,8 +44,8 @@ describe Sunrise::AbstractModel do
       end
       
       it "should update current list view" do
-        model = Sunrise::Utils.get_model("structures", {:view => 'table'})
-        model.current_list.should == :table
+        model = Sunrise::Utils.get_model("structures", {:view => 'thumbs'})
+        model.current_list.should == :thumbs
       end
 
       it "should destroy all items" do
@@ -64,7 +60,7 @@ describe Sunrise::AbstractModel do
   
   describe "SunrisePage" do
     it "should not have config for list" do
-      SunrisePage.config.list.should == false
+      SunrisePage.config.index.should == false
     end
     
     it "should load structure model" do
@@ -78,6 +74,7 @@ describe Sunrise::AbstractModel do
       end
       
       it "should not render list config" do
+        @abstract_model.without_index?.should == true
         @abstract_model.list.should == false
       end
     end
@@ -85,7 +82,7 @@ describe Sunrise::AbstractModel do
   
   describe "SunriseUser" do
     it "should return empty list on not defined fields" do
-      SunrisePage.config.sections[:list_export].should be_nil
+      SunrisePage.config.sections[:list_table].should be_nil
     end
   end
 end

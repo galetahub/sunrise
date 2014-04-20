@@ -3,7 +3,7 @@ require 'sunrise/config/has_fields'
 
 module Sunrise
   module Config
-    class Edit < Base
+    class Form < Base
       include Sunrise::Config::HasFields
       include Sunrise::Config::HasGroups
 

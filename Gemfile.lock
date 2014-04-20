@@ -8,13 +8,12 @@ GIT
 PATH
   remote: .
   specs:
-    sunrise-cms (0.7.0.rc1)
+    sunrise-cms (1.0.0.rc1)
       babosa
       cancan
       cancan_namespace
       carrierwave
       galetahub-enum_field
-      jbuilder
       jquery-ui-rails
       kaminari
       meta_manager (>= 0.2.0)
@@ -120,9 +119,6 @@ GEM
       railties (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.9)
-    jbuilder (2.0.6)
-      activesupport (>= 3.0.0, < 5)
-      multi_json (~> 1.2)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -280,7 +276,6 @@ DEPENDENCIES
   fuubar
   galetahub-enum_field
   generator_spec
-  jbuilder
   jquery-rails
   jquery-ui-rails
   kaminari

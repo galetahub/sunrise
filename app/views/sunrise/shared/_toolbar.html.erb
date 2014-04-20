@@ -2,7 +2,7 @@
   <div class="act-buttons-wrapper">
     <div class="but-holder"><div class="check"><input type="checkbox" /></div></div>
 
-    <% unless abstract_model.without_list? %>
+    <% unless abstract_model.without_index? %>
       <% abstract_model.list.buttons.each do |name| %>
         <% if can? name, abstract_model.model, :context => :sunrise %>
           <%= render :partial => "sunrise/manager/buttons/#{name}", :locals => {:model => abstract_model} %>

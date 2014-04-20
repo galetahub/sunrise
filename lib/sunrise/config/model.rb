@@ -1,9 +1,10 @@
 require 'active_support/core_ext/string/inflections'
 require 'sunrise/config/base'
-require 'sunrise/config/list'
-require 'sunrise/config/edit'
-require 'sunrise/config/association'
+require 'sunrise/config/index'
+require 'sunrise/config/export'
+require 'sunrise/config/form'
 require 'sunrise/config/show'
+require 'sunrise/config/association'
 
 module Sunrise
   module Config
@@ -27,12 +28,12 @@ module Sunrise
         @object_label_method ||= Config.label_methods.find { |method| (@dummy_object ||= abstract_model.model.new).respond_to? method } || :sunrise_default_object_label_method
       end
       
-      register_instance_option(:default_list_view) do
-        Config.default_list_view
+      register_instance_option(:default_index_view) do
+        Config.default_index_view
       end
       
-      register_instance_option(:available_list_view) do
-        Config.available_list_view
+      register_instance_option(:available_index_views) do
+        Config.available_index_views
       end
       
       register_instance_option(:sort_column) do
@@ -44,19 +45,29 @@ module Sunrise
       end
       
       # Register accessors for all the sections in this namespace
-      [:list, :show, :edit, :association].each do |section|
+      [:index, :show, :export, :form, :association].each do |section|
         klass = "Sunrise::Config::#{section.to_s.classify}".constantize
-        send(:define_method, section) do |*args, &block|
+        
+        define_method(section) do |*args, &block|
           options = args.extract_options!
           name = args.first
-          key = name ? [section, name].compact.join('_').to_sym : section
+          key = name ? [section, name].compact.map(&:to_s).join('_').to_sym : section
+          
+          options[:name] ||= name
           
           if name === false || @sections[key] === false
             @sections[key] = false
+          elsif block
+            @sections[key] = PagePresenter.new(options, &block)
+          elsif @sections[key].is_a?(PagePresenter)
+            presenter = @sections[key]
+
+            instance = klass.new(abstract_model, self, presenter.options)
+            instance.instance_exec &presenter.block
+
+            @sections[key] = instance
           else
-            options[:name] ||= name
             @sections[key] ||= klass.new(abstract_model, self, options)
-            @sections[key].instance_eval &block if block
           end
           
           @sections[key]

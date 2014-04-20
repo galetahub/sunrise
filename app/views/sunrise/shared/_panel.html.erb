@@ -2,7 +2,7 @@
   <div class="rel-holder">
     <div class="menu-holder">
       <ul class="main-menu">
-        <% Sunrise::Config.nav.each do |key, value| %>
+        <% Sunrise::Config.navigation.each do |key, value| %>
           <li>
             <%= link_to "##{key}", :class => "ddmenu", :rel => key do -%>
               <%= content_tag(:span, :class => key) do -%>
@@ -25,7 +25,7 @@
       </ul>
     </div>
 
-    <% Sunrise::Config.nav.each do |key, value| -%>
+    <% Sunrise::Config.navigation.each do |key, value| -%>
       <%= content_tag(:div, :id => "#{key}-container", :class => ["sub-wrapper", key], :style => "display: none;") do -%>
         <div class="sub-inner">
           <%= content_tag(:ul, :class => ["#{key}-list", "default-list"]) do -%>

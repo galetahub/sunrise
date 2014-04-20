@@ -55,18 +55,15 @@ module Sunrise
     end
     
     def export
-      abstract_model.current_list = "export"
-      @records = abstract_model.apply_scopes(params)
-      options = { :filename => abstract_model.export_filename,
-                  :columns => abstract_model.export_columns }
+      @records = abstract_model.apply_scopes(params, false)
       
       respond_to do |format|
         format.xml  { render :xml => @records }
         format.json { render :json => @records }
-        format.csv  { render options.merge(:csv => @records) }
+        format.csv  { render abstract_model.export_options.merge(:csv => @records) }
         
         if defined?(Mime::XLSX)
-          format.xlsx { render options.merge(:xlsx => @records) }
+          format.xlsx { render abstract_model.export_options.merge(:xlsx => @records) }
         end
       end
     end
@@ -155,7 +152,7 @@ module Sunrise
       end
       
       def redirect_after_update(record = nil)
-        if abstract_model.without_list?
+        if abstract_model.without_index?
           index_path(:model_name => abstract_model.plural)
         else
           scoped_index_path

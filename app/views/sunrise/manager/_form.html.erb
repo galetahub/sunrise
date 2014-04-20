@@ -7,7 +7,7 @@
 	  <div class="wysiwyg-holder">
 	    <%= render :partial => "sunrise/shared/available_locales", :locals => {:form => f} if abstract_model.translate? %>
       
-      <%= render :partial => 'field', :collection => abstract_model.edit_fields, :locals => {:form => f} %>
+      <%= render :partial => 'field', :collection => abstract_model.form_fields, :locals => {:form => f} %>
 	  </div>
 	  
 	  <% if abstract_model.sidebar_groups? -%>
