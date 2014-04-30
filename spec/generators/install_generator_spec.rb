@@ -43,4 +43,13 @@ describe Sunrise::Generators::InstallGenerator do
     assert_file "spec/spec_helper.rb"
     assert_file ".rspec"
   end
+
+  it "should copy gitignore" do
+    assert_file ".gitignore"
+  end
+
+  it "should copy assets files" do
+    assert_file "app/assets/javascripts/sunrise/plugins.js"
+    assert_file "app/assets/stylesheets/sunrise/plugins.css"
+  end
 end

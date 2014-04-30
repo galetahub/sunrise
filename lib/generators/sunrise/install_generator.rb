@@ -59,6 +59,15 @@ module Sunrise
         directory "spec", "spec"
         copy_file('rspec', '.rspec')
       end
+
+      def copy_gitignore
+        copy_file('gitignore', '.gitignore')
+      end
+
+      def copy_sunrise_assets
+        copy_file('assets/plugins.js', 'app/assets/javascripts/sunrise/plugins.js')
+        copy_file('assets/plugins.css', 'app/assets/stylesheets/sunrise/plugins.css')
+      end
       
       protected
         
