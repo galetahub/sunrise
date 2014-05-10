@@ -51,9 +51,9 @@ module Sunrise
     mattr_accessor :navigational_formats
     @@navigational_formats = [:html, :json]
 
-    # Welcome (root) controller path
-    mattr_accessor :root_controller
-    @@root_controller = "dashboard#index"
+    # Welcome root path options
+    mattr_accessor :root_route_options
+    @@root_route_options = {to: "manager#index", model_name: "structures"}
 
     def self.scoped_views?
       @@scoped_views === true

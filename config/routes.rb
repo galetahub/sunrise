@@ -1,9 +1,11 @@
 Sunrise::Engine.routes.draw do
-  root to: Sunrise::Config.root_controller
+  root Sunrise::Config.root_route_options
   
-  get "/dashboard/p/:page", to: "dashboard#index", page: /\d+/
+  get "/activities/p/:page", to: "activities#index", page: /\d+/
+  get "/dashboard", to: "dashboard#index", as: :dashboard
   
   resource :settings, only: [:edit, :update]
+  resources :activities, only: [:index]
   
   controller "manager" do
     scope ":model_name" do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sunrise::DashboardController do
+describe Sunrise::ActivitiesController do
   render_views  
   
   before(:all) do

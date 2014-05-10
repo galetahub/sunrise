@@ -126,6 +126,7 @@ ru:
         users: "Пользователи"
         settings: "Настройки"
         services: "Сервисные модули"
+        activities: "Активность"
       creates:
         structures: "Раздел"
         users: "Пользователя"

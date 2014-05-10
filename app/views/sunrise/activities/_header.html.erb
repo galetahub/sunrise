@@ -1,0 +1,12 @@
+<div class="filter-line-wrapper">
+  <div class="filter-line-holder">
+    <div class="struct-name"><%= t('manage.menu.main.dashboard') %></div>
+    
+    <div class="vline-block">
+      <%= form_for search_wrapper, :url => root_path,  :html => {:method => :get, :novalidate => true} do |f| %>
+        <%= f.text_field :q %>
+        <%= f.submit t('manage.search'), :class => "button" %>
+      <% end %>
+    </div>
+  </div>
+</div>

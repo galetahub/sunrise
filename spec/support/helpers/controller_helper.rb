@@ -22,6 +22,6 @@ module ControllerHelper
 
     def process_action(action, parameters = nil, session = nil, flash = nil, method = "GET")
       parameters ||= {}
-      process(action, parameters.merge!(:use_route => Sunrise::Engine.engine_name), session, flash, method)
+      process(action, method, parameters.merge!(:use_route => Sunrise::Engine.engine_name), session, flash)
     end
 end

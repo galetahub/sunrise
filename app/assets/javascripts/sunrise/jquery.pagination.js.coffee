@@ -1,15 +1,13 @@
 $ = jQuery
 
-$.fn.extend({
-  pagination: (options) ->
-    # Do no harm and return as soon as possible for unsupported browsers, namely IE6 and IE7
-    return this if $.browser.msie and ($.browser.version is "6.0" or $.browser.version is "7.0")
-    $(this).each((input_field) ->
-      el = $(this).data('pagination')
-      el ?= new Pagination(this, options)
-      return el
-    )
-})
+$.fn.pagination = (options = {}) ->
+  @each ->
+    $this = $(this)
+    data = $this.data("pagination")
+    if (!data)
+      $this.data("pagination", new Pagination(this, options))
+    if (typeof options is 'string')
+      data[options]()
 
 class Pagination
 

@@ -126,6 +126,7 @@ uk:
         users: "Користувачі"
         settings: "Налаштування"
         services: "Сервісні модулі"
+        activities: "Активність"
       creates:
         structures: "Розділ"
         users: "Користувача"

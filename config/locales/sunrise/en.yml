@@ -126,6 +126,7 @@ en:
         users: "Users"
         settings: "Settings"
         services: "Services"
+        activities: "Activities"
       creates:
         structures: "Structure"
         users: "User"

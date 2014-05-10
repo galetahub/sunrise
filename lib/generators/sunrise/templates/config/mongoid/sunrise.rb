@@ -40,8 +40,8 @@ Sunrise.setup do |config|
   # Lists the formats that should be treated as navigational (default: [:html, :json])
   # config.navigational_formats = [:html, :json]
 
-  # Welcome (root) controller path
-  # config.root_controller = "dashboard#index"
+  # Welcome root path options
+  # config.root_route_options = {to: "manager#index", model_name: "structures"}
 end
 
 PublicActivity::Config.set do
