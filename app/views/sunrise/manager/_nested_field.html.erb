@@ -1,4 +1,10 @@
 <div class="nested_item">
   <%= manage_remove_child_link('', form, :class => "close-but") if field.multiply? %>
+  
+  <% if field.sort? %>
+    <%= image_tag 'sunrise/tree_dnd1.png', :class => "nested_input_handle" %>
+    <%= form.hidden_field field.sort_column, :class => "nested_input_sort" if field.sort_hidden_field? %>
+  <% end -%>
+
   <%= render :partial => 'field', :collection => field.fields, :locals => {:form => form} %>
 </div>

@@ -22,6 +22,33 @@ module Sunrise
       def multiply?
         @config_options[:multiply] != false
       end
+
+      def sort?
+        @config_options[:sort] != false
+      end
+
+      def sort_hidden_field?
+        sort? && sort_options[:hidden_field]
+      end
+
+      def sort_column
+        sort_options[:column]
+      end
+
+      def sort_options
+        @sort_options ||= build_sort_options
+      end
+
+      protected
+
+        def build_sort_options
+          options = (@config_options[:sort].is_a?(Hash) ? @config_options[:sort] : {}).symbolize_keys
+          
+          {
+            :column => :sort_order, 
+            :hidden_field => true
+          }.merge(options)
+        end
     end
   end
 end

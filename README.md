@@ -99,6 +99,11 @@ class SunriseProduct < Sunrise::AbstractModel
         field :total_stock, :html => { :style => 'width:100%;clear:both;' }
         field :item_model_id, :collection => lambda { ItemModel.all }, :include_blank => false
       end
+
+      nested_attributes :project_fields, multiply: true, sort: true do
+        field :name
+        field :value
+      end
     
       field :picture, :as => :uploader
     end

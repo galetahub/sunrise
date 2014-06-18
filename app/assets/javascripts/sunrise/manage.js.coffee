@@ -166,6 +166,26 @@ class Sunrise
 
     $(link).closest("div.nested_item").hide()
 
+  initSortFields: (dom_id) ->
+    container = $(dom_id)
+
+    container.sortable
+      cursor: 'move'
+      handle: '.nested_input_handle'
+      items: '.nested_item'
+      opacity: 0.8
+      update: (event, ui) => 
+        this.updateSortField(event, ui)
+
+    container.disableSelection()
+
+  updateSortField: (event, ui) ->
+    element = $(ui.item)
+    container = element.parents('div.nested')
+
+    container.find(".nested_item").each (index, item) ->
+      $(item).find(".nested_input_sort").val(index)
+
 $(document).ready ->
   window['sunrise'] ?= new Sunrise(window.location.pathname)
   window['sunrise'].setup()

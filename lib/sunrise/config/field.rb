@@ -12,6 +12,8 @@ module Sunrise
       attr_reader :unless_condition
       
       def initialize(abstract_model, parent, options = {})
+        options = {:multiply => false, :sort => false}.merge(options)
+
         super(abstract_model, parent, options)
         
         # Build conditionals
@@ -36,7 +38,7 @@ module Sunrise
         css << "grey-but" if input_options[:boolean]
         css << "tags-edit" if association?
         
-        {:class => css}.merge(input_options[:html] || {})
+        {:class => css, :id => dom_id}.merge(input_options[:html] || {})
       end
       
       def association?
@@ -50,7 +52,11 @@ module Sunrise
       def nested?
         false
       end
-      
+
+      def dom_id
+        @dom_id ||= "#{name}_field"
+      end
+
       protected
       
         # Verifies that the conditionals for this field evaluate to true for the

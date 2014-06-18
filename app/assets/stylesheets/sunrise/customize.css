@@ -285,3 +285,8 @@ div.input.boolean input {
 .uploader-button span {
   line-height: 30px;
 }
+
+.nested_input_handle {
+  float: left;
+  cursor: move;
+}

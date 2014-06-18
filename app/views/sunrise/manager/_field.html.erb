@@ -14,6 +14,14 @@
             <%= manage_add_child_link t('manage.buttons.add_nested_field'), form, field, {:partial=>"nested_field"} %>
           </div>
         <% end -%>
+
+        <% if field.sort? %>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              window['sunrise'].initSortFields("#<%= field.dom_id %>");
+            });
+          </script>
+        <% end -%>
       </div>
     <% elsif field.association? -%>
       <%= form.association field.name.to_sym, field.input_options.merge(options) %>
