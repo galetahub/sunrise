@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 def insert_user  
-  User.truncate!
+  User.delete_all
   password = Rails.env.production? ? Devise.friendly_token : (1..9).to_a.join
   
   admin = User.new do |u|
@@ -20,7 +20,7 @@ def insert_user
 end
 
 def insert_structures
-  Structure.truncate!
+  Structure.delete_all
   
   main_page = Structure.create!(title: "Главная страница", slug: "main-page", structure_type: StructureType.main, parent: nil)
   # Structure.create!(title: "Трансляции", slug: "broadcasts", structure_type: StructureType.broadcasts, parent: main_page)
