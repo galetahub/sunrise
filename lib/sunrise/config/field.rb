@@ -10,8 +10,11 @@ module Sunrise
       
       # The condition that must *not* be met on an object
       attr_reader :unless_condition
+
+      # Store form block
+      attr_reader :block
       
-      def initialize(abstract_model, parent, options = {})
+      def initialize(abstract_model, parent, options = {}, &block)
         options = {:multiply => false, :sort => false}.merge(options)
 
         super(abstract_model, parent, options)
@@ -19,6 +22,11 @@ module Sunrise
         # Build conditionals
         @if_condition = options.delete(:if)
         @unless_condition = options.delete(:unless)
+        @block = block
+      end
+
+      def block_given?
+        !block.nil?
       end
       
       def visible?(object = nil)

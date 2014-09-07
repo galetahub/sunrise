@@ -1,7 +1,9 @@
 <% options ||= {} %>
 <%= content_tag :div, field.html_options do -%>
   <% if field.visible?(form.object) -%>
-    <% if field.nested? -%>
+    <% if field.block_given? %>
+      <%= field.block.call(form, @record) %>
+    <% elsif field.nested? -%>
       <div class="nested">
         <div class="title-switcher up"><%= form.label field.name %></div>
         

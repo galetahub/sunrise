@@ -10,9 +10,9 @@ module Sunrise
       end
       
       # Defines a configuration for a field.
-      def field(name, options = {})
+      def field(name = :custom, options = {}, &block)
         options = { :name => name.to_sym }.merge(options)
-        fields << Field.new(abstract_model, self, options)
+        fields << Field.new(abstract_model, self, options, &block)
       end
 
       def nested?
