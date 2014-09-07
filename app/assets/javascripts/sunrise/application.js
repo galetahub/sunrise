@@ -10,7 +10,6 @@
 //= require sunrise/jquery.cookie
 //= require sunrise/jquery-ui-timepicker-addon
 //= require sunrise/chosen.jquery
-//= require sunrise/chosen.overflow.fix
 
 //= require sunrise/jquery.editable
 //= require sunrise/jquery.dialog

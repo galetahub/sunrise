@@ -1,5 +1,7 @@
 == 1.0.1
-  * Field now support block
+  * Field now supports block
+  * Update chosen to 1.1.0
+  * Use css name "nochosen" to turn off chosen
 
 == 0.6.6
   * Allow pre-fill attributes on new form

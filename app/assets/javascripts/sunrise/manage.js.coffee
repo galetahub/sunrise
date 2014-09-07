@@ -5,12 +5,12 @@ class Sunrise
   constructor: (@namespace) ->
     
   setup: ->
-    ($ '[title]').tooltip()
-    ($ ".ddmenu").ddmenu()
-    ($ '[data-editable]').editable()
-    ($ '[data-lang]').lang_tabs()
-    ($ "select.select:hidden").css("width", "225")
-    ($ "select.select").chosen(
+    $('[title]').tooltip()
+    $(".ddmenu").ddmenu()
+    $('[data-editable]').editable()
+    $('[data-lang]').lang_tabs()
+
+    $("select.select:not(.nochosen)").chosen(
       allow_single_deselect: true
       disable_search_threshold: 10
     )
