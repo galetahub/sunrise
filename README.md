@@ -85,7 +85,10 @@ class SunriseProduct < Sunrise::AbstractModel
     field :title
     field :price
     field :total_stock
-    field :notes
+    
+    field do |form, record|
+      form.input :notes, :as => :text, :id => record.id
+    end
 
     group :sidebar, :holder => :sidebar do
       field :sale_limit_id, :collection => lambda { SaleLimit.all }, :include_blank => false
