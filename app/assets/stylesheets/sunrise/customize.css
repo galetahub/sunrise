@@ -290,3 +290,18 @@ div.input.boolean input {
   float: left;
   cursor: move;
 }
+
+.post-edit-holder select {
+  width: 250px;
+}
+
+.select2-drop-active {
+  border: 1px solid #d9d9d9 !important; 
+}
+.select2-container-active .select2-choice, .select2-container-active .select2-choices {
+  border: 1px solid #d9d9d9 !important;
+}
+.select2-results .select2-highlighted {
+  background: #972da0 !important;
+  color: #fff !important;
+}

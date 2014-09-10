@@ -1,3 +1,9 @@
+== 1.0.2
+  * Use select2
+  * Remove chosen
+  * Use css name "noselect2" to turn off select2
+  * Sort fields after new nested added
+
 == 1.0.1
   * Field now supports block
   * Update chosen to 1.1.0

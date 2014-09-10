@@ -193,7 +193,7 @@ module Sunrise
     
     def association_scope
       if parent_record
-        parent_record.send(parent_association.relation_name).scoped
+        parent_record.send(parent_association.relation_name)
       end
     end
     

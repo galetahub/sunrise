@@ -25,6 +25,7 @@ gem "page_parts", "~> 0.1.3"
 gem "meta_manager", "~> 0.2.0"
 gem "public_activity", ">= 1.0.0"
 gem "jquery-ui-rails"
+gem "select2-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -5,11 +5,11 @@
 //= require jquery.ui.datepicker
 //= require datepicker/jquery.ui.datepicker-uk
 //= require datepicker/jquery.ui.datepicker-ru
+//= require select2
 
 //= require sunrise/jquery.tmpl.min
 //= require sunrise/jquery.cookie
 //= require sunrise/jquery-ui-timepicker-addon
-//= require sunrise/chosen.jquery
 
 //= require sunrise/jquery.editable
 //= require sunrise/jquery.dialog

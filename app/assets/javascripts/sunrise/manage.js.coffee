@@ -2,7 +2,9 @@ root = this
 $ = jQuery
 
 class Sunrise
+
   constructor: (@namespace) ->
+    @sortedFields = []
     
   setup: ->
     $('[title]').tooltip()
@@ -10,9 +12,10 @@ class Sunrise
     $('[data-editable]').editable()
     $('[data-lang]').lang_tabs()
 
-    $("select.select:not(.nochosen)").chosen(
-      allow_single_deselect: true
-      disable_search_threshold: 10
+    $("select.select:not(.noselect2)").select2(
+      allowClear: true
+      minimumResultsForSearch: 10
+      width: 'resolve'
     )
     
     this.init_submit_buttons()
@@ -158,6 +161,8 @@ class Sunrise
 
     $(link).parents("div.nested_bottom").before(content.replace(regexp, new_id))
 
+    this.updateSortPositions()
+
   remove_fields: (link) ->
     hidden_field = $(link).prev("input[type=hidden]")
   
@@ -175,16 +180,21 @@ class Sunrise
       items: '.nested_item'
       opacity: 0.8
       update: (event, ui) => 
-        this.updateSortField(event, ui)
+        element = $(ui.item)
+        container = element.parents('div.nested')
+        this.updateSortContainer(container)
 
     container.disableSelection()
 
-  updateSortField: (event, ui) ->
-    element = $(ui.item)
-    container = element.parents('div.nested')
+    @sortedFields.push container
 
+  updateSortContainer: (container) ->
     container.find(".nested_item").each (index, item) ->
       $(item).find(".nested_input_sort").val(index)
+
+  updateSortPositions: ->
+    $.each @sortedFields, (index, container) =>
+      this.updateSortContainer(container)
 
 $(document).ready ->
   window['sunrise'] ?= new Sunrise(window.location.pathname)
