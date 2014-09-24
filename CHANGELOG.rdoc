@@ -1,3 +1,6 @@
+== 1.0.3
+  * Fix parents relations
+  
 == 1.0.2
   * Use select2
   * Remove chosen
