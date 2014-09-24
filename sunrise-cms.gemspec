@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.email = "galeta.igor@gmail.com"
   s.rubyforge_project = "sunrise-cms"
   s.homepage = "https://github.com/galetahub/sunrise"
+  s.licenses = ['MIT']
   
   s.files = Dir["{app,config,db,lib,vendor/assets}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md", "CHANGELOG.rdoc"]
   s.test_files = Dir["{spec}/**/*"]
