@@ -80,7 +80,7 @@ module Sunrise
     
     # Convert parent id and class name into hash
     def parent_hash
-      @parent_hash ||= { :parent_id => parent_record.id, :parent_type => parent_record.class.name } if parent_record
+      @parent_hash ||= { :parent_id => parent_record.id, :parent_type => parent_record.class.name.underscore } if parent_record
       @parent_hash ||= {}
     end
     
