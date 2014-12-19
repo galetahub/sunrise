@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md", "CHANGELOG.rdoc"]
   s.require_paths = ["lib"]
   
-  s.add_runtime_dependency("rails", "~> 4.0.0")
+  s.add_runtime_dependency("rails", ">= 4.0.0")
   s.add_runtime_dependency("kaminari")
   s.add_runtime_dependency("simple_form")
   
