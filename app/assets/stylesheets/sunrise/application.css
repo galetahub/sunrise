@@ -10,7 +10,7 @@
  *= require uploader/application
  *= require select2
 
- *= require jquery.ui.core
- *= require jquery.ui.theme
- *= require jquery.ui.datepicker
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
+ *= require jquery-ui/datepicker
 */
