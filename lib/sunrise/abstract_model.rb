@@ -63,7 +63,7 @@ module Sunrise
     end
 
     def model_params
-      @request_params[param_key.to_sym]
+      @request_params[param_key.to_sym] || {}
     end
     
     # Save current list view
