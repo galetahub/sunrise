@@ -1,8 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 
-//= require jquery.ui.sortable
-//= require jquery.ui.datepicker
+//= require jquery-ui/sortable
+//= require jquery-ui/datepicker
 //= require datepicker/jquery.ui.datepicker-uk
 //= require datepicker/jquery.ui.datepicker-ru
 //= require select2
