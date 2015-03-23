@@ -1,3 +1,6 @@
+== 1.0.4
+  * Update jQuery UI
+
 == 1.0.3
   * Fix parents relations
   
