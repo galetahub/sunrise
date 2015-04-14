@@ -149,7 +149,7 @@ module Sunrise
       return nil if ids.empty?
 
       ids.each do |key, value| 
-        model.where(:id => key).update_all(["#{@sort_column} = ?", value])
+        model.where(:id => key).update_all(@sort_column => value)
       end
     end
     
