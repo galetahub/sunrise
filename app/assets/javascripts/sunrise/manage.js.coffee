@@ -5,7 +5,7 @@ class Sunrise
 
   constructor: (@namespace) ->
     @sortedFields = []
-    
+
   setup: ->
     $('[title]').tooltip()
     $(".ddmenu").ddmenu()
@@ -17,10 +17,10 @@ class Sunrise
       minimumResultsForSearch: 10
       width: 'resolve'
     )
-    
+
     this.init_submit_buttons()
     this.init_group_menus()
-  
+
   getParameterByName: (name) ->
     match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
     if match then decodeURIComponent(match[1].replace(/\+/g, ' ')) else null
@@ -28,11 +28,11 @@ class Sunrise
   init_sort_select: ->
     $("#sort").bind 'change', (evt) ->
       this.form.submit()
-      
+
   init_submit_buttons: ->
     $('#cancel-submit-form-button').bind 'click', (evt) ->
       window.history.back()
-    
+
     $('#submit-form-button').bind 'click', (evt) ->
       $('form:first').submit()
 
@@ -52,21 +52,21 @@ class Sunrise
   storeQuery: () ->
     query = {}
     self = this
-    
+
     $.each ['page', 'per', 'sort', 'view'], (index) ->
       value = self.getParameterByName(this)
       query[this] = value if value?
-      
+
     $.cookie('params', $.param(query), { expires: 30, path: @namespace })
-  
+
   serialize: (items, options) ->
     str = []
-    defaults = 
+    defaults =
       attribute: 'id'
       listType: 'ul'
       expression: /(.+)[-=_](.+)/
       key: null
-      
+
     o = $.extend defaults, options
 
     $(items).each((index) ->
@@ -82,35 +82,35 @@ class Sunrise
       str.push(o.key + '=')
 
     return str.join('&')
-  
+
   serializeTree: (element, options) ->
-    defaults = 
+    defaults =
       attribute: 'id'
       listType: 'ul'
       expression: /(.+)[-=_](.+)/
       key: "tree"
       startDepthCount: 0
       root: false
-      
+
     o = $.extend defaults, options
     sDepth = o.startDepthCount
     ret = []
     left = 1
-    
+
     if o.root
       sDepth += 1
       left += 1
-    
+
     fn_recursiveArray = (item, depth, left) ->
       right = left + 1
 
       if $(item).children(o.listType).children('li').length > 0
         depth += 1
-        
+
         $(item).children(o.listType).children('li').each(() ->
           right = fn_recursiveArray($(this), depth, right)
         )
-        
+
         depth -= 1
 
       id = ($(item).attr(o.attribute)).match(o.expression)
@@ -126,7 +126,7 @@ class Sunrise
 
       left = right + 1
       return left
-    
+
     if o.root
       ret.push(
         "item_id": 'root'
@@ -135,13 +135,13 @@ class Sunrise
         "left": '1'
         "right": ($('li', element).length + 1) * 2
       )
-    
+
     $(element).children('li').each(() ->
       left = fn_recursiveArray(this, sDepth, left)
     )
 
     ret = ret.sort((a,b) -> return (a.left - b.left) )
-    
+
     if o.key
       arr = []
       $.each(ret, () ->
@@ -150,7 +150,7 @@ class Sunrise
         hash[param] = this
         arr.push $.param(hash)
       )
-      
+
       return arr.join("&")
     else
       return ret
@@ -165,7 +165,7 @@ class Sunrise
 
   remove_fields: (link) ->
     hidden_field = $(link).prev("input[type=hidden]")
-  
+
     if hidden_field.length isnt 0
       hidden_field.val('1')
 
@@ -179,7 +179,7 @@ class Sunrise
       handle: '.nested_input_handle'
       items: '.nested_item'
       opacity: 0.8
-      update: (event, ui) => 
+      update: (event, ui) =>
         element = $(ui.item)
         container = element.parents('div.nested')
         this.updateSortContainer(container)

@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source 'http://rubygems.org'
 
 # Declare your gem's dependencies in sunrise-cms.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -6,54 +6,54 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem "jquery-rails"
+gem 'jquery-rails'
 gem 'devise'
-gem "devise-encryptable"
-gem "mini_magick"
-gem "ruby2xlsx", "~> 0.0.1"
-gem "galetahub-enum_field", :require => "enum_field"
-gem "rails-uploader"
-gem "cancan"
-gem "cancan_namespace"
-gem "carrierwave"
-gem "mime-types"
-gem "kaminari"
-gem "simple_form"
-gem "progressbar"
-gem "babosa"
-gem "page_parts", "~> 0.1.3"
-gem "meta_manager", "~> 0.2.0"
-gem "public_activity", ">= 1.0.0"
-gem "jquery-ui-rails"
-gem "select2-rails"
+gem 'devise-encryptable'
+gem 'mini_magick'
+gem 'ruby2xlsx', '~> 0.0.1'
+gem 'galetahub-enum_field', require: 'enum_field'
+gem 'rails-uploader'
+gem 'cancancan'
+# gem 'cancan_namespace'
+gem 'carrierwave'
+gem 'mime-types'
+gem 'kaminari'
+gem 'simple_form'
+gem 'progressbar'
+gem 'babosa'
+gem 'page_parts', '~> 0.1.3'
+gem 'meta_manager', '~> 0.2.0'
+gem 'public_activity', '>= 1.0.0'
+gem 'jquery-ui-rails'
+gem 'select2-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails'
-  
-  gem "libv8", "~> 3.11.8.4", :platforms => :ruby
-  gem 'therubyracer', :platforms => :ruby
+  gem 'sass-rails'
+
+  gem 'libv8', '~> 3.11.8.4', platforms: :ruby
+  gem 'therubyracer', platforms: :ruby
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
-  gem "fuubar"
-  gem "launchy"
-  gem "ruby-progressbar"
+  gem 'fuubar'
+  gem 'launchy'
+  gem 'ruby-progressbar'
 end
 
 group :active_record do
-  gem "activerecord"
-  gem "awesome_nested_set"
+  gem 'activerecord'
+  gem 'awesome_nested_set'
 end
 
 group :mongoid do
-  # gem "mongoid", ">= 3.1.0"
+  # gem 'mongoid', '>= 3.1.0'
+  gem 'bson_ext'
+  gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
   gem 'mongoid', '~> 4.0.0.beta1'
-  gem "bson_ext"
-  gem "carrierwave-mongoid", :require => "carrierwave/mongoid"
-  gem "mongoid_nested_set", :git => "git://github.com/thinkwell/mongoid_nested_set.git"
+  gem 'mongoid_nested_set', git: 'git://github.com/thinkwell/mongoid_nested_set.git'
 end
 

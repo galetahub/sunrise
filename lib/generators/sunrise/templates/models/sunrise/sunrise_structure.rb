@@ -1,22 +1,22 @@
 # encoding: utf-8
 class SunriseStructure < Sunrise::AbstractModel
   self.resource_name = "Structure"
-  
+
   default_index_view :tree
   available_index_views [:tree, :thumbs]
-  
+
   index :tree do
     field :title
     field :updated_at
     field :id
   end
-  
+
   show do
     field :title
     field :redirect_url
     field :is_visible
   end
-  
+
   form do
     field :title
     field :redirect_url
