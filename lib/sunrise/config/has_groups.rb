@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sunrise/config/group'
 
 module Sunrise
@@ -20,8 +22,8 @@ module Sunrise
 
       # Reader for groups that are marked as visible
       def visible_groups
-        groups.select {|g| g.visible? }
+        groups.select { |g| g.visible? }
       end
     end
   end
-end 
+end

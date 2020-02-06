@@ -1,0 +1,87 @@
+require: rubocop-rails
+AllCops:
+  TargetRubyVersion: 2.5.5
+  Exclude:
+  - '**/vendor/**/*'
+  - '**/db/schema.rb'
+  - '**/db/migrate'
+  - '**/app/views/**/*'
+
+##################### Styles ##################################
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - "app/models/**/*.rb"
+    - "app/controllers/**/*.rb"
+    - "app/serializers/**/*.rb"
+
+Style/BlockDelimiters:
+  Exclude:
+    - "spec/controllers/**/*.rb"
+
+Style/SymbolProc:
+  Exclude:
+    - "app/policies/*.rb"
+
+#################### Lint ##################################
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+##################### Metrics ##################################
+
+Metrics/LineLength:
+  Max: 110
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - "app/policies/*.rb"
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - "app/policies/*.rb"
+
+Metrics/ModuleLength:
+  Max: 200
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - "**/*_spec.rb"
+    - "config/routes.rb"
+    - "app/policies/*.rb"
+
+##################### Rails ##################################
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/inputs/*.rb'
+
+Rails/HttpPositionalArguments:
+  Exclude:
+    - 'spec/requests/**/*_spec.rb'

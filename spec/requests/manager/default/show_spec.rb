@@ -1,40 +1,42 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe "Sunrise Manager New" do
+describe 'Sunrise Manager New' do
   subject { page }
   before(:all) do
     @admin = FactoryGirl.create(:admin_user)
-    
+
     @root = FactoryGirl.create(:structure_main)
-    @page = FactoryGirl.create(:structure_page, :parent => @root)
+    @page = FactoryGirl.create(:structure_page, parent: @root)
   end
 
-  context "admin" do
+  context 'admin' do
     before(:each) { login_as @admin }
 
-    describe "GET /manage/structures/1" do
+    describe 'GET /manage/structures/1' do
       before(:each) do
-        visit show_path(:model_name => "structures", :id => @page.id)
+        visit show_path(model_name: 'structures', id: @page.id)
       end
-      
-      it "should show page title" do
-        should have_content( @page.title )
+
+      it 'should show page title' do
+        should have_content(@page.title)
       end
-      
-      it "should display configured fields to show" do
+
+      it 'should display configured fields to show' do
         SunriseStructure.config.show.fields.each do |f|
           should have_content f.human_name
         end
       end
     end
   end
-  
-  describe "anonymous user" do
+
+  describe 'anonymous user' do
     before(:each) do
-      visit show_path(:model_name => "structures", :id => @page.id)
+      visit show_path(model_name: 'structures', id: @page.id)
     end
-    
-    it "should redirect to login page" do
+
+    it 'should redirect to login page' do
       should have_content('Sign in')
     end
   end

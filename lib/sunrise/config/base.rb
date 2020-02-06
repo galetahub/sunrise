@@ -1,35 +1,37 @@
+# frozen_string_literal: true
+
 module Sunrise
   module Config
-    class Base      
+    class Base
       attr_reader :abstract_model, :parent, :name
 
       def initialize(abstract_model, parent = nil, options = nil)
         @abstract_model = abstract_model
         @parent = parent
         @config_options = (options || {}).symbolize_keys
-        @name = (@config_options.delete(:name) || "noname").to_s
+        @name = (@config_options.delete(:name) || 'noname').to_s
       end
-      
+
       # Register an instance option for this object only
       def register_instance_option(option_name, &default)
-        scope = class << self; self; end;
+        scope = class << self; self; end
         self.class.register_instance_option(option_name, scope, &default)
       end
-      
+
       class << self
         # Register an instance option. Instance option is a configuration
         # option that stores its value within an instance variable and is
         # accessed by an instance method. Both go by the name of the option.
         def register_instance_option(option_name, scope = self, &default)
-          unless options = scope.instance_variable_get("@config_options")
-            options = scope.instance_variable_set("@config_options", {})
+          unless options = scope.instance_variable_get('@config_options')
+            options = scope.instance_variable_set('@config_options', {})
           end
 
           option_name = option_name.to_s
           options[option_name] = nil
 
           # If it's a boolean create an alias for it and remove question mark
-          if "?" == option_name[-1, 1]
+          if option_name[-1, 1] == '?'
             scope.send(:define_method, "#{option_name.chop!}?") do
               send(option_name)
             end
@@ -45,7 +47,7 @@ module Sunrise
               value = instance_variable_get("@#{option_name}_registered")
 
               case value
-              when Proc then
+              when Proc
                 unless value.lambda?
                   # Track recursive invocation with an instance variable. This prevents run-away recursion
                   # and allows configurations such as
@@ -59,7 +61,7 @@ module Sunrise
                     instance_variable_set("@#{option_name}_recurring", false)
                   end
                 end
-              when nil then
+              when nil
                 value = instance_eval &default
               end
 
@@ -67,13 +69,13 @@ module Sunrise
             end
           end
         end
-        
+
         # Register a class option. Class option is a configuration
         # option that stores it's value within a class object's instance variable
         # and is accessed by a class method. Both go by the name of the option.
         def self.register_class_option(option_name, &default)
-          scope = class << self; self; end;
-          self.register_instance_option(option_name, scope, &default)
+          scope = class << self; self; end
+          register_instance_option(option_name, scope, &default)
         end
       end
     end

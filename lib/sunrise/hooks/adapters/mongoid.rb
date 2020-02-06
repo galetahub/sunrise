@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sunrise
   module Hooks
     module Adapters
@@ -10,7 +12,7 @@ module Sunrise
           only(*args)
         end
 
-        def find_each(*args)
+        def find_each(*_args)
           each do |record|
             yield record
           end

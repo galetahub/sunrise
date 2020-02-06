@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 module Sunrise
   module ActivitiesHelper
-
     # For generating time tags calculated using jquery.timeago
     def timeago_tag(time, options = {})
-      options[:class] ||= "timeago"
-      content_tag(:abbr, time.to_s, options.merge(:title => time.getutc.iso8601)) if time
+      options[:class] ||= 'timeago'
+      content_tag(:abbr, time.to_s, options.merge(title: time.getutc.iso8601)) if time
     end
 
     def activity_icon_tag(key, options = {})
@@ -12,8 +13,8 @@ module Sunrise
       image = image_path("sunrise/icons/#{icon}.svg")
 
       options = {
-        :class => "mega-icon",
-        :style => "background-image: url(#{image});"
+        class: 'mega-icon',
+        style: "background-image: url(#{image});"
       }.merge(options)
 
       content_tag(:div, nil, options)
@@ -27,7 +28,7 @@ module Sunrise
       model_name = object_type.downcase
 
       if object
-        link_to(model_name, edit_path(:model_name => model_name.pluralize, :id => object.id))
+        link_to(model_name, edit_path(model_name: model_name.pluralize, id: object.id))
       else
         "a #{model_name} which does not exist anymore"
       end

@@ -1,7 +1,9 @@
-require 'rubygems'
-$:.unshift File.expand_path('../../../../lib', __FILE__)
+# frozen_string_literal: true
 
-gemfile = File.expand_path('../../../../Gemfile', __FILE__)
+require 'rubygems'
+$:.unshift File.expand_path('../../../lib', __dir__)
+
+gemfile = File.expand_path('../../../Gemfile', __dir__)
 
 if File.exist?(gemfile)
   ENV['BUNDLE_GEMFILE'] = gemfile

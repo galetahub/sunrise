@@ -1,5 +1,6 @@
-class Ability < Sunrise::Models::Ability
+# frozen_string_literal: true
 
+class Ability < Sunrise::Models::Ability
   def guest
     # TODO
   end
@@ -7,11 +8,11 @@ class Ability < Sunrise::Models::Ability
   def default
     # TODO
   end
-  
+
   def redactor
     # TODO
   end
-  
+
   def moderator
     # TODO
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'kaminari'
 
 module Kaminari
@@ -5,13 +7,13 @@ module Kaminari
     def self.init
       ActiveSupport.on_load(:active_record) do
         require 'kaminari/models/active_record_extension'
-        ::ActiveRecord::Base.send :include, Kaminari::ActiveRecordExtension
+        ::ActiveRecord::Base.include Kaminari::ActiveRecordExtension
       end
-      
+
       require 'kaminari/models/array_extension'
 
       ActiveSupport.on_load(:action_view) do
-        ::ActionView::Base.send :include, Kaminari::ActionViewExtension
+        ::ActionView::Base.include Kaminari::ActionViewExtension
       end
     end
   end
