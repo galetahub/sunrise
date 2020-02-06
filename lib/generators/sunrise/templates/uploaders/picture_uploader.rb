@@ -2,6 +2,7 @@
 
 class PictureUploader < Sunrise::CarrierWave::BaseUploader
   process quality: 90
+  process :set_dimensions
 
   version :thumb do
     process resize_to_fill: [50, 50]

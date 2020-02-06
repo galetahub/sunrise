@@ -53,11 +53,11 @@ describe Avatar do
     end
 
     it 'file size should be valid' do
-      @avatar.data_file_size.should == 6543
+      @avatar.data_file_size.should == 6646
     end
 
     it 'should be image' do
-      @avatar.image?.should be_true
+      @avatar.image?.should be true
     end
 
     it 'data_file_name should be valid' do
@@ -72,9 +72,9 @@ describe Avatar do
     end
 
     it 'urls should be valid' do
-      @avatar.url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/rails.png"
-      @avatar.thumb_url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/thumb_rails.png"
       @avatar.data.default_url.should == '/assets/defaults/avatar.png'
+      @avatar.thumb_url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/thumb_rails.png"
+      @avatar.url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/rails.png"
     end
   end
 
