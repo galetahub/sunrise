@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 require 'pathname'
+require 'meta_manager'
+require 'page_parts'
+require 'public_activity'
+require 'rails-uploader'
+require 'cancan'
+
 require 'sunrise/core_ext'
 require 'sunrise/version'
 

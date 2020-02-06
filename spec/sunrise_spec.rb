@@ -8,7 +8,7 @@ describe Sunrise do
   end
 
   it 'should return valid root path' do
-    File.exist?(Sunrise.root_path).should be_true
+    File.exist?(Sunrise.root_path).should be true
   end
 
   context 'configuration' do

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Sunrise::SettingsController do
+describe Sunrise::SettingsController, type: :controller do
   render_views
 
   before(:all) do

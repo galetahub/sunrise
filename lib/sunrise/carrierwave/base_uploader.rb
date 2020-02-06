@@ -2,27 +2,22 @@
 
 require 'mime/types'
 require 'mini_magick'
+require 'carrierwave'
 require 'carrierwave/processing/mini_magick'
-require 'carrierwave/processing/mime_types'
 
 module Sunrise
   module CarrierWave
     class BaseUploader < ::CarrierWave::Uploader::Base
       include ::CarrierWave::MiniMagick
-      include ::CarrierWave::MimeTypes
       include Sunrise::Utils::EvalHelpers
 
-      storage :file
-
-      process :set_content_type
+      process :set_model_info
 
       with_options if: :image? do |img|
         img.process :strip
         img.process cropper: ->(model) { model.cropper_geometry }
         img.process rotate: ->(model) { model.rotate_degrees }
       end
-
-      process :set_model_info
 
       # default store assets path
       def store_dir
@@ -110,7 +105,9 @@ module Sunrise
       def set_model_info
         model.data_content_type = file.content_type
         model.data_file_size = file.size
+      end
 
+      def set_dimensions
         model.width, model.height = dimensions if image? && model.has_dimensions?
       end
 

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe WelcomeController do
+describe WelcomeController, type: :controller do
   render_views
 
   before(:each) do

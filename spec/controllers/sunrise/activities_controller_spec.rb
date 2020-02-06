@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Sunrise::ActivitiesController do
+describe Sunrise::ActivitiesController, type: :controller do
   render_views
 
   before(:all) do

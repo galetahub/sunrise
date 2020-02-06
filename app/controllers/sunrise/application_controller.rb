@@ -15,9 +15,7 @@ module Sunrise
       @current_ability ||= ::Ability.new(current_user, :sunrise)
     end
 
-    rescue_from ::CanCan::AccessDenied do |exception|
-      Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}, context: #{current_ability.context}, user: #{current_user.try(:id)}"
-
+    rescue_from ::CanCan::AccessDenied do |_exception|
       flash[:failure] = I18n.t(:access_denied, scope: [:flash, :users])
 
       respond_to do |format|

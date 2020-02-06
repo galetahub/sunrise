@@ -7,7 +7,8 @@ module Sunrise
     autoload :CsvDocument, 'sunrise/utils/csv_document'
     autoload :SearchWrapper, 'sunrise/utils/search_wrapper'
 
-    IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/pjpeg', 'image/tiff', 'image/x-png'].freeze
+    IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg',
+                   'image/pjpeg', 'image/tiff', 'image/x-png'].freeze
 
     def self.get_model(model_name, *args)
       klass = lookup(['Sunrise', model_name.to_s.classify].join, Sunrise::AbstractModel)

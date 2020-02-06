@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'progressbar'
-
 namespace :assets do
   desc 'Refresh carrierwave assets versions by model (CLASS=)'
   task reprocess: :environment do
+    require 'progressbar'
+
     name = (ENV['CLASS'] || ENV['class'] || 'Asset').to_s
     klass = name.safe_constantize
 

@@ -12,19 +12,15 @@ FileUtils.rm_rf(File.expand_path('tmp', __dir__))
 require "orm/kaminari/#{SUNRISE_ORM}"
 
 require File.expand_path('dummy/config/environment.rb', __dir__)
+require "orm/#{SUNRISE_ORM}"
+require "page_parts/orm/#{SUNRISE_ORM}"
+require "meta_manager/orm/#{SUNRISE_ORM}"
+
 require 'rails/test_help'
 require 'rspec/rails'
-require 'database_cleaner'
 require 'generator_spec/test_case'
 require 'capybara/rspec'
-
-# Run specific orm operations
-require "orm/#{SUNRISE_ORM}"
-
-# Fixtures replacement with a straightforward definition syntax
-require 'factory_girl'
-FactoryGirl.definition_file_paths = [File.expand_path('factories', __dir__)]
-FactoryGirl.find_definitions
+require 'database_cleaner'
 
 ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
@@ -33,6 +29,8 @@ ActionMailer::Base.default_url_options[:host] = 'test.com'
 Rails.backtrace_cleaner.remove_silencers!
 
 require 'carrierwave'
+require 'carrierwave/orm/activerecord' if SUNRISE_ORM == :active_record
+
 CarrierWave.configure do |config|
   config.storage = :file
   config.enable_processing = false
@@ -52,6 +50,11 @@ CarrierWave::Uploader::Base.descendants.each do |klass|
     end
   end
 end
+
+# Fixtures replacement with a straightforward definition syntax
+require 'factory_girl'
+FactoryGirl.definition_file_paths = [File.expand_path('factories', __dir__)]
+FactoryGirl.find_definitions
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }

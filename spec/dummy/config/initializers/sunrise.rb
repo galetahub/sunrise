@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'meta_manager/orm/active_record'
-require 'page_parts/orm/active_record'
+require 'select2-rails'
+require 'simple_form'
 
 # Use this hook to configure sunrise
 Sunrise.setup do |config|

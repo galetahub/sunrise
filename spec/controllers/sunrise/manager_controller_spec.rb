@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe Sunrise::ManagerController do
-  # render_views
-
+describe Sunrise::ManagerController, type: :controller do
   describe '#current_ability' do
     before(:each) { @ability = controller.send(:current_ability) }
 

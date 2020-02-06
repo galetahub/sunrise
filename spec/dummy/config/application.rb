@@ -3,17 +3,14 @@
 require File.expand_path('boot', __dir__)
 
 require 'rails/all'
+require 'sprockets/railtie'
 
 SUNRISE_ORM = (ENV['SUNRISE_ORM'] || :active_record).to_sym unless defined?(SUNRISE_ORM)
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(assets: %w[development test]))
-  # If you want your assets lazily compiled in production, use this line
-  Bundler.require(SUNRISE_ORM)
-end
+Bundler.require(*Rails.groups)
+Bundler.require(:default, SUNRISE_ORM)
 
-require 'sunrise-cms'
+require 'sunrise'
 
 module Dummy
   class Application < Rails::Application
