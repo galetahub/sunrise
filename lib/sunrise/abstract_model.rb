@@ -57,7 +57,7 @@ module Sunrise
       @current_list = config.default_index_view
       @available_index_views = config.available_index_views
       @sort_column = config.sort_column
-      @request_params = params.symbolize_keys
+      @request_params = params.try(:symbolize_keys) || params
       self.current_list = params[:view]
     end
 
