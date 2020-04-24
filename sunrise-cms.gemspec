@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.description = 'Sunrise is a Open Source CMS'
   s.authors = ['Igor Galeta', 'Pavlo Galeta']
   s.email = 'galeta.igor@gmail.com'
-  s.rubyforge_project = 'sunrise-cms'
   s.homepage = 'https://github.com/galetahub/sunrise'
   s.license = 'MIT'
 
