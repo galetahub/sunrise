@@ -8,10 +8,6 @@ module Sunrise
     extend ::ActiveModel::Callbacks
 
     class << self
-<<<<<<< HEAD
-
-=======
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       # Gets the resource_name
       def resource_name
         # Not using superclass_delegating_reader. See +site+ for explanation
@@ -23,13 +19,7 @@ module Sunrise
       end
 
       # Set resource_name
-<<<<<<< HEAD
-      def resource_name=(name)
-        @resource_name = name
-      end
-=======
       attr_writer :resource_name
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
 
       def config
         @config ||= Config::Model.new(self)
@@ -55,32 +45,19 @@ module Sunrise
     end
 
     attr_accessor :model_name, :current_list, :sort_column, :available_list_view
-<<<<<<< HEAD
-
-    delegate :config, :model, :to => 'self.class'
-    delegate :label, :to => 'self.class.config'
-    delegate :param_key, :singular, :plural, :route_key, :to => :model_name
-
-    define_model_callbacks :sort, :mass_destroy, :only => [:before, :after]
-=======
 
     delegate :config, :model, to: 'self.class'
     delegate :label, to: 'self.class.config'
     delegate :param_key, :singular, :plural, :route_key, to: :model_name
 
-    define_model_callbacks :sort, :mass_destroy, only: [:before, :after]
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
+    define_model_callbacks :sort, :mass_destroy, only: %i[before after]
 
     def initialize(params = {})
       @model_name = model.model_name
       @current_list = config.default_index_view
       @available_index_views = config.available_index_views
       @sort_column = config.sort_column
-<<<<<<< HEAD
-      @request_params = params.permit!.to_h.symbolize_keys
-=======
       @request_params = params.try(:symbolize_keys) || params
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       self.current_list = params[:view]
     end
 
@@ -132,11 +109,6 @@ module Sunrise
           name = [field.name, direction].join('_')
           items << OpenStruct.new(name: I18n.t(name, scope: [:manage, :sort_columns]), value: name)
         end
-<<<<<<< HEAD
-
-        items
-=======
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       end
     end
 
@@ -175,11 +147,7 @@ module Sunrise
       return nil if ids.empty?
 
       ids.each do |key, value|
-<<<<<<< HEAD
-        model.where(:id => key).update_all(@sort_column => value)
-=======
         model.where(id: key).update_all(@sort_column => value)
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       end
     end
 
@@ -212,13 +180,9 @@ module Sunrise
     def default_scope(params = nil)
       params ||= @request_params
 
-<<<<<<< HEAD
-      scope = model.sunrise_search(params[:search]) if model.respond_to?(:sunrise_search) && !params[:search].blank?
-=======
       if model.respond_to?(:sunrise_search) && params[:search].present?
         scope = model.sunrise_search(params[:search])
       end
->>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       scope ||= model.where(nil)
 
       scope = scope.merge(association_scope) unless parent_record.nil?
