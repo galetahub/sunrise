@@ -1,28 +1,28 @@
-# -*- encoding: utf-8 -*- 
+# frozen_string_literal: true
 
 date_hash = {
-  :abbr_day_names => lambda { |key, options|
+  abbr_day_names: lambda { |_key, options|
     if options[:format] && options[:format] =~ Sunrise::LOCALIZE_STANDALONE_ABBR_DAY_NAMES_MATCH
       :'date.common_abbr_day_names'
     else
       :'date.standalone_abbr_day_names'
     end
   },
-  :day_names => lambda { |key, options|
+  day_names: lambda { |_key, options|
     if options[:format] && options[:format] =~ Sunrise::LOCALIZE_STANDALONE_DAY_NAMES_MATCH
       :'date.standalone_day_names'
     else
       :'date.common_day_names'
     end
   },
-  :abbr_month_names => lambda { |key, options|
+  abbr_month_names: lambda { |_key, options|
     if options[:format] && options[:format] =~ Sunrise::LOCALIZE_ABBR_MONTH_NAMES_MATCH
       :'date.common_abbr_month_names'
     else
       :'date.standalone_abbr_month_names'
     end
   },
-  :month_names => lambda { |key, options|
+  month_names: lambda { |_key, options|
     if options[:format] && options[:format] =~ Sunrise::LOCALIZE_MONTH_NAMES_MATCH
       :'date.common_month_names'
     else
@@ -35,6 +35,6 @@ date_hash = {
 #
 # Названия месяцев и дней недели в зависимости от контекста ("1 декабря", но "Декабрь 1985")
 {
-  :uk => { :date => date_hash },
-  :ru => { :date => date_hash }
+  uk: { date: date_hash },
+  ru: { date: date_hash }
 }

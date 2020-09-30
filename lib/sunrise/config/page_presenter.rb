@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sunrise
   module Config
     # A simple object that gets used to present different aspects of views
@@ -20,7 +22,8 @@ module Sunrise
       delegate :has_key?, to: :options
 
       def initialize(options = {}, &block)
-        @options, @block = options, block
+        @options = options
+        @block = block
       end
 
       def [](key)

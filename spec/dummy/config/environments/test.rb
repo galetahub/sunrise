@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Dummy::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -9,7 +11,7 @@ Dummy::Application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=3600"
+  config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -19,7 +21,7 @@ Dummy::Application.configure do
   config.action_dispatch.show_exceptions = false
 
   # Disable request forgery protection in test environment
-  config.action_controller.allow_forgery_protection    = false
+  config.action_controller.allow_forgery_protection = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
@@ -38,4 +40,7 @@ Dummy::Application.configure do
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.
   config.eager_load = false
+
+  config.active_support.test_order = :sorted
+  config.active_record.raise_in_transactional_callbacks = true
 end

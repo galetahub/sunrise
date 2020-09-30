@@ -1,10 +1,9 @@
-# require 'cancan_namespace'
+# frozen_string_literal: true
 
 module Sunrise
   module Models
     class Ability
       include CanCan::Ability
-      # include CanCanNamespace::Ability
 
       attr_accessor :context, :user
 

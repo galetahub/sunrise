@@ -21,3 +21,4 @@ spec/dummy/log/development.log
 .bundle/
 vendor/bundle/
 .DS_Store
+uploads/

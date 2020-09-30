@@ -1,6 +1,8 @@
-require "mongoid"
-require "database_cleaner"
-require "public_activity"
+# frozen_string_literal: true
+
+require 'mongoid'
+require 'database_cleaner'
+require 'public_activity'
 
 DatabaseCleaner[:mongoid].strategy = :truncation
 

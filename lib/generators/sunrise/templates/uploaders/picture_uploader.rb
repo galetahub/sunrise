@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
 class PictureUploader < Sunrise::CarrierWave::BaseUploader
-  process :quality => 90
-  
+  process quality: 90
+  process :set_dimensions
+
   version :thumb do
-    process :resize_to_fill => [50, 50]
+    process resize_to_fill: [50, 50]
   end
 
   version :content do
-    process :resize_to_fit => [575, 500]
+    process resize_to_fit: [575, 500]
   end
-  
+
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

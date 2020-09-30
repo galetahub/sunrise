@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sunrise/config/model'
 require 'ostruct'
 
@@ -6,7 +8,10 @@ module Sunrise
     extend ::ActiveModel::Callbacks
 
     class << self
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       # Gets the resource_name
       def resource_name
         # Not using superclass_delegating_reader. See +site+ for explanation
@@ -18,9 +23,13 @@ module Sunrise
       end
 
       # Set resource_name
+<<<<<<< HEAD
       def resource_name=(name)
         @resource_name = name
       end
+=======
+      attr_writer :resource_name
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
 
       def config
         @config ||= Config::Model.new(self)
@@ -46,19 +55,32 @@ module Sunrise
     end
 
     attr_accessor :model_name, :current_list, :sort_column, :available_list_view
+<<<<<<< HEAD
 
     delegate :config, :model, :to => 'self.class'
     delegate :label, :to => 'self.class.config'
     delegate :param_key, :singular, :plural, :route_key, :to => :model_name
 
     define_model_callbacks :sort, :mass_destroy, :only => [:before, :after]
+=======
+
+    delegate :config, :model, to: 'self.class'
+    delegate :label, to: 'self.class.config'
+    delegate :param_key, :singular, :plural, :route_key, to: :model_name
+
+    define_model_callbacks :sort, :mass_destroy, only: [:before, :after]
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
 
     def initialize(params = {})
       @model_name = model.model_name
       @current_list = config.default_index_view
       @available_index_views = config.available_index_views
       @sort_column = config.sort_column
+<<<<<<< HEAD
       @request_params = params.permit!.to_h.symbolize_keys
+=======
+      @request_params = params.try(:symbolize_keys) || params
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       self.current_list = params[:view]
     end
 
@@ -68,9 +90,7 @@ module Sunrise
 
     # Save current list view
     def current_list=(value)
-      if value && @available_index_views.include?(value.to_sym)
-        @current_list = value.to_sym
-      end
+      @current_list = value.to_sym if value && @available_index_views.include?(value.to_sym)
     end
 
     # Load association record
@@ -80,13 +100,16 @@ module Sunrise
 
     # Convert parent id and class name into hash
     def parent_hash
-      @parent_hash ||= { :parent_id => parent_record.id, :parent_type => parent_record.class.name.underscore } if parent_record
+      if parent_record
+        @parent_hash ||= { parent_id: parent_record.id, parent_type: parent_record.class.name.underscore }
+      end
       @parent_hash ||= {}
     end
 
     # Get current list settings
     def list
       return false if without_index?
+
       config.index(current_list)
     end
 
@@ -104,21 +127,24 @@ module Sunrise
     end
 
     def sort_fields
-      @sort_fields ||= list.groups[:sort].fields.inject([]) do |items, field|
+      @sort_fields ||= list.groups[:sort].fields.each_with_object([]) do |field, items|
         [:desc, :asc].each do |direction|
           name = [field.name, direction].join('_')
-          items << OpenStruct.new(:name => I18n.t(name, :scope => [:manage, :sort_columns]), :value => name)
+          items << OpenStruct.new(name: I18n.t(name, scope: [:manage, :sort_columns]), value: name)
         end
+<<<<<<< HEAD
 
         items
+=======
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       end
     end
 
     def update_sort(params)
       run_callbacks :sort do
-        if !params[:ids].blank?
+        if params[:ids].present?
           update_sort_column(params[:ids])
-        elsif !params[:tree].blank?
+        elsif params[:tree].present?
           update_sort_tree(params[:tree])
         end
       end
@@ -128,7 +154,7 @@ module Sunrise
       return if params[:ids].blank?
 
       run_callbacks :mass_destroy do
-        model.where(:id => params[:ids]).destroy_all
+        model.where(id: params[:ids]).destroy_all
       end
     end
 
@@ -139,9 +165,9 @@ module Sunrise
       return nil if ids.empty?
 
       ids.each do |key, value|
-        hash = { :parent_id => nil, :depth => value[:depth], :lft => value[:left], :rgt => value[:right] }
-        hash[:parent_id] = value[:parent_id] unless value[:parent_id] == "root"
-        model.where(:id => key).update_all(hash)
+        hash = { parent_id: nil, depth: value[:depth], lft: value[:left], rgt: value[:right] }
+        hash[:parent_id] = value[:parent_id] unless value[:parent_id] == 'root'
+        model.where(id: key).update_all(hash)
       end
     end
 
@@ -149,7 +175,11 @@ module Sunrise
       return nil if ids.empty?
 
       ids.each do |key, value|
+<<<<<<< HEAD
         model.where(:id => key).update_all(@sort_column => value)
+=======
+        model.where(id: key).update_all(@sort_column => value)
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       end
     end
 
@@ -163,7 +193,8 @@ module Sunrise
 
     # Convert request params to model scopes
     def apply_scopes(params = nil, pagination = true)
-      raise ::AbstractController::ActionNotFound.new("List config is turn off") if without_index?
+      raise ::AbstractController::ActionNotFound, 'List config is turn off' if without_index?
+
       params ||= @request_params
 
       scope = default_scope(params)
@@ -181,20 +212,24 @@ module Sunrise
     def default_scope(params = nil)
       params ||= @request_params
 
+<<<<<<< HEAD
       scope = model.sunrise_search(params[:search]) if model.respond_to?(:sunrise_search) && !params[:search].blank?
+=======
+      if model.respond_to?(:sunrise_search) && params[:search].present?
+        scope = model.sunrise_search(params[:search])
+      end
+>>>>>>> ee171b3d0f7d7a1a57ab443c51ba63adf540c3e5
       scope ||= model.where(nil)
 
       scope = scope.merge(association_scope) unless parent_record.nil?
-      scope = scope.merge(sort_scope(params[:sort])) unless params[:sort].blank?
+      scope = scope.merge(sort_scope(params[:sort])) if params[:sort].present?
       scope = scope.merge(list.scope) unless list.scope.nil?
 
       scope
     end
 
     def association_scope
-      if parent_record
-        parent_record.send(parent_association.relation_name)
-      end
+      parent_record&.send(parent_association.relation_name)
     end
 
     def page_scope(scope, page = 1, per_page = nil)
@@ -206,7 +241,7 @@ module Sunrise
 
     def sort_scope(options = nil)
       options = Utils.sort_to_hash(options) if options.is_a?(String)
-      options = { :column => list.sort_column, :mode => list.sort_mode }.merge(options || {})
+      options = { column: list.sort_column, mode: list.sort_mode }.merge(options || {})
 
       options[:column] = list.sort_column if options[:column].blank?
       options[:mode] = list.sort_mode     if options[:mode].blank?
@@ -221,13 +256,13 @@ module Sunrise
 
     # Filename for export data
     def export_filename
-      @export_filename ||= [plural, Time.now.strftime("%Y-%m-%d_%Hh%Mm%S")].join('_')
+      @export_filename ||= [plural, Time.zone.now.strftime('%Y-%m-%d_%Hh%Mm%S')].join('_')
     end
 
     def export_options
       {
-        :filename => export_filename,
-        :columns => export_columns
+        filename: export_filename,
+        columns: export_columns
       }
     end
 
@@ -239,9 +274,9 @@ module Sunrise
       value = config.form.permited_attributes
 
       attrs = case value
-      when Proc then value.call(user)
-      when String then value.to_sym
-      else value
+              when Proc then value.call(user)
+              when String then value.to_sym
+              else value
       end
 
       if attrs == :all
@@ -254,7 +289,7 @@ module Sunrise
 
     # Has translated columns
     def translate?
-      !config.form.groups[:translate].blank?
+      config.form.groups[:translate].present?
     end
 
     # Files to translate
@@ -279,26 +314,24 @@ module Sunrise
 
     protected
 
-      # Try to find parent object if any association present
-      def find_parent_record
-        if parent_present? && parent_valid?
-          parent_association.model.find(@request_params[:parent_id])
-        end
-      end
+    # Try to find parent object if any association present
+    def find_parent_record
+      parent_association.model.find(@request_params[:parent_id]) if parent_present? && parent_valid?
+    end
 
-      # Find related association in model config
-      def parent_association
-        @parent_association ||= config.associations.detect { |relation| relation.is_this?(@request_params[:parent_type]) }
-      end
+    # Find related association in model config
+    def parent_association
+      @parent_association ||= config.associations.detect { |relation| relation.is_this?(@request_params[:parent_type]) }
+    end
 
-      # Parent association exists
-      def parent_valid?
-        !parent_association.nil?
-      end
+    # Parent association exists
+    def parent_valid?
+      !parent_association.nil?
+    end
 
-      # Check parent record in request params
-      def parent_present?
-        !(@request_params[:parent_id].blank? || @request_params[:parent_type].blank?)
-      end
+    # Check parent record in request params
+    def parent_present?
+      !(@request_params[:parent_id].blank? || @request_params[:parent_type].blank?)
+    end
   end
 end

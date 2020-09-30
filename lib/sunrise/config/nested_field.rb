@@ -1,17 +1,18 @@
+# frozen_string_literal: true
+
 require 'sunrise/config/field'
 
 module Sunrise
   module Config
     class NestedField < Field
-
       # Array for store all defined fields
       def fields
         @fields ||= []
       end
-      
+
       # Defines a configuration for a field.
       def field(name = :custom, options = {}, &block)
-        options = { :name => name.to_sym }.merge(options)
+        options = { name: name.to_sym }.merge(options)
         fields << Field.new(abstract_model, self, options, &block)
       end
 
@@ -41,14 +42,14 @@ module Sunrise
 
       protected
 
-        def build_sort_options
-          options = (@config_options[:sort].is_a?(Hash) ? @config_options[:sort] : {}).symbolize_keys
-          
-          {
-            :column => :sort_order, 
-            :hidden_field => true
-          }.merge(options)
-        end
+      def build_sort_options
+        options = (@config_options[:sort].is_a?(Hash) ? @config_options[:sort] : {}).symbolize_keys
+
+        {
+          column: :sort_order,
+          hidden_field: true
+        }.merge(options)
+      end
     end
   end
 end
