@@ -183,7 +183,7 @@ module Sunrise
       if model.respond_to?(:sunrise_search) && params[:search].present?
         scope = model.sunrise_search(params[:search])
       end
-      scope ||= model.where(nil)
+      scope ||= model.all
 
       scope = scope.merge(association_scope) unless parent_record.nil?
       scope = scope.merge(sort_scope(params[:sort])) if params[:sort].present?
