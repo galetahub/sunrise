@@ -22,9 +22,8 @@ describe Avatar do
 
   context 'validations' do
     it 'should not be valid without data' do
-      pending 'asset data validations dont work on presence_of'
       @avatar.data = nil
-      @avatar.should_not be_valid
+      expect(@avatar).not_to be_valid
     end
 
     it 'should not be valid with not image content-type' do
@@ -72,9 +71,9 @@ describe Avatar do
     end
 
     it 'urls should be valid' do
-      @avatar.data.default_url.should == '/assets/defaults/avatar.png'
-      @avatar.thumb_url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/thumb_rails.png"
-      @avatar.url.should == "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/rails.png"
+      expect(@avatar.data.default_url).to eq '/assets/defaults/avatar.png'
+      expect(@avatar.thumb_url).to eq "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/thumb_rails.png"
+      expect(@avatar.url).to eq "/uploads/#{@avatar.class.to_s.underscore}/#{@avatar.id}/rails.png"
     end
   end
 
