@@ -4,6 +4,12 @@ Open source mini content management system for programmers.
 
 ## Setup
 
+For rails 5.x.x:
+
+```ruby
+  gem 'sunrise-cms', '~> 1.1.0', require: 'sunrise'
+```
+
 For rails 4.x.x:
 
 ```ruby

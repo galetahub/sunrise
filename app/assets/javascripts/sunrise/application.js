@@ -5,7 +5,6 @@
 //= require jquery-ui/datepicker
 //= require datepicker/jquery.ui.datepicker-uk
 //= require datepicker/jquery.ui.datepicker-ru
-//= require select2
 
 //= require sunrise/jquery.tmpl.min
 //= require sunrise/jquery.cookie

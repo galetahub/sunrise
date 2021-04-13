@@ -50,7 +50,7 @@ module Sunrise
     delegate :label, to: 'self.class.config'
     delegate :param_key, :singular, :plural, :route_key, to: :model_name
 
-    define_model_callbacks :sort, :mass_destroy, only: [:before, :after]
+    define_model_callbacks :sort, :mass_destroy, only: %i[before after]
 
     def initialize(params = {})
       @model_name = model.model_name

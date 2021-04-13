@@ -6,9 +6,10 @@
   <meta name="robots" content="NONE,NOARCHIVE" />
 	<%= csrf_meta_tag %>
   <title><%= t('manage.page_title') %></title>
-  
-  <%= stylesheet_link_tag "sunrise/application" %>
-  <%= javascript_include_tag "sunrise/application" %>
+
+  <%= stylesheet_link_tag 'sunrise/application' %>
+  <%= javascript_include_tag 'sunrise/application' %>
+  <%#= javascript_include_tag ::Ckeditor.cdn_url %>
 </head>
 <body>
   <div class="outer">
@@ -16,16 +17,16 @@
 		  <%= render :partial => "sunrise/shared/panel" %>
 		  <%= manage_render_header %>
 	  </div>
-	  
+
     <%= yield %>
 	</div>
-	
+
 	<div class="footer">
 	  <div class="fwrapper">
       <%= image_tag("sunrise/created.png", :title => "fodojo.com") %>
 	  </div>
 	</div>
-  	
+
 	<div id="dark-shadow" class="dark-bg" style="display:none;"></div>
 </body>
 </html>

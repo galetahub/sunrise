@@ -116,7 +116,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   background: url(/assets/sunrise/top_plus.png) no-repeat 15px center;
   padding: 0 20px 0 35px;
 }
-.top-wrapper .menu-holder .main-menu .main .arr, 
+.top-wrapper .menu-holder .main-menu .main .arr,
 .top-wrapper .menu-holder .main-menu .creates .arr {
   display: block;
   overflow: hidden;
@@ -141,6 +141,9 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   margin: 0 0 0 1px;
   list-style: none;
   border-left: solid 1px #000;
+  /* scrollable dropdowns */
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 .sub-wrapper .default-list li a {
   display: block;
@@ -165,7 +168,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 .field_with_errors span.error {
   color: #ff0000;
-  font-size: 12px; 
+  font-size: 12px;
 }
 
 div.input.check_boxes span.checkbox {
@@ -284,7 +287,7 @@ div.input.boolean input {
 }
 
 .select2-drop-active {
-  border: 1px solid #d9d9d9 !important; 
+  border: 1px solid #d9d9d9 !important;
 }
 .select2-container-active .select2-choice, .select2-container-active .select2-choices {
   border: 1px solid #d9d9d9 !important;

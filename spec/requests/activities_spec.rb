@@ -21,7 +21,7 @@ describe 'Sunrise Manager Activities' do
       end
 
       it 'should show page title' do
-        should have_content 'Activities'
+        expect(page.body).to include 'Activities'
       end
 
       it 'should render records' do
@@ -37,7 +37,7 @@ describe 'Sunrise Manager Activities' do
     end
 
     it 'should redirect to login page' do
-      should have_content('Sign in')
+      expect(page.body).to include 'Log in'
     end
   end
 end
