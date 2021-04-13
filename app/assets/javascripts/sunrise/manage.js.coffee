@@ -12,11 +12,12 @@ class Sunrise
     $('[data-editable]').editable()
     $('[data-lang]').lang_tabs()
 
-    $("select.select:not(.noselect2)").select2(
-      allowClear: true
-      minimumResultsForSearch: 10
-      width: 'resolve'
-    )
+    if $?.fn?.select2?
+      $("select.select:not(.noselect2)").select2(
+        allowClear: true
+        minimumResultsForSearch: 10
+        width: 'resolve'
+      )
 
     this.init_submit_buttons()
     this.init_group_menus()

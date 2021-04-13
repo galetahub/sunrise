@@ -66,6 +66,7 @@ RSpec.configure do |config|
   config.include RSpec::Matchers
   config.include Sunrise::Engine.routes.url_helpers
   config.include Warden::Test::Helpers
+  config.include Capybara::DSL
 
   # == Mock Framework
   config.mock_with :rspec

@@ -22,3 +22,4 @@ spec/dummy/log/development.log
 vendor/bundle/
 .DS_Store
 uploads/
+.byebug_history

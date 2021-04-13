@@ -13,6 +13,7 @@ Sunrise::Engine.routes.draw do
     scope ':model_name' do
       get '/', action: :index, as: :index
       get '/export.:format', action: :export, as: :export
+      post '/import', action: :import, as: :import
       post '/sort', action: :sort, as: :sort
       get '/new', action: :new, as: :new
       post '/new', action: :create, as: :create

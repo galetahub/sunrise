@@ -69,6 +69,19 @@ module Sunrise
       end
     end
 
+    def import
+      return render plain: 'Unacceptable', status: 422 unless import_possible?
+
+      @files = import_process_uploaded_files
+
+      respond_to do |format|
+        format.html { redirect_to scoped_index_path }
+        format.json do
+          render json: { files: @files }
+        end
+      end
+    end
+
     def sort
       abstract_model.update_sort(params)
 
@@ -88,6 +101,32 @@ module Sunrise
     end
 
     protected
+
+    def import_process_uploaded_files
+      raw_files = params['files']
+      return [] if raw_files.blank?
+
+      raw_files.each_with_object([]) do |file, obj|
+        results = abstract_model.model.public_send(:sunrise_import, file)
+        results = render_imported_results(results, file)
+
+        obj << { name: file.original_filename, records: results }
+      end
+    end
+
+    def render_imported_results(results, file)
+      return results unless import_custom_render?
+
+      abstract_model.model.send(:sunrise_import_results_renderer, results, file)
+    end
+
+    def import_possible?
+      abstract_model.model.methods.include?(:sunrise_import)
+    end
+
+    def import_custom_render?
+      abstract_model.model.methods.include?(:sunrise_import_results_renderer)
+    end
 
     def find_model
       @abstract_model = Utils.get_model(params[:model_name], params)

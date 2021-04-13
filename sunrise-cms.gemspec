@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('babosa')
   s.add_dependency('cancan')
-  # s.add_dependency('cancan_namespace')
+
   s.add_dependency('carrierwave')
   s.add_dependency('galetahub-enum_field')
   s.add_dependency('jquery-ui-rails', '>= 5.0.0')
@@ -42,7 +42,6 @@ Gem::Specification.new do |s|
   s.add_dependency('public_activity', '>= 1.0.0')
   s.add_dependency('rails-settings-cached', '>= 0.4.0')
   s.add_dependency('rails-uploader')
-  s.add_dependency('select2-rails')
 
   s.add_development_dependency('capybara')
   s.add_development_dependency('database_cleaner')

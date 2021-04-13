@@ -2,6 +2,8 @@
 
 require 'rails'
 require 'sunrise'
+require 'select2-rails'
+require 'jquery-ui-rails'
 
 module Sunrise
   class Engine < ::Rails::Engine
@@ -9,6 +11,10 @@ module Sunrise
     isolate_namespace Sunrise
 
     config.i18n.load_path += Dir[Sunrise.root_path.join('config/locales/**', '*.{rb,yml}')]
+
+    config.assets.precompile += %w[
+      sunrise/*
+    ]
 
     initializer 'sunrise.setup' do
       I18n::Backend::Simple.include I18n::Backend::Pluralization
