@@ -1,9 +1,14 @@
+== 1.1.1
+  * Update code to be compatible with rails 5.x
+  * Import for records functional
+  * Remove select2 dependecy
+
 == 1.0.5
   * Update jQuery UI
 
 == 1.0.3
   * Fix parents relations
-  
+
 == 1.0.2
   * Use select2
   * Remove chosen
@@ -63,10 +68,10 @@
   * Replace paperclip with carrierwave
   * New model filter logic
 
-* Scaffold  
+* Scaffold
   * Generate spec tests for controllers
   * Apply new model filter logic
-  
+
 == 0.1.5
 * Core
   * Export users to csv
