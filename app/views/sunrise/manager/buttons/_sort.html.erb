@@ -1,13 +1,13 @@
 <div class="but-holder">
   <div class="act-but">
     <%= link_to image_tag('sunrise/empty.gif'), export_path(:format => :json), :class => 'but-container sort', :title => t('manage.buttons.sort'), :id => 'sort-button', :"data-save_title" => t('manage.buttons.save'), :"data-cancel_title" => t('manage.buttons.cancel'), :"data-url" => sort_path(:format => :json) %>
-    
+
     <script type="text/javascript">
       $(document).ready(function(){
         $('#sort-button').sort_dialog();
       });
     </script>
-    
+
     <script id="sort-template" type="text/x-jquery-tmpl">
       <div class="sort-item" data-record-id="${id}">
         <div class="sort-inner">

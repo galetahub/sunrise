@@ -38,6 +38,10 @@ module Sunrise
         Config.available_index_views
       end
 
+      register_instance_option(:available_import) do
+        Config.available_import
+      end
+
       register_instance_option(:sort_column) do
         Config.sort_column
       end
