@@ -1344,6 +1344,10 @@ a.close-but:hover {
 	font-size: 18px;
 }
 
+.import-invalid-error {
+	background: #ffe6e6;
+}
+
 .import-wrapper.disabled:before {
 	content: '';
 	cursor: wait;
@@ -1373,11 +1377,23 @@ a.close-but:hover {
 	box-sizing: border-box;
 	overflow-y: auto;
 	margin: 0;
+	padding: 0;
 }
 
 .import-items-holder ul {
 	float: none;
 	clear: both;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.import-items-holder li {
+	padding: 5px 15px;
+}
+
+.import-items-holder li+li {
+	border-top: 2px solid #fff;
 }
 
 .sort-wrapper .sort-items-holder .sort-item {

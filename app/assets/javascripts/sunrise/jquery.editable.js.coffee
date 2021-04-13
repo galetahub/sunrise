@@ -51,11 +51,11 @@ class Editable
     window.location = location
 
   allowAction: (element) ->
-    message = element.data('confirm-message')
+    message = element.data('confirm-message') || element.data('confirm')
     answer = false
-    # callback;
-    if !message
-      return true
+    callback = undefined
+
+    return true unless message
 
     if $.rails.fire(element, 'confirm')
       answer = $.rails.confirm(message)

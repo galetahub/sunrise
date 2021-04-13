@@ -8,7 +8,6 @@
  *= require sunrise/customize.css
  *= require sunrise/plugins.css
  *= require uploader/application
- *= require select2
 
  *= require jquery-ui/core
  *= require jquery-ui/theme
