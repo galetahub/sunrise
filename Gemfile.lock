@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sunrise-cms (1.1.0)
+    sunrise-cms (1.1.1)
       babosa
       cancan
       carrierwave
@@ -16,7 +16,6 @@ PATH
       rails (>= 4.0.0)
       rails-settings-cached (>= 0.4.0)
       rails-uploader
-      select2-rails
       simple_form
 
 GEM
@@ -241,7 +240,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    select2-rails (4.0.13)
     simple_form (4.0.0)
       actionpack (> 4)
       activemodel (> 4)
