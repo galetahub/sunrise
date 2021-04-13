@@ -13,13 +13,7 @@ module Sunrise
     config.i18n.load_path += Dir[Sunrise.root_path.join('config/locales/**', '*.{rb,yml}')]
 
     config.assets.precompile += %w[
-      sunrise/**/*
-      sunrise/audit/created_at.png
-      sunrise/audit/owner.png
-      sunrise/audit/key.png
-      sunrise/created.png
-      sunrise/application.css
-      sunrise/application.js
+      sunrise/*
     ]
 
     initializer 'sunrise.setup' do
