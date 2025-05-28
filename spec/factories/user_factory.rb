@@ -4,11 +4,11 @@ FactoryBot.define do
   sequence(:email) { |n| "testing#{n}@example.com" }
 
   factory :admin_user, class: User do
-    name 'Admin'
+    name { 'Admin' }
     email { generate(:email) }
-    password               'password'
-    password_confirmation  'password'
-    role_type_id RoleType.admin.id
+    password               { 'password' }
+    password_confirmation  { 'password' }
+    role_type_id { RoleType.admin.id }
 
     after(:build) do |u|
       u.skip_confirmation!
@@ -16,11 +16,11 @@ FactoryBot.define do
   end
 
   factory :redactor_user, class: User do
-    name 'Redactor'
+    name { 'Redactor' }
     email { generate(:email) }
-    password               'password'
-    password_confirmation  'password'
-    role_type_id RoleType.redactor.id
+    password               { 'password' }
+    password_confirmation  { 'password' }
+    role_type_id { RoleType.redactor.id }
 
     after(:build) do |u|
       u.skip_confirmation!
@@ -28,11 +28,11 @@ FactoryBot.define do
   end
 
   factory :default_user, class: User do
-    name 'Test'
+    name { 'Test' }
     email { generate(:email) }
-    password               'password'
-    password_confirmation  'password'
-    role_type_id RoleType.default.id
+    password               { 'password' }
+    password_confirmation  { 'password' }
+    role_type_id { RoleType.default.id }
 
     after(:build) do |u|
       u.skip_confirmation!
@@ -40,9 +40,9 @@ FactoryBot.define do
   end
 
   factory :user, class: User do
-    name 'Test'
+    name { 'Test' }
     email { generate(:email) }
-    password               'password'
-    password_confirmation  'password'
+    password               { 'password' }
+    password_confirmation  { 'password' }
   end
 end
