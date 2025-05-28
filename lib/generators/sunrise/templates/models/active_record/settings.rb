@@ -2,7 +2,7 @@
 
 require 'rails-settings-cached'
 
-class Settings < RailsSettings::CachedSettings
+class Settings < RailsSettings::Base
   include PublicActivity::Model
 
   tracked owner: ->(controller, _model) { controller.try(:current_user) }

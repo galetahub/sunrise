@@ -13,7 +13,7 @@ describe Avatar do
 
   after(:each) do
     AvatarUploader.enable_processing = false
-    @avatar.destroy if @avatar.persisted?
+    @avatar.destroy if @avatar
   end
 
   it 'should create a new instance given valid attributes' do
@@ -44,7 +44,7 @@ describe Avatar do
     end
 
     it 'filename should be valid' do
-      @avatar.filename.should == 'rails.png'
+      expect(@avatar.filename).to eq 'rails.png'
     end
 
     it 'content-type should be valid' do
@@ -65,8 +65,8 @@ describe Avatar do
 
     it 'width and height should be valid' do
       if @avatar.has_dimensions?
-        @avatar.width.should == 50
-        @avatar.height.should == 64
+        expect(@avatar.width).to eq 50
+        expect(@avatar.height).to eq 64
       end
     end
 
@@ -84,14 +84,14 @@ describe Avatar do
     end
 
     it 'should construct cropping geometry' do
-      @avatar.cropper_geometry.should == %w[50 64 10 10]
-      @avatar.cropper_geometry_changed?.should == true
+      expect(@avatar.cropper_geometry).to eq %w[50 64 10 10]
+      expect(@avatar.cropper_geometry_changed?).to eq true
     end
 
     it 'should set image dimensions before process' do
-      @avatar.width.should == 50
-      @avatar.height.should == 64
-      @avatar.data.dimensions.should == [50, 64]
+      expect(@avatar.width).to eq 50
+      expect(@avatar.height).to eq 64
+      expect(@avatar.data.dimensions).to eq [50, 64]
     end
 
     context 'reprocess' do
@@ -100,9 +100,9 @@ describe Avatar do
       end
 
       it 'should crop image by specific geometry' do
-        @avatar.width.should == 40
-        @avatar.height.should == 54
-        @avatar.data.dimensions.should == [40, 54]
+        expect(@avatar.width).to eq 40
+        expect(@avatar.height).to eq 54
+        expect(@avatar.data.dimensions).to eq [40, 54]
       end
     end
   end
@@ -114,14 +114,14 @@ describe Avatar do
     end
 
     it 'should set property correctly' do
-      @avatar.rotate_degrees.should == '-90'
-      @avatar.rotate_degrees_changed?.should == true
+      expect(@avatar.rotate_degrees).to eq '-90'
+      expect(@avatar.rotate_degrees_changed?).to eq true
     end
 
     it 'should set image dimensions before process' do
-      @avatar.width.should == 50
-      @avatar.height.should == 64
-      @avatar.data.dimensions.should == [50, 64]
+      expect(@avatar.width).to eq 50
+      expect(@avatar.height).to eq 64
+      expect(@avatar.data.dimensions).to eq [50, 64]
     end
 
     context 'reprocess' do
@@ -130,9 +130,9 @@ describe Avatar do
       end
 
       it 'should crop image by specific geometry' do
-        @avatar.width.should == 64
-        @avatar.height.should == 50
-        @avatar.data.dimensions.should == [64, 50]
+        expect(@avatar.width).to eq 64
+        expect(@avatar.height).to eq 50
+        expect(@avatar.data.dimensions).to eq [64, 50]
       end
     end
   end
