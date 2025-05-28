@@ -25,26 +25,23 @@ Gem::Specification.new do |s|
   s.executables = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_dependency('kaminari')
   s.add_dependency('rails', '>= 4.0.0')
+  s.add_dependency('kaminari')
   s.add_dependency('simple_form')
-
-  s.add_dependency('babosa')
-  s.add_dependency('cancan')
-
+  s.add_dependency('cancancan')
   s.add_dependency('carrierwave')
   s.add_dependency('galetahub-enum_field')
-  s.add_dependency('jquery-ui-rails', '>= 5.0.0')
-  s.add_dependency('meta_manager', '>= 0.2.0')
+  s.add_dependency('jquery-ui-rails')
+  s.add_dependency('meta_manager')
   s.add_dependency('mime-types')
   s.add_dependency('mini_magick')
-  s.add_dependency('page_parts', '>= 0.1.3')
-  s.add_dependency('public_activity', '>= 1.0.0')
-  s.add_dependency('rails-settings-cached', '>= 0.4.0')
+  s.add_dependency('page_parts')
+  s.add_dependency('public_activity')
+  s.add_dependency('rails-settings-cached')
   s.add_dependency('rails-uploader')
 
   s.add_development_dependency('capybara')
   s.add_development_dependency('database_cleaner')
-  s.add_development_dependency('factory_girl_rails')
+  s.add_development_dependency('factory_bot_rails')
   s.add_development_dependency('rspec-rails')
 end

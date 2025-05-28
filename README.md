@@ -4,22 +4,28 @@ Open source mini content management system for programmers.
 
 ## Setup
 
+For rails 7.x.x:
+
+```ruby
+gem 'sunrise-cms', '~> 2.0', require: 'sunrise'
+```
+
 For rails 5.x.x:
 
 ```ruby
-  gem 'sunrise-cms', '~> 1.1.0', require: 'sunrise'
+gem 'sunrise-cms', '~> 1.1.0', require: 'sunrise'
 ```
 
 For rails 4.x.x:
 
 ```ruby
-  gem "sunrise-cms", :require => "sunrise"
+gem "sunrise-cms", :require => "sunrise"
 ```
 
 For rails 3.x.x:
 
 ```ruby
-  gem "sunrise-cms", "~> 0.7.x" :require => "sunrise"
+gem "sunrise-cms", "~> 0.7.x" :require => "sunrise"
 ```
 
 ## Instructions
@@ -27,23 +33,23 @@ For rails 3.x.x:
 ### ActiveRecord
 
 ```bash
-$> rails g devise:install
-$> rails g sunrise:install --orm=active_record
+rails g devise:install
+rails g sunrise:install --orm=active_record
 ```
 
 Copy db migrations files:
 
 ```bash
-$> rake sunrise:install:migrations
-$> rake page_parts_engine:install:migrations
-$> rake meta_manager_engine:install:migrations
-$> rails g public_activity:migration
+rake sunrise:install:migrations
+rake page_parts_engine:install:migrations
+rake meta_manager_engine:install:migrations
+rails g public_activity:migration
 ```
 
 ### Mongoid
 
 ```bash
-$> rails g sunrise:install --orm=mongoid
+rails g sunrise:install --orm=mongoid
 ```
 
 ## Usage
@@ -57,7 +63,7 @@ class SunriseProduct < Sunrise::AbstractModel
   association :structure
 
   after_sort :clear_cache
-  
+
   index :thumbs do
     scope { Product.includes(:picture) }
     preview lambda { |product| product.picture.try(:url, :thumb) }
@@ -78,7 +84,7 @@ class SunriseProduct < Sunrise::AbstractModel
     field :unique_accounts_count
     field :total_points
   end
-  
+
   show do
     field :title
     field :price
@@ -86,12 +92,12 @@ class SunriseProduct < Sunrise::AbstractModel
     field :sort_order
     field :is_visible
   end
-  
+
   form do
     field :title
     field :price
     field :total_stock
-    
+
     field do |form, record|
       form.input :notes, :as => :text, :id => record.id
     end
@@ -113,7 +119,7 @@ class SunriseProduct < Sunrise::AbstractModel
         field :name
         field :value
       end
-    
+
       field :picture, :as => :uploader
     end
   end
@@ -163,7 +169,7 @@ For more info look at jbuilder https://rubygems.org/gems/jbuilder.
 
 ### Strong parameters
 
-Now in sunrise file you can perform attributes check. 
+Now in sunrise file you can perform attributes check.
 By default permited_attributes allow edit all attributes.
 
 ```ruby
@@ -171,11 +177,11 @@ class SunrisePost < Sunrise::AbstractModel
   self.resource_name = "Post"
   edit do
     # Default value
-    # permited_attributes :all 
+    # permited_attributes :all
 
     # Pre user check
-    permited_attributes lambda { |user| 
-      user.admin? ? :all : [:title, :content] 
+    permited_attributes lambda { |user|
+      user.admin? ? :all : [:title, :content]
     }
   end
 end
@@ -207,4 +213,4 @@ config.to_prepare do
 end
 ```
 
-Copyright (c) 2014 Fodojo, released under the MIT license
+Copyright (c) 2025 Fodojo, released under the MIT license

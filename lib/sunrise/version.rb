@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Sunrise
-  VERSION = '1.1.1'.freeze
+  VERSION = '2.0.0'.freeze
 end
