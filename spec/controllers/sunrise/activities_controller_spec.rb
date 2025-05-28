@@ -3,6 +3,7 @@
 require 'spec_helper'
 
 describe Sunrise::ActivitiesController, type: :controller do
+  routes { Sunrise::Engine.routes }
   render_views
 
   before(:all) do

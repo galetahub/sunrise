@@ -18,7 +18,7 @@ module Sunrise
         after_initialize :set_default_role
 
         validates :name, presence: true
-        validate :check_role
+        validate :ensure_role_is_allowed
 
         scope :with_email, ->(email) { where(email: email) }
         scope :with_name, ->(name) { where(name: name) }
@@ -87,7 +87,7 @@ module Sunrise
         self.role_type ||= ::RoleType.default
       end
 
-      def check_role
+      def ensure_role_is_allowed
         errors.add(:role_type_id, :invalid) unless ::RoleType.legal?(role_type_id)
       end
     end

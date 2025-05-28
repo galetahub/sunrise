@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 describe Sunrise::ManagerController, type: :controller do
+  routes { Sunrise::Engine.routes }
+
   describe '#current_ability' do
     before(:each) { @ability = controller.send(:current_ability) }
 

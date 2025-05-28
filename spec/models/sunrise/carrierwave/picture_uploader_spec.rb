@@ -7,7 +7,7 @@ describe PictureUploader do
   include CarrierWave::Test::Matchers
 
   before do
-    PictureUploader.enable_processing = true
+    PictureUploader.enable_processing = false
     @avatar = FactoryBot.build(:asset_avatar, data: nil)
     @uploader = PictureUploader.new(@avatar, :data)
     @uploader.store!(File.open('spec/factories/files/rails.png'))
