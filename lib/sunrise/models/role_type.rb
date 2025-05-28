@@ -5,14 +5,8 @@ module Sunrise
     class RoleType
       include EnumField::DefineEnum
 
-      attr_reader :code
-
-      def initialize(code)
-        @code = code.to_sym
-      end
-
       def title
-        I18n.t(@code, scope: 'manage.role.kind')
+        I18n.t(name, scope: 'manage.role.kind')
       end
 
       def self.legal?(value)

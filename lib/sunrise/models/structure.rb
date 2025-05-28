@@ -13,9 +13,9 @@ module Sunrise
         enumerated_attribute :structure_type
         enumerated_attribute :position_type
 
-        validates_presence_of :title
-        validates_numericality_of :position_type_id, only_integer: true
-        validates_numericality_of :structure_type_id, only_integer: true
+        validates :title, presence: true
+        validates :position_type_id, numericality: { only_integer: true }
+        validates :structure_type_id, numericality: { only_integer: true }
 
         acts_as_nested_set
 
