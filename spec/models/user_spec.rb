@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe User do
   before(:all) do
-    @user = FactoryGirl.build(:default_user)
+    @user = FactoryBot.build(:default_user)
   end
 
   it 'should create a new instance given valid attributes' do
@@ -35,7 +35,7 @@ describe User do
 
   context 'after create' do
     before(:each) do
-      @user = FactoryGirl.create(:default_user)
+      @user = FactoryBot.create(:default_user)
     end
 
     it 'should search users by email' do

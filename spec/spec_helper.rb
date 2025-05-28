@@ -21,6 +21,7 @@ require 'rspec/rails'
 require 'generator_spec/test_case'
 require 'capybara/rspec'
 require 'database_cleaner'
+require 'factory_bot_rails'
 
 ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
@@ -50,11 +51,6 @@ CarrierWave::Uploader::Base.descendants.each do |klass|
     end
   end
 end
-
-# Fixtures replacement with a straightforward definition syntax
-require 'factory_girl'
-FactoryGirl.definition_file_paths = [File.expand_path('factories', __dir__)]
-FactoryGirl.find_definitions
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }

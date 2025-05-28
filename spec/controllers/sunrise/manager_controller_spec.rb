@@ -20,8 +20,8 @@ describe Sunrise::ManagerController, type: :controller do
 
     context 'index' do
       before(:all) do
-        @root = FactoryGirl.create(:structure_main)
-        @page = FactoryGirl.create(:structure_page, parent: @root)
+        @root = FactoryBot.create(:structure_main)
+        @page = FactoryBot.create(:structure_page, parent: @root)
       end
 
       it 'should respond successfully' do
@@ -49,7 +49,7 @@ describe Sunrise::ManagerController, type: :controller do
 
     context 'posts' do
       before(:all) do
-        @post = FactoryGirl.create(:post)
+        @post = FactoryBot.create(:post)
       end
 
       it 'should respond successfully' do

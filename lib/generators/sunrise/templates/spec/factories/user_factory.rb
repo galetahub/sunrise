@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :admin_user, class: User do |user|
     user.name 'Admin'
-    user.email { FactoryGirl.generate(:email) }
+    user.email { FactoryBot.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
 
@@ -15,7 +15,7 @@ FactoryGirl.define do
 
   factory :redactor_user, class: User do |user|
     user.name 'Redactor'
-    user.email { FactoryGirl.generate(:email) }
+    user.email { FactoryBot.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
 
@@ -27,7 +27,7 @@ FactoryGirl.define do
 
   factory :moderator_user, class: User do |user|
     user.name 'Redactor'
-    user.email { FactoryGirl.generate(:email) }
+    user.email { FactoryBot.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
 
@@ -39,7 +39,7 @@ FactoryGirl.define do
 
   factory :default_user, class: User do |user|
     user.name 'Test'
-    user.email { FactoryGirl.generate(:email) }
+    user.email { FactoryBot.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
 
@@ -51,7 +51,7 @@ FactoryGirl.define do
 
   factory :user, class: User do |user|
     user.name 'Test'
-    user.email { FactoryGirl.generate(:email) }
+    user.email { FactoryBot.generate(:email) }
     user.password               'password'
     user.password_confirmation  'password'
   end

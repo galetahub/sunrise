@@ -51,7 +51,7 @@ describe Sunrise::AbstractModel do
       end
 
       it 'should destroy all items' do
-        @structure = FactoryGirl.create(:structure_page)
+        @structure = FactoryBot.create(:structure_page)
 
         lambda {
           @abstract_model.destroy_all(ids: [@structure.id])

@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'Sunrise Manager New' do
   subject { page }
-  before(:all) { @admin = FactoryGirl.create(:admin_user) }
+  before(:all) { @admin = FactoryBot.create(:admin_user) }
 
   context 'admin' do
     before(:each) { login_as @admin }

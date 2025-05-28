@@ -5,10 +5,10 @@ require 'spec_helper'
 describe 'Sunrise Manager Activities' do
   subject { page }
   before(:all) do
-    @admin = FactoryGirl.create(:admin_user, email: "#{Time.now.to_i}@gmail.com")
+    @admin = FactoryBot.create(:admin_user, email: "#{Time.now.to_i}@gmail.com")
 
-    @post = FactoryGirl.create(:post)
-    @user = FactoryGirl.create(:redactor_user)
+    @post = FactoryBot.create(:post)
+    @user = FactoryBot.create(:redactor_user)
     @event = @post.create_activity key: 'post.create', owner: @user
   end
 

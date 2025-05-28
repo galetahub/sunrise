@@ -4,8 +4,8 @@ require 'spec_helper'
 
 describe Structure do
   before(:all) do
-    @root = FactoryGirl.create(:structure_main)
-    @structure = FactoryGirl.build(:structure_page, parent: @root)
+    @root = FactoryBot.create(:structure_main)
+    @structure = FactoryBot.build(:structure_page, parent: @root)
   end
 
   it 'should create a new instance given valid attributes' do
@@ -50,7 +50,7 @@ describe Structure do
     end
 
     it 'should calc depth column' do
-      st = FactoryGirl.build(:structure_page, parent: nil)
+      st = FactoryBot.build(:structure_page, parent: nil)
       st.parent_id = @structure.id
       st.save
 
@@ -64,7 +64,7 @@ describe Structure do
 
   context 'friendly_id' do
     before(:all) do
-      @structure = FactoryGirl.build(:structure_page, title: 'Bla bla bla', parent: @root)
+      @structure = FactoryBot.build(:structure_page, title: 'Bla bla bla', parent: @root)
       @slug = @structure.slug
 
       @structure.should be_new_record
@@ -84,7 +84,7 @@ describe Structure do
     end
 
     it "should not generate slug if it's already exist" do
-      struct = FactoryGirl.build(:structure_page, title: 'Tra ta ta', parent: @root)
+      struct = FactoryBot.build(:structure_page, title: 'Tra ta ta', parent: @root)
       struct.slug = 'original-slug'
       struct.save
       struct.reload

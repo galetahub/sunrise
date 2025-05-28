@@ -6,7 +6,7 @@ describe WelcomeController, type: :controller do
   render_views
 
   before(:each) do
-    @root = FactoryGirl.create(:structure_main)
+    @root = FactoryBot.create(:structure_main)
   end
 
   it 'should render index action' do

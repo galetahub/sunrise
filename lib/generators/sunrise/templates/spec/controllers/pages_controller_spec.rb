@@ -6,11 +6,11 @@ describe PagesController, type: :controller do
   render_views
 
   before(:all) do
-    @root = FactoryGirl.create(:structure_main)
+    @root = FactoryBot.create(:structure_main)
   end
 
   context 'page' do
-    before(:each) { @page = FactoryGirl.create(:structure_page, parent: @root) }
+    before(:each) { @page = FactoryBot.create(:structure_page, parent: @root) }
 
     it 'should render show action' do
       get :show, id: @page.slug

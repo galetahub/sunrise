@@ -5,10 +5,10 @@ require 'spec_helper'
 describe 'Sunrise Manager New' do
   subject { page }
   before(:all) do
-    @admin = FactoryGirl.create(:admin_user)
+    @admin = FactoryBot.create(:admin_user)
 
-    @root = FactoryGirl.create(:structure_main)
-    @page = FactoryGirl.create(:structure_page, parent: @root)
+    @root = FactoryBot.create(:structure_main)
+    @page = FactoryBot.create(:structure_page, parent: @root)
   end
 
   context 'admin' do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :asset_avatar, class: Avatar do |a|
     # include ActionDispatch::TestProcess
     a.data File.open('spec/factories/files/rails.png')

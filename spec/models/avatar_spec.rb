@@ -8,7 +8,7 @@ describe Avatar do
 
   before(:each) do
     AvatarUploader.enable_processing = true
-    @avatar = FactoryGirl.build(:asset_avatar)
+    @avatar = FactoryBot.build(:asset_avatar)
   end
 
   after(:each) do
@@ -32,7 +32,7 @@ describe Avatar do
     end
 
     it 'should not be valid with big size image' do
-      @avatar = FactoryGirl.build(:asset_avatar_big)
+      @avatar = FactoryBot.build(:asset_avatar_big)
       @avatar.should_not be_valid
       @avatar.errors[:data].first.should =~ /is\stoo\sbig/
     end

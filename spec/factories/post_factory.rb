@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :post, class: Post do |p|
     p.title 'Default title'
     p.content 'Some post content'

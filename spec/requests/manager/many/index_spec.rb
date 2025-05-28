@@ -5,12 +5,12 @@ require 'spec_helper'
 describe 'Sunrise Manager Index many' do
   subject { page }
   before(:all) do
-    @admin = FactoryGirl.create(:admin_user)
+    @admin = FactoryBot.create(:admin_user)
 
-    @root = FactoryGirl.create(:structure_main)
-    @page = FactoryGirl.create(:structure_page, parent: @root)
+    @root = FactoryBot.create(:structure_main)
+    @page = FactoryBot.create(:structure_page, parent: @root)
 
-    @post = FactoryGirl.create(:post, structure: @page)
+    @post = FactoryBot.create(:post, structure: @page)
   end
 
   context 'admin' do
@@ -28,7 +28,7 @@ describe 'Sunrise Manager Index many' do
 
     describe 'search' do
       before(:each) do
-        @post2 = FactoryGirl.create(:post, title: 'Good day', structure: @page)
+        @post2 = FactoryBot.create(:post, title: 'Good day', structure: @page)
 
         visit index_path(model_name: 'posts', parent_id: @page.id, parent_type: @page.class.name)
 

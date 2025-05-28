@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :structure_page, class: Structure do
     title 'Structure'
-    slug { FactoryGirl.generate(:slug) }
+    slug { FactoryBot.generate(:slug) }
     structure_type StructureType.page
     position_type PositionType.menu
     is_visible true

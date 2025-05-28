@@ -6,8 +6,8 @@ describe Sunrise::ActivitiesController, type: :controller do
   render_views
 
   before(:all) do
-    @post = FactoryGirl.create(:post)
-    @user = FactoryGirl.create(:redactor_user)
+    @post = FactoryBot.create(:post)
+    @user = FactoryBot.create(:redactor_user)
     @event = @post.create_activity key: 'post.create', owner: @user
   end
 
