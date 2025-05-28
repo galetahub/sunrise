@@ -7,7 +7,7 @@ describe Avatar do
   include CarrierWave::Test::Matchers
 
   before(:each) do
-    AvatarUploader.enable_processing = true
+    AvatarUploader.enable_processing = false
     @avatar = FactoryBot.build(:asset_avatar)
   end
 

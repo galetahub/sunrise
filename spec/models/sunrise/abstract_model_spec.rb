@@ -5,15 +5,15 @@ require 'spec_helper'
 describe Sunrise::AbstractModel do
   describe 'SunriseStructure' do
     it 'should return resource_name' do
-      SunriseStructure.resource_name.should == 'Structure'
+      expect(SunriseStructure.resource_name).to eq 'Structure'
     end
 
     it 'should load structure model' do
-      SunriseStructure.model.should == Structure
+      expect(SunriseStructure.model).to eq Structure
     end
 
     it 'should not be abstract_class?' do
-      SunriseStructure.should_not be_abstract_class
+      expect(SunriseStructure).not_to be_abstract_class
     end
 
     context 'instance' do
@@ -23,13 +23,13 @@ describe Sunrise::AbstractModel do
       end
 
       it 'should return valid attributes' do
-        @abstract_model.current_list.should == :tree
-        @abstract_model.plural.should == 'structures'
-        @abstract_model.model_name.should == Structure.model_name
+        expect(@abstract_model.current_list).to eq :tree
+        expect(@abstract_model.plural).to eq 'structures'
+        expect(@abstract_model.model_name).to eq Structure.model_name
       end
 
       it 'should return record attrs' do
-        @abstract_model.param_key.should == 'structure'
+        expect(@abstract_model.param_key).to eq 'structure'
       end
 
       it 'should not load parent record' do
@@ -47,7 +47,7 @@ describe Sunrise::AbstractModel do
 
       it 'should update current list view' do
         model = Sunrise::Utils.get_model('structures', view: 'thumbs')
-        model.current_list.should == :thumbs
+        expect(model.current_list).to eq :thumbs
       end
 
       it 'should destroy all items' do
@@ -62,11 +62,11 @@ describe Sunrise::AbstractModel do
 
   describe 'SunrisePage' do
     it 'should not have config for list' do
-      SunrisePage.config.index.should == false
+      expect(SunrisePage.config.index).to eq false
     end
 
     it 'should load structure model' do
-      SunriseStructure.model.should == Structure
+      expect(SunriseStructure.model).to eq Structure
     end
 
     context 'instance' do
@@ -76,8 +76,8 @@ describe Sunrise::AbstractModel do
       end
 
       it 'should not render list config' do
-        @abstract_model.without_index?.should == true
-        @abstract_model.list.should == false
+        expect(@abstract_model.without_index?).to eq true
+        expect(@abstract_model.list).to eq false
       end
     end
   end

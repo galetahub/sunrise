@@ -58,8 +58,8 @@ describe User do
     end
 
     it 'should set default role' do
-      @user.role_type_id.should == RoleType.default.id
-      @user.role_symbol.should == RoleType.default.code
+      expect(@user.role_type_id).to eq RoleType.default.id
+      expect(@user.role_symbol).to eq RoleType.default.name
     end
   end
 end
