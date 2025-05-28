@@ -11,7 +11,7 @@ class Settings < RailsSettings::CachedSettings
     field :app_name, type: :string, default: 'Rails application'
   end
 
-  def self.update_attributes(attributes)
+  def self.update(attributes)
     attributes.each do |key, value|
       self[key] = value
     end

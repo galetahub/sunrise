@@ -10,7 +10,7 @@ module Sunrise
     end
 
     def update
-      Settings.update_attributes(params[:settings])
+      Settings.update(params[:settings])
       redirect_to root_path
     end
   end

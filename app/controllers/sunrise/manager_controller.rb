@@ -37,7 +37,7 @@ module Sunrise
     end
 
     def create
-      @record.update_attributes(model_params)
+      @record.update(model_params)
       respond_with(@record, location: redirect_after_update(@record))
     end
 
@@ -48,7 +48,7 @@ module Sunrise
     end
 
     def update
-      @record.update_attributes(model_params)
+      @record.update(model_params)
       respond_with(@record, location: redirect_after_update(@record))
     end
 

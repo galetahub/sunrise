@@ -31,10 +31,10 @@ describe 'Sunrise Manager Edit' do
       it 'should update an object with correct attributes' do
         @page.reload
 
-        @page.title.should == 'Title updated'
-        @page.structure_type.should == StructureType.posts
-        @page.position_type.should == PositionType.default
-        @page.is_visible.should == false
+        expect(@page.title).to eq 'Title updated'
+        expect(@page.structure_type).to eq StructureType.posts
+        expect(@page.position_type).to eq PositionType.default
+        expect(@page.is_visible).to eq false
       end
 
       it 'should redirect with model_name' do
@@ -44,7 +44,7 @@ describe 'Sunrise Manager Edit' do
 
     describe 'Update /manage/pages/:id/edit' do
       before(:each) do
-        @page.update_attributes(content: 'Main', sidebar: 'Sidebar')
+        @page.update(content: 'Main', sidebar: 'Sidebar')
 
         visit edit_path(model_name: 'pages', id: @page.id)
 
@@ -57,8 +57,8 @@ describe 'Sunrise Manager Edit' do
       it 'should update an object with correct attributes' do
         @page.reload
 
-        @page.content.should == 'Main updated'
-        @page.sidebar.should == 'Sidebar updated'
+        expect(@page.content).to eq 'Main updated'
+        expect(@page.sidebar).to eq 'Sidebar updated'
       end
     end
   end

@@ -11,9 +11,9 @@ describe 'Sunrise Manager New' do
 
     describe 'GET /manage/typo/new' do
       it 'should raise NotFound' do
-        lambda {
+        expect {
           visit new_path(model_name: 'whatever')
-        }.should raise_error ActionController::RoutingError
+        }.to raise_error ActionController::RoutingError
       end
     end
 

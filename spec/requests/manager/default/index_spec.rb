@@ -21,9 +21,9 @@ describe 'Sunrise Manager Index' do
 
     describe 'GET /manage/typo' do
       it 'should raise NotFound' do
-        lambda {
+        expect {
           visit '/manage/whatever'
-        }.should raise_error ActionController::RoutingError
+        }.to raise_error ActionController::RoutingError
       end
     end
 
@@ -50,9 +50,9 @@ describe 'Sunrise Manager Index' do
 
     describe 'GET /manage/pages' do
       it 'should render 404 page' do
-        lambda {
+        expect {
           visit index_path(model_name: 'pages')
-        }.should raise_error AbstractController::ActionNotFound
+        }.to raise_error AbstractController::ActionNotFound
       end
     end
   end

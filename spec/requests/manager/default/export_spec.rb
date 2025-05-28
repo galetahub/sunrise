@@ -27,9 +27,9 @@ describe 'Sunrise Manager Export' do
       it 'should send excel file with users' do
         headers = page.response_headers
 
-        headers['Content-Transfer-Encoding'].should == 'binary'
-        headers['Content-Type'].should == 'application/vnd.ms-excel'
-        headers['Content-Disposition'].should == 'attachment; filename="users_2012-01-01_16h00m00.xls"'
+        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
+        expect(headers['Content-Type']).to eq 'application/vnd.ms-excel'
+        expect(headers['Content-Disposition']).to eq 'attachment; filename="users_2012-01-01_16h00m00.xls"'
       end
     end
 
@@ -41,13 +41,13 @@ describe 'Sunrise Manager Export' do
       it 'should send csv file with users' do
         headers = page.response_headers
 
-        headers['Content-Transfer-Encoding'].should == 'binary'
-        headers['Content-Type'].should == 'text/csv'
-        headers['Content-Disposition'].should == 'attachment; filename="users_2012-01-01_16h00m00.csv"'
+        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
+        expect(headers['Content-Type']).to eq 'text/csv'
+        expect(headers['Content-Disposition']).to eq 'attachment; filename="users_2012-01-01_16h00m00.csv"'
 
-        page.status_code.should == 200
-        page.body.should_not be_blank
-        page.body.should include(@admin.email)
+        expect(page.status_code).to eq 200
+        expect(page.body).not_to be_blank
+        expect(page.body).to include(@admin.email)
       end
     end
 
@@ -57,9 +57,9 @@ describe 'Sunrise Manager Export' do
       end
 
       it 'should render users to json format' do
-        page.body.should include(@admin.email)
+        expect(page.body).to include(@admin.email)
 
-        page.response_headers['Content-Type'].should == 'application/json; charset=utf-8'
+        expect(page.response_headers['Content-Type']).to eq 'application/json; charset=utf-8'
       end
     end
 
@@ -73,14 +73,14 @@ describe 'Sunrise Manager Export' do
       it 'should send csv file with posts' do
         headers = page.response_headers
 
-        headers['Content-Transfer-Encoding'].should == 'binary'
-        headers['Content-Type'].should == 'text/csv'
-        headers['Content-Disposition'].should == 'attachment; filename="posts_2012-01-01_16h00m00.csv"'
+        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
+        expect(headers['Content-Type']).to eq 'text/csv'
+        expect(headers['Content-Disposition']).to eq 'attachment; filename="posts_2012-01-01_16h00m00.csv"'
 
-        page.status_code.should == 200
-        page.body.should_not be_blank
-        page.body.should include(@page.title)
-        page.body.should include(@page.slug)
+        expect(page.status_code).to eq 200
+        expect(page.body).not_to be_blank
+        expect(page.body).to include(@page.title)
+        expect(page.body).to include(@page.slug)
       end
     end
 
@@ -92,9 +92,9 @@ describe 'Sunrise Manager Export' do
       it 'should send excel file with structures' do
         headers = page.response_headers
 
-        headers['Content-Transfer-Encoding'].should == 'binary'
-        headers['Content-Type'].should == 'application/vnd.ms-excel'
-        headers['Content-Disposition'].should == 'attachment; filename="structures_2012-01-01_16h00m00.xls"'
+        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
+        expect(headers['Content-Type']).to eq 'application/vnd.ms-excel'
+        expect(headers['Content-Disposition']).to eq 'attachment; filename="structures_2012-01-01_16h00m00.xls"'
       end
     end
 
@@ -104,9 +104,9 @@ describe 'Sunrise Manager Export' do
       end
 
       it 'should render structures to xml format' do
-        page.body.should include(@root.title)
+        expect(page.body).to include(@root.title)
 
-        page.response_headers['Content-Type'].should == 'application/xml; charset=utf-8'
+        expect(page.response_headers['Content-Type']).to eq 'application/xml; charset=utf-8'
       end
     end
   end

@@ -20,9 +20,9 @@ describe 'Sunrise Manager Edit' do
 
     describe 'GET /manage/typo/edit' do
       it 'should raise NotFound' do
-        lambda {
+        expect {
           visit edit_path(model_name: 'whatever', id: @page.id)
-        }.should raise_error ActionController::RoutingError
+        }.to raise_error ActionController::RoutingError
       end
     end
 

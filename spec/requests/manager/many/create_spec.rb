@@ -28,16 +28,16 @@ describe 'Sunrise Manager New' do
       end
 
       it 'should create an object with correct attributes' do
-        @post.should_not be_nil
-        @post.title.should == 'Good title'
-        @post.content.should_not be_blank
-        @post.is_visible.should == true
-        @post.structure.should == @page
+        expect(@post).not_to be_nil
+        expect(@post.title).to eq 'Good title'
+        expect(@post.content).not_to be_blank
+        expect(@post.is_visible).to eq true
+        expect(@post.structure).to eq @page
       end
 
       it 'should redirect with association params' do
-        page.current_path.should == '/manage/posts'
-        page.current_url.should == "http://www.example.com/manage/posts?parent_id=#{@page.id}&parent_type=#{@page.class.name}"
+        expect(page.current_path).to eq '/manage/posts'
+        expect(page.current_url).to eq "http://www.example.com/manage/posts?parent_id=#{@page.id}&parent_type=#{@page.class.name}"
       end
     end
   end

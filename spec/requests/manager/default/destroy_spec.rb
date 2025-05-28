@@ -21,7 +21,7 @@ describe 'Sunrise Manager destroy' do
       end
 
       it 'should update an object with correct attributes' do
-        Structure.where(id: @page.id).first.should be_nil
+        expect(Structure.where(id: @page.id).first).to be_nil
       end
     end
   end

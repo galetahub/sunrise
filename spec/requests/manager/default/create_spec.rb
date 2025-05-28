@@ -24,11 +24,11 @@ describe 'Sunrise Manager New' do
       end
 
       it 'should create an object with correct attributes' do
-        @structure.should_not be_nil
-        @structure.title.should == 'Good day'
-        @structure.structure_type.should == StructureType.page
-        @structure.position_type.should == PositionType.menu
-        @structure.is_visible.should == true
+        expect(@structure).not_to be_nil
+        expect(@structure.title).to eq 'Good day'
+        expect(@structure.structure_type).to eq StructureType.page
+        expect(@structure.position_type).to eq PositionType.menu
+        expect(@structure.is_visible).to eq true
       end
     end
   end
