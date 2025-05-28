@@ -25,7 +25,7 @@ describe Sunrise::ManagerController, type: :controller do
       end
 
       it 'should respond successfully' do
-        get :index, model_name: 'structures'
+        get :index, params: { model_name: 'structures' }
 
         assigns(:records).should include(@root)
         assigns(:records).should_not include(@page)
@@ -34,16 +34,16 @@ describe Sunrise::ManagerController, type: :controller do
       end
 
       it 'should render 404 page' do
-        lambda {
-          get :index, model_name: 'wrong'
-        }.should raise_error ActionController::RoutingError
+        expect {
+          get :index, params: { model_name: 'wrong' }
+        }.to raise_error ActionController::RoutingError
       end
 
       it 'should not destroy root structure' do
-        @root.structure_type_id.should == ::StructureType.main.id
+        expect(@root.structure_type_id).to eq ::StructureType.main.id
 
-        controller.should_not_receive(:destroy)
-        delete :destroy, model_name: 'structures', id: @root.id
+        expect(controller).not_to receive(:destroy)
+        delete :destroy, params: { model_name: 'structures', id: @root.id }
       end
     end
 
@@ -53,11 +53,10 @@ describe Sunrise::ManagerController, type: :controller do
       end
 
       it 'should respond successfully' do
-        get :index, model_name: 'posts'
+        get :index, params: { model_name: 'posts' }
 
-        assigns(:records).should include(@post)
-
-        response.should render_template('index')
+        expect(assigns(:records)).to include(@post)
+        expect(response).to render_template('index')
       end
     end
   end

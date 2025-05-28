@@ -6,8 +6,7 @@ describe Sunrise::SettingsController, type: :controller do
   render_views
 
   before(:all) do
-    Settings.some_setting = 'value'
-    Settings.some_setting2 = 'value2'
+    Settings.app_name = 'app_name'
   end
 
   describe 'admin' do
@@ -20,11 +19,11 @@ describe Sunrise::SettingsController, type: :controller do
     end
 
     it 'should update settings' do
-      put :update, settings: { some_setting: 'blablabla' }
+      put :update, params: { settings: { app_name: 'blablabla' } }
 
-      Settings.some_setting.should == 'blablabla'
+      expect(Settings.app_name).to eq 'blablabla'
 
-      response.should redirect_to(root_path)
+      expect(response).to redirect_to(root_path)
     end
   end
 
