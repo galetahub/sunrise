@@ -22,10 +22,10 @@ describe Sunrise do
     end
 
     it 'should store configuration' do
-      Sunrise::Config.default_items_per_page.should == 50
-      Sunrise::Config.default_sort_mode.should == :asc
-      Sunrise::Config.default_index_view.should == :table
-      Sunrise::Config.scoped_views.should == true
+      expect(Sunrise::Config.default_items_per_page).to eq 50
+      expect(Sunrise::Config.default_sort_mode).to eq:asc
+      expect(Sunrise::Config.default_index_view).to eq :table
+      expect(Sunrise::Config.scoped_views).to eq true
     end
   end
 end
