@@ -2,7 +2,6 @@
 
 require 'rails'
 require 'sunrise'
-require 'select2-rails'
 require 'jquery-ui-rails'
 
 module Sunrise

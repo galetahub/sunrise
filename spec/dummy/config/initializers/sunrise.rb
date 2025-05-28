@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'select2-rails'
 require 'simple_form'
 
 # Use this hook to configure sunrise

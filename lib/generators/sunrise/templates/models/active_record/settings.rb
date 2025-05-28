@@ -7,6 +7,10 @@ class Settings < RailsSettings::CachedSettings
 
   tracked owner: ->(controller, _model) { controller.try(:current_user) }
 
+  scope :application do
+    field :app_name, type: :string, default: 'Rails application'
+  end
+
   def self.update_attributes(attributes)
     attributes.each do |key, value|
       self[key] = value
