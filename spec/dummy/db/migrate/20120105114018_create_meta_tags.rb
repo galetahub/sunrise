@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateMetaTags < ActiveRecord::Migration
+class CreateMetaTags < ActiveRecord::Migration[7.2]
   def self.up
     create_table :meta_tags do |t|
       t.string :name, limit: 50, null: false

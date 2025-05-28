@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateStructures < ActiveRecord::Migration
+class CreateStructures < ActiveRecord::Migration[7.2]
   def self.up
     create_table :structures do |t|
       t.string    :title, null: false

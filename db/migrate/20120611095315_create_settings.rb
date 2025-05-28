@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSettings < ActiveRecord::Migration
+class CreateSettings < ActiveRecord::Migration[7.2]
   def self.up
     create_table(:settings) do |t|
       t.string  :var, limit: 50, null: false

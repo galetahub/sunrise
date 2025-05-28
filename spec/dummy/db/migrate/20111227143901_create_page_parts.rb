@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreatePageParts < ActiveRecord::Migration
+class CreatePageParts < ActiveRecord::Migration[7.2]
   def self.up
     create_table :page_parts do |t|
       t.string :key, limit: 10, null: false

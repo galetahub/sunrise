@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InstallActsAsAudited < ActiveRecord::Migration
+class InstallActsAsAudited < ActiveRecord::Migration[7.2]
   def self.up
     create_table :audits, force: true do |t|
       t.column :auditable_id, :integer
