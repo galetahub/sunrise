@@ -44,5 +44,6 @@ jobs:
         POSTGRES_PASSWORD: postgres
         POSTGRES_HOST: localhost
         POSTGRES_PORT: 5432
+        SUNRISE_ORM: active_record
       run: |
         bundle exec rspec ./spec/

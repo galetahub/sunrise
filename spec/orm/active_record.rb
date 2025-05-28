@@ -9,5 +9,3 @@ end
 
 run_db_migrations File.expand_path('../dummy/db/migrate', __dir__)
 run_db_migrations File.expand_path('../../db/migrate', __dir__)
-
-require 'carrierwave/orm/activerecord'
