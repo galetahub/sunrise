@@ -2,7 +2,10 @@
 
 # Configure Rails Envinronment
 ENV['RAILS_ENV'] = 'test'
-SUNRISE_ORM = (ENV['SUNRISE_ORM'] || :active_record).to_sym
+
+unless defined?(SUNRISE_ORM)
+  SUNRISE_ORM = (ENV['SUNRISE_ORM'] || :active_record).to_sym
+end
 
 puts "\n==> Sunrise.orm = #{SUNRISE_ORM.inspect}. SUNRISE_ORM = (active_record|mongoid)"
 
@@ -18,7 +21,6 @@ require "meta_manager/orm/#{SUNRISE_ORM}"
 
 require 'rails/test_help'
 require 'rspec/rails'
-require 'generator_spec/test_case'
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'factory_bot_rails'

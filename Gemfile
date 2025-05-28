@@ -29,6 +29,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'generator_spec'
   gem 'launchy'
 end
 

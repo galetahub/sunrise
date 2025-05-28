@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'generator_spec/test_case'
 require 'generators/sunrise/install_generator'
 require 'fileutils'
 

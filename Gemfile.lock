@@ -164,6 +164,9 @@ GEM
     ffi (1.17.2-x86_64-linux-musl)
     galetahub-enum_field (0.5.4)
       activesupport
+    generator_spec (0.10.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.7)
@@ -400,6 +403,7 @@ DEPENDENCIES
   devise-encryptable
   factory_bot_rails
   galetahub-enum_field
+  generator_spec
   launchy
   pg
   rails (~> 7.0)
