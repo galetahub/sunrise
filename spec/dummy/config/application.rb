@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 
-require File.expand_path('boot', __dir__)
+require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "rails"
+# Pick the frameworks you want:
+require "active_model/railtie"
+# require "active_job/railtie"
+require "active_record/railtie"
+require "action_controller/railtie"
+# require "action_mailer/railtie"
+require "action_view/railtie"
+# require "active_storage/engine"
 require 'sprockets/railtie'
 
-SUNRISE_ORM = (ENV['SUNRISE_ORM'] || :active_record).to_sym unless defined?(SUNRISE_ORM)
-
-Bundler.require(*Rails.groups)
 Bundler.require(:default, SUNRISE_ORM)
 
 require 'sunrise'
@@ -15,12 +20,12 @@ require 'sunrise'
 module Dummy
   class Application < Rails::Application
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W[
-      #{config.root}/../../lib/generators/sunrise/templates/models/#{SUNRISE_ORM}
-      #{config.root}/../../lib/generators/sunrise/templates/uploaders
-      #{config.root}/../../lib/generators/sunrise/templates/models/sunrise
-      #{config.root}/app/models/#{SUNRISE_ORM}
-      #{config.root}/app/sunrise
+    config.autoload_paths += [
+      "#{config.root}/../../lib/generators/sunrise/templates/models/#{SUNRISE_ORM}",
+      "#{config.root}/../../lib/generators/sunrise/templates/uploaders",
+      "#{config.root}/../../lib/generators/sunrise/templates/models/sunrise",
+      "#{config.root}/app/models/#{SUNRISE_ORM}",
+      "#{config.root}/app/sunrise"
     ]
 
     # Only load the plugins named here, in the order given (default is alphabetical).

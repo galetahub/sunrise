@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class StructureType < Sunrise::Models::StructureType
-  define_enum do |builder|
-    builder.member :page,     object: new('page')
-    builder.member :posts,    object: new('posts')
-    builder.member :main,     object: new('main')
-    builder.member :redirect, object: new('redirect')
-    builder.member :group,    object: new('group')
+  define_enum do
+    member :page,     object: new('page')
+    member :posts,    object: new('posts')
+    member :main,     object: new('main')
+    member :redirect, object: new('redirect')
+    member :group,    object: new('group')
   end
 end

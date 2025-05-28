@@ -12,7 +12,7 @@ module Sunrise
       end
 
       def title
-        I18n.t(@code, scope: [:manage, :role, :kind])
+        I18n.t(@code, scope: 'manage.role.kind')
       end
 
       def self.legal?(value)
