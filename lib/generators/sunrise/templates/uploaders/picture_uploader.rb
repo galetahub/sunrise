@@ -15,4 +15,8 @@ class PictureUploader < Sunrise::CarrierWave::BaseUploader
   def extension_white_list
     %w[jpg jpeg gif png]
   end
+
+  def size_range
+    100..2.megabytes.to_i
+  end
 end
