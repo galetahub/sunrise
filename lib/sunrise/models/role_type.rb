@@ -9,6 +9,10 @@ module Sunrise
         I18n.t(name, scope: 'manage.role.kind')
       end
 
+      def code
+        name
+      end
+
       def self.legal?(value)
         all.map(&:id).include?(value)
       end

@@ -42,4 +42,6 @@ Dummy::Application.configure do
   config.eager_load = false
 
   config.active_support.test_order = :sorted
+
+  config.assets.compile = true
 end

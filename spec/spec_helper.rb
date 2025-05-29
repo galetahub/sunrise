@@ -24,6 +24,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'factory_bot_rails'
+require 'rails-controller-testing'
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
@@ -40,7 +41,9 @@ RSpec.configure do |config|
   # == Mock Framework
   config.mock_with :rspec
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ::Rails::Controller::Testing::TestProcess, type: :controller
+  config.include ::Rails::Controller::Testing::TemplateAssertions, type: :controller
   config.extend ControllerMacros, type: :controller
 
   config.use_transactional_fixtures = false

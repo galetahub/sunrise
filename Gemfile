@@ -31,6 +31,7 @@ end
 group :development, :test do
   gem 'generator_spec'
   gem 'launchy'
+  gem 'rails-controller-testing'
 end
 
 group :active_record do

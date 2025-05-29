@@ -11,9 +11,10 @@ module Sunrise
 
     config.i18n.load_path += Dir[Sunrise.root_path.join('config/locales/**', '*.{rb,yml}')]
 
-    config.assets.precompile += %w[
-      sunrise/*
-    ]
+    config.assets.precompile += %w[sunrise/application.css sunrise/application.js]
+    config.assets.precompile += Dir[Sunrise.root_path.join('app/assets/images/sunrise/**/*')].map do |file|
+      Pathname.new(file).relative_path_from(Sunrise.root_path.join('app/assets/images')).to_s
+    end
 
     initializer 'sunrise.setup' do
       I18n::Backend::Simple.include I18n::Backend::Pluralization

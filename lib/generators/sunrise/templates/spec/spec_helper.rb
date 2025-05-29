@@ -19,7 +19,7 @@ RSpec.configure do |config|
   # config.mock_with :rr
   config.mock_with :rspec
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

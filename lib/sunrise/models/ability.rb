@@ -14,7 +14,7 @@ module Sunrise
         @context = context
 
         if @user.persisted? && @user.role_type
-          send @user.role_type.code
+          send @user.role_type.name
         else
           guest
         end

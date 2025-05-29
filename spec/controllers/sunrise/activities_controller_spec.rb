@@ -17,7 +17,7 @@ describe Sunrise::ActivitiesController, type: :controller do
 
     it 'should render index action' do
       get :index
-      assigns(:events).should include(@event)
+      expect(assigns(:events)).to include(@event)
       expect(response).to render_template('index')
     end
   end
