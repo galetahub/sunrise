@@ -15,7 +15,7 @@ module Sunrise
 
         has_one :avatar, as: :assetable, dependent: :destroy, autosave: true
 
-        after_initialize :set_default_role
+        before_create :set_default_role
 
         validates :name, presence: true
         validate :ensure_role_is_allowed
@@ -84,7 +84,7 @@ module Sunrise
       protected
 
       def set_default_role
-        self.role_type ||= ::RoleType.default
+        self.role_type_id ||= ::RoleType.default.id
       end
 
       def ensure_role_is_allowed
