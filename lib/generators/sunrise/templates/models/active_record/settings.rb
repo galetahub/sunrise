@@ -16,4 +16,12 @@ class Settings < RailsSettings::Base
       self[key] = value
     end
   end
+
+  def self.[](key)
+    public_send(key)
+  end
+
+  def self.[]=(key, value)
+    public_send("#{key}=", value)
+  end
 end

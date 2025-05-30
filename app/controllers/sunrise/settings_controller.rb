@@ -5,8 +5,7 @@ module Sunrise
     authorize_resource class: false
 
     def edit
-      @settings = Settings.get_all
-      respond_with(@settings)
+      @fields = Settings.defined_fields
     end
 
     def update

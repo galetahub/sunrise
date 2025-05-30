@@ -15,33 +15,32 @@ describe Sunrise::SettingsController, type: :controller do
 
     it 'should render edit action' do
       get :edit
-      assigns(:settings).should_not be_empty
-      response.should render_template('edit')
+      expect(assigns(:fields)).not_to be_empty
+      expect(response).to render_template('edit')
     end
 
     it 'should update settings' do
       put :update, params: { settings: { app_name: 'blablabla' } }
 
       expect(Settings.app_name).to eq 'blablabla'
-
       expect(response).to redirect_to(root_path)
     end
   end
 
   describe 'anonymous user' do
     it 'should not render update action' do
-      controller.should_not_receive(:update)
+      expect(controller).not_to receive(:update)
       put :update
     end
 
     it 'should not render edit action' do
-      controller.should_not_receive(:edit)
+      expect(controller).not_to receive(:edit)
       get :edit
     end
 
     it 'should redirect to login page' do
       get :edit
-      response.should redirect_to '/users/sign_in'
+      expect(response).to redirect_to('/users/sign_in')
     end
   end
 end
