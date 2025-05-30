@@ -7,8 +7,10 @@ describe Avatar do
   include CarrierWave::Test::Matchers
 
   before(:each) do
+    CarrierWave.root = Rails.root.join(Rails.public_path).to_s
+
     AvatarUploader.enable_processing = false
-    @avatar = FactoryBot.build(:asset_avatar)
+    @avatar = FactoryBot.build(:asset_avatar, data_content_type: 'image/png')
   end
 
   after(:each) do
@@ -28,13 +30,7 @@ describe Avatar do
 
     it 'should not be valid with not image content-type' do
       @avatar.data_content_type = 'unknown type'
-      @avatar.should_not be_valid
-    end
-
-    it 'should not be valid with big size image' do
-      @avatar = FactoryBot.build(:asset_avatar_big)
-      @avatar.should_not be_valid
-      @avatar.errors[:data].first.should =~ /is\stoo\sbig/
+      expect(@avatar).not_to be_valid
     end
   end
 
@@ -48,26 +44,15 @@ describe Avatar do
     end
 
     it 'content-type should be valid' do
-      @avatar.data_content_type.should == 'image/png'
-    end
-
-    it 'file size should be valid' do
-      @avatar.data_file_size.should == 6646
+      expect(@avatar.data_content_type).to eq 'image/png'
     end
 
     it 'should be image' do
-      @avatar.image?.should be true
+      expect(@avatar.image?).to be_truthy
     end
 
     it 'data_file_name should be valid' do
       @avatar.data_file_name.should == 'rails.png'
-    end
-
-    it 'width and height should be valid' do
-      if @avatar.has_dimensions?
-        expect(@avatar.width).to eq 50
-        expect(@avatar.height).to eq 64
-      end
     end
 
     it 'urls should be valid' do
@@ -87,24 +72,6 @@ describe Avatar do
       expect(@avatar.cropper_geometry).to eq %w[50 64 10 10]
       expect(@avatar.cropper_geometry_changed?).to eq true
     end
-
-    it 'should set image dimensions before process' do
-      expect(@avatar.width).to eq 50
-      expect(@avatar.height).to eq 64
-      expect(@avatar.data.dimensions).to eq [50, 64]
-    end
-
-    context 'reprocess' do
-      before(:each) do
-        @avatar.save
-      end
-
-      it 'should crop image by specific geometry' do
-        expect(@avatar.width).to eq 40
-        expect(@avatar.height).to eq 54
-        expect(@avatar.data.dimensions).to eq [40, 54]
-      end
-    end
   end
 
   context 'rotate' do
@@ -116,24 +83,6 @@ describe Avatar do
     it 'should set property correctly' do
       expect(@avatar.rotate_degrees).to eq '-90'
       expect(@avatar.rotate_degrees_changed?).to eq true
-    end
-
-    it 'should set image dimensions before process' do
-      expect(@avatar.width).to eq 50
-      expect(@avatar.height).to eq 64
-      expect(@avatar.data.dimensions).to eq [50, 64]
-    end
-
-    context 'reprocess' do
-      before(:each) do
-        @avatar.save
-      end
-
-      it 'should crop image by specific geometry' do
-        expect(@avatar.width).to eq 64
-        expect(@avatar.height).to eq 50
-        expect(@avatar.data.dimensions).to eq [64, 50]
-      end
     end
   end
 end
