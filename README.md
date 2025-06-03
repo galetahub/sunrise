@@ -1,5 +1,7 @@
 # Sunrise CMS
 
+[![Tests](https://github.com/galetahub/sunrise/actions/workflows/tests.yml/badge.svg)](https://github.com/galetahub/sunrise/actions/workflows/tests.yml)
+
 Open source mini content management system for programmers.
 
 ## Setup
