@@ -19,13 +19,13 @@ gem 'sunrise-cms', '~> 1.1.0', require: 'sunrise'
 For rails 4.x.x:
 
 ```ruby
-gem "sunrise-cms", :require => "sunrise"
+gem "sunrise-cms", require: "sunrise"
 ```
 
 For rails 3.x.x:
 
 ```ruby
-gem "sunrise-cms", "~> 0.7.x" :require => "sunrise"
+gem "sunrise-cms", "~> 0.7.x" require: "sunrise"
 ```
 
 ## Instructions
@@ -99,20 +99,20 @@ class SunriseProduct < Sunrise::AbstractModel
     field :total_stock
 
     field do |form, record|
-      form.input :notes, :as => :text, :id => record.id
+      form.input :notes, as: :text, id: record.id
     end
 
-    group :sidebar, :holder => :sidebar do
-      field :sale_limit_id, :collection => lambda { SaleLimit.all }, :include_blank => false
+    group :sidebar, holder: :sidebar do
+      field :sale_limit_id, collection: lambda { SaleLimit.all }, include_blank: false
       field :sort_order
-      field :is_visible, :boolean => true
+      field :is_visible, boolean: true
     end
 
-    group :bottom, :holder => :bottom do
-      nested_attributes :variants, :multiply => true do
+    group :bottom, holder: :bottom do
+      nested_attributes :variants, multiply: true do
         field :size
-        field :total_stock, :html => { :style => 'width:100%;clear:both;' }
-        field :item_model_id, :collection => lambda { ItemModel.all }, :include_blank => false
+        field :total_stock, html: { style: 'width:100%;clear:both;' }
+        field :item_model_id, collection: lambda { ItemModel.all }, include_blank: false
       end
 
       nested_attributes :project_fields, multiply: true, sort: true do
@@ -120,15 +120,15 @@ class SunriseProduct < Sunrise::AbstractModel
         field :value
       end
 
-      field :picture, :as => :uploader
+      field :picture, as: :uploader
     end
   end
 
-  protected
+  private
 
-    def clear_cache
-      Rails.cache.clear
-    end
+  def clear_cache
+    Rails.cache.clear
+  end
 end
 ```
 
