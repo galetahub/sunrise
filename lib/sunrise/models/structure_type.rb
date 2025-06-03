@@ -6,7 +6,7 @@ module Sunrise
       include EnumField::DefineEnum
 
       def title
-        I18n.t(name, scope: 'manage.structure.kind')
+        I18n.t(name, scope: 'manage.structure.name')
       end
     end
   end

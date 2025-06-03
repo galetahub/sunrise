@@ -196,7 +196,7 @@ ru:
         name_asc: "по имени по возрастанию"
 
     structure:
-      kind:
+      name:
         page: "Текстовая страничка"
         posts: "Блоги"
         main: "Главная страничка"
@@ -216,7 +216,7 @@ ru:
         bottom: "Внизу"
 
     role:
-      kind:
+      name:
         guest: "Гость"
         default: "Клиент"
         moderator: "Модератор"

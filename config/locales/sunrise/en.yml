@@ -196,7 +196,7 @@ en:
         name_asc: "name ascending"
 
     structure:
-      kind:
+      name:
         page: "Text Page"
         posts: "Blogs"
         main: "Home Page"
@@ -216,7 +216,7 @@ en:
         bottom: "Below"
 
     role:
-      kind:
+      name:
         guest: "Guest"
         default: "Client"
         moderator: "Moderator"

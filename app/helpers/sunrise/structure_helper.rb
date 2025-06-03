@@ -7,9 +7,9 @@ module Sunrise
 
       options = { parent_id: record.id, parent_type: 'Structure' }.merge(options)
 
-      case record.structure_type.kind
+      case record.structure_type.name
       when :page then edit_path(model_name: 'pages', id: record.id)
-      when :posts then index_path(options.merge(model_name: record.structure_type.kind))
+      when :posts then index_path(options.merge(model_name: record.structure_type.name))
       else edit_path(model_name: 'structures', id: record.id)
       end
     end

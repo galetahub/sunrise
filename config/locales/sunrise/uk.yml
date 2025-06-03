@@ -196,7 +196,7 @@ uk:
         name_asc: "по имени по возрастанию"
 
     structure:
-      kind:
+      name:
         page: "Текстова сторінка"
         posts: "Блоги"
         main: "Головна сторінка"
@@ -215,7 +215,7 @@ uk:
         bottom: "Внизу"
 
     role:
-      kind:
+      name:
         guest: "Гість"
         default: "Клієнт"
         moderator: "Модератор"
