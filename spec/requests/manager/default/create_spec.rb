@@ -24,8 +24,6 @@ describe 'Sunrise Manager New' do
         end
 
         click_button 'Create'
-
-        save_and_open_page
       end
 
       it 'should create an object with correct attributes' do

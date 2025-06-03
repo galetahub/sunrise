@@ -94,7 +94,7 @@ describe 'Sunrise Manager Export' do
       end
 
       it 'should render structures to xml format' do
-        expect(page.body).to include(@root.title)
+        expect(page.body).to include(root.title)
 
         expect(page.response_headers['Content-Type']).to eq 'application/xml; charset=utf-8'
       end

@@ -20,7 +20,9 @@ describe 'Sunrise Manager Edit' do
         select(PositionType.default.title, from: 'structure_position_type_id')
         uncheck('structure[is_visible]')
 
-        click_button 'submit-form-button'
+        save_and_open_page
+
+        click_button 'Update'
       end
 
       it 'should update an object with correct attributes' do
@@ -46,7 +48,7 @@ describe 'Sunrise Manager Edit' do
         fill_in 'structure[content]', with: 'Main updated'
         fill_in 'structure[sidebar]', with: 'Sidebar updated'
 
-        click_button 'submit-form-button'
+        click_button 'Update'
       end
 
       it 'should update an object with correct attributes' do

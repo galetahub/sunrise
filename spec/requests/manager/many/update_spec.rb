@@ -16,13 +16,11 @@ describe 'Sunrise Manager Edit many' do
       before(:each) do
         visit edit_path(model_name: 'posts', id: post.id, parent_id: structure.id, parent_type: structure.class.name)
 
-        # save_and_open_page
-
         fill_in 'post[title]', with: 'Title updated'
         fill_in 'post[content]', with: 'Tra la la'
         uncheck('post[is_visible]')
 
-        click_button 'submit-form-button'
+        click_button 'Update'
       end
 
       it 'should update an object with correct attributes' do

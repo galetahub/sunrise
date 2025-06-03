@@ -10,6 +10,7 @@ describe 'Sunrise Manager New' do
 
   context 'admin' do
     before(:each) { login_as admin }
+    let(:post) { Post.last }
 
     describe 'create' do
       before(:each) do
@@ -19,17 +20,15 @@ describe 'Sunrise Manager New' do
         fill_in 'post[content]', with: 'Some long text' * 10
         check('post[is_visible]')
 
-        click_button 'submit-form-button'
-
-        @post = Post.last
+        click_button 'Create'
       end
 
       it 'should create an object with correct attributes' do
-        expect(@post).not_to be_nil
-        expect(@post.title).to eq 'Good title'
-        expect(@post.content).not_to be_blank
-        expect(@post.is_visible).to eq true
-        expect(@post.structure).to eq structure
+        expect(post).not_to be_nil
+        expect(post.title).to eq 'Good title'
+        expect(post.content).not_to be_blank
+        expect(post.is_visible).to eq true
+        expect(post.structure).to eq structure
       end
 
       it 'should redirect with association params' do
