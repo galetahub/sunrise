@@ -18,9 +18,8 @@ describe 'Sunrise Manager Edit' do
 
     describe 'GET /manage/notexists/edit' do
       it 'should raise NotFound' do
-        expect {
-          visit edit_path(model_name: 'whatever', id: structure.id)
-        }.to raise_error ActionController::RoutingError
+        visit edit_path(model_name: 'whatever', id: structure.id)
+        expect(page.body).to include('Sunrise model whatever not found')
       end
     end
 

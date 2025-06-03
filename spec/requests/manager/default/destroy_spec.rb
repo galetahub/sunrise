@@ -6,7 +6,7 @@ describe 'Sunrise Manager destroy' do
   subject { page }
   let(:admin) { FactoryBot.create(:admin_user) }
   let(:root) { FactoryBot.create(:structure_main) }
-  let(:structure) { FactoryBot.create(:structure_page, parent: root) }
+  let!(:structure) { FactoryBot.create(:structure_page, parent: root) }
 
   context 'admin' do
     before(:each) { login_as admin }

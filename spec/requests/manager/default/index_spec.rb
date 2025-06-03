@@ -19,9 +19,8 @@ describe 'Sunrise Manager Index' do
 
     describe 'GET /manage/typo' do
       it 'should raise NotFound' do
-        expect {
-          visit '/manage/whatever'
-        }.to raise_error ActionController::RoutingError
+        visit '/manage/whatever'
+        expect(page.body).to include('Sunrise model whatever not found')
       end
     end
 
@@ -48,9 +47,8 @@ describe 'Sunrise Manager Index' do
 
     describe 'GET /manage/pages' do
       it 'should render 404 page' do
-        expect {
-          visit index_path(model_name: 'pages')
-        }.to raise_error AbstractController::ActionNotFound
+        visit index_path(model_name: 'pages')
+        expect(page.body).to include('Unknown action')
       end
     end
   end

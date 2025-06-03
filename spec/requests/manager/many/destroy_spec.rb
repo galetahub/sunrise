@@ -21,18 +21,15 @@ describe 'Sunrise Manager destroy' do
       it 'should update an object with correct attributes' do
         Post.where(id: post.id).first.should be_nil
 
-        page.current_path.should == '/manage/posts'
-        page.current_url.should == "http://www.example.com/manage/posts?parent_id=#{structure.id}&parent_type=#{structure.class.name}"
+        expect(page.current_path).to eq '/manage/posts'
+        expect(page.current_url).to eq "http://www.example.com/manage/posts?parent_id=#{structure.id}&parent_type=#{structure.class.name}"
       end
     end
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit index_path(model_name: 'posts', parent_id: structure.id, parent_type: structure.class.name)
-    end
-
     it 'should redirect to login page' do
+      visit index_path(model_name: 'posts', parent_id: structure.id, parent_type: structure.class.name)
       should have_content('Sign in')
     end
   end
