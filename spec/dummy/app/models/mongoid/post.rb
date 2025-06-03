@@ -18,7 +18,7 @@ if Object.const_defined?('Mongoid')
     tracked owner: ->(controller, _model) { controller.try(:current_user) }
 
     def self.sunrise_search(params)
-      query = scoped
+      query = all
 
       query = query.where(title: params[:title]) if params[:title].present?
       query = query.where(structure_id: params[:structure_id]) if params[:structure_id].present?

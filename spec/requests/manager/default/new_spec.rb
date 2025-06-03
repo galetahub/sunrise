@@ -11,9 +11,8 @@ describe 'Sunrise Manager New' do
 
     describe 'GET /manage/typo/new' do
       it 'should raise NotFound' do
-        expect {
-          visit new_path(model_name: 'whatever')
-        }.to raise_error ActionController::RoutingError
+        visit new_path(model_name: 'whatever')
+        expect(page.body).to include('Sunrise model whatever not found')
       end
     end
 
@@ -38,13 +37,11 @@ describe 'Sunrise Manager New' do
     end
 
     describe 'GET /manage/structures/new with params' do
-      before(:each) do
-        @title = 'Default-title'
-        visit new_path(model_name: 'structures', structure: { title: @title })
-      end
+      let(:title) { 'some-title' }
 
       it 'should pre-fill attributes' do
-        should have_selector "input[@value='#{@title}']"
+        visit new_path(model_name: 'structures', structure: { title: title })
+        should have_selector "input[@value='#{title}']"
       end
     end
   end

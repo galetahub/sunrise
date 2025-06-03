@@ -30,11 +30,8 @@ describe 'Sunrise Manager Edit many' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit edit_path(model_name: 'posts', id: post.id, parent_id: structure.id, parent_type: structure.class.name)
-    end
-
     it 'should redirect to login page' do
+      visit edit_path(model_name: 'posts', id: post.id, parent_id: structure.id, parent_type: structure.class.name)
       should have_content('Sign in')
     end
   end

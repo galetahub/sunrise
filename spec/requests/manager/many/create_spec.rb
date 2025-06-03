@@ -33,17 +33,14 @@ describe 'Sunrise Manager New' do
 
       it 'should redirect with association params' do
         expect(page.current_path).to eq '/manage/posts'
-        expect(page.current_url).to eq "http://www.example.com/manage/posts?parent_id=#{structure.id}&parent_type=#{structure.class.name}"
+        expect(page.current_url).to eq "http://www.example.com/manage/posts?parent_id=#{structure.id}&parent_type=#{structure.class.name.downcase}"
       end
     end
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit new_path(model_name: 'posts')
-    end
-
     it 'should redirect to login page' do
+      visit new_path(model_name: 'posts')
       should have_content('Sign in')
     end
   end

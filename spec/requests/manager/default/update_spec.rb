@@ -20,8 +20,6 @@ describe 'Sunrise Manager Edit' do
         select(PositionType.default.title, from: 'structure_position_type_id')
         uncheck('structure[is_visible]')
 
-        save_and_open_page
-
         click_button 'Update'
       end
 

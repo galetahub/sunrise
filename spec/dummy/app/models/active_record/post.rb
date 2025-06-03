@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   delegate :title, :parent_id, :slug, to: :structure, prefix: true
 
   def self.sunrise_search(params)
-    query = scoped
+    query = all
 
     query = query.where(title: params[:title]) if params[:title].present?
     query = query.where(structure_id: params[:structure_id]) if params[:structure_id].present?

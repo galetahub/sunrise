@@ -29,7 +29,7 @@ module Sunrise
     end
 
     def new
-      @record.assign_attributes(abstract_model.model_params)
+      @record.assign_attributes(abstract_model.permit_model_params)
 
       respond_with(@record) do |format|
         format.html { render_with_scope }

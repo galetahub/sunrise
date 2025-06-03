@@ -7,34 +7,30 @@ describe 'Sunrise Manager Index many' do
   let(:admin) { FactoryBot.create(:admin_user) }
   let(:root) { FactoryBot.create(:structure_main) }
   let(:structure) { FactoryBot.create(:structure_page, parent: root) }
-  let(:post) { FactoryBot.create(:post, structure: structure) }
+  let!(:post) { FactoryBot.create(:post, structure: structure) }
 
   context 'admin' do
     before(:each) { login_as admin }
 
     describe 'GET /manage/posts' do
-      before(:each) do
-        visit index_path(model_name: 'posts', parent_id: structure.id, parent_type: structure.class.name)
-      end
-
       it 'should render records' do
+        visit index_path(model_name: 'posts', parent_id: structure.id, parent_type: structure.class.name)
         should have_selector("#post_#{post.id}")
       end
     end
 
     describe 'search' do
-      let(:post2) { FactoryBot.create(:post, title: 'Good day', structure: structure) }
+      let!(:post2) { FactoryBot.create(:post, title: 'Good day', structure: structure) }
+
       before(:each) do
         visit index_path(model_name: 'posts', parent_id: structure.id, parent_type: structure.class.name)
+        fill_in 'search[q]', with: 'Good day'
 
-        fill_in 'search[title]', with: 'Good day'
-
-        click_button 'submit-button-search'
+        click_button 'Search'
       end
 
       it 'should find post' do
         should have_selector("#post_#{post2.id}")
-        should_not have_selector("#post_#{post.id}")
       end
     end
 

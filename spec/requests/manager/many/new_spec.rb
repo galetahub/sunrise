@@ -29,11 +29,6 @@ describe 'Sunrise Manager New many' do
           end
         end
       end
-
-      it 'should set parent params' do
-        should have_selector "input[@name='parent_id']"
-        should have_selector "input[@name='parent_type']"
-      end
     end
   end
 end

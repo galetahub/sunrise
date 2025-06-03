@@ -65,6 +65,16 @@ module Sunrise
       @request_params[param_key.to_sym] || {}
     end
 
+    def permit_model_params(*filters)
+      params = @request_params[param_key.to_sym]
+
+      if params
+        filters.empty? ? params.permit! : params.permit(*filters)
+      else
+        {}
+      end
+    end
+
     # Save current list view
     def current_list=(value)
       @current_list = value.to_sym if value && @available_index_views.include?(value.to_sym)
