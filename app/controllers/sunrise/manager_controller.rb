@@ -12,7 +12,7 @@ module Sunrise
     helper_method :abstract_model, :apply_scope, :scoped_index_path
 
     respond_to(*Sunrise::Config.navigational_formats)
-    respond_to :xml, :csv, :xlsx, only: %i[export]
+    respond_to :json, :csv, :xlsx, only: %i[export]
 
     def index
       @records = abstract_model.apply_scopes(params)
@@ -64,8 +64,6 @@ module Sunrise
         format.xml  { render xml: @records }
         format.json { render json: @records }
         format.csv  { render abstract_model.export_options.merge(csv: @records) }
-
-        format.xlsx { render abstract_model.export_options.merge(xlsx: @records) } if defined?(Mime::XLSX)
       end
     end
 

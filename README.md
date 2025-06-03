@@ -162,7 +162,7 @@ For more info look at jbuilder https://rubygems.org/gems/jbuilder.
 #### Excel
 
 ```
-  gem "ruby2xlsx", "~> 0.0.1"
+  gem "ruby2xlsx"
 
   GET /manage/users/export.xlsx
 ```
