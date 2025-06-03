@@ -13,7 +13,7 @@ uk:
         remember_me: "Запам'ятати мене"
         role_type_id: "Тип користувача"
         role: "Тип користувача"
-      
+
       structure:
         title: "Назва"
         title_ru: "Назва (рос.)"
@@ -24,7 +24,7 @@ uk:
         redirect_url: "Перенаправлення (URL)"
         position_type_id: "Позиція"
         slug: "URL"
-      
+
       header:
         title: "Заголовок сторінки"
         title_ru: "Заголовок сторінки (рос.)"
@@ -35,7 +35,7 @@ uk:
         description: "Опис сторінки"
         description_ru: "Опис сторінки (рос.)"
         description_en: "Опис сторінки (eng.)"
-      
+
       post:
         title: "Назва"
         title_ru: "Назва (рос.)"
@@ -46,7 +46,7 @@ uk:
         created_at: "Дата / Час"
         picture: "Зображення"
         published_at: "Дата публікації"
-      
+
       page:
         title: "Назва"
         title_ru: "Назва (рос.)"
@@ -54,10 +54,10 @@ uk:
         content: "Зміст"
         content_ru: "Зміст (рос.)"
         content_en: "Зміст (eng.)"
-      
+
       tag:
         name: "Назва"
-     
+
       feedback:
         name: "Ім'я"
         email: "Email"
@@ -66,14 +66,14 @@ uk:
         remote_ip: "IP адреса"
         user_agent: "Версія браузера"
         message: "Повідомлення"
-      
+
       activity:
         created_at: "Дата"
         owner: "Пользователь"
         key: "Что"
         trackable: "Объект"
         remote_address: "IP"
-              
+
   manage:
     title: "Система<br />управління"
     go_site: "Перегляд сайту"
@@ -106,7 +106,7 @@ uk:
     close: "Закрити"
     search: "Пошук"
     filter: "Фільтр"
-    
+
     menu:
       title: "Розділи та модулі"
       system_messages: "Системні повідомлення"
@@ -134,29 +134,29 @@ uk:
       panel:
         main: "Розділи та модулі"
         creates: "Створити"
-        
+
     settings:
       title: "Налаштування"
       mailer: "Пошта"
       route: "Домен"
       contacts: "Контакти"
-    
+
     locale:
       ru: "русский"
       en: "английский"
       uk: "украинский"
-    
-    model_filter: 
+
+    model_filter:
       title: "Фільтр даних"
       filter: "Фільтр"
       search: "Пошук"
       clear: "Очистити"
       total_count: "Всього"
-    
+
     position:
       down: "Опустити вниз"
       up: "Підняти вверх"
-    
+
     buttons:
       create_structure: "Створити розділ"
       table: "Таблиця"
@@ -168,7 +168,7 @@ uk:
       sort: "Сортувати"
       save: "Зберегти"
       cancel: "Скасувати"
-    
+
     user:
       actions: "дії"
       events:
@@ -179,7 +179,7 @@ uk:
         activate: "Активувати"
         unlock: "Розблокувати"
       roles: "Ролі"
-      
+
     users:
       activated_at: "активація"
       last_login_ip: "ip"
@@ -187,14 +187,14 @@ uk:
       category: "категорія"
       name: "Ім'я"
       export: "Експортувати"
-      
+
       sort:
         _: "-"
         created_at_desc: "по дате по убыванию"
         created_at_asc: "по дате по возрастанию"
         name_desc: "по имени по убыванию"
         name_asc: "по имени по возрастанию"
-    
+
     structure:
       kind:
         page: "Текстова сторінка"
@@ -208,12 +208,12 @@ uk:
         tracks: "Музика"
         wallpapers: "Шпалери"
         group: "Група сторінок"
-      
+
       position:
         default: "За замовчуванням"
         menu: "Головне меню"
         bottom: "Внизу"
-    
+
     role:
       kind:
         guest: "Гість"
@@ -221,7 +221,7 @@ uk:
         moderator: "Модератор"
         admin: "Aдміністратор"
         redactor: "Редактор"
-        
+
     tags:
       sort:
         _: "-"
@@ -229,7 +229,7 @@ uk:
         created_at_asc: "по дате по возрастанию"
         name_desc: "по названию по убыванию"
         name_asc: "по названию по возрастанию"
-    
+
     posts:
       sort:
         _: "-"
@@ -237,7 +237,7 @@ uk:
         created_at_asc: "по дате по возрастанию"
         title_desc: "по названию по убыванию"
         title_asc: "по названию по возрастанию"
-    
+
     sort_columns:
       _: "-"
       created_at_desc: "по дате по убыванию"
@@ -252,11 +252,11 @@ uk:
       position_asc: "за позицией по возрастанию"
       sort_order_desc: "по сортировке по убыванию"
       sort_order_asc: "по сортировке по возрастанию"
-    
+
     fileupload:
       button: "Виберіть файл"
       max_size: "Макс. р."
-      
+
     icons:
       down: "Опустити вниз"
       up: "Підняти вгору"
@@ -266,7 +266,7 @@ uk:
 
     groups:
       meta_tags: "Мета теги"
-  
+
   views:
     pagination:
       previous: "Попередня"
@@ -274,9 +274,9 @@ uk:
       truncate: "..."
       last: "Остання"
       first: "Перша"
-  
+
   flash:
-    manage:      
+    manage:
       actions:
         create:
           success: "Запис успішно створено"
@@ -287,19 +287,19 @@ uk:
         destroy:
           success: "Запис успішно видалено"
           failure: "Виникли помилки при видаленні даних"
-        
+
       users:
         create:
           success: "Користувач успішно створений"
           failure: "Виникли помилки при створенні користувача"
         update:
           success: "Дані користувача успішно оновлено"
-      
+
       settings:
         create:
           success: "Параметри успішно оновлені"
           failure: "Виникли помилки при збереженні даних"
-      
+
       pages:
         create:
           success: "Сторінка успішно збережено"
@@ -307,7 +307,7 @@ uk:
         update:
           success: "Сторінка успішно збережено"
           failure: "Виникли помилки при збереженні даних"
-          
+
   errors:
     messages:
       wrong_size: "неправильний розмір (повинно бути %{file_size})"

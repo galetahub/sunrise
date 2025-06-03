@@ -13,7 +13,7 @@ ru:
         remember_me: "Запомнить меня"
         role_type_id: "Тип пользователя"
         role: "Тип пользователя"
-      
+
       structure:
         title: "Название"
         title_ru: "Название (рус.)"
@@ -24,7 +24,7 @@ ru:
         redirect_url: "Перенаправление (URL)"
         position_type_id: "Позиция"
         slug: "URL"
-      
+
       header:
         title: "Заглавие страницы"
         title_ru: "Заглавие страницы (рус.)"
@@ -35,7 +35,7 @@ ru:
         description: "Описание страницы"
         description_ru: "Описание страницы (рус.)"
         description_en: "Описание страницы (eng.)"
-      
+
       post:
         title: "Название"
         title_ru: "Название (рус.)"
@@ -46,7 +46,7 @@ ru:
         created_at: "Дата/Время"
         picture: "Картинка"
         published_at: "Дата публикации"
-      
+
       page:
         title: "Название"
         title_ru: "Название (рус.)"
@@ -54,10 +54,10 @@ ru:
         content: "Содержание"
         content_ru: "Содержание (рус.)"
         content_en: "Содержание (eng.)"
-      
+
       tag:
         name: "Название"
-     
+
       feedback:
         name: "Имя"
         email: "Email"
@@ -66,14 +66,14 @@ ru:
         remote_ip: "IP адрес"
         user_agent: "Версия браузера"
         message: "Сообщение"
-      
+
       activity:
         created_at: "Дата"
         owner: "Пользователь"
         key: "Что"
         trackable: "Объект"
         remote_address: "IP"
-              
+
   manage:
     title: "Система<br />управления"
     go_site: "Просмотр сайта"
@@ -106,7 +106,7 @@ ru:
     close: "Закрыть"
     search: "Поиск"
     filter: "Фильтр"
-    
+
     menu:
       title: "Разделы и модули"
       system_messages: "Системные сообщения"
@@ -134,29 +134,29 @@ ru:
       panel:
         main: "Разделы и модули"
         creates: "Создать"
-    
+
     settings:
       title: "Настройки"
       mailer: "Почта"
       route: "Домен"
       contacts: "Контакты"
-    
+
     locale:
       ru: "русский"
       en: "английский"
       uk: "украинский"
-    
-    model_filter: 
+
+    model_filter:
       title: "Фильтр данных"
       filter: "Фильтр"
       search: "Поиск"
       clear: "Очистить"
       total_count: "Всего"
-    
+
     position:
       down: "Опустить вниз"
       up: "Поднять вверх"
-    
+
     buttons:
       create_structure: "Создать раздел"
       table: "Таблица"
@@ -168,7 +168,7 @@ ru:
       sort: "Сортировать"
       save: "Сохранить"
       cancel: "Отмена"
-    
+
     user:
       actions: "действия"
       events:
@@ -179,7 +179,7 @@ ru:
         activate: "Активировать"
         unlock: "Разблокировать"
       roles: "Роли"
-      
+
     users:
       activated_at: "активация"
       last_login_ip: "ip"
@@ -187,14 +187,14 @@ ru:
       category: "категория"
       name: "Имя"
       export: "Экспортировать"
-      
+
       sort:
         _: "-"
         created_at_desc: "по дате по убыванию"
         created_at_asc: "по дате по возрастанию"
         name_desc: "по имени по убыванию"
         name_asc: "по имени по возрастанию"
-    
+
     structure:
       kind:
         page: "Текстовая страничка"
@@ -209,12 +209,12 @@ ru:
         tracks: "Музыка"
         wallpapers: "Обои"
         group: "Група страничок"
-      
+
       position:
         default: "По умолчанию"
         menu: "Главное меню"
         bottom: "Внизу"
-    
+
     role:
       kind:
         guest: "Гость"
@@ -222,7 +222,7 @@ ru:
         moderator: "Модератор"
         admin: "Aдминистратор"
         redactor: "Редактор"
-        
+
     tags:
       sort:
         _: "-"
@@ -230,7 +230,7 @@ ru:
         created_at_asc: "по дате по возрастанию"
         name_desc: "по названию по убыванию"
         name_asc: "по названию по возрастанию"
-    
+
     posts:
       sort:
         _: "-"
@@ -238,7 +238,7 @@ ru:
         created_at_asc: "по дате по возрастанию"
         title_desc: "по названию по убыванию"
         title_asc: "по названию по возрастанию"
-    
+
     sort_columns:
       _: "-"
       created_at_desc: "по дате по убыванию"
@@ -253,11 +253,11 @@ ru:
       position_asc: "за позицией по возрастанию"
       sort_order_desc: "по сортировке по убыванию"
       sort_order_asc: "по сортировке по возрастанию"
-    
+
     fileupload:
       button: "Выберите файл"
       max_size: "Макс. р."
-      
+
     icons:
       down: "Опустить вниз"
       up: "Поднять вверх"
@@ -267,7 +267,7 @@ ru:
 
     groups:
       meta_tags: "Мета теги"
-  
+
   views:
     pagination:
       previous: "Предыдущая"
@@ -275,9 +275,9 @@ ru:
       truncate: "..."
       last: "Последняя"
       first: "Первая"
-      
+
   flash:
-    manage:      
+    manage:
       actions:
         create:
           success: "Запись успешно создана"
@@ -288,19 +288,19 @@ ru:
         destroy:
           success: "Запись успешно удалена"
           failure: "Возникли ошибки при удалении данных"
-        
+
       users:
         create:
           success: "Пользователь успешно создан"
           failure: "Возникли ошибки при создании пользователя"
         update:
           success: "Данные пользователя успешно обновлено"
-      
+
       settings:
         create:
           success: "Настройки успешно обновлены"
           failure: "Возникли ошибки при сохранении данных"
-      
+
       pages:
         create:
           success: "Страничка успешно сохранена"
@@ -308,7 +308,7 @@ ru:
         update:
           success: "Страничка успешно сохранена"
           failure: "Возникли ошибки при сохранении данных"
-          
+
   errors:
     messages:
       wrong_size: "неправильный размер (должно быть %{file_size})"

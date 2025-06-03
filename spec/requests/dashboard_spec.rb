@@ -26,11 +26,8 @@ describe 'Sunrise Manager Dashboard' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit dashboard_path
-    end
-
     it 'should redirect to login page' do
+      visit dashboard_path
       should have_content('Sign in')
     end
   end

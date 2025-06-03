@@ -23,8 +23,8 @@ class SunriseStructure < Sunrise::AbstractModel
     field :redirect_url
     field :slug
     field :parent_id, collection: -> { Structure.nested_set_options { |i| "#{'–' * i.depth} #{i.title}" } }, if: ->(s) { s.moveable? }
-    field :structure_type_id, collection: -> { StructureType.all }, include_blank: false
-    field :position_type_id, collection: -> { PositionType.all }, include_blank: false
+    field :structure_type_id, collection: -> { StructureType.all }, include_blank: false, label_method: :title
+    field :position_type_id, collection: -> { PositionType.all }, include_blank: false, label_method: :title
     field :is_visible
 
     group :meta_tags, holder: :sidebar do

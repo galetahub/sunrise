@@ -13,7 +13,7 @@ en:
         remember_me: "Remember me"
         role_type_id: "Role type"
         role: "Role type"
-      
+
       structure:
         title: "Name"
         title_ru: "Name (Rus)"
@@ -24,7 +24,7 @@ en:
         redirect_url: "Redirect (URL)"
         position_type_id: "Position"
         slug: "Slug"
-      
+
       header:
         title: "Title page"
         title_ru: "Title page (Rus)"
@@ -35,7 +35,7 @@ en:
         description: "Page Description"
         description_ru: "Description page (Rus)"
         description_en: "Page Description (eng.)"
-      
+
       post:
         title: "Name"
         title_ru: "Name (Rus)"
@@ -46,7 +46,7 @@ en:
         created_at: "Date / Time"
         picture: "Picture"
         published_at: "Published"
-      
+
       page:
         title: "Name"
         title_ru: "Name (Rus)"
@@ -54,10 +54,10 @@ en:
         content: "Content"
         content_ru: "Content (Rus)"
         content_en: "Contents (eng.)"
-      
+
       tag:
         name: "Name"
-     
+
       feedback:
         name: "Name"
         email: "Email"
@@ -73,7 +73,7 @@ en:
         key: "Action"
         trackable: "Object"
         remote_address: "IP"
-              
+
   manage:
     title: "System <br /> Management"
     go_site: "Go to site"
@@ -106,7 +106,7 @@ en:
     close: "Close"
     search: "Search"
     filter: "Filter"
-    
+
     menu:
       title: "Sections & modules"
       system_messages: "System messages"
@@ -134,29 +134,29 @@ en:
       panel:
         main: "Sections & modules"
         creates: "Creates"
-    
+
     settings:
       title: "Settings"
       mailer: "Mail"
       route: "Domain"
       contacts: "Contact"
-    
+
     locale:
       ru: "Russian"
       en: "English"
       uk: "Ukrainian"
-    
-    model_filter: 
+
+    model_filter:
       title: "Filter data"
       filter: "Filter"
       search: "Search"
       clear: "Clean"
       total_count: "Total"
-    
+
     position:
       down: "Lower down"
       up: "Raise Up"
-    
+
     buttons:
       create_structure: "Create Section"
       table: "Table"
@@ -179,7 +179,7 @@ en:
         activate: "Activate"
         unlock: "Unlock"
       roles: "Raleigh"
-      
+
     users:
       activated_at: "activation"
       last_login_ip: "ip"
@@ -187,14 +187,14 @@ en:
       category: "category"
       name: "Name"
       export: "Export"
-      
+
       sort:
         _: "-"
         created_at_desc: "by date descending"
         created_at_asc: "date ascending"
         name_desc: "name descending"
         name_asc: "name ascending"
-    
+
     structure:
       kind:
         page: "Text Page"
@@ -208,13 +208,13 @@ en:
         redirect: "Redirect"
         tracks: "Music"
         wallpapers: "Wallpaper"
-        group: "Група stranichok"
-      
+        group: "Pages group"
+
       position:
         default: "By default"
         menu: "Main Menu"
         bottom: "Below"
-    
+
     role:
       kind:
         guest: "Guest"
@@ -222,7 +222,7 @@ en:
         moderator: "Moderator"
         admin: "Administrator"
         redactor: "Editor"
-        
+
     tags:
       sort:
         _: "-"
@@ -230,7 +230,7 @@ en:
         created_at_asc: "date ascending"
         name_desc: "by name descending"
         name_asc: "by name ascending"
-    
+
     posts:
       sort:
         _: "-"
@@ -238,7 +238,7 @@ en:
         created_at_asc: "date ascending"
         title_desc: "by title descending"
         title_asc: "by title ascending"
-    
+
     sort_columns:
       _: "-"
       created_at_desc: "by date descending"
@@ -253,11 +253,11 @@ en:
       position_asc: "for the position of the ascending"
       sort_order_desc: "to sort in descending order"
       sort_order_asc: "to sort in ascending order"
-    
+
     fileupload:
       button: "Select file"
       max_size: "Max size"
-    
+
     icons:
       down: "Down"
       up: "Up"
@@ -267,7 +267,7 @@ en:
 
     groups:
       meta_tags: "Meta tags"
-  
+
   views:
     pagination:
       previous: "Previous"
@@ -275,9 +275,9 @@ en:
       truncate: "..."
       last: "Last"
       first: "First"
-      
+
   flash:
-    manage:      
+    manage:
       actions:
         create:
           success: "Record created successfully"
@@ -288,19 +288,19 @@ en:
         destroy:
           success: "Record deleted successfully"
           failure: "There were errors while removing data"
-        
+
       users:
         create:
           success: "You have successfully created"
           failure: "Some errors occurred while creating user"
         update:
           success: "Data updated successfully"
-      
+
       settings:
         create:
           success: "Successfully updated"
           failure: "Errors during data retention"
-      
+
       pages:
         create:
           success: "Site successfully saved"
@@ -308,7 +308,7 @@ en:
         update:
           success: "Site successfully saved"
           failure: "Errors during data retention"
-          
+
   errors:
     messages:
       wrong_size: "is the wrong size (should be %{file_size})"

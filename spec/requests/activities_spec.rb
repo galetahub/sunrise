@@ -32,11 +32,8 @@ describe 'Sunrise Manager Activities' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit activities_path
-    end
-
     it 'should redirect to login page' do
+      visit activities_path
       expect(page.body).to include 'Log in'
     end
   end
