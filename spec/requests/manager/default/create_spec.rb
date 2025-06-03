@@ -10,6 +10,8 @@ describe 'Sunrise Manager New' do
     before(:each) { login_as admin }
 
     describe 'create' do
+      let(:structure) { Structure.last }
+
       before(:each) do
         visit new_path(model_name: 'structures')
 
@@ -18,17 +20,17 @@ describe 'Sunrise Manager New' do
         select(PositionType.menu.title, from: 'structure[position_type_id]')
         check('structure[is_visible]')
 
-        click_button 'submit-form-button'
+        save_and_open_page
 
-        @structure = Structure.last
+        click_button 'submit-form-button'
       end
 
       it 'should create an object with correct attributes' do
-        expect(@structure).not_to be_nil
-        expect(@structure.title).to eq 'Good day'
-        expect(@structure.structure_type).to eq StructureType.page
-        expect(@structure.position_type).to eq PositionType.menu
-        expect(@structure.is_visible).to eq true
+        expect(structure).not_to be_nil
+        expect(structure.title).to eq 'Good day'
+        expect(structure.structure_type).to eq StructureType.page
+        expect(structure.position_type).to eq PositionType.menu
+        expect(structure.is_visible).to eq true
       end
     end
   end

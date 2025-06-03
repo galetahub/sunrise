@@ -4,11 +4,11 @@ require 'spec_helper'
 
 describe Sunrise do
   it 'should be valid' do
-    Sunrise.should be_a(Module)
+    expect(Sunrise).to be_a(Module)
   end
 
   it 'should return valid root path' do
-    File.exist?(Sunrise.root_path).should be true
+    expect(File.exist?(Sunrise.root_path)).to be true
   end
 
   context 'configuration' do
@@ -23,7 +23,7 @@ describe Sunrise do
 
     it 'should store configuration' do
       expect(Sunrise::Config.default_items_per_page).to eq 50
-      expect(Sunrise::Config.default_sort_mode).to eq:asc
+      expect(Sunrise::Config.default_sort_mode).to eq :asc
       expect(Sunrise::Config.default_index_view).to eq :table
       expect(Sunrise::Config.scoped_views).to eq true
     end

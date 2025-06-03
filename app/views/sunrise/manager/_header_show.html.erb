@@ -3,10 +3,10 @@
     <div class="struct-name"><%= abstract_model.label %></div>
 
     <div class="vline-block">
-      <%= form_for search_wrapper, :url => scoped_index_path,  :html => { :method => :get, :novalidate => true } do |f| %>
-        <%= render :partial => 'sunrise/shared/parent' %>
+      <%= form_for search_wrapper, url: scoped_index_path,  html: { method: :get, novalidate: true } do |f| %>
+        <%= render partial: 'sunrise/shared/parent' %>
         <%= f.text_field :q %>
-        <%= f.submit t('manage.search'), :class => "button" %>
+        <%= f.submit t('manage.search'), class: "button" %>
       <% end %>
     </div>
   </div>
@@ -15,28 +15,24 @@
 <div class="top-line-holder">
   <div class="act-buttons-wrapper">
 
-    <% if can? :edit, @record, :context => :sunrise %>
+    <% if can? :edit, @record, context: :sunrise %>
       <div class="but-holder">
         <div class="act-but">
-          <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(:id => @record.id)), :class => 'but-container edit', :title => 'Edit' %>
+          <%= link_to image_tag('sunrise/empty.gif'), edit_path(abstract_model.parent_hash.merge(id: @record.id)), class: 'but-container edit', title: 'Edit' %>
         </div>
       </div>
     <% end -%>
 
-    <% if can? :delete, @record, :context => :sunrise %>
+    <% if can? :delete, @record, context: :sunrise %>
       <div class="but-holder">
         <div class="act-but">
-          <%= link_to image_tag('sunrise/empty.gif'), delete_path(abstract_model.parent_hash.merge(:id => @record.id)), 
-          :class => 'but-container del', 
-          :title => 'Delete', 
-          :method=>:delete,
-          :data => { :confirm => t('manage.confirm_delete') } %>
+          <%= link_to image_tag('sunrise/empty.gif'), delete_path(abstract_model.parent_hash.merge(id: @record.id)), class: 'but-container del', title: 'Delete', method: :delete, data: { confirm: t('manage.confirm_delete') } %>
         </div>
       </div>
     <% end %>
 
     <div class="buttons-holder">
-      <%= render :partial => apply_scope("controls"), :locals => {:record => @record} %>
+      <%= render partial: apply_scope("controls"), locals: { record: @record } %>
     </div>
   </div>
 </div>

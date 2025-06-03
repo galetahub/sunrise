@@ -1,6 +1,7 @@
 == 2.0.0
   * Update code to be compatible with rails 7.x
   * Update jQuery UI
+  * Load jQuery from CDN
 
 == 1.1.1
   * Update code to be compatible with rails 5.x

@@ -6,14 +6,14 @@
     <% elsif field.nested? -%>
       <div class="nested">
         <div class="title-switcher up"><%= form.label field.name %></div>
-        
+
         <%= form.simple_fields_for field.name.to_sym do |nested| %>
-          <%= render :partial => "nested_field", :locals => { :form => nested, :field => field }  %>
+          <%= render partial : "nested_field", locals : { form : nested, field : field }  %>
         <% end -%>
-        
+
         <% if field.multiply? %>
           <div class="nested_bottom">
-            <%= manage_add_child_link t('manage.buttons.add_nested_field'), form, field, {:partial=>"nested_field"} %>
+            <%= manage_add_child_link t('manage.buttons.add_nested_field'), form, field, { partial:"nested_field" } %>
           </div>
         <% end -%>
 
@@ -28,7 +28,7 @@
     <% elsif field.association? -%>
       <%= form.association field.name.to_sym, field.input_options.merge(options) %>
     <% else -%>
-      <%= form.input field.name, field.input_options.merge(options)  %>
+      <%= form.input field.name, field.input_options.merge(options) %>
     <% end -%>
   <% end -%>
 <% end -%>
