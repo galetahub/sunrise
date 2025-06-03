@@ -4,25 +4,22 @@ require 'spec_helper'
 
 describe 'Sunrise Manager New' do
   subject { page }
-  before(:all) do
-    @admin = FactoryBot.create(:admin_user)
-
-    @root = FactoryBot.create(:structure_main)
-    @page = FactoryBot.create(:structure_page, parent: @root)
-  end
+  let(:admin) { FactoryBot.create(:admin_user) }
+  let(:root) { FactoryBot.create(:structure_main) }
+  let(:structure) { FactoryBot.create(:structure_page, parent: root) }
 
   context 'admin' do
-    before(:each) { login_as @admin }
+    before(:each) { login_as admin }
 
     describe 'create' do
       before(:each) do
-        visit new_path(model_name: 'posts', parent_id: @page.id, parent_type: @page.class.name)
+        visit new_path(model_name: 'posts', parent_id: structure.id, parent_type: structure.class.name)
 
         fill_in 'post[title]', with: 'Good title'
         fill_in 'post[content]', with: 'Some long text' * 10
         check('post[is_visible]')
 
-        click_button 'submit-button-hidden'
+        click_button 'submit-form-button'
 
         @post = Post.last
       end
@@ -32,12 +29,12 @@ describe 'Sunrise Manager New' do
         expect(@post.title).to eq 'Good title'
         expect(@post.content).not_to be_blank
         expect(@post.is_visible).to eq true
-        expect(@post.structure).to eq @page
+        expect(@post.structure).to eq structure
       end
 
       it 'should redirect with association params' do
         expect(page.current_path).to eq '/manage/posts'
-        expect(page.current_url).to eq "http://www.example.com/manage/posts?parent_id=#{@page.id}&parent_type=#{@page.class.name}"
+        expect(page.current_url).to eq "http://www.example.com/manage/posts?parent_id=#{structure.id}&parent_type=#{structure.class.name}"
       end
     end
   end
