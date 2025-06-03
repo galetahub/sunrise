@@ -21,6 +21,7 @@ require "meta_manager/orm/#{SUNRISE_ORM}"
 
 require 'rails/test_help'
 require 'rspec/rails'
+require 'capybara/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'factory_bot_rails'

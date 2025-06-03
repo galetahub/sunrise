@@ -15,12 +15,12 @@ describe 'Sunrise Manager New' do
       before(:each) do
         visit new_path(model_name: 'structures')
 
-        fill_in 'structure[title]', with: 'Good day'
-        select(StructureType.page.title, from: 'structure[structure_type_id]')
-        select(PositionType.menu.title, from: 'structure[position_type_id]')
-        check('structure[is_visible]')
-
-        save_and_open_page
+        within("#resource-manage-form") do
+          fill_in 'structure[title]', with: "Good day"
+          select(StructureType.page.title, from: 'structure[structure_type_id]')
+          select(PositionType.menu.title, from: 'structure[position_type_id]')
+          check('structure[is_visible]')
+        end
 
         click_button 'submit-form-button'
       end
