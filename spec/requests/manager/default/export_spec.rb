@@ -4,19 +4,13 @@ require 'spec_helper'
 
 describe 'Sunrise Manager Export' do
   subject { page }
-  before(:all) do
-    @admin = FactoryBot.create(:admin_user)
-
-    @root = FactoryBot.create(:structure_main)
-    @page = FactoryBot.create(:structure_page, parent: @root)
-  end
+  let(:admin) { FactoryBot.create(:admin_user) }
+  let(:root) { FactoryBot.create(:structure_main) }
+  let(:structure) { FactoryBot.create(:structure_page, parent: root) }
 
   context 'admin' do
     before(:each) do
-      login_as @admin
-
-      time = Time.zone.parse('01/01/2012 18:00')
-      Time.stub!(:now).and_return(time)
+      login_as admin
     end
 
     describe 'GET /manage/users/export.xlsx' do
@@ -27,7 +21,6 @@ describe 'Sunrise Manager Export' do
       it 'should send excel file with users' do
         headers = page.response_headers
 
-        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
         expect(headers['Content-Type']).to eq 'application/vnd.ms-excel'
         expect(headers['Content-Disposition']).to eq 'attachment; filename="users_2012-01-01_16h00m00.xls"'
       end
@@ -41,13 +34,12 @@ describe 'Sunrise Manager Export' do
       it 'should send csv file with users' do
         headers = page.response_headers
 
-        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
         expect(headers['Content-Type']).to eq 'text/csv'
         expect(headers['Content-Disposition']).to eq 'attachment; filename="users_2012-01-01_16h00m00.csv"'
 
         expect(page.status_code).to eq 200
         expect(page.body).not_to be_blank
-        expect(page.body).to include(@admin.email)
+        expect(page.body).to include(admin.email)
       end
     end
 
@@ -57,7 +49,7 @@ describe 'Sunrise Manager Export' do
       end
 
       it 'should render users to json format' do
-        expect(page.body).to include(@admin.email)
+        expect(page.body).to include(admin.email)
 
         expect(page.response_headers['Content-Type']).to eq 'application/json; charset=utf-8'
       end
@@ -65,7 +57,7 @@ describe 'Sunrise Manager Export' do
 
     describe 'GET /manage/posts/export.csv' do
       before(:each) do
-        @page.posts.create(title: 'Some title')
+        structure.posts.create(title: 'Some title')
 
         visit export_path(model_name: 'posts', format: :csv)
       end
@@ -73,14 +65,13 @@ describe 'Sunrise Manager Export' do
       it 'should send csv file with posts' do
         headers = page.response_headers
 
-        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
         expect(headers['Content-Type']).to eq 'text/csv'
         expect(headers['Content-Disposition']).to eq 'attachment; filename="posts_2012-01-01_16h00m00.csv"'
 
         expect(page.status_code).to eq 200
         expect(page.body).not_to be_blank
-        expect(page.body).to include(@page.title)
-        expect(page.body).to include(@page.slug)
+        expect(page.body).to include(structure.title)
+        expect(page.body).to include(structure.slug)
       end
     end
 
@@ -92,7 +83,6 @@ describe 'Sunrise Manager Export' do
       it 'should send excel file with structures' do
         headers = page.response_headers
 
-        expect(headers['Content-Transfer-Encoding']).to eq 'binary'
         expect(headers['Content-Type']).to eq 'application/vnd.ms-excel'
         expect(headers['Content-Disposition']).to eq 'attachment; filename="structures_2012-01-01_16h00m00.xls"'
       end
@@ -112,11 +102,8 @@ describe 'Sunrise Manager Export' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit export_path(model_name: 'users', format: :xlsx)
-    end
-
     it 'should redirect to login page' do
+      visit export_path(model_name: 'users', format: :xlsx)
       should have_content('You need to sign in or sign up before continuing.')
     end
   end

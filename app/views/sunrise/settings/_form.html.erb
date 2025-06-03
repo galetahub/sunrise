@@ -1,4 +1,4 @@
-<%= simple_form_for Settings.new, url: settings_path, html: {method: :put} do |f| -%>
+<%= simple_form_for Settings.new, url: settings_path, html: {method: :put, id: 'resource-manage-form'} do |f| -%>
   <div class="post-edit-holder">
     <div class="wysiwyg-holder">
       <% @fields.each do |field| -%>

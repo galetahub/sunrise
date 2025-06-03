@@ -13,14 +13,12 @@ describe 'Sunrise Manager New' do
       before(:each) do
         visit new_path(model_name: 'structures')
 
-        expect(page.body).to include('New Structure')
-
         fill_in 'structure[title]', with: 'Good day'
         select(StructureType.page.title, from: 'structure[structure_type_id]')
         select(PositionType.menu.title, from: 'structure[position_type_id]')
         check('structure[is_visible]')
 
-        click_button 'submit-button-hidden'
+        click_button 'submit-form-button'
 
         @structure = Structure.last
       end

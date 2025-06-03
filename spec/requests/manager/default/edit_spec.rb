@@ -4,31 +4,29 @@ require 'spec_helper'
 
 describe 'Sunrise Manager Edit' do
   subject { page }
-  before(:all) do
-    @admin = FactoryBot.create(:admin_user)
+  let(:admin) { FactoryBot.create(:admin_user) }
 
-    @root = FactoryBot.create(:structure_main)
-    @page = FactoryBot.create(:structure_page, parent: @root)
-  end
+  let(:root) { FactoryBot.create(:structure_main) }
+  let(:structure) { FactoryBot.create(:structure_page, parent: root) }
 
   it 'should be moveable page' do
-    @page.should be_moveable
+    expect(structure).to be_moveable
   end
 
   context 'admin' do
-    before(:each) { login_as @admin }
+    before(:each) { login_as admin }
 
-    describe 'GET /manage/typo/edit' do
+    describe 'GET /manage/notexists/edit' do
       it 'should raise NotFound' do
         expect {
-          visit edit_path(model_name: 'whatever', id: @page.id)
+          visit edit_path(model_name: 'whatever', id: structure.id)
         }.to raise_error ActionController::RoutingError
       end
     end
 
     describe 'GET /manage/structures/:id/edit' do
       before(:each) do
-        visit edit_path(model_name: 'structures', id: @page.id)
+        visit edit_path(model_name: 'structures', id: structure.id)
       end
 
       it 'should show page title' do
@@ -48,7 +46,7 @@ describe 'Sunrise Manager Edit' do
 
     describe 'GET /manage/pages/:id/edit' do
       before(:each) do
-        visit edit_path(model_name: 'pages', id: @page.id)
+        visit edit_path(model_name: 'pages', id: structure.id)
       end
 
       it 'should show page title' do
@@ -63,11 +61,8 @@ describe 'Sunrise Manager Edit' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit edit_path(model_name: 'structures', id: @page.id)
-    end
-
     it 'should redirect to login page' do
+      visit edit_path(model_name: 'structures', id: structure.id)
       should have_content('Sign in')
     end
   end

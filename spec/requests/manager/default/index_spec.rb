@@ -4,14 +4,12 @@ require 'spec_helper'
 
 describe 'Sunrise Manager Index' do
   subject { page }
-  before(:all) do
-    @admin = FactoryBot.create(:admin_user)
-    @root = FactoryBot.create(:structure_main)
-    @page = FactoryBot.create(:structure_page, parent: @root)
-  end
+  let(:admin) { FactoryBot.create(:admin_user) }
+  let(:root) { FactoryBot.create(:structure_main) }
+  let(:structure) { FactoryBot.create(:structure_page, parent: root) }
 
   context 'admin' do
-    before(:each) { login_as @admin }
+    before(:each) { login_as admin }
 
     describe 'GET /manage' do
       it 'should respond successfully' do
@@ -33,7 +31,7 @@ describe 'Sunrise Manager Index' do
       end
 
       it 'should show page title' do
-        should have_content(@page.title)
+        should have_content(structure.title)
       end
     end
 
@@ -58,11 +56,8 @@ describe 'Sunrise Manager Index' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit index_path(model_name: 'structures')
-    end
-
     it 'should redirect to login page' do
+      visit index_path(model_name: 'structures')
       should have_content('Sign in')
     end
   end

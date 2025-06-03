@@ -4,37 +4,32 @@ require 'spec_helper'
 
 describe 'Sunrise Manager Edit' do
   subject { page }
-  before(:all) do
-    @admin = FactoryBot.create(:admin_user)
-
-    @root = FactoryBot.create(:structure_main)
-    @page = FactoryBot.create(:structure_page, parent: @root)
-  end
+  let(:admin) { FactoryBot.create(:admin_user) }
+  let(:root) { FactoryBot.create(:structure_main) }
+  let(:structure) { FactoryBot.create(:structure_page, parent: root) }
 
   context 'admin' do
-    before(:each) { login_as @admin }
+    before(:each) { login_as admin }
 
     describe 'update' do
       before(:each) do
-        visit edit_path(model_name: 'structures', id: @page.id)
-
-        # save_and_open_page
+        visit edit_path(model_name: 'structures', id: structure.id)
 
         fill_in 'structure[title]', with: 'Title updated'
         select(StructureType.posts.title, from: 'structure_structure_type_id')
         select(PositionType.default.title, from: 'structure_position_type_id')
         uncheck('structure[is_visible]')
 
-        click_button 'submit-button-hidden'
+        click_button 'submit-form-button'
       end
 
       it 'should update an object with correct attributes' do
-        @page.reload
+        structure.reload
 
-        expect(@page.title).to eq 'Title updated'
-        expect(@page.structure_type).to eq StructureType.posts
-        expect(@page.position_type).to eq PositionType.default
-        expect(@page.is_visible).to eq false
+        expect(structure.title).to eq 'Title updated'
+        expect(structure.structure_type).to eq StructureType.posts
+        expect(structure.position_type).to eq PositionType.default
+        expect(structure.is_visible).to eq false
       end
 
       it 'should redirect with model_name' do
@@ -44,31 +39,28 @@ describe 'Sunrise Manager Edit' do
 
     describe 'Update /manage/pages/:id/edit' do
       before(:each) do
-        @page.update(content: 'Main', sidebar: 'Sidebar')
+        structure.update(content: 'Main', sidebar: 'Sidebar')
 
-        visit edit_path(model_name: 'pages', id: @page.id)
+        visit edit_path(model_name: 'pages', id: structure.id)
 
         fill_in 'structure[content]', with: 'Main updated'
         fill_in 'structure[sidebar]', with: 'Sidebar updated'
 
-        click_button 'submit-button-hidden'
+        click_button 'submit-form-button'
       end
 
       it 'should update an object with correct attributes' do
-        @page.reload
+        structure.reload
 
-        expect(@page.content).to eq 'Main updated'
-        expect(@page.sidebar).to eq 'Sidebar updated'
+        expect(structure.content).to eq 'Main updated'
+        expect(structure.sidebar).to eq 'Sidebar updated'
       end
     end
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit edit_path(model_name: 'structures', id: @page.id)
-    end
-
     it 'should redirect to login page' do
+      visit edit_path(model_name: 'structures', id: structure.id)
       should have_content('Sign in')
     end
   end

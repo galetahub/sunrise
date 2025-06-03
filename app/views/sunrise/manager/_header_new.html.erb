@@ -1,10 +1,10 @@
 <div class="filter-line-wrapper">
   <div class="filter-line-holder">
 	  <div class="struct-name"><%= t('manage.add')%></div>
-	
+
 	  <div class="vline-block">
-	    <%= submit_tag t('manage.create'), :class => 'button', :id => 'submit-form-button'  %>
-	    <%= submit_tag t('manage.cancel'), :class => 'button gray', :id => 'cancel-submit-form-button' %>
+	    <%= submit_tag t('manage.create'), class: 'button', id: 'submit-form-button', form: 'resource-manage-form' %>
+	    <%= submit_tag t('manage.cancel'), class: 'button gray', id: 'cancel-submit-form-button' %>
 	  </div>
   </div>
 </div>

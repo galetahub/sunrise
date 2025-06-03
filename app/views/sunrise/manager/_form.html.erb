@@ -1,15 +1,15 @@
-<%= manage_form_for @record, :html => { :multipart => true } do |f| -%> 
-  <%= render :partial => 'sunrise/shared/parent' %>
+<%= manage_form_for @record, html: { multipart: true, id: 'resource-manage-form' } do |f| -%>
+  <%= render partial: 'sunrise/shared/parent' %>
 
   <div class="post-edit-holder">
-    <%= render :partial => "sunrise/shared/locale" if abstract_model.translate? %>
-    
+    <%= render partial: "sunrise/shared/locale" if abstract_model.translate? %>
+
 	  <div class="wysiwyg-holder">
-	    <%= render :partial => "sunrise/shared/available_locales", :locals => {:form => f} if abstract_model.translate? %>
-      
-      <%= render :partial => 'field', :collection => abstract_model.form_fields, :locals => {:form => f} %>
+	    <%= render partial: "sunrise/shared/available_locales", locals: {form: f} if abstract_model.translate? %>
+
+      <%= render partial: 'field', collection: abstract_model.form_fields, locals: {form: f} %>
 	  </div>
-	  
+
 	  <% if abstract_model.sidebar_groups? -%>
 	    <div class="post-properties-holder">
 	      <% abstract_model.sidebar_groups.each do |group| -%>
@@ -17,17 +17,17 @@
 		        <% if group.title != false -%>
   		        <div class="title-switcher up"><span><%= group.title %></span></div>
 		        <% end -%>
-		        
-		        <%= render :partial => 'field', :collection => group.fields, :locals => {:form => f} %>
+
+		        <%= render partial: 'field', collection: group.fields, locals: {form: f} %>
 	        </div>
 	      <% end -%>
-	    </div>  
+	    </div>
 	  <% end -%>
   </div>
-  
+
   <% abstract_model.bottom_groups.each do |group| -%>
-    <%= render :partial => 'field', :collection => group.fields, :locals => {:form => f} %>
+    <%= render partial: 'field', collection: group.fields, locals: {form: f} %>
   <% end -%>
-  
-  <%= f.button :submit, :style => "display:none;", :id => "submit-button-hidden" %>
+
+  <%= f.button :submit, style: "display:none;", id: "submit-button-hidden" %>
 <% end -%>

@@ -4,10 +4,10 @@ require 'spec_helper'
 
 describe 'Sunrise Manager New' do
   subject { page }
-  before(:all) { @admin = FactoryBot.create(:admin_user) }
+  let(:admin) { FactoryBot.create(:admin_user) }
 
   context 'admin' do
-    before(:each) { login_as @admin }
+    before(:each) { login_as admin }
 
     describe 'GET /manage/typo/new' do
       it 'should raise NotFound' do
@@ -50,11 +50,8 @@ describe 'Sunrise Manager New' do
   end
 
   describe 'anonymous user' do
-    before(:each) do
-      visit new_path(model_name: 'structures')
-    end
-
     it 'should redirect to login page' do
+      visit new_path(model_name: 'structures')
       should have_content('Sign in')
     end
   end

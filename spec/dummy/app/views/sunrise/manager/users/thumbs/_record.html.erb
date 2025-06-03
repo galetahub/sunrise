@@ -1,20 +1,20 @@
 <%= content_tag(:div, :id => dom_id(record), :class => "dinamic-bl") do %>
   <div class="act-bl" style="display:none;">
-    <%= link_to image_tag("manage/ico_edit.gif", :title=>t('manage.edit')), edit_path(:id => record.id), :class=>"icons" %>
+    <%= link_to image_tag("sunrise/ico_edit.png", :title=>t('manage.edit')), edit_path(:id => record.id), :class=>"icons" %>
 
-    <%= link_to image_tag("manage/ico_del.gif", :title=>t('manage.delete')), delete_path(:id => record.id), 
+    <%= link_to image_tag("sunrise/ico_del.png", :title=>t('manage.delete')), delete_path(:id => record.id),
           :method=>:delete, :confirm=>t("manage.confirm_delete"), :class=>"icons" %>
   </div>
-  
+
   <div class="bot-bg">
     <div class="dinamic-container">
-    	<div class="right-data">	
+    	<div class="right-data">
         <div class="right-data-cont">
           <div class="dinamic-inner">
           	<div class="r-block">
               <div class="block-cont">
                 <%= link_to @abstract_model.config.object_label_method, show_path(:id => record.id), :class=>"title" %>
-                
+
                 <table border="0" width="100%" cellspacing="0" cellpadding="0" class="inf">
                   <tr>
                     <td class="left">Section:</td>
