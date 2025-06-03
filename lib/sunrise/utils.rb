@@ -2,7 +2,6 @@
 
 module Sunrise
   module Utils
-    autoload :Transliteration, 'sunrise/utils/transliteration'
     autoload :EvalHelpers, 'sunrise/utils/eval_helpers'
     autoload :CsvDocument, 'sunrise/utils/csv_document'
     autoload :SearchWrapper, 'sunrise/utils/search_wrapper'
@@ -48,7 +47,7 @@ module Sunrise
     # Convert input to friendly slug using babosa gem
     #
     def self.normalize_friendly_id(input)
-      input.to_s.to_slug.normalize(transliterations: Sunrise::Config.transliteration).to_s
+      input.to_s.parameterize
     end
   end
 end

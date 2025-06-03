@@ -40,11 +40,6 @@ module Sunrise
     mattr_accessor :available_locales
     @@available_locales = []
 
-    # Set transliteration for babosa gem
-    # more info here: https://github.com/norman/babosa
-    mattr_accessor :transliteration
-    @@transliteration = :russian
-
     # Set index toolbar buttons
     mattr_accessor :default_toolbar_buttons
     @@default_toolbar_buttons = [:delete, :edit, :new, :sort, :export]

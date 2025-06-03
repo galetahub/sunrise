@@ -31,10 +31,6 @@ Sunrise.setup do |config|
   # Set available locales in app (default: [])
   # config.available_locales = []
 
-  # Set transliteration for babosa gem
-  # more info here: https://github.com/norman/babosa (default: :russian)
-  # config.transliteration = :russian
-
   # Set list toolbar buttons (default: [:delete, :edit, :new, :sort, :export])
   # config.default_toolbar_buttons = [:delete, :edit, :new, :sort, :export]
 
